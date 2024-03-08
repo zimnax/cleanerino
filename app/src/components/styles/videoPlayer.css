@@ -1,0 +1,66 @@
+.video-wrapper {
+    position: relative;
+    width: 100vw; /* Cover the width of the page */
+    overflow: hidden;
+  }
+  
+  video {
+    width: 100%; /* Make video fill the container */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+  }
+  
+  .control-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    color: white;
+    font-size: 0; /* Hide the text size */
+  }
+  
+  .control-button:before {
+    content: '';
+    display: block;
+    border-style: solid;
+    border-color: transparent transparent transparent white; /* Triangle for play */
+    border-width: 50px 0 50px 90px; /* Adjust triangle size */
+  }
+  
+  .control-button.playing:before {
+    content: '';
+    border-style: solid;
+    border-color: transparent;
+    border-width: 0px;
+    position: relative;
+  }
+  
+  .control-button.playing:after {
+    content: '||'; /* Unicode for pause, style further if needed */
+    color: white;
+    font-size: 24px; /* Show the text size for pause */
+    position: relative;
+    left: -10px; /* Adjust based on icon appearance */
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.5s;
+  }
+  
+  .fade-out {
+    animation: fadeOut 0.5s;
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+  
+  @keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+  }

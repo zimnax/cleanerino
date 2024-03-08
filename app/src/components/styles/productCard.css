@@ -1,0 +1,44 @@
+.product-card {
+    background: #FFFFFF;
+    border-radius: 4px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 360px; /* Adjust based on your layout requirements */
+  }
+  
+  .product-image img {
+    width: 100%;
+    height: 224px;
+    overflow: hidden;
+    object-fit: cover;
+  }
+  
+  .product-info {
+    padding: 12px;
+  }
+  
+  .product-rating .star {
+    color: grey;
+  }
+  
+  .product-rating .filled {
+    color: gold;
+  }
+  
+  .product-description {
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .product-price {
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .product-extras {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  

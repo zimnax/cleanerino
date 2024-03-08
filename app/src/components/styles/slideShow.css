@@ -1,0 +1,53 @@
+.slideshow-container {
+  position: relative;  
+  width: 100%; /* Adjust the width as necessary */
+  height: 772px;
+  margin: 10px auto;
+  overflow: hidden; /* Hide inactive slides */
+}
+
+.slideshow-image {
+  width: 100%; 
+  height: auto;
+  position: absolute;
+  top: 0; /* Align images to the top of the container */
+  left: 0; /* Align images to the left of the container */
+  opacity: 0; /* Make images invisible by default */
+  transition: opacity 1s ease-in-out; /* Smooth transition for opacity */
+  z-index: 1; /* Make sure images are stacked below the active image */
+}
+
+.slideshow-image.active {
+  opacity: 1; /* Make active image visible */
+  z-index: 2; /* Ensure active image is above the others */
+}
+
+.slideshow-controls {
+  text-align: center;
+  padding: 0 10px 10px 10px;
+}
+
+.slideshow-controls button {
+  width: 20px; /* Default size */
+  height: 20px; /* Default size */
+  border-radius: 50%;
+  background-color: #9DC08B; /* Default state background color */
+  margin: 0 5px;
+  cursor: pointer;
+  border: none;
+}
+
+.slideshow-controls button:hover {
+  background-color: #769a7a; /* Darker grey on hover */
+}
+
+.slideshow-controls button.active {
+  transform: scale(1.1); /* Enlarge active indicator */
+  background-color: #609966; /* Active state background color */
+  border-style: solid;
+  border-color: #40513B;
+}
+
+
+
+

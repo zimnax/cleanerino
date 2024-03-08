@@ -1,0 +1,65 @@
+.testimonials-section {
+  width: 1120px;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+  padding-top: 10px;
+}
+
+.testimonials-container {
+  width: 100%;
+  padding: 50px 0; /* Top and bottom padding */
+  text-align: center; /* Center align the text */
+}
+
+.highlight {
+  color: #609966;
+}
+
+.testimonial {
+  width: 100%;
+  max-width: 300px; /* Max width for each testimonial */
+  margin: 0 auto 40px; /* Margin for bottom spacing and auto for centering */
+  padding: 20px; /* Padding inside each testimonial */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  background-color: #ffffff; /* White background for the testimonial */
+  border-radius: 10px; /* Rounded corners for the testimonial cards */
+}
+
+.testimonial-quote {
+  font-size: 16px;
+  color: #666; /* Lighter grey for the quote text */
+  margin-bottom: 20px; /* Space below the quote */
+  line-height: 1.6; /* Line height for better readability */
+}
+
+.testimonial-author {
+  font-size: 14px;
+  color: #333; /* Dark grey color for the author text */
+  font-weight: bold;
+}
+
+.testimonial-author-title {
+  font-size: 12px;
+  color: #777; /* Even lighter grey for the author's title */
+  font-style: italic;
+}
+
+.testimonial-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%; /* Circle shaped image */
+  margin: 0 auto 20px; /* Center the image and provide bottom margin */
+  border: 3px solid #eee; /* Border color for the image */
+}
+
+.car-temp-somevdf {
+  flex-grow: 1; /* allows card to fill the space */
+  padding: 20px;
+  border: 1px solid #ccc; /* light grey border */
+  border-radius: 8px; /* rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* subtle shadow */
+  max-width: 600px; /* adjust as needed */
+  max-width: 544px;
+  height: 192px;
+}

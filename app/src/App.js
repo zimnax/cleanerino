@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import VendorReg from "./components/vendorAdmin/vendorReg/vendorReg";
 import { onAuthStateChanged } from "firebase/auth";
 import DashBoard from "./components/vendorAdmin/dashboard/mainDashboard/dashBoard";
+import Home from './components/Home';
 
 function App() {
   const [activeUser, setActiveUser] = useState(null);
@@ -36,6 +37,7 @@ function App() {
           path="/vendor/dashboard"
           element={<DashBoard activeUser={activeUser} />}
         />
+        <Route path="/" element={<Home />} />
       </Routes>
     </>
   );

@@ -1,0 +1,31 @@
+
+
+.slider-container {
+  width: 100%; /* Adjust the width as needed */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Ensure all items are in one line */
+  box-sizing: border-box; /* Include padding in the container's width calculation */
+  height: 280px;
+}
+
+.slide {
+  display: inline-block; /* Display slides in a line */
+  width: calc(100% / 3 - 40px); /* Example for showing 3 images at a time, adjust as needed */
+  margin-right: 120px; /* Margin between the slides */
+  transition: transform 0.5s ease; /* Smooth transition for the slide change */
+  box-sizing: border-box; /* Include padding and border in the element's width calculation */
+}
+
+/* Adjust the last slide margin to avoid extra space */
+.slide:last-child {
+  margin-right: 0;
+}
+
+img {
+  height: auto; /* Adjust height automatically to maintain aspect ratio */
+  display: block; /* Remove default image inline spacing */
+}
+
+.certificates{
+  max-height: 280px;
+}

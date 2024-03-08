@@ -1,0 +1,32 @@
+.accordion-item {
+  border-bottom: 1px solid #dddddd;
+}
+
+.accordion-title {
+  padding: 20px 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin: 0; /* Ensure there's no margin pushing the title or icon to the next line */
+}
+
+.accordion-title h4 {
+  margin: 0; /* Reset any default margins */
+  flex-grow: 1; /* Allow the title to grow and fill the space */
+}
+
+.accordion-title span {
+  /* If you are using text for the arrow, ensure it has enough space */
+  margin-left: 20px; /* Add space between the question and the arrow */
+  transition: transform 0.3s ease; /* Smooth transition for rotation */
+}
+
+.accordion-item.open .accordion-title span {
+  transform: rotate(-90deg); /* Rotate the arrow when the item is open */
+}
+
+.accordion-content {
+  padding-bottom: 10px;
+}
