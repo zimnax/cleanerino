@@ -1,7 +1,7 @@
 import css from "../vendorReg.module.css";
 import { ReactSVG } from "react-svg";
 import x from "../../../../svg/x.svg";
-const PopUpNext = ({ startNewProd, setAddProdPage }) => {
+const PopUpNext = ({ startNewProd, setAddProdPage, skipToDash }) => {
   return (
     <div className={css.wrapPopUp}>
       <div className={css.popWr}>
@@ -14,10 +14,7 @@ const PopUpNext = ({ startNewProd, setAddProdPage }) => {
           <button className={css.buttonAddMore} onClick={startNewProd}>
             Add more product
           </button>
-          <button
-            className={css.nextPage}
-            onClick={() => setAddProdPage(false)}
-          >
+          <button className={css.nextPage} onClick={skipToDash}>
             Customize store
           </button>
         </div>

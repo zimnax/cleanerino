@@ -37,5 +37,5 @@ const CertificatProf = ({ data }) => {
   );
 };
 export default withMySQLData(
-  "http://localhost:4000/api/v1/vendor/product/certificates"
+  "http://88.218.188.44:4000/api/v1/vendor/product/certificates"
 )(CertificatProf);

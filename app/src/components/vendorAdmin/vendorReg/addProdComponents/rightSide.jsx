@@ -10,6 +10,7 @@ import Size from "./size";
 import Shape from "./shape";
 import Scent from "./scent";
 const RightSide = ({
+  validateNameInput,
   setShortDesc,
   shortDesc,
   setProdName,
@@ -31,51 +32,124 @@ const RightSide = ({
   setLongDesc,
   longDesc,
   handleSubmit,
+  nameError,
+  validateShortDescInput,
+  shortDescError,
+  validateLongDescInput,
+  longDescError,
+  changeName,
+  changeShortDesc,
+  changeLongDesc,
+  prodCatError,
+  prodTypeError,
+  setProdCatError,
+  setProdTypeError,
+  instruction,
+  setInstruction,
+  localPickUp,
+  setLocalPickUp,
 }) => {
   const [newDetail, setNewDetail] = useState(false);
+  const handleRadioChange = () => {
+    setLocalPickUp(!localPickUp);
+  };
   return (
     <div className={css.rightSideWrap}>
       <div className={css.priceWrapRight}>
-        <label className={css.labelInpBold}>Product information</label>
+        <label className={css.labelInpBold}>Basic information</label>
         <div className={css.priceWrapBig}>
-          <label className={css.labelInp}>Product name</label>
+          <label className={nameError ? css.labelInp : css.labelInpNot}>
+            Product name
+          </label>
           <div className={css.wrapPriceInput}>
             <input
-              className={css.proceInputBig}
-              placeholder="Placeholder"
-              onChange={(e) => setProdName(e.target.value)}
+              className={nameError ? css.proceInputBig : css.proceInputBigNot}
+              placeholder="Body wash"
+              onChange={changeName}
               value={prodName}
+              onBlur={() => validateNameInput(prodName)}
             />
           </div>
         </div>
         <div className={css.priceWrapBig}>
-          <label className={css.labelInp}>Short description</label>
+          <label className={shortDescError ? css.labelInp : css.labelInpNot}>
+            Short description
+          </label>
           <div className={css.wrapPriceInput}>
             <input
-              className={css.proceInputBig}
+              className={
+                shortDescError ? css.proceInputBig : css.proceInputBigNot
+              }
               placeholder="Invigorating vegan body wash"
-              onChange={(e) => setShortDesc(e.target.value)}
+              onBlur={() => validateShortDescInput(shortDesc)}
+              onChange={changeShortDesc}
               value={shortDesc}
             />
           </div>
         </div>
         <div className={css.priceWrapBigTe}>
-          <label className={css.labelInp}>Long description</label>
+          <label className={longDescError ? css.labelInp : css.labelInpNot}>
+            Long description
+          </label>
+
+          <textarea
+            className={longDescError ? css.textAreaDesc : css.textAreaDescNot}
+            placeholder="Gentle body wash, crafted for daily use and sensitive skin. Formulated with plant-based ingredients, it offers a luxurious cleanse, leaving your skin refreshed and nourished."
+            onChange={changeLongDesc}
+            value={longDesc}
+            onBlur={() => validateLongDescInput(longDesc)}
+          />
+        </div>
+        <div className={css.priceWrapBigTe}>
+          <label className={css.labelInp}>How to use</label>
 
           <textarea
             className={css.textAreaDesc}
-            placeholder="Invigorating vegan body wash"
-            onChange={(e) => setLongDesc(e.target.value)}
-            value={longDesc}
+            placeholder="Instructions for using your product"
+            onChange={(e) => setInstruction(e.target.value)}
+            value={instruction}
           />
+        </div>
+        <div className={css.returnWr}>
+          <div className={css.wrapChack}>
+            <label className={css.labelInp}>Local pick-up</label>
+            <div className={css.chaWr}>
+              <label className={css.check} onClick={handleRadioChange}>
+                <input
+                  name="localPickup"
+                  type="radio"
+                  className={css.check__check}
+                  checked={localPickUp}
+                  onChange={() => {}} // Порожня функція, щоб уникнути помилок
+                />
+                <span className={css.check__indicator}></span>
+              </label>
+              {!localPickUp && <p className={css.of}>Off</p>}
+              {localPickUp && <p className={css.on}>On</p>}
+            </div>
+          </div>
+          {localPickUp && (
+            <p className={css.downRetWr}>
+              Customers will be able to pick up your product locally
+            </p>
+          )}
+          {!localPickUp && (
+            <p className={css.downRetWr}>
+              Customers will not be able to pick up your product locally
+            </p>
+          )}
         </div>
       </div>
       <div className={css.priceWrap}>
         <label className={css.labelInpBold}>Category</label>
         <div className={css.priceWrapSmallBig}>
           <ProdCategory
+            prodCatError={prodCatError}
+            prodTypeError={prodTypeError}
             setSelectedCategoryId={setSelectedCategoryId}
             setSelectedTypeId={setSelectedTypeId}
+            setProdCatError={setProdCatError}
+            setProdTypeError={setProdTypeError}
           />
         </div>
       </div>

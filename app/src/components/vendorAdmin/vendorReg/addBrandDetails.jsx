@@ -6,6 +6,7 @@ import logoRec from "../../../img/Rectangle4.png";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRef } from "react";
+import { Circles } from "react-loader-spinner";
 import {
   GetCountries,
   GetState,
@@ -22,6 +23,7 @@ const AddBrandDetails = ({
   setAddProdPage,
   activeUser,
 }) => {
+  const [buttonDisabled, setButtonDisabled] = useState(true);
   const [brandDesc, setBrandDesc] = useState("");
   const [isChecked, setIsChecked] = useState(false);
   const [isCheckedTwo, setIsCheckedTwo] = useState(false);
@@ -31,20 +33,28 @@ const AddBrandDetails = ({
   const [stateList, setStateList] = useState(null);
   const [logoT, setLogoT] = useState(null);
   const fileInputRef = useRef(null);
-  const [street, setStreet] = useState();
+  const [street, setStreet] = useState("");
   const fileInputRefLogo = useRef(null);
-  const [stateId, setStateId] = useState(0);
-  const [cityId, setCityId] = useState(0);
+  const [stateId, setStateId] = useState(null);
+  const [cityId, setCityId] = useState(null);
   const [cityList, setCityList] = useState(null);
   const [misto, setMisto] = useState("");
   const [zip, setZip] = useState("");
   const [cityFotrBase, setCityFotrBase] = useState("");
   const [users, setUsers] = useState([]);
-
+  const [brandError, setBrandError] = useState(true);
+  const [streetError, setStreetError] = useState(true);
+  const [zipError, setZipError] = useState(true);
+  const [myBrandError, setMyBrandError] = useState(true);
+  const [countryError, setCountryError] = useState(true);
+  const [stateError, setStateError] = useState(true);
+  const [cityError, setCityError] = useState(true);
+  const [loading, setLoading] = useState(false);
   ///////
   const [countryId, setCountryId] = useState("");
   const [countryList, setCountryList] = useState([]);
-  const [theId, setTheId] = useState("");
+  const [theId, setTheId] = useState(null);
+
   useEffect(() => {
     if (users) {
       setBrandDesc(users.brand_description);
@@ -76,7 +86,7 @@ const AddBrandDetails = ({
       setCountryList(result);
     });
   }, []);
-  console.log(stateList);
+
   const handleLogoClick = () => {
     fileInputRef.current.click();
   };
@@ -99,15 +109,12 @@ const AddBrandDetails = ({
   useEffect(() => {
     // Пошук об'єкта, де firebase_id === activeUser.uid
     const found = data.find((item) => item.firebase_id === activeUser.uid);
-    console.log("found", found);
+
     // Оновлення стану знайденого об'єкта
     setUsers(found);
   }, [data, activeUser]);
   /////////////////
 
-  const handleRadioChangeTwo = () => {
-    setIsCheckedTwo(!isCheckedTwo);
-  };
   const handleRadioChange = () => {
     setIsChecked(!isChecked);
   };
@@ -118,7 +125,34 @@ const AddBrandDetails = ({
 
   const sendDataToServer = async (event) => {
     event.preventDefault(); // Щоб уникнути перезавантаження сторінки
+    let isBrandError = validateInputLength(brandDesc, 2);
+    let isMyBrandError = brandId !== null;
+    let isStreetError = validateInputLength(street, 2);
+    let isZipError = validateInputLength(zip, 2);
+    let isCountryError = theId !== null;
+    let isStateError = stateId !== null;
+    let isCityError = cityId !== null;
 
+    setBrandError(isBrandError);
+    setMyBrandError(isMyBrandError);
+    setStreetError(isStreetError);
+    setZipError(isZipError);
+    setCountryError(isCountryError);
+    setStateError(isStateError);
+    setCityError(isCityError);
+
+    if (
+      !isBrandError ||
+      !isMyBrandError ||
+      !isStreetError ||
+      !isZipError ||
+      !isCountryError ||
+      !isStateError ||
+      !isCityError
+    ) {
+      return; // Якщо хоча б одна з умов не виконується, вийти з функції
+    }
+    setLoading(true);
     const form = event.target;
     const data = new FormData();
     const formDataObj = Object.fromEntries(data.entries());
@@ -131,7 +165,7 @@ const AddBrandDetails = ({
     formDataObj.city = cityId;
     formDataObj.street = street;
     formDataObj.zip_code = zip;
-    formDataObj.returns = `${isChecked}`;
+    formDataObj.returns = isChecked ? "true" : "false";
 
     try {
       let url;
@@ -141,7 +175,7 @@ const AddBrandDetails = ({
         fileFormData.append("file", logoT);
 
         const fileResponse = await axios.put(
-          `http://localhost:4000/api/v1/vendor/file/${users.id}`, // URL для завантаження файлу
+          `http://88.218.188.44:4000/api/v1/vendor/file/${users.id}`, // URL для завантаження файлу
           fileFormData,
           {
             headers: {
@@ -158,7 +192,7 @@ const AddBrandDetails = ({
         fileFormDataT.append("fileT", baner);
 
         const fileResponse = await axios.put(
-          `http://localhost:4000/api/v1/vendor/file/${users.id}`, // URL для завантаження файлу
+          `http://88.218.188.44:4000/api/v1/vendor/file/${users.id}`, // URL для завантаження файлу
           fileFormDataT,
           {
             headers: {
@@ -170,7 +204,7 @@ const AddBrandDetails = ({
         url = fileResponse.data.url;
       }
       const response = await axios.put(
-        `http://localhost:4000/api/v1/vendor/profile/${users.id}`, // Потрібно замінити userId на відповідний id користувача
+        `http://88.218.188.44:4000/api/v1/vendor/profile/${users.id}`, // Потрібно замінити userId на відповідний id користувача
         formDataObj,
         {
           headers: {
@@ -179,6 +213,7 @@ const AddBrandDetails = ({
         }
       );
       if (response) {
+        setLoading(false);
         skip();
       }
       // Додайте тут логіку для обробки успішної відправки даних
@@ -188,11 +223,46 @@ const AddBrandDetails = ({
       // Додайте тут логіку для обробки помилки відправки даних
     }
   };
-  console.log("theId", theId);
-  console.log("stateId", stateId);
-  console.log("cityId", cityId);
-  console.log("cityList", cityList);
+  const validateInputLength = (input, min) => {
+    if (input === null || input === undefined) {
+      return false;
+    } else {
+      return input.length >= min;
+    }
+  };
+  const validateBrandInput = (name) => {
+    setBrandError(!validateInputLength(name, 2) ? false : true);
+  };
+  const validateStreetInput = (name) => {
+    setStreetError(!validateInputLength(name, 2) ? false : true);
+  };
+  const validateZipInput = (name) => {
+    setZipError(!validateInputLength(name, 2) ? false : true);
+  };
+  useEffect(() => {
+    if (brandError) {
+      setButtonDisabled(false);
+    } else {
+      setButtonDisabled(true);
+    }
+  }, [brandError]);
+  const changeBrand = (e) => {
+    const value = e.target.value;
+    setBrandDesc(value);
+    if (value !== null) {
+      validateBrandInput(value);
+    }
+  };
+  const changeStreet = (e) => {
+    setStreet(e.target.value);
 
+    validateStreetInput(e.target.value);
+  };
+  const changeZip = (e) => {
+    setZip(e.target.value);
+
+    validateZipInput(e.target.value);
+  };
   return (
     <>
       <div className={css.regWrap}>
@@ -203,10 +273,12 @@ const AddBrandDetails = ({
           </button>
         </div>
         <div className={css.titleWrap}>
-          <p className={css.titleReg}>Add detail for your brand</p>
+          <p className={css.titleReg}>
+            Share your brand story to be discovered
+          </p>
           <p className={css.titleDesc}>
-            Laoreet viverra et sit sit facilisi tristique. Sed ut sagittis sed
-            velit commodo. Ullamcorper netus ac.
+            You can make changes to your brand in vendor your dashboard at any
+            time.
           </p>
           <div className={css.lineWrap}>
             <div className={css.lineGreen}></div>
@@ -219,10 +291,13 @@ const AddBrandDetails = ({
             <div className={css.logoWrap}>
               <label className={css.labelInp}>Logo</label>
               <div className={css.wrapLogoDrop} onClick={handleLogoClickLogo}>
-                {users && users.logo && (
-                  <img src={users.logo} className={css.photoLogo} alt="logo" />
-                )}
-                {users && !users.logo && (
+                {logoT ? (
+                  <img
+                    src={URL.createObjectURL(logoT)}
+                    className={css.photoLogo}
+                    alt="logo"
+                  />
+                ) : (
                   <img src={logoRec} className={css.photoLogo} alt="logo" />
                 )}
                 <div className={css.dropDownWrap}>
@@ -247,21 +322,34 @@ const AddBrandDetails = ({
               />
             </div>
             <div className={css.logoWrap}>
-              <label className={css.labelInp}>Brand description</label>
+              <label className={brandError ? css.labelInp : css.labelInpNot}>
+                Brand description
+              </label>
               <textarea
                 id="brandDesc"
                 name="brand_description"
-                className={css.inpBrandDesc}
+                className={brandError ? css.inpBrandDesc : css.inpBrandDescNot}
+                onBlur={() => validateBrandInput(brandDesc)}
                 value={brandDesc}
-                onChange={(e) => setBrandDesc(e.target.value)}
-                placeholder="Placeholder"
+                onChange={changeBrand}
+                placeholder="Tell customers about your brand, products, and values."
               />
             </div>
           </div>
           <div className={css.banerWrap}>
             <label className={css.labelInp}>Baner</label>
 
-            <div className={css.dropDownWrapBig} onClick={handleLogoClick}>
+            <div
+              className={css.dropDownWrapBig}
+              onClick={handleLogoClick}
+              style={{
+                backgroundImage: baner
+                  ? `url(${URL.createObjectURL(baner)})`
+                  : "none",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
               <ReactSVG src={upload} />
               <p className={css.descPDrop}>
                 <span className={css.descPDropSpan}>Click to upload logo</span>
@@ -280,18 +368,24 @@ const AddBrandDetails = ({
             />
           </div>
           <div className={css.firtBlockWr}>
-            <BrandDet setBrandIs={setBrandIs} />
-            <PayoutDet setPayaut={setPayaut} />
+            <BrandDet
+              setBrandIs={setBrandIs}
+              myBrandError={myBrandError}
+              setMyBrandError={setMyBrandError}
+            />
+            {/**  <PayoutDet setPayaut={setPayaut} />*/}
           </div>
           <div className={css.selectWrBig}>
             <label className={css.labelInp}>Address</label>
             {countryList && (
               <select
-                className={css.brandSelectLong}
+                className={
+                  countryError ? css.brandSelectLong : css.brandSelectLongNot
+                }
                 onChange={(e) => {
                   const selectedCountry = countryList[e.target.value];
                   setCountryId(selectedCountry.name);
-
+                  setCountryError(true);
                   setTheId(selectedCountry.id);
                   GetState(selectedCountry.id).then((result) => {
                     setStateList(result);
@@ -305,7 +399,7 @@ const AddBrandDetails = ({
                 } // змінено умову вибору значення
               >
                 <option disabled={!countryId} value="">
-                  Select a country
+                  Select county
                 </option>
                 {countryList.map((item, index) => (
                   <option key={index} value={index}>
@@ -317,12 +411,14 @@ const AddBrandDetails = ({
             {stateList && (
               <select
                 name="state"
-                className={css.brandSelectLong}
+                className={
+                  stateError ? css.brandSelectLong : css.brandSelectLongNot
+                }
                 onChange={(e) => {
                   const selectedState = stateList[e.target.value];
                   setStateId(selectedState.id);
                   setCityFotrBase(selectedState.name);
-
+                  setStateError(true);
                   GetCity(theId, selectedState.id).then((result) => {
                     setCityList(result);
                   });
@@ -335,7 +431,7 @@ const AddBrandDetails = ({
                 }
               >
                 <option disabled={!stateId} value="">
-                  Select a state
+                  Select state
                 </option>
                 {stateList.map((item, index) => (
                   <option key={index} value={index}>
@@ -346,10 +442,13 @@ const AddBrandDetails = ({
             )}
             {cityList && (
               <select
-                className={css.brandSelectLong}
+                className={
+                  cityError ? css.brandSelectLong : css.brandSelectLongNot
+                }
                 name="city"
                 onChange={(e) => {
                   const selectedCity = cityList[e.target.value];
+                  setCityError(true);
                   setCityId(selectedCity.id);
                   setMisto(selectedCity.name);
                 }}
@@ -370,18 +469,20 @@ const AddBrandDetails = ({
               </select>
             )}
             <input
-              className={css.adressIno}
               name="street"
-              placeholder="Enter the street"
+              placeholder="Street address"
               value={street}
-              onChange={(e) => setStreet(e.target.value)}
+              onChange={changeStreet}
+              className={streetError ? css.adressIno : css.adressInoNot}
+              onBlur={() => validateStreetInput(street)}
             />
             <input
-              className={css.adressIno}
-              placeholder="Enter the ZIP code"
+              placeholder="Zipcode"
               name="zip_code"
               value={zip}
-              onChange={(e) => setZip(e.target.value)}
+              onChange={changeZip}
+              className={zipError ? css.adressIno : css.adressInoNot}
+              onBlur={() => validateZipInput(zip)}
             />
             <label className={css.labelInpDown}>
               will be used for calculating shipping costs for the customer
@@ -405,20 +506,41 @@ const AddBrandDetails = ({
                 {isChecked && <p className={css.on}>On</p>}
               </div>
             </div>
-            <p className={css.downRetWr}>
-              under the button: customers will reach out to you directly to
-              request a return or refund
-            </p>
+            {isChecked && (
+              <p className={css.downRetWr}>
+                Customers will reach out to you directly to request a return or
+                refund
+              </p>
+            )}
+            {!isChecked && (
+              <p className={css.downRetWr}>
+                Customers will be notified that your store does not accept
+                returns. You can change this at any time
+              </p>
+            )}
           </div>
 
           <button className={css.buttonForm} type="submit">
             Start selling
           </button>
         </form>
+        {loading && (
+          <div className={css.spinerWrap}>
+            <Circles
+              height="80"
+              width="80"
+              color="#4fa94d"
+              ariaLabel="circles-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+            />
+          </div>
+        )}
       </div>
     </>
   );
 };
-export default withMySQLData("http://localhost:4000/api/v1/vendor/profile")(
+export default withMySQLData("http://88.218.188.44:4000/api/v1/vendor/profile")(
   AddBrandDetails
 );

@@ -2,21 +2,27 @@ import css from "../vendorReg.module.css";
 import { ReactSVG } from "react-svg";
 import arrow from "../../../../svg/chevron.svg";
 import withMySQLData from "../../../HOK/withMySQLData";
-const BrandDet = ({ data, setBrandIs }) => {
+const BrandDet = ({ data, setBrandIs, myBrandError, setMyBrandError }) => {
   const handleSelectChange = (event) => {
     const selectedBrandId = event.target.value;
 
     setBrandIs(selectedBrandId);
+    setMyBrandError(true);
   };
   return (
     <div className={css.selectWr}>
-      <label className={css.labelInp}>My brand is</label>
+      <label className={myBrandError ? css.labelInp : css.labelInpNot}>
+        My brand is
+      </label>
       <div className={css.wrapSelectF}>
         <select
-          className={css.brandSelect}
+          className={myBrandError ? css.brandSelect : css.brandSelectNot}
           onChange={handleSelectChange}
           name="my_brand_id"
         >
+          <option value="" disabled selected>
+            Select
+          </option>
           {data &&
             data.map((el, index) => {
               return (
@@ -31,6 +37,6 @@ const BrandDet = ({ data, setBrandIs }) => {
     </div>
   );
 };
-export default withMySQLData("http://localhost:4000/api/v1/vendor/det/brand")(
-  BrandDet
-);
+export default withMySQLData(
+  "http://88.218.188.44:4000/api/v1/vendor/det/brand"
+)(BrandDet);

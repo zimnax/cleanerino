@@ -144,7 +144,15 @@ const Certificat = ({
                           }
                           onClick={() => handleNameClick(categoryId, item.id)}
                         >
-                          {item.name}
+                          <img
+                            src={item.image}
+                            alt="Certificat Image"
+                            className={
+                              isActiveName
+                                ? css.certStyleProdClick
+                                : css.certStyleProd
+                            }
+                          />
                         </li>
                       );
                     })}
@@ -159,5 +167,5 @@ const Certificat = ({
   );
 };
 export default withMySQLData(
-  "http://localhost:4000/api/v1/vendor/product/certificates"
+  "http://88.218.188.44:4000/api/v1/vendor/product/certificates"
 )(Certificat);

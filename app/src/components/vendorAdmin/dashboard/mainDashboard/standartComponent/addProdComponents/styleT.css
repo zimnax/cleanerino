@@ -1,0 +1,39 @@
+.text-input-container {
+  position: relative;
+}
+
+.text-input {
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden; /* Важливо для висоти поля введення тексту */
+}
+
+.words-in-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  pointer-events: none; /* Забороняємо взаємодію з внутрішнім блоком */
+}
+
+.word {
+  display: inline-block;
+  background-color: #f0f0f0;
+  padding: 5px 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  pointer-events: auto; /* Відновлюємо можливість взаємодії з словами */
+}
+
+.remove-word {
+  margin-left: 5px;
+  cursor: pointer;
+}

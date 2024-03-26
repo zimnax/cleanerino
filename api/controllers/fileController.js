@@ -134,7 +134,44 @@ const upload = multer({ dest: "uploads/" });
 //     }
 //   );
 // };
+exports.deleteFile = (req, res) => {
+  const fileId = req.params.id;
 
+  // Запит на вибірку інформації про файл за його ідентифікатором
+  const selectFileQuery = `SELECT * FROM files WHERE id = ?`;
+
+  db.query(selectFileQuery, [fileId], (err, fileResult) => {
+    if (err) {
+      console.error("Помилка при вибірці файлу:", err);
+      return res.status(500).json({ message: "Помилка на сервері" });
+    }
+
+    if (fileResult.length === 0) {
+      return res.status(404).json({ message: "Файл не знайдено" });
+    }
+
+    // Видалення файлу з таблиці
+    const deleteFileQuery = `DELETE FROM files WHERE id = ?`;
+
+    db.query(deleteFileQuery, [fileId], (err, deleteResult) => {
+      if (err) {
+        console.error("Помилка при видаленні файлу:", err);
+        return res.status(500).json({ message: "Помилка на сервері" });
+      }
+
+      // Видалення файлу зі сховища (storage)
+      const filePath = fileResult[0].file_path;
+      // Додайте код для видалення файлу зі сховища, наприклад, за допомогою fs.unlink або іншого методу
+
+      // Повернення успішного результату
+      res.status(200).json({
+        status: "success",
+        message: "Файл успішно видалено",
+        id: fileId,
+      });
+    });
+  });
+};
 exports.updateFile = async (req, res) => {
   const id = req.params.id;
 

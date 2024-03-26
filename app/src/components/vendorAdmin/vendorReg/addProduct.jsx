@@ -3,21 +3,23 @@ import { ReactSVG } from "react-svg";
 import logo from "../../../svg/logo-inline.svg";
 import upload from "../../../svg/upload.svg";
 import logoRec from "../../../img/Rectangle4.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import arrow from "../../../svg/chevron.svg";
 import LeftSide from "./addProdComponents/leftSide";
 import RightSide from "./addProdComponents/rightSide";
 import axios from "axios";
 import PopUpNext from "./addProdComponents/popUpNext";
-const AddProduct = ({ setAddProdPage }) => {
+import withMySQLData from "../../HOK/withMySQLData";
+const AddProduct = ({ setAddProdPage, data, activeUser }) => {
   const navigate = useNavigate();
+  const [users, setUsers] = useState([]);
   const [popUp, setPopUp] = useState(false);
   const [prodName, setProdName] = useState("");
   const [shortDesc, setShortDesc] = useState("");
   const [longDesc, setLongDesc] = useState("");
-  const [selectedCategoryId, setSelectedCategoryId] = useState("");
-  const [selectedTypeId, setSelectedTypeId] = useState("");
+  const [selectedCategoryId, setSelectedCategoryId] = useState(null);
+  const [selectedTypeId, setSelectedTypeId] = useState(null);
   const [glass, setGlass] = useState(null);
   const [metal, setMetal] = useState(null);
   const [paper, setPaper] = useState(null);
@@ -33,12 +35,37 @@ const AddProduct = ({ setAddProdPage }) => {
   const [activeCategories, setActiveCategories] = useState([]);
   const [activeNames, setActiveNames] = useState([]);
   const [words, setWords] = useState([]); // Стан для зберігання списку слів
+  const [wordsWithout, setWordsWithout] = useState([]);
   const [uploadedImages, setUploadedImages] = useState([]);
   const [uploadedVideos, setUploadedVideos] = useState([]);
   const [activeCategoriesAndNames, setActiveCategoriesAndNames] = useState({
     activeCategories: [],
     activeNames: [],
   });
+
+  //////////////////////////////////////////////////////////////////////////////
+
+  const [nameError, setNameError] = useState(true);
+  const [shortDescError, setShortDescError] = useState(true);
+  const [longDescError, setLongDescError] = useState(true);
+  const [priceError, setPriceError] = useState(true);
+  const [weightError, setWeightError] = useState(true);
+  const [volumeError, setVolumeError] = useState(true);
+  const [prodCatError, setProdCatError] = useState(true);
+  const [prodTypeError, setProdTypeError] = useState(true);
+  const [quontError, setQuontError] = useState(true);
+  const [ingridientError, setIngridientError] = useState(true);
+  const [ingridientWithotError, setIngridientWithotError] = useState(true);
+  const [picError, setPicError] = useState(true);
+  const [instruction, setInstruction] = useState("");
+  const [localPickUp, setLocalPickUp] = useState(false);
+  const validateInputLength = (input, min) => {
+    if (input === null) {
+      return false;
+    } else {
+      return input.length >= min;
+    }
+  };
   const startNewProd = () => {
     setWords([]);
     setUploadedImages([]);
@@ -61,6 +88,9 @@ const AddProduct = ({ setAddProdPage }) => {
     setShortDesc("");
     setLongDesc("");
     setPopUp(false);
+    setLocalPickUp(false);
+    setInstruction("");
+    setWordsWithout([]);
   };
   const sendFile = async (id) => {
     try {
@@ -88,9 +118,107 @@ const AddProduct = ({ setAddProdPage }) => {
       console.log("Error");
     }
   };
+  const validateNameInput = (name) => {
+    setNameError(!validateInputLength(name, 2) ? false : true);
+  };
+  const validateShortDescInput = (name) => {
+    setShortDescError(!validateInputLength(name, 2) ? false : true);
+  };
+  const validateLongDescInput = (name) => {
+    setLongDescError(!validateInputLength(name, 20) ? false : true);
+  };
+  const validatePriceInput = (name) => {
+    setPriceError(!validateInputLength(name, 1) ? false : true);
+  };
+  const validateWeightInput = (name) => {
+    setWeightError(!validateInputLength(name, 1) ? false : true);
+  };
+  const validateVolumeInput = (name) => {
+    setVolumeError(!validateInputLength(name, 1) ? false : true);
+  };
+  const validateQuantityInput = (name) => {
+    setQuontError(!validateInputLength(name, 1) ? false : true);
+  };
+
+  const changeName = (e) => {
+    setProdName(e.target.value);
+    validateNameInput(e.target.value);
+  };
+  const changeShortDesc = (e) => {
+    setShortDesc(e.target.value);
+    validateShortDescInput(e.target.value);
+  };
+  const changeLongDesc = (e) => {
+    setLongDesc(e.target.value);
+    validateLongDescInput(e.target.value);
+  };
+  const changePrice = (e) => {
+    setProductPrice(e.target.value);
+    validatePriceInput(e.target.value);
+  };
+  const changeWeight = (e) => {
+    setWeight(e.target.value);
+    validateWeightInput(e.target.value);
+    setVolumeError(!validateInputLength(e.target.value, 1) ? false : true);
+  };
+  const changeVolume = (e) => {
+    setVolume(e.target.value);
+    validateVolumeInput(e.target.value);
+    setWeightError(!validateInputLength(e.target.value, 1) ? false : true);
+  };
+  const changeQuont = (e) => {
+    setQuantity(e.target.value);
+    validateQuantityInput(e.target.value);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    let isNameError = validateInputLength(prodName, 2);
+    let isShortDescError = validateInputLength(shortDesc, 2);
+    let isLongDescError = validateInputLength(longDesc, 20);
+    let isPriceError = validateInputLength(productPrice, 1);
+    let isWeightError = validateInputLength(weight, 1);
+    let isVolumeError = validateInputLength(volume, 1);
+    let isQuonError = validateInputLength(quantity, 1);
+    let isCountryError = selectedCategoryId !== null;
+    let isStateError = selectedTypeId !== null;
+    let isCityError = words.length > 0;
+    let isPhoto = uploadedImages.length > 0;
+    setNameError(isNameError);
+    setShortDescError(isShortDescError);
+    setLongDescError(isLongDescError);
+    setPriceError(isPriceError);
+    if (!isWeightError && !isVolumeError) {
+      setWeightError(isWeightError);
+      setVolumeError(isVolumeError);
+    }
+    if (isWeightError || isVolumeError) {
+      setWeightError(true);
+      setVolumeError(true);
+      isWeightError = true;
+      isVolumeError = true;
+    }
+    setProdCatError(isCountryError);
+    setProdTypeError(isStateError);
+    setQuontError(isQuonError);
+    setIngridientError(isCityError);
+    setPicError(isPhoto);
+    if (
+      !isNameError ||
+      !isShortDescError ||
+      !isLongDescError ||
+      !isPriceError ||
+      !isWeightError ||
+      !isVolumeError ||
+      !isCountryError ||
+      !isStateError ||
+      !isQuonError ||
+      !isCityError ||
+      !isPhoto
+    ) {
+      return; // Якщо хоча б одна з умов не виконується, вийти з функції
+    }
     try {
       const response = await axios.post(
         "http://localhost:4000/api/v1/vendor/product/add",
@@ -116,6 +244,10 @@ const AddProduct = ({ setAddProdPage }) => {
           activeCategories,
           activeNames,
           words,
+          wordsWithout,
+          instruction,
+          vendorId: users.id,
+          local_pickup: localPickUp ? "true" : "false",
           // Додайте інші дані тут
         }
       );
@@ -134,6 +266,14 @@ const AddProduct = ({ setAddProdPage }) => {
   const skipToDash = () => {
     navigate("/vendor/dashboard");
   };
+  useEffect(() => {
+    // Пошук об'єкта, де firebase_id === activeUser.uid
+    const found = data.find((item) => item.firebase_id === activeUser.uid);
+
+    // Оновлення стану знайденого об'єкта
+    setUsers(found);
+  }, [data, activeUser]);
+  console.log(users);
   return (
     <>
       <div className={css.regWrap}>
@@ -146,8 +286,8 @@ const AddProduct = ({ setAddProdPage }) => {
         <div className={css.titleWrap}>
           <p className={css.titleReg}>Add products</p>
           <p className={css.titleDesc}>
-            Laoreet viverra et sit sit facilisi tristique. Sed ut sagittis sed
-            velit commodo. Ullamcorper netus ac.
+            Add your first product or upload an entire database. You can skip
+            this step and upload products later.
           </p>
           <div className={css.lineWrap}>
             <div className={css.lineGreen}></div>
@@ -161,7 +301,6 @@ const AddProduct = ({ setAddProdPage }) => {
             uploadedImages={uploadedImages}
             setUploadedVideos={setUploadedVideos}
             uploadedVideos={uploadedVideos}
-            setProductPrice={setProductPrice}
             productPrice={productPrice}
             setWeight={setWeight}
             weight={weight}
@@ -178,6 +317,26 @@ const AddProduct = ({ setAddProdPage }) => {
             longDesc={longDesc}
             setActiveCategoriesAndNames={setActiveCategoriesAndNames}
             activeCategoriesAndNames={activeCategoriesAndNames}
+            changePrice={changePrice}
+            validatePriceInput={validatePriceInput}
+            priceError={priceError}
+            changeWeight={changeWeight}
+            validateWeightInput={validateWeightInput}
+            weightError={weightError}
+            changeVolume={changeVolume}
+            validateVolumeInput={validateVolumeInput}
+            volumeError={volumeError}
+            changeQuont={changeQuont}
+            validateQuantityInput={validateQuantityInput}
+            quontError={quontError}
+            ingridientError={ingridientError}
+            picError={picError}
+            setPicError={setPicError}
+            setIngridientError={setIngridientError}
+            setIngridientWithotError={setIngridientWithotError}
+            ingridientWithotError={ingridientWithotError}
+            setWordsWithout={setWordsWithout}
+            wordsWithout={wordsWithout}
           />
           <RightSide
             setShortDesc={setShortDesc}
@@ -201,6 +360,23 @@ const AddProduct = ({ setAddProdPage }) => {
             setLongDesc={setLongDesc}
             handleSubmit={handleSubmit}
             longDesc={longDesc}
+            validateNameInput={validateNameInput}
+            nameError={nameError}
+            validateShortDescInput={validateShortDescInput}
+            shortDescError={shortDescError}
+            validateLongDescInput={validateLongDescInput}
+            longDescError={longDescError}
+            changeName={changeName}
+            changeShortDesc={changeShortDesc}
+            changeLongDesc={changeLongDesc}
+            prodCatError={prodCatError}
+            prodTypeError={prodTypeError}
+            setProdCatError={setProdCatError}
+            setProdTypeError={setProdTypeError}
+            instruction={instruction}
+            setInstruction={setInstruction}
+            localPickUp={localPickUp}
+            setLocalPickUp={setLocalPickUp}
           />
         </div>
 
@@ -208,10 +384,13 @@ const AddProduct = ({ setAddProdPage }) => {
           <PopUpNext
             startNewProd={startNewProd}
             setAddProdPage={setAddProdPage}
+            skipToDash={skipToDash}
           />
         )}
       </div>
     </>
   );
 };
-export default AddProduct;
+export default withMySQLData("http://localhost:4000/api/v1/vendor/profile")(
+  AddProduct
+);

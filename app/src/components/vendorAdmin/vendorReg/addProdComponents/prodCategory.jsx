@@ -3,7 +3,15 @@ import { ReactSVG } from "react-svg";
 import arrow from "../../../../svg/chevron.svg";
 import withMySQLData from "../../../HOK/withMySQLData";
 import { useState } from "react";
-const ProdCategory = ({ data, setSelectedCategoryId, setSelectedTypeId }) => {
+const ProdCategory = ({
+  data,
+  setSelectedCategoryId,
+  setSelectedTypeId,
+  prodCatError,
+  prodTypeError,
+  setProdCatError,
+  setProdTypeError,
+}) => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedType, setSelectedType] = useState("");
 
@@ -32,6 +40,7 @@ const ProdCategory = ({ data, setSelectedCategoryId, setSelectedTypeId }) => {
       setSelectedCategory(selectedCategoryName);
       setSelectedCategoryId(selectedCategory.category_id); // Зберігаємо ID обраної категорії
       setSelectedType(""); // Скидаємо обрані типи
+      setProdCatError(true);
     } else {
       // Якщо категорію не знайдено, скидаємо значення категорії і типу
       setSelectedCategory("");
@@ -48,15 +57,22 @@ const ProdCategory = ({ data, setSelectedCategoryId, setSelectedTypeId }) => {
     );
     if (filteredType) {
       setSelectedTypeId(filteredType.type_id); // Зберігаємо обраний type_id
+      setProdTypeError(true);
     }
   };
   return (
     <>
       <div className={css.oneSmalInpBig}>
-        <label className={css.labelInp}>Product type</label>
-        <div className={css.wrapSelectF}>
+        <label className={prodCatError ? css.labelInp : css.labelInpNot}>
+          Product category
+        </label>
+        <div className={css.wrapSelectFTwo}>
           <select
-            className={css.proceInputBigSelect}
+            className={
+              prodCatError
+                ? css.proceInputBigSelect
+                : css.proceInputBigSelectNot
+            }
             value={selectedCategory}
             onChange={handleCategoryChange}
           >
@@ -72,10 +88,16 @@ const ProdCategory = ({ data, setSelectedCategoryId, setSelectedTypeId }) => {
       </div>
 
       <div className={css.oneSmalInpBig}>
-        <label className={css.labelInp}>Product category</label>
-        <div className={css.wrapSelectF}>
+        <label className={prodTypeError ? css.labelInp : css.labelInpNot}>
+          Product type
+        </label>
+        <div className={css.wrapSelectFTwo}>
           <select
-            className={css.proceInputBigSelect}
+            className={
+              prodTypeError
+                ? css.proceInputBigSelect
+                : css.proceInputBigSelectNot
+            }
             value={selectedType}
             onChange={handleTypeChange}
             disabled={!selectedCategory}
@@ -94,5 +116,5 @@ const ProdCategory = ({ data, setSelectedCategoryId, setSelectedTypeId }) => {
   );
 };
 export default withMySQLData(
-  "http://localhost:4000/api/v1/vendor/product/category"
+  "http://88.218.188.44:4000/api/v1/vendor/product/category"
 )(ProdCategory);

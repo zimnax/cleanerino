@@ -9,26 +9,43 @@ const categoriesRoutes = require("./routes/categoriesRoutes.js");
 const subcategoriesRoutes = require("./routes/subcategoriesRoutes.js");
 const packagingRoutes = require("./routes/packagingRoutes.js");
 const certificatesRoutes = require("./routes/certificatesRoutes.js");
+const updateProductRoute = require("./routes/updateProductRoute.js");
 const fileRoute = require("./routes/fileRoute.js");
+const fileAddRoute = require("./routes/fileAddRoute.js");
 const cardRouter = require("./routes/cardRouter.js");
+const usersRoute = require("./routes/usersRoute/usersRoute.js");
+const ingridientsRoute = require("./routes/ingridientsRoute.js");
+const ingridientsIconsRoute = require("./routes/ingridientsIconsRoute.js");
 const fileUpload = require("express-fileupload");
 
 const cors = require("cors");
 
 const app = express();
-
+// app.use(cors({ origin: "http://88.218.188.44/" }));
+// app.options("*", cors());
+// app.use((req, res, next) => {
+//   res.setHeader("Access-Control-Allow-Origin", "http://88.218.188.44");
+//   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+//   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+//   next();
+// });
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
+app.use("/api/v1/ingridients", ingridientsRoute);
+app.use("/api/v1/ingridients/icon", ingridientsIconsRoute);
 app.use("/api/v1/vendor/profile", userRoutes);
 app.use("/api/v1/vendor/product/file", fileRoute);
+app.use("/api/v1/vendor/product/fileAdd", fileAddRoute);
 app.use("/api/v1/vendor/product/add", productsRoute);
+app.use("/api/v1/vendor/product/update", updateProductRoute);
+
 app.use("/api/v1/vendor/product/category", categoriesRoutes);
 app.use("/api/v1/vendor/product/subcategory", subcategoriesRoutes);
 app.use("/api/v1/vendor/product/packaging", packagingRoutes);
 app.use("/api/v1/vendor/product/certificates", certificatesRoutes);
-
+app.use("/api/v1/users/profile", usersRoute);
 app.use("/api/v1/vendor/file", userRouteFiles);
 app.use("/api/v1/vendor/det", userRoutesDet);
 app.use("/api/v1/vendor/card", cardRouter);

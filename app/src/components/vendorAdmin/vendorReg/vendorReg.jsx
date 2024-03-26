@@ -5,18 +5,33 @@ import AddBrandDetails from "./addBrandDetails";
 import AddProduct from "./addProduct";
 import Test from "./tesx";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import withMySQLData from "../../HOK/withMySQLData";
 
-const VendorReg = ({ activeUser }) => {
+const VendorReg = ({ activeUser, data }) => {
   const [reg, setReg] = useState(true);
   const [brandPage, setBrandPage] = useState(false);
   const [addProdPage, setAddProdPage] = useState(false);
-  /////////////////////////
-  // const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    if (data && activeUser) {
+      // Пошук об'єкта, де firebase_id === activeUser.uid
+      const found = data.find((item) => item.firebase_id === activeUser.uid);
 
-  /////////////////////////
+      // Оновлення стану знайденого об'єкта
+      setUsers(found);
+    }
+  }, [data, activeUser]);
+
   return (
     <>
-      {reg && <VendorRegPage setReg={setReg} setBrandPage={setBrandPage} />}
+      {reg && (
+        <VendorRegPage
+          setReg={setReg}
+          setBrandPage={setBrandPage}
+          activeUser={activeUser}
+        />
+      )}
       {brandPage && (
         <AddBrandDetails
           setBrandPage={setBrandPage}
@@ -24,8 +39,12 @@ const VendorReg = ({ activeUser }) => {
           activeUser={activeUser}
         />
       )}
-      {addProdPage && <AddProduct setAddProdPage={setAddProdPage} />}
+      {addProdPage && (
+        <AddProduct setAddProdPage={setAddProdPage} activeUser={activeUser} />
+      )}
     </>
   );
 };
-export default VendorReg;
+export default withMySQLData("http://localhost:4000/api/v1/vendor/profile")(
+  VendorReg
+);

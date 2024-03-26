@@ -5,6 +5,9 @@ import Dash from "./standartComponent/dash";
 import ProfileSettings from "../profileSettings/profileSettings";
 import withMySQLData from "../../../HOK/withMySQLData";
 import axios from "axios";
+
+import AddProductDashboard from "./standartComponent/addProductDashboard";
+import ProductList from "./standartComponent/ProductList";
 const DashBoard = ({ activeUser, data }) => {
   const [dashBordS, setDashBoardS] = useState(true);
   const [order, setOrder] = useState(false);
@@ -14,16 +17,7 @@ const DashBoard = ({ activeUser, data }) => {
   const [customer, setCustomer] = useState(false);
   const [chat, setChat] = useState(false);
   const [settings, setSettings] = useState(false);
-  useEffect(() => {
-    axios
-      .get("http://localhost:4000/api/v1/vendor/product/add")
-      .then((response) => {
-        console.log("products", response.data);
-      })
-      .catch((error) => {
-        console.error("Помилка при отриманні користувачів:", error);
-      });
-  }, []);
+
   useEffect(() => {
     if (activeUser && data) {
       const found = data.find((item) => item.firebase_id === activeUser.uid);
@@ -59,6 +53,7 @@ const DashBoard = ({ activeUser, data }) => {
             users={users}
           />
         )}
+        {product && <ProductList setProduct={setProduct} users={users} />}
       </div>
     </div>
   );

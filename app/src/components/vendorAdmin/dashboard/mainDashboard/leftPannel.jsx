@@ -19,6 +19,8 @@ import userSvg from "../../../../svg/User.svg";
 import userSvgTrue from "../../../../svg/UserTrue.svg";
 import logOut from "../../../../svg/Login.svg";
 import { useState } from "react";
+import { signOut } from "firebase/auth";
+import { auth } from "../../../../function/firebase";
 const LeftPannel = ({
   dashBordS,
   setDashBoardS,
@@ -44,6 +46,13 @@ const LeftPannel = ({
     setCustomer(panel === "customers");
     setChat(panel === "chat");
     setSettings(panel === "settings");
+  };
+  const signOutUser = () => {
+    signOut(auth)
+      .then(() => {})
+      .catch((err) => {
+        console.error(err);
+      });
   };
   return (
     <div className={css.leftPannelWrap}>
@@ -131,7 +140,7 @@ const LeftPannel = ({
             Profile & Settings
           </span>
         </div>
-        <div className={css.wrapProfSetTwo}>
+        <div className={css.wrapProfSetTwo} onClick={signOutUser}>
           <ReactSVG src={logOut} />
           <span className={css.liSpan}>Logout</span>
         </div>

@@ -39,7 +39,11 @@ const Size = ({ setSizes, sizes }) => {
   return (
     <div className={css.newSize}>
       <label className={css.labelInpBold}>Unit size</label>
-      <div className={css.secWrPD}>
+      <label className={css.newUnitDesc}>
+        Use the weight bucket for products like soap and solid shampoo and
+        volume for liquid products, like body wash and liquid dish soap.
+      </label>
+      <div className={css.secWrPDds}>
         <label className={css.grenLab}>Save price for all</label>
         <div className={css.chaWrnew}>
           <label className={css.checkTJ}>

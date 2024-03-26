@@ -9,7 +9,7 @@ import smile from "../../../../svg/smile.svg";
 
 import Certificat from "./certificat";
 const LeftSide = ({
-  setProductPrice,
+  setIngridientError,
   productPrice,
   setWeight,
   weight,
@@ -27,6 +27,25 @@ const LeftSide = ({
   uploadedImages,
   setUploadedVideos,
   uploadedVideos,
+  changePrice,
+  validatePriceInput,
+  priceError,
+  changeWeight,
+  validateWeightInput,
+  weightError,
+  changeVolume,
+  validateVolumeInput,
+  volumeError,
+  changeQuont,
+  validateQuantityInput,
+  quontError,
+  ingridientError,
+  picError,
+  setPicError,
+  setIngridientWithotError,
+  ingridientWithotError,
+  setWordsWithout,
+  wordsWithout,
 }) => {
   const onDrop = useCallback((acceptedFiles) => {
     const imageFiles = acceptedFiles.filter((file) =>
@@ -35,7 +54,9 @@ const LeftSide = ({
     const videoFiles = acceptedFiles.filter((file) =>
       file.type.startsWith("video")
     );
-
+    if (imageFiles.length > 0) {
+      setPicError(true);
+    }
     setUploadedImages((prevUploadedImages) => [
       ...prevUploadedImages,
       ...imageFiles,
@@ -48,12 +69,17 @@ const LeftSide = ({
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
   ///////////////////////////////////////////////////////////
   const [inputValue, setInputValue] = useState(""); // Стан для зберігання значення введеного тексту
+  const [valueForWithout, setValueForWithout] = useState("");
+  const handleChangeWithout = (event) => {
+    setValueForWithout(event.target.value);
+  };
 
   const handleChange = (event) => {
     setInputValue(event.target.value);
   };
   const handleKeyDown = (event) => {
     if (event.key === "Enter" || event.key === ",") {
+      setIngridientError(true);
       event.preventDefault();
       const trimmedValue = inputValue.trim();
       if (trimmedValue !== "") {
@@ -62,6 +88,20 @@ const LeftSide = ({
         // Додати кожне слово окремо до масиву слів
         setWords([...words, ...newWords]);
         setInputValue(""); // Очистити поле вводу
+      }
+    }
+  };
+  const handleKeyDownWithou = (event) => {
+    if (event.key === "Enter" || event.key === ",") {
+      setIngridientWithotError(true);
+      event.preventDefault();
+      const trimmedValue = valueForWithout.trim();
+      if (trimmedValue !== "") {
+        // Розділити введений текст на слова після кожної коми
+        const newWords = trimmedValue.split(",").map((word) => word.trim());
+        // Додати кожне слово окремо до масиву слів
+        setWordsWithout([...wordsWithout, ...newWords]);
+        setValueForWithout(""); // Очистити поле вводу
       }
     }
   };
@@ -80,10 +120,18 @@ const LeftSide = ({
     newWords.splice(index, 1); // Видаляємо слово за індексом
     setWords(newWords); // Оновлюємо список слів
   };
+  const removeWordWithout = (index) => {
+    const newWords = [...wordsWithout];
+    newWords.splice(index, 1); // Видаляємо слово за індексом
+    setWordsWithout(newWords); // Оновлюємо список слів
+  };
 
   return (
     <div className={css.leftSideWrap}>
-      <div {...getRootProps()} className={css.dropzoneStyle}>
+      <div
+        {...getRootProps()}
+        className={picError ? css.dropzoneStyle : css.dropzoneStyleNot}
+      >
         <input {...getInputProps({ accept: "image/*,video/*" })} />
 
         {isDragActive ? (
@@ -124,14 +172,17 @@ const LeftSide = ({
       <div className={css.priceWrap}>
         <label className={css.labelInpBold}>Price</label>
         <div className={css.priceWrapSmall}>
-          <label className={css.labelInp}>Price product</label>
+          <label className={priceError ? css.labelInp : css.labelInpNot}>
+            Unit price
+          </label>
           <div className={css.wrapPriceInput}>
             <ReactSVG src={smile} className={css.smileSvg} />
             <input
-              className={css.proceInput}
+              className={priceError ? css.proceInput : css.proceInputNot}
               value={productPrice}
-              onChange={(e) => setProductPrice(e.target.value)}
-              placeholder="14$"
+              onChange={changePrice}
+              placeholder="10$"
+              onBlur={() => validatePriceInput(productPrice)}
             />
           </div>
         </div>
@@ -140,37 +191,50 @@ const LeftSide = ({
         <label className={css.labelInpBold}>Size</label>
         <div className={css.priceWrapSmallFl}>
           <div className={css.oneSmalInp}>
-            <label className={css.labelInp}>Weight</label>
+            <label className={weightError ? css.labelInp : css.labelInpNot}>
+              Weight
+            </label>
 
             <input
-              className={css.proceInputSmal}
+              className={
+                weightError ? css.proceInputSmal : css.proceInputSmalNot
+              }
               value={weight}
-              onChange={(e) => setWeight(e.target.value)}
-              placeholder="0.5"
+              onBlur={() => validateWeightInput(weight)}
+              onChange={changeWeight}
+              placeholder="3oz"
             />
           </div>
 
           <div className={css.oneSmalInp}>
-            <label className={css.labelInp}>Volume</label>
+            <label className={volumeError ? css.labelInp : css.labelInpNot}>
+              Volume
+            </label>
 
             <input
-              className={css.proceInputSmal}
+              className={
+                volumeError ? css.proceInputSmal : css.proceInputSmalNot
+              }
               value={volume}
-              onChange={(e) => setVolume(e.target.value)}
-              placeholder="15"
+              onBlur={() => validateVolumeInput(volume)}
+              onChange={changeVolume}
+              placeholder="5 fl oz/ 150 ml"
             />
           </div>
         </div>
       </div>
       <div className={css.priceWrap}>
-        <label className={css.labelInpBold}>Quantity</label>
+        <label className={css.labelInpBold}>Inventory</label>
         <div className={css.priceWrapSmall}>
-          <label className={css.labelInp}>Quantity</label>
+          <label className={quontError ? css.labelInp : css.labelInpNot}>
+            Available stock
+          </label>
 
           <input
-            className={css.proceInputQu}
+            className={quontError ? css.proceInputQu : css.proceInputQuNot}
             value={quantity}
-            onChange={(e) => setQuantity(e.target.value)}
+            onBlur={() => validateQuantityInput(quantity)}
+            onChange={changeQuont}
             placeholder="2568"
           />
         </div>
@@ -179,10 +243,12 @@ const LeftSide = ({
       <div className={css.priceWrapContainer}>
         <label className={css.labelInpBold}>Ingredients</label>
         <div className={css.priceWrapSmallWord}>
-          <label className={css.labelInp}>Ingredients</label>
+          <label className={ingridientError ? css.labelInp : css.labelInpNot}>
+            Ingredients
+          </label>
           <input
             type="text"
-            className={css.proceInputte}
+            className={ingridientError ? css.proceInputte : css.proceInputteNot}
             value={inputValue}
             onChange={handleChange}
             placeholder=""
@@ -208,6 +274,42 @@ const LeftSide = ({
             Paste ingredient list” - “Please make sure to indicate the origin
             (source) of such ingredients as palm oil, mica, etc. to transparency
             in ingredient sourcing.
+          </p>
+        </div>
+      </div>
+      {/*///////////////////////////////// */}
+      <div className={css.priceWrapContainer}>
+        <label className={css.labelInpBold}>Made without</label>
+        <div className={css.priceWrapSmallWord}>
+          <label className={ingridientError ? css.labelInp : css.labelInpNot}>
+            Ingredients
+          </label>
+          <input
+            type="text"
+            className={ingridientError ? css.proceInputte : css.proceInputteNot}
+            value={valueForWithout}
+            onChange={handleChangeWithout}
+            placeholder=""
+            onKeyDown={handleKeyDownWithou} // Додаємо обробник події натискання клавіш
+          />
+          {wordsWithout.length > 0 && (
+            <div className={css.wordsInInput}>
+              {wordsWithout.map((wordsWithout, index) => (
+                <div key={index} className={css.word}>
+                  {wordsWithout}
+                  {/* Кнопка для видалення */}
+
+                  <ReactSVG
+                    src={cancel}
+                    className={css.cancelSvg}
+                    onClick={() => removeWordWithout(index)}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+          <p className={css.pTOIngred}>
+            E.g. animal-based products, animal testing, GMO, parabens, SLS, etc.
           </p>
         </div>
       </div>
