@@ -4,11 +4,13 @@
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.3",
+    "@reduxjs/toolkit": "^2.2.3",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.7",
     "country-state-city": "^3.2.1",
+    "email-validator": "^2.0.4",
     "firebase": "^10.7.2",
     "handy-svg": "^1.0.8",
     "password-validator": "^5.3.0",
@@ -18,11 +20,14 @@
     "react-dropzone": "^14.2.3",
     "react-icons": "^5.0.1",
     "react-loader-spinner": "^6.1.6",
+    "react-redux": "^9.1.0",
     "react-router-dom": "^6.21.3",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.8",
     "react-svg": "^16.1.32",
     "recharts": "^2.12.0",
+    "redux": "^5.0.1",
+    "sweetalert2": "^11.10.7",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

@@ -6,6 +6,7 @@ import logo from "../../svg/logo-inline.svg";
 import { Link } from "react-router-dom";
 import arrow from "../../svg/arrowLetBut.svg";
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
+import Swal from "sweetalert2";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -16,8 +17,9 @@ import axios from "axios";
 import { auth, googleAuthProvider } from "../../function/firebase";
 import { useEffect, useState } from "react";
 import PopUpNext from "./popUpNext";
+import HeaderModernWhite from "../standartComponent/headerModernWhite";
 
-const SignUp = ({ activeUser }) => {
+const SignUp = ({ activeUser, totalQuantity }) => {
   const [emailError, setEmailError] = useState("");
   console.log(activeUser);
   const [password, setPassword] = useState("");
@@ -75,19 +77,30 @@ const SignUp = ({ activeUser }) => {
     try {
       const res = await signInWithEmailAndPassword(auth, email, password);
       setOpenPop(true);
-    } catch (error) {}
+    } catch (error) {
+      console.log("error.code", error.code);
+      let errorMessage =
+        "An error occurred during sign in. Please try again later.";
+      if (error.code === "auth/invalid-credential") {
+        errorMessage =
+          "The password is invalid. Please enter a valid password.";
+      }
+      if (error.code === "auth/user-not-found") {
+        errorMessage =
+          "There is no user record corresponding to this email. Please sign up.";
+      }
+      Swal.fire({
+        icon: "error",
+        title: "Sign In Failed",
+        text: errorMessage,
+        confirmButtonColor: "#609966",
+      });
+    }
   };
-  // const signOut = async () => {
-  //   try {
-  //     await auth.signOut();
-  //     console.log("You have successfully logged out.");
-  //   } catch (error) {
-  //     console.error("Error logging out:", error);
-  //   }
-  // };
+
   return (
     <>
-      <Header />
+      <HeaderModernWhite totalQuantity={totalQuantity} />
 
       <div className={css.wrapSignIn}>
         <div className={css.wrapLogForm}>

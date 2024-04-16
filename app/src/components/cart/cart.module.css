@@ -63,7 +63,7 @@
   width: calc(100% - 24px);
   height: calc(179px - 24px);
   padding: 12px;
-  border-radius: 8px;
+  border-radius: 30px;
   background: var(--grayscale0-color);
   box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.05);
   display: flex;

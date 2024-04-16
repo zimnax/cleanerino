@@ -4,7 +4,8 @@ import { ReactSVG } from "react-svg";
 import min from "../../svg/akar-icons_minus.svg";
 import plusIcon from "../../svg/ant-design_plus-outlined.svg";
 import { Link } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+import { addToCartRed, updateCartQuantity } from "../../function/cartSlice";
 const ProdInCart = ({
   el,
   handleRemoveFromCart,
@@ -12,10 +13,11 @@ const ProdInCart = ({
   handleMoveToLater,
   setTotalQuantity,
   setTotalPrice,
+  setCartCounterC,
 }) => {
   const [countProd, setCountProd] = useState(el.quantity);
   const [mainPrice, setMainPrice] = useState(el.price * el.quantity);
-
+  const dispatch = useDispatch();
   const changeStateDown = () => {
     if (countProd > 1) {
       const newCount = countProd - 1;
@@ -23,6 +25,8 @@ const ProdInCart = ({
       changeQuantityInCart(el.id, newCount);
       setMainPrice(newCount * el.price);
       updateTotal(newCount, el.price);
+
+      setCartCounterC((prev) => prev + 1);
     }
   };
 
@@ -32,6 +36,7 @@ const ProdInCart = ({
     changeQuantityInCart(el.id, newCount);
     setMainPrice(newCount * el.price);
     updateTotal(newCount, el.price);
+    setCartCounterC((prev) => prev + 1);
   };
 
   useEffect(() => {
@@ -44,6 +49,7 @@ const ProdInCart = ({
       changeQuantityInCart(el.id, newCount);
       setMainPrice(newCount * el.price);
       updateTotal(newCount, el.price);
+      setCartCounterC((prev) => prev + 1);
     } else if (event.target.value === "") {
       setCountProd(0);
       changeQuantityInCart(el.id, 0);

@@ -1,0 +1,115 @@
+:root {
+  --grayscale0-color: #ffffff;
+  --grayscale10-color: #e5e5e5;
+  --grayscale20-color: #cccccc;
+  --grayscale40-color: #999999;
+  --Grayscale-50-color: #808080;
+  --grayscale70-color: #4c4c4c;
+  --grayscale80-color: #333333;
+  --grayscale90-color: #1a1a1a;
+  --grayscale400-color: #bdbdbd;
+  --primarynormal-color: #609966;
+  --black-color: #000000;
+
+  --custom-font: Steppe;
+}
+.privacyWrap {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wrapsmalPriv {
+  width: 1140px;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 130px;
+}
+.wrapFirstBlock {
+  width: 336px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.firstTextSuport {
+  color: #111;
+  margin: 0;
+  font-family: var(--custom-font);
+  font-size: 18.906px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 28.5px;
+  width: 100%;
+  height: 49px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.suporsChoise {
+  margin: 0;
+  width: 100%;
+  height: 49px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: #111;
+  cursor: pointer;
+  font-family: var(--custom-font);
+  font-size: 18.125px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 28.5px;
+}
+.suporsChoiseGreen {
+  padding-left: 16px;
+  cursor: pointer;
+  margin: 0;
+  width: calc(100% - 16px);
+  height: 49px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--grayscale0-color);
+  font-family: var(--custom-font);
+  font-size: 18.125px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28.5px;
+  background: var(--primarynormal-color);
+  border-radius: 4px;
+}
+.wrapBlockText {
+  width: 774px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.wrapBlockFaq {
+  width: 100%;
+  height: auto;
+}
+.pInPara {
+  color: #111;
+
+  font-family: var(--custom-font);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.8px;
+}
+.pInParaMain {
+  color: #111;
+
+  font-family: var(--custom-font);
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 36px; /* 128.571% */
+  letter-spacing: 1.4px;
+}

@@ -3,8 +3,6 @@ import css from "../profile.module.css";
 import withMySQLData from "../../../../HOK/withMySQLData";
 
 const CertificatProf = ({ data }) => {
-  console.log(data);
-
   const uniqueCategories = [...new Set(data.map((item) => item.category_name))];
   return (
     <div className={css.certificatWrap}>
@@ -37,5 +35,5 @@ const CertificatProf = ({ data }) => {
   );
 };
 export default withMySQLData(
-  "http://88.218.188.44:4000/api/v1/vendor/product/certificates"
+  `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/product/certificates`
 )(CertificatProf);

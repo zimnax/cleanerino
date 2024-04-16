@@ -17,7 +17,8 @@ import axios from "axios";
 import { auth } from "../../function/firebase";
 import { useEffect, useState } from "react";
 import PopUpNext from "./popUpNext";
-const EmailSend = () => {
+import HeaderModernWhite from "../standartComponent/headerModernWhite";
+const EmailSend = ({ activeUser, totalQuantity }) => {
   const [emailError, setEmailError] = useState("");
 
   const [email, setEmail] = useState("");
@@ -56,7 +57,10 @@ const EmailSend = () => {
   };
   return (
     <>
-      <Header />
+      <HeaderModernWhite
+        activeUser={activeUser}
+        totalQuantity={totalQuantity}
+      />
       <div className={css.wrapAllForg}>
         <div className={css.wrapLogForm}>
           <form className={css.form}>

@@ -1,0 +1,229 @@
+:root {
+  --grayscale0-color: #ffffff;
+  --grayscale10-color: #e5e5e5;
+  --grayscale20-color: #cccccc;
+  --grayscale40-color: #999999;
+  --Grayscale-50-color: #808080;
+  --grayscale70-color: #4c4c4c;
+  --grayscale80-color: #333333;
+  --grayscale90-color: #1a1a1a;
+  --grayscale400-color: #bdbdbd;
+  --primarynormal-color: #486642;
+  --black-color: #000000;
+
+  --custom-font: Steppe;
+}
+.wrapContact {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+.wrapSmallContact {
+  width: 1140px;
+  height: 475px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.firstBlockCont {
+  width: 544px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.vendorSuportB {
+  padding: 24px 48px;
+  width: calc(100% - 96px);
+  height: calc(176px - 48px);
+  border-radius: 8px;
+  background: var(--colour-neutrals-0, #fff);
+  box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.vendorSuportBS {
+  padding: 24px 48px;
+  width: calc(100% - 96px);
+  height: calc(176px - 48px);
+  border-radius: 8px;
+  background: var(--colour-neutrals-0, #fff);
+  box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 32px;
+}
+.titleSuportM {
+  margin: 0;
+  color: var(--grayscale80-color);
+  text-align: center;
+  font-family: var(--custom-font);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px; /* 133.333% */
+  letter-spacing: 1.2px;
+}
+.descPSupF {
+  margin: 0;
+  color: var(--grayscale80-color);
+  text-align: center;
+  font-family: var(--custom-font);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.8px;
+  margin-top: 8px;
+}
+.descPSupT {
+  margin: 0;
+  color: var(--grayscale80-color);
+  text-align: center;
+  font-family: var(--custom-font);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.8px;
+  margin-top: 16px;
+}
+.wrapForm {
+  width: 544px;
+  height: 475px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.wrapNameCont {
+  width: 100%;
+  height: 92px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.titleContact {
+  margin: 0;
+  color: var(--grayscale80-color);
+  text-align: center;
+  font-family: var(--custom-font);
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 36px; /* 128.571% */
+  letter-spacing: 1.4px;
+}
+.wrapInputs {
+  width: 100%;
+  height: 273px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.wrapTwoInputs {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.smallInput {
+  width: calc(257px - 40px);
+  height: calc(48px - 24px);
+  border-radius: 999px;
+  border: 1px solid var(--grayscale20-color);
+  background: var(--grayscale0-color);
+  padding: 12px 16px 12px 24px;
+  color: #666;
+  font-family: var(--custom-font);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.8px;
+}
+.smallInput::placeholder {
+  color: #666;
+  font-family: var(--custom-font);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.8px;
+}
+.inputBig {
+  width: calc(100% - 40px);
+  height: calc(48px - 24px);
+  border-radius: 999px;
+  border: 1px solid var(--Grayscale-20, #ccc);
+  background: var(--colour-neutrals-0, #fff);
+  color: #666;
+  font-family: var(--custom-font);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.8px;
+  padding: 12px 16px 12px 24px;
+}
+.inputBig::placeholder {
+  color: #666;
+  font-family: var(--custom-font);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.8px;
+}
+.textAreaBix {
+  padding: 12px 16px 12px 24px;
+  width: calc(100% - 40px);
+  height: calc(117px - 24px);
+  border-radius: 20px;
+  border: 1px solid var(--grayscale20-color);
+  background: var(--grayscale0-color);
+  color: #666;
+  font-family: var(--custom-font);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.8px;
+}
+.textAreaBix::placeholder {
+  color: #666;
+  font-family: var(--custom-font);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.8px;
+}
+.buttonSabmit {
+  border: none;
+  width: 130px;
+  height: 48px;
+  cursor: pointer;
+  border-radius: 4px;
+  background: var(--primarynormal-color);
+  color: var(--grayscale0-color);
+  font-family: var(--custom-font);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+}

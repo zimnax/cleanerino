@@ -8,8 +8,9 @@ import SecondBlock from "./secondBlock";
 import AlsoLike from "./alsoLike";
 import withMySQLData from "../HOK/withMySQLData";
 import HeaderNormal from "../standartComponent/headerNormal";
+import HeaderModernWhite from "../standartComponent/headerModernWhite";
 
-const Product = ({ data }) => {
+const Product = ({ data, activeUser, setCartCounterC, totalQuantity }) => {
   let params = useParams();
   const [productData, setProductData] = useState(null);
   const [brand, setBrand] = useState(null);
@@ -18,7 +19,7 @@ const Product = ({ data }) => {
     const fetchProduct = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/api/v1/vendor/product/add/${params.id}`
+          `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/product/add/${params.id}`
         );
         setProductData(response.data.product);
       } catch (error) {
@@ -35,16 +36,20 @@ const Product = ({ data }) => {
   useEffect(() => {
     setIngridients(data);
   }, [data]);
-  console.log(productData);
+
   return (
     <>
-      <HeaderNormal />
+      <HeaderModernWhite
+        activeUser={activeUser}
+        totalQuantity={totalQuantity}
+      />
       {productData && (
         <>
           <FirstBlock
             productData={productData}
             setBrand={setBrand}
             brand={brand}
+            setCartCounterC={setCartCounterC}
           />
           <SecondBlock
             productData={productData}
@@ -57,6 +62,6 @@ const Product = ({ data }) => {
     </>
   );
 };
-export default withMySQLData("http://localhost:4000/api/v1/ingridients")(
-  Product
-);
+export default withMySQLData(
+  `${process.env.REACT_APP_API_URL}:4000/api/v1/ingridients`
+)(Product);

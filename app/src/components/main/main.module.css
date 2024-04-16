@@ -32,7 +32,7 @@
 .firstBlockWrap {
   background: url("../../img/Hero.png");
   width: 100%;
-  height: 1082px;
+  height: 1071px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -970,4 +970,34 @@
   z-index: 1;
   right: 0;
   top: 5100px;
+}
+@media only screen and (max-width: 600px) and (min-width: 300px) {
+}
+@media only screen and (max-width: 700px) and (min-width: 479px) {
+}
+@media only screen and (max-width: 1100px) and (min-width: 700px) {
+}
+@media only screen and (max-width: 1440px) and (min-width: 1024px) {
+  .firstBlockWrap {
+    background: url("../../img/HeroSm1.png");
+    width: 100%;
+    height: 812px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    z-index: 2;
+  }
+  .wrapText {
+    width: 590px;
+    height: 321px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-left: 139px;
+  }
+}
+@media only screen and (max-width: 1100px) and (min-width: 1024px) {
 }

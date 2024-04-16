@@ -27,6 +27,22 @@
   align-items: center;
   z-index: 100;
 }
+.wrapHeaderAllModern {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+.wrapHeaderAllForDash {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
 .wrapDiscountHead {
   width: 100%;
   height: 36px;
@@ -60,6 +76,24 @@
   justify-content: space-around;
   border-radius: 0px 0px 50px 50px;
   background: #fffceb;
+}
+.wrapHeaderModern {
+  width: calc(100% - 104px);
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 0px 0px 50px 50px;
+  background: none;
+}
+.wrapHeaderForDash {
+  width: calc(100%);
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  background: var(--grayscale0-color);
 }
 .navigation {
   width: 500px;
@@ -154,6 +188,22 @@
   background: #fffceb;
   padding-left: 27px;
 }
+.inputHeaderModern {
+  width: calc(100% - 4px);
+  height: calc(48px - 4px);
+  border-radius: 100px;
+  border: 2px solid var(--newfontgreen-color);
+  background: none;
+  padding-left: 27px;
+}
+.inputHeaderDash {
+  width: calc(100% - 4px);
+  height: calc(48px - 4px);
+  border-radius: 100px;
+  border: 2px solid var(--newfontgreen-color);
+  background: var(--grayscale0-color);
+  padding-left: 27px;
+}
 .inputHeader::placeholder {
   color: rgba(72, 102, 66, 0.4);
 
@@ -241,12 +291,24 @@
 }
 .elipse {
   position: absolute;
-  width: 13px;
-  height: 13px;
+  width: 14px;
+  height: 14px;
   background: #c64f5b;
   border-radius: 50%;
   bottom: 0;
   right: -4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.countCart {
+  font-size: 9px;
+  color: var(--grayscale0-color);
+  font-family: var(--custom-font);
+  margin: 0;
+  font-weight: bold;
+  margin-top: 2px;
 }
 .werticalLine {
   height: 42.5px;

@@ -122,7 +122,7 @@ const ProfileSettings = ({ activeUser, setUsers, users }) => {
         fileFormData.append("file", logoT);
 
         const fileResponse = await axios.put(
-          `http://localhost:4000/api/v1/vendor/file/${users.id}`, // URL для завантаження файлу
+          `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/file/${users.id}`, // URL для завантаження файлу
           fileFormData,
           {
             headers: {
@@ -140,7 +140,7 @@ const ProfileSettings = ({ activeUser, setUsers, users }) => {
         fileFormData.append("photo", photo);
 
         const fileResponse = await axios.put(
-          `http://localhost:4000/api/v1/vendor/file/${users.id}`, // URL для завантаження файлу
+          `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/file/${users.id}`, // URL для завантаження файлу
           fileFormData,
           {
             headers: {
@@ -157,7 +157,7 @@ const ProfileSettings = ({ activeUser, setUsers, users }) => {
         fileFormDataT.append("fileT", baner);
 
         const fileResponse = await axios.put(
-          `http://localhost:4000/api/v1/vendor/file/${users.id}`, // URL для завантаження файлу
+          `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/file/${users.id}`, // URL для завантаження файлу
           fileFormDataT,
           {
             headers: {
@@ -174,7 +174,7 @@ const ProfileSettings = ({ activeUser, setUsers, users }) => {
         fileFormDataT.append("video", video);
 
         const fileResponse = await axios.put(
-          `http://localhost:4000/api/v1/vendor/file/${users.id}`, // URL для завантаження файлу
+          `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/file/${users.id}`, // URL для завантаження файлу
           fileFormDataT,
           {
             headers: {
@@ -186,7 +186,7 @@ const ProfileSettings = ({ activeUser, setUsers, users }) => {
         url = fileResponse.data.url;
       }
       const response = await axios.put(
-        `http://localhost:4000/api/v1/vendor/profile/${users.id}`, // Потрібно замінити userId на відповідний id користувача
+        `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/profile/${users.id}`, // Потрібно замінити userId на відповідний id користувача
         formDataObj,
         {
           headers: {

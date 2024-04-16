@@ -7,10 +7,20 @@ import starNotFull from "../../svg/StarNotFull.svg";
 import min from "../../svg/minusSvg.svg";
 import plu from "../../svg/plusSvg.svg";
 import addToCart from "../../function/addProductToCart";
-const NearPicture = ({ productData, data, brand, setBrand }) => {
+import { addToCartRed, updateCartQuantity } from "../../function/cartSlice";
+import { useDispatch } from "react-redux";
+
+const NearPicture = ({
+  productData,
+  data,
+  brand,
+  setBrand,
+  setCartCounterC,
+}) => {
   const [price, setPrice] = useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
   const [count, setCount] = useState(1);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (productData) {
@@ -22,7 +32,7 @@ const NearPicture = ({ productData, data, brand, setBrand }) => {
     const vendor = data.find((item) => item.id === productData.vendorId);
     setBrand(vendor);
   }, [productData, data]);
-  console.log(brand);
+
   // const renderColorBlocks = () => {
   //   const colorVariations = productData.variations.filter(
   //     (variation) => variation.unit === "color"
@@ -79,6 +89,34 @@ const NearPicture = ({ productData, data, brand, setBrand }) => {
         ></div>
       );
     });
+  };
+  const addingToCart = (id, price) => {
+    addToCart(id, price, count);
+
+    let cartItems = [];
+
+    // отримуємо корзину з localStorage
+    const storedCart = localStorage.getItem("cart");
+    if (storedCart) {
+      cartItems = JSON.parse(storedCart);
+    }
+
+    // перевіряємо чи товар вже є в корзині
+    const existingProductIndex = cartItems.findIndex((item) => item.uid === id);
+    console.log(cartItems);
+    setCartCounterC((prev) => prev + 1);
+    // if (existingProductIndex >= 0) {
+    //   console.log("Entered");
+    //   // Якщо товар знайдено, оновити його кількість за допомогою updateCartQuantity
+    //   const updatedQuantity = cartItems[existingProductIndex].quantity + count;
+    //   dispatch(
+    //     updateCartQuantity({ productId: id, quantity: updatedQuantity })
+    //   );
+    // } else {
+    //   // Якщо товару немає в корзині, додати його за допомогою addToCartRed
+
+    //   dispatch(addToCartRed({ id, quantity: count, price }));
+    // }
   };
   return (
     <div className={css.wrapTextInProd}>
@@ -140,7 +178,7 @@ const NearPicture = ({ productData, data, brand, setBrand }) => {
         <button className={css.byNow}>Buy Now</button>
         <button
           className={css.addToCard}
-          onClick={() => addToCart(productData.id, price)}
+          onClick={() => addingToCart(productData.id, price)}
         >
           Add to Cart
         </button>

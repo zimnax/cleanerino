@@ -10,7 +10,8 @@ import { removeFromLater } from "../../function/deleteProductLater";
 import { moveItemToCart } from "../../function/addProdFromLaterToC";
 import ProdInLater from "./prodInLater";
 import HeaderNormal from "../standartComponent/headerNormal";
-const Cart = ({ activeUser, data }) => {
+import HeaderModernWhite from "../standartComponent/headerModernWhite";
+const Cart = ({ activeUser, data, setCartCounterC, quor }) => {
   const [prodInCart, setProdInCart] = useState(null);
   const [prodInLater, setProdInLater] = useState(null);
   const [totalQuantity, setTotalQuantity] = useState(0);
@@ -44,13 +45,13 @@ const Cart = ({ activeUser, data }) => {
     }
   }, [data]);
 
-  console.log(prodInCart);
   const handleRemoveFromCart = (productId) => {
     removeFromCart(productId); // Виклик функції видалення товару з корзини
     // Оновлення стану компонента після видалення товару
     setProdInCart((prevProdInCart) =>
       prevProdInCart.filter((item) => item.id !== productId)
     );
+    setCartCounterC((prev) => prev + 1);
   };
   const handleMoveToLater = (productId) => {
     moveItemToLater(productId); // Виклик функції перенесення товару у список "Save for Later"
@@ -106,7 +107,7 @@ const Cart = ({ activeUser, data }) => {
   }, [prodInCart]);
   return (
     <>
-      <HeaderNormal />
+      <HeaderModernWhite activeUser={activeUser} totalQuantity={quor} />
 
       <div className={css.wrapCart}>
         <div className={css.smallWrap}>
@@ -123,6 +124,7 @@ const Cart = ({ activeUser, data }) => {
                     handleMoveToLater={handleMoveToLater}
                     setTotalQuantity={setTotalQuantity}
                     setTotalPrice={setTotalPrice}
+                    setCartCounterC={setCartCounterC}
                   />
                 );
               })}
@@ -158,6 +160,6 @@ const Cart = ({ activeUser, data }) => {
     </>
   );
 };
-export default withMySQLData("http://localhost:4000/api/v1/vendor/product/add")(
-  Cart
-);
+export default withMySQLData(
+  `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/product/add`
+)(Cart);

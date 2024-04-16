@@ -45,6 +45,6 @@ const VendorReg = ({ activeUser, data }) => {
     </>
   );
 };
-export default withMySQLData("http://localhost:4000/api/v1/vendor/profile")(
-  VendorReg
-);
+export default withMySQLData(
+  `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/profile`
+)(VendorReg);

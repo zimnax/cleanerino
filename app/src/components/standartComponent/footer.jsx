@@ -17,27 +17,22 @@ const Footer = () => {
           </div>
         </div>
         <div className={css.firstBlockWrap}>
-          <p className={css.mainPLite}>Clean Free</p>
-          <p className={css.mainPSecond}>How it works</p>
-          <p className={css.mainPSecond}>About Us</p>
-          <p className={css.mainPSecond}>Sustainability</p>
+          <p className={css.mainPLite}>About</p>
+          <p className={css.mainPSecond}>Our Philosophy</p>
           <p className={css.mainPSecond}>Blog</p>
-          <p className={css.mainPSecond}>Buying Local</p>
+          <p className={css.mainPSecond}>Resources</p>
         </div>
         <div className={css.firstBlockWrap}>
           <p className={css.mainPLite}>Support</p>
           <p className={css.mainPSecond}>FAQs</p>
           <p className={css.mainPSecond}>Contact</p>
-          <p className={css.mainPSecond}>Shipping</p>
-          <p className={css.mainPSecond}>Payment</p>
+          <p className={css.mainPSecond}>Shipping & Returns</p>
         </div>
         <div className={css.firstBlockWrap}>
           <p className={css.mainPLite}>Terms</p>
-          <p className={css.mainPSecond}>Terms & Conditions</p>
-          <p className={css.mainPSecond}>Return Policy</p>
+          <p className={css.mainPSecond}>Terms of Use</p>
           <p className={css.mainPSecond}>Privacy Policy</p>
-          <p className={css.mainPSecond}>Affiliate Program</p>
-          <p className={css.mainPSecond}>Partnerships</p>
+          <p className={css.mainPSecond}>Vendor Policy</p>
         </div>
       </div>
       <p className={css.allRights}>© 2024 Clean Free. All Rights Reserved.</p>

@@ -23,7 +23,7 @@ const Test = () => {
         fileFormData.append("file", selectedFile);
 
         const fileResponse = await axios.put(
-          `http://localhost:4000/api/v1/vendor/file/${1}`, // URL для завантаження файлу
+          `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/file/${1}`, // URL для завантаження файлу
           { selectedFile, selectedFileT },
           {
             headers: {

@@ -125,7 +125,7 @@ const VendorDescription = ({ users }) => {
               )}
             </div>
           </div>
-          <div className={css.wrapSearch}>
+          {/* <div className={css.wrapSearch}>
             <CategoryList
               setSelectedCategoryId={setSelectedCategoryId}
               selectedCategoryId={selectedCategoryId}
@@ -140,7 +140,7 @@ const VendorDescription = ({ users }) => {
                 placeholder="Search..."
               />
             </div>
-          </div>
+          </div> */}
         </div>
       )}
     </>

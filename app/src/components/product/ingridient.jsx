@@ -3,16 +3,17 @@ import css from "./product.module.css";
 import ds from "../../svg/stickers.svg";
 import { ReactSVG } from "react-svg";
 import withMySQLData from "../HOK/withMySQLData";
+import PopUpIngrid from "./popUpIngrid";
 const Ingridient = ({ productData, data }) => {
   const [ingrid, setIngrid] = useState(null);
   const [matchedIngredients, setMatchedIngredients] = useState([]);
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [openPop, setOpenPop] = useState(false);
   useEffect(() => {
     if (productData) {
       setIngrid(productData.ingredients.split(", ").map((item) => item.trim()));
     }
   }, [productData]);
-  console.log("matchedIngredients", matchedIngredients);
 
   useEffect(() => {
     const findMatchedIngredients = () => {
@@ -63,12 +64,15 @@ const Ingridient = ({ productData, data }) => {
               }
             })}
         </div>
-        <p className={css.seaAll}>See All</p>
+        <p className={css.seaAll} onClick={() => setOpenPop(true)}>
+          See All
+        </p>
       </div>
       <ReactSVG src={ds} className={css.dsInIn} />
+      {openPop && <PopUpIngrid setOpenPop={setOpenPop} ingrid={ingrid} />}
     </div>
   );
 };
-export default withMySQLData("http://localhost:4000/api/v1/ingridients/icon")(
-  Ingridient
-);
+export default withMySQLData(
+  `${process.env.REACT_APP_API_URL}:4000/api/v1/ingridients/icon`
+)(Ingridient);

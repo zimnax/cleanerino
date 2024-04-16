@@ -175,7 +175,7 @@ const AddBrandDetails = ({
         fileFormData.append("file", logoT);
 
         const fileResponse = await axios.put(
-          `http://88.218.188.44:4000/api/v1/vendor/file/${users.id}`, // URL для завантаження файлу
+          `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/file/${users.id}`, // URL для завантаження файлу
           fileFormData,
           {
             headers: {
@@ -192,7 +192,7 @@ const AddBrandDetails = ({
         fileFormDataT.append("fileT", baner);
 
         const fileResponse = await axios.put(
-          `http://88.218.188.44:4000/api/v1/vendor/file/${users.id}`, // URL для завантаження файлу
+          `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/file/${users.id}`, // URL для завантаження файлу
           fileFormDataT,
           {
             headers: {
@@ -204,7 +204,7 @@ const AddBrandDetails = ({
         url = fileResponse.data.url;
       }
       const response = await axios.put(
-        `http://88.218.188.44:4000/api/v1/vendor/profile/${users.id}`, // Потрібно замінити userId на відповідний id користувача
+        `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/profile/${users.id}`, // Потрібно замінити userId на відповідний id користувача
         formDataObj,
         {
           headers: {
@@ -541,6 +541,6 @@ const AddBrandDetails = ({
     </>
   );
 };
-export default withMySQLData("http://88.218.188.44:4000/api/v1/vendor/profile")(
-  AddBrandDetails
-);
+export default withMySQLData(
+  `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/profile`
+)(AddBrandDetails);

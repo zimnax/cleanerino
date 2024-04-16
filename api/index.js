@@ -3,6 +3,7 @@ const db = require("./config/database.js");
 const userRoutes = require("./routes/userRoutes.js");
 const userRoutesDet = require("./routes/userRoutDet.js");
 const userRouteFiles = require("./routes/userRouteFiles.js");
+const mainUserRouteFiles = require("./routes/mainUserRouteFiles.js");
 const bodyParser = require("body-parser");
 const productsRoute = require("./routes/productsRoutre.js");
 const categoriesRoutes = require("./routes/categoriesRoutes.js");
@@ -13,7 +14,9 @@ const updateProductRoute = require("./routes/updateProductRoute.js");
 const fileRoute = require("./routes/fileRoute.js");
 const fileAddRoute = require("./routes/fileAddRoute.js");
 const cardRouter = require("./routes/cardRouter.js");
+const newsletterRoute = require("./routes/newsletter/newsletterRoute.js");
 const usersRoute = require("./routes/usersRoute/usersRoute.js");
+const shipingRoute = require("./routes/usersRoute/shipingRoute.js");
 const ingridientsRoute = require("./routes/ingridientsRoute.js");
 const ingridientsIconsRoute = require("./routes/ingridientsIconsRoute.js");
 const fileUpload = require("express-fileupload");
@@ -40,13 +43,17 @@ app.use("/api/v1/vendor/product/file", fileRoute);
 app.use("/api/v1/vendor/product/fileAdd", fileAddRoute);
 app.use("/api/v1/vendor/product/add", productsRoute);
 app.use("/api/v1/vendor/product/update", updateProductRoute);
+app.use("/api/v1/users/newsletter", newsletterRoute);
 
 app.use("/api/v1/vendor/product/category", categoriesRoutes);
 app.use("/api/v1/vendor/product/subcategory", subcategoriesRoutes);
 app.use("/api/v1/vendor/product/packaging", packagingRoutes);
 app.use("/api/v1/vendor/product/certificates", certificatesRoutes);
 app.use("/api/v1/users/profile", usersRoute);
+app.use("/api/v1/users/address", shipingRoute);
+
 app.use("/api/v1/vendor/file", userRouteFiles);
+app.use("/api/v1/user/file", mainUserRouteFiles);
 app.use("/api/v1/vendor/det", userRoutesDet);
 app.use("/api/v1/vendor/card", cardRouter);
 

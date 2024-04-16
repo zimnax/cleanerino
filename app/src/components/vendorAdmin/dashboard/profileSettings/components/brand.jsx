@@ -35,15 +35,13 @@ const Brand = ({
       const parsedUrl = new URL(url);
       const filePath = decodeURIComponent(parsedUrl.pathname);
       const fileName = filePath.substring(filePath.lastIndexOf("/") + 1);
-      console.log("Шлях до файлу:", filePath);
-      console.log("Назва файлу:", fileName);
 
       const publicUrlWithoutToken = `https://firebasestorage.googleapis.com/v0/b/cleanerio-b080f.appspot.com/o/foto%2F${fileName}`;
       axios
         .get(publicUrlWithoutToken)
         .then((response) => {
           // Обробка відповіді
-          console.log("Success:", response.data);
+
           setDataForFile(response.data);
         })
         .catch((error) => {
@@ -76,7 +74,7 @@ const Brand = ({
       setBrandDesc(users.brand_description);
     }
   }, [users]);
-  console.log(users);
+
   return (
     <div className={css.wrapBrandSet}>
       <div className={css.secondNameWr}>

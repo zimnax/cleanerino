@@ -1,0 +1,621 @@
+:root {
+  --grayscale0-color: #ffffff;
+  --grayscale10-color: #e5e5e5;
+  --grayscale20-color: #cccccc;
+  --grayscale40-color: #999999;
+  --Grayscale-50-color: #808080;
+  --grayscale70-color: #4c4c4c;
+  --grayscale80-color: #333333;
+  --grayscale90-color: #1a1a1a;
+  --grayscale400-color: #bdbdbd;
+  --primarynormal-color: #486642;
+  --black-color: #000000;
+
+  --custom-font: Steppe;
+}
+@font-face {
+  font-family: "Agenda";
+  src: url("../../allFont/agenda-12.ttf") format("opentype");
+}
+@font-face {
+  font-family: "AgendaT";
+  src: url("../../allFont/agenda-11.ttf") format("opentype");
+}
+.wrapAllAbout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+.wrapFirstBlock {
+  width: 1140px;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.firstBlockWrap {
+  background: url("../../img/Heroimage.png");
+  width: 100%;
+  height: 561px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  z-index: 2;
+}
+.wrapaboutTitle {
+  width: 85%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 47px;
+}
+.aboutTitle {
+  color: var(--colour-neutrals-0, #fff);
+  margin: 0;
+  font-family: "Orpheus Pro";
+  font-size: 80px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.wrapLinkTo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: auto;
+  height: auto;
+}
+.wrapButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: auto;
+  height: auto;
+  margin-left: 24px;
+}
+.wrapButton:first-child {
+  margin-left: 0;
+}
+.nameLink {
+  padding: 12px 14px;
+  width: auto;
+  height: calc(50px - 24px);
+  border-radius: 100px;
+  background: #fffceb;
+  color: var(--primarynormal-color);
+
+  text-align: center;
+  font-family: AgendaT;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-right: 2px;
+}
+.nameLinkT {
+  padding: 12px;
+  width: 140px;
+  height: calc(50px - 24px);
+  border-radius: 100px;
+  background: #fffceb;
+  color: var(--primarynormal-color);
+
+  text-align: center;
+  font-family: AgendaT;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-right: 2px;
+}
+.sendToId {
+  width: 50px;
+  height: 50px;
+  background: #fffceb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.arowStyle {
+  height: 15px;
+}
+.allMainWrap {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: relative;
+  overflow: hidden;
+}
+.secondBlockAllWr {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 171px;
+}
+.philosophyWrap {
+  width: 1640px;
+  height: auto;
+  display: flex;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.wrapWithLogo {
+  width: 871px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.pOurPhy {
+  margin: 0;
+  margin-top: 18px;
+  margin-bottom: 0;
+  color: #000;
+
+  font-family: "Orpheus Pro";
+  font-size: 55px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.secondPhy {
+  width: 756px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.secondPhySmal {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.secondPhySmalTwo {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 46px;
+}
+.ourStart {
+  padding: 6px 15px;
+  width: calc(131px - 30px);
+  height: calc(29px - 12px);
+  border-radius: 50px;
+  background: var(--primarynormal-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ourStartP {
+  color: #fffceb;
+
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+}
+.descStatP {
+  margin: 0;
+  margin-top: 18px;
+  color: #000;
+
+  font-family: AgendaT;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+}
+.wrapFindP {
+  width: 1480px;
+  height: 444px;
+  border-radius: 40px;
+  background: rgba(254, 247, 224, 0.64);
+  margin-top: 51px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.wrapIconFind {
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 80px;
+  margin-left: 80px;
+}
+.handSvg {
+  margin-right: 15px;
+}
+.cartSvg {
+  margin-right: 18px;
+}
+.pInFindBig {
+  margin: 0;
+  color: #000;
+  width: 1300px;
+
+  font-family: "Orpheus Pro";
+  font-size: 46px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 110%;
+  margin-top: 41px;
+  margin-left: 80px;
+}
+.approachWrap {
+  width: 1473px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 124px;
+}
+.approacheMaitP {
+  margin: 0;
+  color: #000;
+
+  text-align: center;
+  font-family: "Orpheus Pro";
+  font-size: 55px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 18px;
+}
+.subMaitP {
+  margin: 0;
+  color: #000;
+
+  text-align: center;
+  font-family: "Orpheus Pro";
+  font-size: 55px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.standartMaitP {
+  margin: 0;
+  color: #000;
+
+  text-align: center;
+  font-family: "Orpheus Pro";
+  font-size: 55px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.pApproachDesc {
+  margin: 0;
+  color: #000;
+  margin-top: 16px;
+  text-align: center;
+  font-family: AgendaT;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 781px;
+  margin-bottom: 44px;
+}
+.approachBlockWrap {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+
+.approachPhoto {
+  width: 720px;
+  height: 750px;
+  border-radius: 30px;
+  object-fit: contain;
+}
+.wrapApproachWithout {
+  width: 743px;
+  height: 750px;
+  border-radius: 40px;
+  background: rgba(142, 104, 84, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.wrapApproachWithoutTwo {
+  width: 743px;
+  height: 750px;
+  border-radius: 40px;
+  background: rgba(99, 168, 207, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.wrapApproachWithoutThree {
+  width: 743px;
+  height: 750px;
+  border-radius: 40px;
+  background: rgba(227, 178, 82, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.wrapApproachWithoutFour {
+  width: 743px;
+  height: 750px;
+  border-radius: 40px;
+  background: #fce3c5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.titlePInB {
+  margin: 0;
+  color: #000;
+
+  text-align: center;
+  font-family: "Orpheus Pro";
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 110%;
+  margin-bottom: 18px;
+}
+.descApTit {
+  margin: 0;
+  color: #000;
+  text-align: center;
+  text-align: center;
+  font-family: AgendaT;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+  width: 667px;
+}
+.wrapStandartCriteria {
+  width: 1453px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 128px;
+}
+.wrapBigBlockIngrid {
+  width: 100%;
+  height: 399px;
+  border-radius: 40px;
+  background: #fef7e0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+.blockLikeIcon {
+  width: 48px;
+  height: 48px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.blockIconGreen {
+  position: absolute;
+}
+.numberS {
+  color: #000;
+
+  font-family: "Orpheus Pro";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 40px;
+}
+.iconWrText {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 43px;
+  margin-left: 40px;
+}
+.titleSrP {
+  color: #000;
+  margin: 0;
+  margin-left: 16px;
+  text-align: center;
+  font-family: "Orpheus Pro";
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 110%;
+}
+.wrapCarefy {
+  width: 698px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 19px;
+}
+.wrapStIconBlockF {
+  display: flex;
+  width: 100%;
+  height: auto;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+.wrapStIconBlockS {
+  display: flex;
+  width: 100%;
+  height: auto;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 18px;
+}
+.wrapStIconFormula {
+  display: flex;
+  width: 100%;
+  height: auto;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 18px;
+}
+.wrapEnsd {
+  display: flex;
+  width: 644px;
+  height: auto;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-left: 40px;
+  margin-bottom: 40px;
+}
+.wrapEnsdCenter {
+  display: flex;
+  width: 644px;
+  height: auto;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-left: 40px;
+}
+.ecoL {
+  margin-top: 10px;
+}
+.descStad {
+  width: 667px;
+  color: #000;
+  margin: 0;
+  font-family: Inter;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+}
+.descStqw {
+  width: 613px;
+  color: #000;
+  margin: 0;
+  font-family: Inter;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+}
+.wrapTwoBlocks {
+  width: 1453px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.wrapFormulation {
+  width: 720px;
+  height: 399px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  background: #fef7e0;
+  border-radius: 40px;
+}
+.pDescSubstaine {
+  margin: 0;
+  margin-top: 16px;
+  color: #000;
+
+  text-align: center;
+  font-family: AgendaT;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 781px;
+}
+.allInFormul {
+  margin: 0;
+  color: #000;
+  font-family: AgendaT;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration-line: underline;
+}
+.wrapOneFaqTop {
+  width: 1146px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.oneFaqP {
+  margin: 0;
+  color: #000;
+
+  font-family: "Orpheus Pro";
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 16px;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+}
+.subIconList {
+  height: 38px;
+  margin-right: 20px;
+}
+.descriptionFaq {
+  display: flex;
+  width: 1129px;
+
+  height: auto;
+  color: #000;
+  margin: 0;
+  font-family: Agenda;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 30px;
+  margin-top: 0;
+  margin-bottom: 22px;
+  align-self: center;
+}
+.faqLine {
+  width: 1146px;
+  height: 1px;
+  background: #bdb3a3;
+}
+.faqLastLine {
+  width: 1146px;
+  height: 1px;
+  background: #bdb3a3;
+  margin-bottom: 110px;
+}

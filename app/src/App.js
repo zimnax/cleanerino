@@ -15,9 +15,19 @@ import Product from "./components/product/product";
 import Cart from "./components/cart/cart";
 import Catalog from "./components/catalog/catalog";
 import Main from "./components/main/main";
+import VendorPageNew from "./components/vendorPageNew/vendorPageNew";
+import Privacy from "./components/privacyP/privacy";
+import Contact from "./components/contact/contact";
+import About from "./components/about/about";
+import Cabinet from "./components/userCabinet/cabinet";
+import { loadCartItems } from "./function/cartSlice";
+import { useDispatch } from "react-redux";
 
 function App() {
   const [activeUser, setActiveUser] = useState(null);
+  const [cartCounterC, setCartCounterC] = useState(0);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (authUser) => {
       if (authUser) {
@@ -33,6 +43,34 @@ function App() {
 
     return () => unsubscribe();
   }, [auth]);
+
+  // useEffect(() => {
+  //   // Перевіряємо наявність даних у localStorage при завантаженні додатку
+  //   const storedCartItems = localStorage.getItem("cart");
+  //   if (storedCartItems) {
+  //     const cartItems = JSON.parse(storedCartItems);
+  //     // Завантажуємо дані корзини у Redux store
+  //     dispatch(loadCartItems(cartItems));
+  //   }
+  // }, [dispatch]);
+  const [totalQuantity, setTotalQuantity] = useState(0);
+
+  useEffect(() => {
+    // Отримуємо корзину з localStorage
+    const storedCart = localStorage.getItem("cart");
+    if (storedCart) {
+      const cartItems = JSON.parse(storedCart);
+
+      // Рахуємо загальну кількість товарів у корзині
+      const quantity = cartItems.reduce(
+        (total, item) => total + item.quantity,
+        0
+      );
+      setTotalQuantity(quantity);
+
+      // Диспетчеризуємо екшен для завантаження товарів у корзину в Redux store
+    }
+  }, [cartCounterC]);
   return (
     <>
       <Routes>
@@ -40,23 +78,87 @@ function App() {
           path="/vendorRegistration"
           element={<VendorReg activeUser={activeUser} />}
         />
-        <Route path="/signup" element={<SignIn activeUser={activeUser} />} />
-        <Route path="/signin" element={<SignUp activeUser={activeUser} />} />
-        <Route path="/reset" element={<EmailSend activeUser={activeUser} />} />
+        <Route
+          path="/signup"
+          element={
+            <SignIn activeUser={activeUser} totalQuantity={totalQuantity} />
+          }
+        />
+        <Route
+          path="/signin"
+          element={
+            <SignUp activeUser={activeUser} totalQuantity={totalQuantity} />
+          }
+        />
+        <Route
+          path="/reset"
+          element={
+            <EmailSend activeUser={activeUser} totalQuantity={totalQuantity} />
+          }
+        />
         <Route
           path="/vendor/dashboard"
           element={<DashBoard activeUser={activeUser} />}
         />
-        <Route path="/catalog" element={<Catalog activeUser={activeUser} />} />
-        <Route path="/cart" element={<Cart activeUser={activeUser} />} />
-        <Route path="/" element={<Main activeUser={activeUser} />} />
+        <Route
+          path="/user/cabinet"
+          element={
+            <Cabinet activeUser={activeUser} totalQuantity={totalQuantity} />
+          }
+        />
+        <Route
+          path="/catalog"
+          element={
+            <Catalog activeUser={activeUser} totalQuantity={totalQuantity} />
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <Cart
+              setCartCounterC={setCartCounterC}
+              activeUser={activeUser}
+              quor={totalQuantity}
+            />
+          }
+        />
+        <Route
+          path="/privacy"
+          element={
+            <Privacy activeUser={activeUser} totalQuantity={totalQuantity} />
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <Contact activeUser={activeUser} totalQuantity={totalQuantity} />
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <About activeUser={activeUser} totalQuantity={totalQuantity} />
+          }
+        />
+        <Route
+          path="/"
+          element={
+            <Main activeUser={activeUser} totalQuantity={totalQuantity} />
+          }
+        />
         <Route
           path="/vendor/page/:id"
-          element={<VendorPage activeUser={activeUser} />}
+          element={<VendorPageNew activeUser={activeUser} />}
         />
         <Route
           path="/product/:id"
-          element={<Product activeUser={activeUser} />}
+          element={
+            <Product
+              activeUser={activeUser}
+              setCartCounterC={setCartCounterC}
+              totalQuantity={totalQuantity}
+            />
+          }
         />
       </Routes>
     </>

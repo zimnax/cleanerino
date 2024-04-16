@@ -6,6 +6,7 @@ import logo from "../../svg/logo-inline.svg";
 import { Link } from "react-router-dom";
 import arrow from "../../svg/arrowLetBut.svg";
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
+import Swal from "sweetalert2";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -16,7 +17,8 @@ import axios from "axios";
 import { auth, googleAuthProvider } from "../../function/firebase";
 import { useEffect, useState } from "react";
 import PopUpNext from "./popUpNext";
-const SignIn = ({ activeUser }) => {
+import HeaderModernWhite from "../standartComponent/headerModernWhite";
+const SignIn = ({ activeUser, totalQuantity }) => {
   const [emailError, setEmailError] = useState("");
   const [nameError, setNameError] = useState(true);
   const [name, setName] = useState("");
@@ -89,15 +91,60 @@ const SignIn = ({ activeUser }) => {
     }
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
+
       handleSubmit(res.user.email, res.user.uid);
-    } catch (error) {}
+    } catch (error) {
+      if (error.code === "auth/email-already-in-use") {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "This email address is already in use!",
+          confirmButtonColor: "#609966",
+        });
+      } else if (error.code === "auth/weak-password") {
+        Swal.fire({
+          icon: "error",
+          title: "Registration Failed",
+          text: "The password is too weak. Please choose a stronger password.",
+          confirmButtonColor: "#609966",
+        });
+      } else if (error.code === "auth/invalid-email") {
+        Swal.fire({
+          icon: "error",
+          title: "Registration Failed",
+          text: "Invalid email address. Please enter a valid email address.",
+          confirmButtonColor: "#609966",
+        });
+      } else if (error.code === "auth/operation-not-allowed") {
+        Swal.fire({
+          icon: "error",
+          title: "Registration Failed",
+          text: "Email/password accounts are not enabled. Please contact support.",
+          confirmButtonColor: "#609966",
+        });
+      } else if (error.code === "auth/network-request-failed") {
+        Swal.fire({
+          icon: "error",
+          title: "Registration Failed",
+          text: "Network request failed. Please check your internet connection and try again.",
+          confirmButtonColor: "#609966",
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Registration Failed",
+          text: "An error occurred during registration. Please try again later.",
+          confirmButtonColor: "#609966",
+        });
+      }
+    }
   };
   const handleSubmit = (mail, uid) => {
     let id = uid ? uid : "";
 
     // Відправка запиту на сервер для створення нового користувача
     axios
-      .post("http://localhost:4000/api/v1/users/profile", {
+      .post(`${process.env.REACT_APP_API_URL}:4000/api/v1/users/profile`, {
         user_name: name,
         email: mail,
         firebaseId: id,
@@ -113,7 +160,10 @@ const SignIn = ({ activeUser }) => {
   };
   return (
     <>
-      <Header />
+      <HeaderModernWhite
+        activeUser={activeUser}
+        totalQuantity={totalQuantity}
+      />
       <div className={css.wrapSignIn}>
         <div className={css.wrapLogForm}>
           <form className={css.form}>

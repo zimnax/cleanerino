@@ -7,7 +7,7 @@ import safe from "../../svg/safe.svg";
 import gmo from "../../svg/gmo.svg";
 import crue from "../../svg/grue.svg";
 import NearPicture from "./nearPicture";
-const FirstBlock = ({ productData, brand, setBrand }) => {
+const FirstBlock = ({ productData, brand, setBrand, setCartCounterC }) => {
   return (
     <div className={css.wrapFirstBlock}>
       <div className={css.smallWrap}>
@@ -19,7 +19,7 @@ const FirstBlock = ({ productData, brand, setBrand }) => {
         <div className={css.wrapInfoInProd}>
           <div className={css.wrapFirstSlider}>
             <PictureBlock productData={productData} />
-            <div className={css.blockWithout}>
+            {/* <div className={css.blockWithout}>
               <div className={css.wrapOneFilter}>
                 <ReactSVG src={eco} />
                 <p className={css.pInCompose}>Compostable near you</p>
@@ -36,12 +36,13 @@ const FirstBlock = ({ productData, brand, setBrand }) => {
                 <ReactSVG src={crue} />
                 <p className={css.pInCompose}>Cruelty Free</p>
               </div>
-            </div>
+            </div> */}
           </div>
           <NearPicture
             productData={productData}
             setBrand={setBrand}
             brand={brand}
+            setCartCounterC={setCartCounterC}
           />
         </div>
       </div>

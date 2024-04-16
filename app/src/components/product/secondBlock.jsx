@@ -111,7 +111,7 @@ const SecondBlock = ({ productData, brand, data, ingridients }) => {
     const uniqueBenefits = Array.from(new Set(updatedBenefits));
     setBenefits(uniqueBenefits);
   }, [productData, ingridients]);
-  console.log("benefits", benefits);
+
   return (
     <div className={css.wrapFirstBlock}>
       <div className={css.smallWrap}>
@@ -199,11 +199,19 @@ const SecondBlock = ({ productData, brand, data, ingridients }) => {
                     Certifications
                   </p>
                   <p className={css.packDesc}>
-                    ·&nbsp;
                     {certification &&
                       certification.map((el, index) => {
                         {
-                          return <span key={index}>{el.name},&nbsp; </span>;
+                          console.log(el);
+                          // return <span key={index}>{el.name},&nbsp; </span>;
+                          return (
+                            <img
+                              key={index}
+                              className={css.imageSertificat}
+                              alt="Certifications"
+                              src={el.image}
+                            />
+                          );
                         }
                       })}
                   </p>
@@ -241,5 +249,5 @@ const SecondBlock = ({ productData, brand, data, ingridients }) => {
   );
 };
 export default withMySQLData(
-  "http://localhost:4000/api/v1/vendor/product/certificates"
+  `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/product/certificates`
 )(SecondBlock);

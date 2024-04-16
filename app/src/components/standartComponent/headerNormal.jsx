@@ -20,7 +20,7 @@ const HeaderNormal = () => {
         <nav className={css.navigation}>
           <ul className={css.ulNavInHeader}>
             <li className={css.linkLi}>
-              <Link to="" className={css.linkLi}>
+              <Link to="/about" className={css.linkLi}>
                 About Us
               </Link>
             </li>
@@ -28,7 +28,7 @@ const HeaderNormal = () => {
               Resources <ReactSVG src={arrow} />
             </li>
             <li className={css.linkLi}>
-              <Link to="" className={css.linkLi}>
+              <Link to="/contact" className={css.linkLi}>
                 Contact
               </Link>
             </li>

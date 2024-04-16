@@ -3,13 +3,18 @@ import { ReactSVG } from "react-svg";
 import arrowSend from "../../svg/ArrowButtonSend.svg";
 import vendorO from "../../img/RectangleVo.png";
 import imgE from "../../img/dasdwq.png";
+import { useNavigate } from "react-router-dom";
 const VendorsBlock = () => {
+  const navigate = useNavigate();
+  const toContact = () => {
+    navigate("/catalog");
+  };
   return (
     <div className={css.wrapAllVendors}>
       {" "}
       <div className={css.prodFWrap}>
         <p className={css.favoritP}>New Vendors</p>
-        <p className={css.shopAllP}>
+        <p className={css.shopAllP} onClick={toContact}>
           Shop All <ReactSVG src={arrowSend} />
         </p>
       </div>

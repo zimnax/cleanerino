@@ -106,7 +106,7 @@ const AddProduct = ({ setAddProdPage, data, activeUser }) => {
       });
 
       const responseF = await axios.post(
-        `http://localhost:4000/api/v1/vendor/product/file/${id}`,
+        `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/product/file/${id}`,
         formData,
         {
           headers: {
@@ -221,7 +221,7 @@ const AddProduct = ({ setAddProdPage, data, activeUser }) => {
     }
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/v1/vendor/product/add",
+        `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/product/add`,
         {
           prodName,
           shortDesc,
@@ -391,6 +391,6 @@ const AddProduct = ({ setAddProdPage, data, activeUser }) => {
     </>
   );
 };
-export default withMySQLData("http://localhost:4000/api/v1/vendor/profile")(
-  AddProduct
-);
+export default withMySQLData(
+  `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/profile`
+)(AddProduct);

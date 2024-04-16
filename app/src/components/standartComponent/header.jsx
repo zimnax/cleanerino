@@ -13,20 +13,69 @@ import { useEffect, useState } from "react";
 import house from "../../svg/houseIcon.svg";
 import cart from "../../svg/cartIconH.svg";
 import withMySQLData from "../HOK/withMySQLData";
-const Header = ({ activeUser, data }) => {
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setText } from "../../function/textSlice";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import cartSlice from "../../function/cartSlice";
+import { addToCart } from "../../function/cartSlice";
+const Header = ({ activeUser, data, totalQuantity }) => {
   const [search, setSearch] = useState("");
   const [users, setUsers] = useState(null);
-
+  const [vendor, setVendor] = useState(null);
+  const [counterCart, serCounterCart] = useState(0);
+  const dispatch = useDispatch();
+  const text = useSelector((state) => state.cartSlice);
+  // useEffect(() => {
+  //   const totalQuantity = text.items.reduce(
+  //     (total, item) => parseInt(total) + parseInt(item.quantity),
+  //     0
+  //   );
+  //   serCounterCart(totalQuantity);
+  // }, [text]);
+  const navigate = useNavigate();
   useEffect(() => {
-    if (activeUser && data && data.users) {
-      const found = data.users.find(
-        (item) => item.firebaseId === activeUser.uid
-      );
+    const fetchData = async () => {
+      try {
+        let found = null;
+        if (activeUser && data && data.users) {
+          found = data.users.find((item) => item.firebaseId === activeUser.uid);
+        } else {
+        }
 
-      setUsers(found);
-    }
+        if (found !== undefined) {
+          // Якщо користувача знайдено, виконайте потрібні дії тут
+          setUsers(found);
+        } else if (activeUser) {
+          const response = await axios.get(
+            `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/profile`
+          );
+          const dataUser = response.data;
+
+          if (dataUser) {
+            found = dataUser.find(
+              (item) => item.firebase_id === activeUser.uid
+            );
+          }
+          setVendor(found);
+        }
+      } catch (error) {
+        // Обробка помилок запиту
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    // Виклик функції для виконання запиту при завантаженні компоненту або зміні залежностей
+    fetchData();
   }, [data, activeUser]);
-
+  const handleInputChange = (e) => {
+    setSearch(e.target.value);
+    dispatch(setText(e.target.value)); // Відправляємо значення в редуктор
+  };
+  const sendData = () => {
+    navigate("/catalog");
+  };
   return (
     <header className={css.wrapHeaderAllNew}>
       <div className={css.wrapHeaderNew}>
@@ -41,50 +90,87 @@ const Header = ({ activeUser, data }) => {
           <input
             className={css.inputHeader}
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={handleInputChange}
             placeholder="Search for your new favorite..."
           />
-          <button className={css.newSearchHeader}>
+          <button className={css.newSearchHeader} onClick={sendData}>
             <ReactSVG src={searchIcon} className={css.searchIconHeader} />
           </button>
         </div>
         <div className={css.wrapIconsHeader}>
           {users && (
-            <div className={css.wrapavatarName}>
+            <Link className={css.nameP} to={`/user/cabinet`}>
               <div className={css.wrapavatarName}>
-                <ReactSVG src={arrowDHeader} className={css.iconArrowDR} />
-                <p className={css.nameP}>{users.user_name}</p>
+                <div className={css.wrapavatarName}>
+                  <ReactSVG src={arrowDHeader} className={css.iconArrowDR} />
+                  <p className={css.nameP}>{users.user_name}</p>
+                </div>
               </div>
-            </div>
+            </Link>
           )}
-          {!users && (
+          {vendor && (
+            <Link className={css.nameP} to={`/vendor/dashboard`}>
+              <div className={css.wrapavatarName}>
+                <div className={css.wrapavatarName}>
+                  <ReactSVG src={arrowDHeader} className={css.iconArrowDR} />
+                  <p className={css.nameP}>{vendor.first_name}</p>
+                </div>
+              </div>
+            </Link>
+          )}
+          {!users && !vendor && (
             <div className={css.wrapavatarName}>
               <div className={css.wrapavatarName}>
-                <Link to={``} className={css.nameP}>
+                <Link to={`/signin`} className={css.nameP}>
                   Login
                 </Link>
               </div>
             </div>
           )}
-          {users && (
-            <div className={css.wrapPhoto}>
-              {users.photo && (
-                <img className={css.userPhoto} src={users.photo} alt="photo" />
-              )}
-              {!users.photo && (
-                <div className={css.withoutPhoto}>{users.user_name[0]}</div>
-              )}
-            </div>
-          )}
-          <div className={css.wrapAllIcons}>
-            <ReactSVG src={house} />
-            <div className={css.elipse}></div>
+
+          <div className={css.wrapPhoto}>
+            {vendor && vendor.first_name !== "" && (
+              <>
+                {vendor.photo && (
+                  <img
+                    className={css.userPhoto}
+                    src={vendor.photo}
+                    alt="photo"
+                  />
+                )}
+                {!vendor.photo && (
+                  <div className={css.withoutPhoto}>{vendor.first_name[0]}</div>
+                )}
+              </>
+            )}
+            {users && users.user_name !== "" && (
+              <Link to={`/user/cabinet`}>
+                {users.photo && (
+                  <img
+                    className={css.userPhoto}
+                    src={users.photo}
+                    alt="photo"
+                  />
+                )}
+                {!users.photo && (
+                  <div className={css.withoutPhoto}>{users.user_name[0]}</div>
+                )}
+              </Link>
+            )}
           </div>
+          {vendor && (
+            <Link to="/vendor/dashboard">
+              <div className={css.wrapAllIcons}>
+                <ReactSVG src={house} />
+                <div className={css.elipse}></div>
+              </div>
+            </Link>
+          )}
           <div className={css.werticalLine}></div>
-          <div className={css.wrapAllIcons}>
+          {/* <div className={css.wrapAllIcons}>
             <ReactSVG src={flower} />
             <div className={css.elipse}></div>
-          </div>
+          </div> */}
           <div className={css.wrapAllIcons}>
             <ReactSVG src={heart} />
             <div className={css.elipse}></div>
@@ -92,7 +178,9 @@ const Header = ({ activeUser, data }) => {
           <Link to="/cart">
             <div className={css.wrapAllIcons}>
               <ReactSVG src={cart} />
-              <div className={css.elipse}></div>
+              <div className={css.elipse}>
+                <p className={css.countCart}>{totalQuantity}</p>
+              </div>
             </div>
           </Link>
         </div>
@@ -127,6 +215,6 @@ const Header = ({ activeUser, data }) => {
     </header>
   );
 };
-export default withMySQLData("http://localhost:4000/api/v1/users/profile")(
-  Header
-);
+export default withMySQLData(
+  `${process.env.REACT_APP_API_URL}:4000/api/v1/users/profile`
+)(Header);

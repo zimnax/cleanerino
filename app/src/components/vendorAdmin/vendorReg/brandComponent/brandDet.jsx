@@ -38,5 +38,5 @@ const BrandDet = ({ data, setBrandIs, myBrandError, setMyBrandError }) => {
   );
 };
 export default withMySQLData(
-  "http://88.218.188.44:4000/api/v1/vendor/det/brand"
+  `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/det/brand`
 )(BrandDet);
