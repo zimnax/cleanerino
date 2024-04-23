@@ -5,7 +5,7 @@ import withMySQLData from "../../../HOK/withMySQLData";
 const PayoutDet = ({ data, setPayaut }) => {
   const handleSelectChange = (event) => {
     const selectedBrandId = event.target.value;
-    console.log(selectedBrandId);
+
     setPayaut(selectedBrandId);
   };
   return (
@@ -32,5 +32,5 @@ const PayoutDet = ({ data, setPayaut }) => {
   );
 };
 export default withMySQLData(
-  `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/det/payout`
+  `${process.env.REACT_APP_API_URL}/api/v1/vendor/det/payout`
 )(PayoutDet);

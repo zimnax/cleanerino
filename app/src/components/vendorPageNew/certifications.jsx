@@ -26,7 +26,7 @@ const Certifications = ({
       const index = updatedSelectedCategories.findIndex(
         (category) => category.category_name === categoryName
       );
-      console.log("index", index);
+
       if (index !== -1) {
         // Видаляємо категорію, якщо вона вже була вибрана
         updatedSelectedCategories.splice(index, 1);
@@ -49,8 +49,6 @@ const Certifications = ({
   };
 
   const isCategorySelected = (categoryName) => {
-    console.log("categoryName", categoryName);
-    console.log("selectedCategories", selectedCategories);
     // Перевіряємо, чи категорія вибрана
     return selectedCategories.some(
       (category) => category.category_name === categoryName
@@ -108,5 +106,5 @@ const Certifications = ({
   );
 };
 export default withMySQLData(
-  `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/product/certificates`
+  `${process.env.REACT_APP_API_URL}/api/v1/vendor/product/certificates`
 )(Certifications);

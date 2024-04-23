@@ -40,7 +40,7 @@ const ProductList = ({ data, users, setProduct }) => {
         console.log("produForCHang", data);
         console.log("productId", productId);
         await axios.post(
-          `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/product/add/${productId}`
+          `${process.env.REACT_APP_API_URL}/api/v1/vendor/product/add/${productId}`
         );
       }
 
@@ -239,5 +239,5 @@ const ProductList = ({ data, users, setProduct }) => {
 };
 
 export default withMySQLData(
-  `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/product/add`
+  `${process.env.REACT_APP_API_URL}/api/v1/vendor/product/add`
 )(ProductList);

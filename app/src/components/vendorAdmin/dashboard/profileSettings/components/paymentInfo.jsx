@@ -47,7 +47,7 @@ const PaymentInfo = ({
         await Promise.all(
           userCards.map(async (card) => {
             await axios.put(
-              `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/card/${card.id}`,
+              `${process.env.REACT_APP_API_URL}/api/v1/vendor/card/${card.id}`,
               {
                 is_active: "false",
               }
@@ -58,7 +58,7 @@ const PaymentInfo = ({
 
       // Оновіть поточну картку, встановивши її is_active на newIsActiveValue
       await axios.put(
-        `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/card/${cardId}`,
+        `${process.env.REACT_APP_API_URL}/api/v1/vendor/card/${cardId}`,
         {
           is_active: newIsActiveValue.toString(),
         }
@@ -78,7 +78,7 @@ const PaymentInfo = ({
   const updateCard = async (cardId, newIsActiveValue) => {
     try {
       await axios.put(
-        `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/card/${cardId}`,
+        `${process.env.REACT_APP_API_URL}/api/v1/vendor/card/${cardId}`,
         {
           is_active: newIsActiveValue,
         }
@@ -101,7 +101,7 @@ const PaymentInfo = ({
     console.log(formData);
     try {
       const response = await axios.post(
-        "${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/card",
+        `${process.env.REACT_APP_API_URL}/api/v1/vendor/card`,
         formData
       );
       console.log(response.data); // Реакція від сервера, якщо успішно
@@ -113,9 +113,7 @@ const PaymentInfo = ({
 
   useEffect(() => {
     axios
-      .get(
-        `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/card/${users.id}`
-      )
+      .get(`${process.env.REACT_APP_API_URL}/api/v1/vendor/card/${users.id}`)
       .then((response) => {
         console.log(response.data.data);
         setAllCard(response.data.data);

@@ -21,7 +21,7 @@ const NewsSe = ({ users }) => {
     formDataObj.news = !isChecked ? "true" : "false";
     try {
       const response = await axios.put(
-        `${process.env.REACT_APP_API_URL}:4000/api/v1/users/profile/${users.id}`, // Потрібно замінити userId на відповідний id користувача
+        `${process.env.REACT_APP_API_URL}/api/v1/users/profile/${users.id}`, // Потрібно замінити userId на відповідний id користувача
         formDataObj,
         {
           headers: {

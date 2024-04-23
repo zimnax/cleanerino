@@ -84,7 +84,7 @@ const Shipping = ({
 
     fetchData();
   }, [users, countryList, stateList, cityList]);
-  console.log("cityFotrBase", cityFotrBase);
+
   return (
     <div className={css.shipingWrap}>
       <div className={css.firstShipWr}>

@@ -68,11 +68,11 @@ const Ingridient = ({ productData, data }) => {
           See All
         </p>
       </div>
-      <ReactSVG src={ds} className={css.dsInIn} />
+
       {openPop && <PopUpIngrid setOpenPop={setOpenPop} ingrid={ingrid} />}
     </div>
   );
 };
 export default withMySQLData(
-  `${process.env.REACT_APP_API_URL}:4000/api/v1/ingridients/icon`
+  `${process.env.REACT_APP_API_URL}/api/v1/ingridients/icon`
 )(Ingridient);

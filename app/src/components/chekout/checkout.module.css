@@ -1,0 +1,552 @@
+@font-face {
+  font-family: "Orpheus Pro";
+  src: url("../../allFont/orpheus.ttf") format("opentype");
+}
+@font-face {
+  font-family: "Agenda";
+  src: url("../../allFont/agenda-12.ttf") format("opentype");
+}
+@font-face {
+  font-family: "AgendaT";
+  src: url("../../allFont/agenda-11.ttf") format("opentype");
+}
+
+:root {
+  --grayscale0-color: #ffffff;
+  --grayscale10-color: #e5e5e5;
+  --grayscale20-color: #cccccc;
+  --grayscale40-color: #999999;
+  --Grayscale-50-color: #808080;
+  --grayscale70-color: #4c4c4c;
+  --grayscale80-color: #333333;
+  --grayscale90-color: #1a1a1a;
+  --grayscale400-color: #bdbdbd;
+  --primarynormal-color: #486642;
+  --black-color: #000000;
+
+  --newfontgreen-color: #486642;
+  --custom-font: Steppe;
+  --customtwo-font: Inter;
+}
+.checkOutWrap {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+.smallWrapCheck {
+  width: 1610px;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.firstBlockCheckWrap {
+  width: 1194px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.pCheckOut {
+  margin: 0;
+  margin-bottom: 20px;
+  color: #191919;
+
+  font-family: "Orpheus Pro";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 36px; /* 112.5% */
+  letter-spacing: 1.6px;
+}
+.profileUl {
+  width: 170px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style-type: none;
+  padding: 0;
+  margin-top: 34px;
+  border-bottom: 1px solid #eff2f6;
+}
+.profileLi {
+  color: var(--grayscale400-color);
+  height: 100%;
+  font-family: var(--custom-font);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px; /* 157.143% */
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.profileLiActive {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: var(--primarynormal-color);
+  font-family: var(--custom-font);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px; /* 157.143% */
+  border-bottom: 2px solid var(--primarynormal-color);
+}
+.shipingWrapAll {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 34px;
+}
+.savedAddressesP {
+  margin: 0;
+  color: var(--newfontgreen-color);
+  font-family: "Orpheus Pro";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.wrapAddressesList {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 12px;
+}
+.wrapOneAddress {
+  padding: 16px;
+  width: calc(387px - 32px);
+  height: calc(96px - 32px);
+  border-radius: 20px;
+  background: var(--grayscale0-color);
+  box-shadow: 4px 4px 44px 0px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.wrapOneAddressTrue {
+  padding: 16px;
+  width: calc(387px - 32px);
+  height: calc(96px - 32px);
+  border-radius: 20px;
+  background: var(--grayscale0-color);
+  background: #fffceb;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.wrapButtonWithC {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nameInAddress {
+  margin: 0;
+  color: #333;
+
+  font-family: var(--custom-font);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.7px;
+}
+.nameInAddressTrue {
+  margin: 0;
+  color: var(--newfontgreen-color);
+
+  font-family: var(--custom-font);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.7px;
+}
+.circNone {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #e5e5e5;
+}
+.circNoneTrue {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--newfontgreen-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.allAdressInOne {
+  margin: 0;
+  color: #999;
+
+  font-family: var(--custom-font);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 355px;
+  height: 34px;
+}
+.smalCircutL {
+  width: 12px;
+  height: 12px;
+  background: var(--newfontgreen-color);
+  border-radius: 50%;
+}
+.addNewAddress {
+  padding: 13px 32px;
+  width: calc(185px - 64px);
+  height: calc(48px - 16px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--grayscale0-color);
+  text-align: center;
+  font-family: Agenda;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 550;
+  line-height: 20px;
+  letter-spacing: 0.8px;
+  border-radius: 30px;
+  background: var(--newfontgreen-color);
+  box-shadow: 4px 4px 44px 0px rgba(0, 0, 0, 0.05);
+  margin-top: 20px;
+  align-self: flex-end;
+  cursor: pointer;
+}
+.addNewAdd {
+  height: 22px;
+}
+.wrapAddNewAddres {
+  padding: 24px 20px;
+  width: calc(100% - 40px);
+  height: calc(478px - 48px);
+  border-radius: 30px;
+  background: var(--grayscale0-color);
+  box-shadow: 4px 4px 44px 0px rgba(0, 0, 0, 0.05);
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.pInNewAddress {
+  color: #333;
+  margin: 0;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: "Orpheus Pro";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 20px;
+}
+.wrapAllInputs {
+  width: 100%;
+  height: 328px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.wrapInputInAddMain {
+  width: calc(100% - 40px);
+  height: calc(48px - 28px);
+  padding: 14px 20px;
+  border-radius: 999px;
+  background: var(--grayscale0-color);
+  box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+}
+.nameInput {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: #333;
+  font-family: var(--custom-font);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.7px;
+  width: 100px;
+  height: 20px;
+}
+.inputNewBig {
+  border: none;
+  height: 20px;
+  width: 994px;
+  margin-left: 20px;
+  color: #999;
+
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: var(--custom-font);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.inputNewSmall {
+  border: none;
+  height: 20px;
+  width: 120px;
+  margin-left: 20px;
+  color: #999;
+
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: var(--custom-font);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.inputNewSmall::placeholder {
+  color: #999;
+
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: var(--custom-font);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.inputNewBig::placeholder {
+  color: #999;
+
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: var(--custom-font);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.shipThisAddressButton {
+  width: 100%;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  background: var(--newfontgreen-color);
+  color: var(--grayscale0-color);
+  font-family: Agenda;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 550;
+  line-height: normal;
+  letter-spacing: 0.8px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.secondBlockCheckWr {
+  padding: 20px 16px;
+  width: calc(386px - 32px);
+  height: auto;
+  border-radius: 30px;
+  background: var(--grayscale0-color);
+  box-shadow: 4px 4px 44px 0px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.todayOrderSum {
+  margin: 0;
+  margin-bottom: 20px;
+  color: var(--newfontgreen-color);
+  font-family: "Orpheus Pro";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.wrapProductOrder {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.prodWrapS {
+  width: 100%;
+  height: 90px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.imageInCheckout {
+  height: 90px;
+  width: 90px;
+  object-fit: cover;
+  border-radius: 19px;
+}
+.wrapNameAndCount {
+  width: 254px;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+}
+.nameProduct {
+  margin: 0;
+  width: 100%;
+  height: 48px;
+  overflow: hidden;
+  color: var(--grayscale70-color);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.8px;
+}
+.prodQuontP {
+  margin: 0;
+  color: #999;
+
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 142.857% */
+  letter-spacing: 0.7px;
+}
+.wrapItemSubTot {
+  margin-top: 20px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wrapItemSubTotMar {
+  margin-top: 12px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.itemSubTotalP {
+  color: #333;
+  margin: 0;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px; /* 142.857% */
+  letter-spacing: 0.7px;
+}
+.subTotalSpan {
+  color: var(--newfontgreen-color);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.7px;
+}
+.subTotalPrice {
+  color: #333;
+  margin: 0;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 142.857% */
+  letter-spacing: 0.7px;
+}
+.line {
+  width: 100%;
+  height: 1px;
+  background: #e5e5e5;
+  margin-top: 20px;
+}
+.itemSubTotalPGrand {
+  color: var(--newfontgreen-color);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px; /* 142.857% */
+  letter-spacing: 0.7px;
+  margin: 0;
+}
+.wrapGifts {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 34px;
+}
+.giftsCardP {
+  color: var(--newfontgreen-color);
+  font-family: "Orpheus Pro";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.wrapGiftAndC {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.gidtWrap {
+  width: 581px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wrapAddGift {
+  width: calc(100% - 48px);
+  min-height: calc(88px - 48px);
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  background: var(--grayscale0-color);
+  box-shadow: 4px 4px 44px 0px rgba(0, 0, 0, 0.07);
+}
+.iconAndGiftWrap {
+  height: 40px;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.inGifP {
+  color: var(--grayscale80-color);
+  font-family: var(--custom-font);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.8px;
+}
+.giftIconS {
+  margin-right: 8px;
+}

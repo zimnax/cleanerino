@@ -144,7 +144,7 @@ const SignIn = ({ activeUser, totalQuantity }) => {
 
     // Відправка запиту на сервер для створення нового користувача
     axios
-      .post(`${process.env.REACT_APP_API_URL}:4000/api/v1/users/profile`, {
+      .post(`${process.env.REACT_APP_API_URL}/api/v1/users/profile`, {
         user_name: name,
         email: mail,
         firebaseId: id,

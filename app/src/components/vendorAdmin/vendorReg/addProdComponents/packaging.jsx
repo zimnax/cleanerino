@@ -12,7 +12,7 @@ const Packaging = ({ data, setGlass, setMetal, setPaper, setPlastic }) => {
 
   const handleGlassChange = (e) => {
     const g = e.target.value;
-    console.log("ggggg", g);
+
     setGlass(g);
     // При виборі Glass робимо інші селекти неактивними
     if (g === "Select a packaging") {
@@ -175,5 +175,5 @@ const Packaging = ({ data, setGlass, setMetal, setPaper, setPlastic }) => {
 };
 
 export default withMySQLData(
-  `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/product/packaging`
+  `${process.env.REACT_APP_API_URL}/api/v1/vendor/product/packaging`
 )(Packaging);

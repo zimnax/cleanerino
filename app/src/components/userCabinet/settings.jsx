@@ -52,7 +52,7 @@ const Settings = ({ users, setUsers }) => {
         fileFormData.append("file", logoT);
 
         const fileResponse = await axios.put(
-          `${process.env.REACT_APP_API_URL}:4000/api/v1/user/file/${users.id}`, // URL для завантаження файлу
+          `${process.env.REACT_APP_API_URL}/api/v1/user/file/${users.id}`, // URL для завантаження файлу
           fileFormData,
           {
             headers: {
@@ -65,7 +65,7 @@ const Settings = ({ users, setUsers }) => {
       }
 
       const response = await axios.put(
-        `${process.env.REACT_APP_API_URL}:4000/api/v1/users/profile/${users.id}`, // Потрібно замінити userId на відповідний id користувача
+        `${process.env.REACT_APP_API_URL}/api/v1/users/profile/${users.id}`, // Потрібно замінити userId на відповідний id користувача
         formDataObj,
         {
           headers: {
@@ -85,7 +85,7 @@ const Settings = ({ users, setUsers }) => {
       // Додайте тут логіку для обробки помилки відправки даних
     }
   };
-  console.log("users", users);
+
   return (
     <div className={css.wrapAllSettings}>
       <div className={css.wrapButtonWithName}>

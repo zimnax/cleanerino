@@ -105,7 +105,7 @@ const AddProductDashboard = ({ setProdList, setAddProduct, users }) => {
       });
 
       const responseF = await axios.post(
-        `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/product/file/${id}`,
+        `${process.env.REACT_APP_API_URL}/api/v1/vendor/product/file/${id}`,
         formData,
         {
           headers: {
@@ -220,7 +220,7 @@ const AddProductDashboard = ({ setProdList, setAddProduct, users }) => {
     }
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/product/add`,
+        `${process.env.REACT_APP_API_URL}/api/v1/vendor/product/add`,
         {
           prodName,
           shortDesc,

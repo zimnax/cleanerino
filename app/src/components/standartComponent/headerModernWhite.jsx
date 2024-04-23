@@ -20,13 +20,19 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import cartSlice from "../../function/cartSlice";
 import { addToCart } from "../../function/cartSlice";
+import Menu from "./menu";
 const HeaderModernWhite = ({ activeUser, data, totalQuantity }) => {
   const [search, setSearch] = useState("");
   const [users, setUsers] = useState(null);
   const [vendor, setVendor] = useState(null);
+  const [openContact, setOpenContact] = useState(false);
   const [counterCart, serCounterCart] = useState(0);
   const dispatch = useDispatch();
+
   const text = useSelector((state) => state.cartSlice);
+  const open = () => {
+    setOpenContact(true);
+  };
   // useEffect(() => {
   //   console.log("text", text);
   //   const totalQuantity = text.items.reduce(
@@ -50,7 +56,7 @@ const HeaderModernWhite = ({ activeUser, data, totalQuantity }) => {
           setUsers(found);
         } else if (activeUser) {
           const response = await axios.get(
-            `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/profile`
+            `${process.env.REACT_APP_API_URL}/api/v1/vendor/profile`
           );
           const dataUser = response.data;
 
@@ -83,10 +89,10 @@ const HeaderModernWhite = ({ activeUser, data, totalQuantity }) => {
         <Link to="/">
           <ReactSVG src={logo} />
         </Link>
-        <div className={css.wrapShopCategory}>
+        {/* <div className={css.wrapShopCategory}>
           <p className={css.shapCatP}>Shop Categories</p>
           <ReactSVG src={arrowDHeader} className={css.iconArrowD} />
-        </div>
+        </div> */}
         <div className={css.wrapInputSearch}>
           <input
             className={css.inputHeaderModern}
@@ -214,9 +220,15 @@ const HeaderModernWhite = ({ activeUser, data, totalQuantity }) => {
           </ul>
         </nav> */}
       </div>
+      <div className={css.hamburgerWr} onClick={open}>
+        <span className={css.hambSpFirs}></span>
+        <span className={css.hambSpSecont}></span>
+        <span className={css.hambSpThre}></span>
+      </div>
+      {openContact && <Menu setOpenContact={setOpenContact} />}
     </header>
   );
 };
 export default withMySQLData(
-  `${process.env.REACT_APP_API_URL}:4000/api/v1/users/profile`
+  `${process.env.REACT_APP_API_URL}/api/v1/users/profile`
 )(HeaderModernWhite);

@@ -35,7 +35,7 @@ const ShipingAdress = ({
 
     // Відправка даних на сервер
     axios
-      .post(`${process.env.REACT_APP_API_URL}:4000/api/v1/users/address`, {
+      .post(`${process.env.REACT_APP_API_URL}/api/v1/users/address`, {
         user_id: userId,
         street: street,
         apartment: apartment,

@@ -22,6 +22,7 @@ import About from "./components/about/about";
 import Cabinet from "./components/userCabinet/cabinet";
 import { loadCartItems } from "./function/cartSlice";
 import { useDispatch } from "react-redux";
+import Checkout from "./components/chekout/checkout";
 
 function App() {
   const [activeUser, setActiveUser] = useState(null);
@@ -110,6 +111,12 @@ function App() {
           path="/catalog"
           element={
             <Catalog activeUser={activeUser} totalQuantity={totalQuantity} />
+          }
+        />
+        <Route
+          path="/checkout"
+          element={
+            <Checkout activeUser={activeUser} totalQuantity={totalQuantity} />
           }
         />
         <Route

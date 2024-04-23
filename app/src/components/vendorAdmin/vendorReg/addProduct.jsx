@@ -106,7 +106,7 @@ const AddProduct = ({ setAddProdPage, data, activeUser }) => {
       });
 
       const responseF = await axios.post(
-        `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/product/file/${id}`,
+        `${process.env.REACT_APP_API_URL}/api/v1/vendor/product/file/${id}`,
         formData,
         {
           headers: {
@@ -221,7 +221,7 @@ const AddProduct = ({ setAddProdPage, data, activeUser }) => {
     }
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/product/add`,
+        `${process.env.REACT_APP_API_URL}/api/v1/vendor/product/add`,
         {
           prodName,
           shortDesc,
@@ -273,7 +273,7 @@ const AddProduct = ({ setAddProdPage, data, activeUser }) => {
     // Оновлення стану знайденого об'єкта
     setUsers(found);
   }, [data, activeUser]);
-  console.log(users);
+
   return (
     <>
       <div className={css.regWrap}>
@@ -392,5 +392,5 @@ const AddProduct = ({ setAddProdPage, data, activeUser }) => {
   );
 };
 export default withMySQLData(
-  `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/profile`
+  `${process.env.REACT_APP_API_URL}/api/v1/vendor/profile`
 )(AddProduct);

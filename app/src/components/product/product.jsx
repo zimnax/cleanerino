@@ -9,6 +9,8 @@ import AlsoLike from "./alsoLike";
 import withMySQLData from "../HOK/withMySQLData";
 import HeaderNormal from "../standartComponent/headerNormal";
 import HeaderModernWhite from "../standartComponent/headerModernWhite";
+import Reviews from "./reviews";
+import Footer from "../standartComponent/footer";
 
 const Product = ({ data, activeUser, setCartCounterC, totalQuantity }) => {
   let params = useParams();
@@ -19,7 +21,7 @@ const Product = ({ data, activeUser, setCartCounterC, totalQuantity }) => {
     const fetchProduct = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/product/add/${params.id}`
+          `${process.env.REACT_APP_API_URL}/api/v1/vendor/product/add/${params.id}`
         );
         setProductData(response.data.product);
       } catch (error) {
@@ -56,12 +58,14 @@ const Product = ({ data, activeUser, setCartCounterC, totalQuantity }) => {
             brand={brand}
             ingridients={ingridients}
           />
-          <AlsoLike />
+          <Reviews productData={productData} />
+          {/* <AlsoLike /> */}
+          <Footer />
         </>
       )}
     </>
   );
 };
 export default withMySQLData(
-  `${process.env.REACT_APP_API_URL}:4000/api/v1/ingridients`
+  `${process.env.REACT_APP_API_URL}/api/v1/ingridients`
 )(Product);

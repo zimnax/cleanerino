@@ -30,7 +30,7 @@ const VendorPageNew = ({ data }) => {
       try {
         let found = null;
         const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/profile`
+          `${process.env.REACT_APP_API_URL}/api/v1/vendor/profile`
         );
         const dataUser = response.data;
 
@@ -50,7 +50,7 @@ const VendorPageNew = ({ data }) => {
 
   const filterProducts = () => {
     if (!data || !data.products) return []; // Якщо немає даних, повертаємо пустий масив
-    console.log("ingridietsArrayFromB", users);
+
     let filteredList = data.products;
     if (users && users.id) {
       filteredList = filteredList.filter(
@@ -308,5 +308,5 @@ const VendorPageNew = ({ data }) => {
   );
 };
 export default withMySQLData(
-  `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/product/add`
+  `${process.env.REACT_APP_API_URL}/api/v1/vendor/product/add`
 )(VendorPageNew);

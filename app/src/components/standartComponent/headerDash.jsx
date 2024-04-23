@@ -32,7 +32,7 @@ const HeaderDash = ({ activeUser, data, totalQuantity }) => {
           setUsers(found);
         } else if (activeUser) {
           const response = await axios.get(
-            `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/profile`
+            `${process.env.REACT_APP_API_URL}/api/v1/vendor/profile`
           );
           const dataUser = response.data;
 
@@ -190,5 +190,5 @@ const HeaderDash = ({ activeUser, data, totalQuantity }) => {
   );
 };
 export default withMySQLData(
-  `${process.env.REACT_APP_API_URL}:4000/api/v1/users/profile`
+  `${process.env.REACT_APP_API_URL}/api/v1/users/profile`
 )(HeaderDash);

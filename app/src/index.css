@@ -1,5 +1,6 @@
 @import url("./allFont/font/stylesheet.css");
 @import url("./allFont/fontMon/stylesheet.css");
+@import url("./allFont/interSt/stylesheet.css");
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",

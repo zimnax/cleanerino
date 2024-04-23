@@ -69,8 +69,6 @@ const ChangeProduct = ({
 
   useEffect(() => {
     if (productForChange) {
-      console.log("productForChange", productForChange);
-
       setInstruction(productForChange.instructions);
       setLocalPickUp(JSON.parse(productForChange.local_pickup));
       const uniqueCategories = Array.from(
@@ -257,7 +255,7 @@ const ChangeProduct = ({
       });
 
       const responseF = await axios.post(
-        `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/product/file/${id}`,
+        `${process.env.REACT_APP_API_URL}/api/v1/vendor/product/file/${id}`,
         formData,
         {
           headers: {
@@ -285,7 +283,7 @@ const ChangeProduct = ({
 
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/product/update/${productForChange.id}`,
+        `${process.env.REACT_APP_API_URL}/api/v1/vendor/product/update/${productForChange.id}`,
         {
           prodName,
           shortDesc,
@@ -332,7 +330,7 @@ const ChangeProduct = ({
   const handleDeleteFile = async (fileId) => {
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/product/fileAdd/${fileId}`
+        `${process.env.REACT_APP_API_URL}/api/v1/vendor/product/fileAdd/${fileId}`
       );
 
       // Перевірка статусу відповіді

@@ -25,7 +25,7 @@ const EditAddress = ({ editData, setEditAdress, setUsers }) => {
 
     axios
       .put(
-        `${process.env.REACT_APP_API_URL}:4000/api/v1/users/address/${editData.address_id}`,
+        `${process.env.REACT_APP_API_URL}/api/v1/users/address/${editData.address_id}`,
         updatedAddress
       )
       .then((response) => {

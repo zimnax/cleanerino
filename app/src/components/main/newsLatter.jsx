@@ -49,7 +49,7 @@ const NewsLatter = () => {
 
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}:4000/api/v1/users/newsletter`,
+        `${process.env.REACT_APP_API_URL}/api/v1/users/newsletter`,
         { email }
       );
 

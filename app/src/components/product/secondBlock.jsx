@@ -111,12 +111,11 @@ const SecondBlock = ({ productData, brand, data, ingridients }) => {
     const uniqueBenefits = Array.from(new Set(updatedBenefits));
     setBenefits(uniqueBenefits);
   }, [productData, ingridients]);
-
+  console.log("productData", productData);
   return (
     <div className={css.wrapFirstBlock}>
       <div className={css.smallWrap}>
-        <div className={css.listDesc}>
-          {/* Додайте обробники подій для кожного елемента опису */}
+        {/* <div className={css.listDesc}>
           <div
             className={`${css.oneOfDesck} ${
               selectedDescription === "Description" && css.oneOfDesckChecked
@@ -142,84 +141,101 @@ const SecondBlock = ({ productData, brand, data, ingridients }) => {
           >
             Care and End of Life
           </div>
-        </div>
+        </div> */}
         {selectedDescription === "Description" && (
-          <>
+          <div className={css.wrapInNewProd}>
             <Ingridient productData={productData} />
             <div className={css.description}>
               <p className={css.pInDbenefits}>
                 <ReactSVG src={add} className={css.addReactSVg} />
-                Benefits
+                Description
               </p>
               <div className={css.benefitsWrap}>
-                {benefits &&
+                {/* {benefits &&
                   benefits.map((el, index) => {
                     return (
                       <p className={css.descInBen} key={index}>
                         - {el}
                       </p>
                     );
-                  })}
+                  })} */}
+                <p className={css.descPInProd}>
+                  {productData.long_description}
+                </p>
+              </div>
+              <p className={css.pInDbenefits}>
+                <ReactSVG src={add} className={css.addReactSVg} />
+                How to use
+              </p>
+              <div className={css.benefitsWrap}>
+                {/* {benefits &&
+                  benefits.map((el, index) => {
+                    return (
+                      <p className={css.descInBen} key={index}>
+                        - {el}
+                      </p>
+                    );
+                  })} */}
+                <p className={css.descPInProd}>{productData.instructions}</p>
               </div>
             </div>
-          </>
+          </div>
         )}
-        {selectedSustainability === "Sustainability" && (
-          <>
-            <div className={css.wrapSubstain}>
-              <div className={css.wrapLeftBlackSub}>
-                <div className={css.smSubWr}>
-                  <p className={css.packP}>
-                    <ReactSVG src={pack} className={css.packIcon} />
-                    Packaging
-                  </p>
-                  <p className={css.packDesc}>· {packig}</p>
-                </div>
-                <div className={css.smSubWr}>
-                  <p className={css.packP}>
-                    <ReactSVG src={pack} className={css.packIcon} />
-                    Origin
-                  </p>
-                  {country && (
-                    <p className={css.packDesc}>· Made in the {country.iso3}</p>
-                  )}
-                </div>
-                <div className={css.smSubWr}>
-                  <p className={css.packP}>
-                    <ReactSVG src={without} className={css.packIcon} />
-                    Made Without
-                  </p>
-                  <p className={css.packDesc}>· {productData.made_without}</p>
-                </div>
+        {/* {selectedSustainability === "Sustainability" && ( */}
+        <div className={css.wrapInNewProd}>
+          <div className={css.wrapSubstain}>
+            <div className={css.wrapLeftBlackSub}>
+              <div className={css.smSubWr}>
+                <p className={css.packP}>
+                  <ReactSVG src={pack} className={css.packIcon} />
+                  Packaging
+                </p>
+                <p className={css.packDesc}>· {packig}</p>
               </div>
-              <div className={css.wrapLeftBlackSub}>
-                <div className={css.smSubWr}>
-                  <p className={css.packP}>
-                    <ReactSVG src={certif} className={css.packIcon} />
-                    Certifications
-                  </p>
-                  <p className={css.packDesc}>
-                    {certification &&
-                      certification.map((el, index) => {
-                        {
-                          console.log(el);
-                          // return <span key={index}>{el.name},&nbsp; </span>;
-                          return (
-                            <img
-                              key={index}
-                              className={css.imageSertificat}
-                              alt="Certifications"
-                              src={el.image}
-                            />
-                          );
-                        }
-                      })}
-                  </p>
-                </div>
+              <div className={css.smSubWr}>
+                <p className={css.packP}>
+                  <ReactSVG src={pack} className={css.packIcon} />
+                  Origin
+                </p>
+                {country && (
+                  <p className={css.packDesc}>· Made in the {country.iso3}</p>
+                )}
+              </div>
+              <div className={css.smSubWr}>
+                <p className={css.packP}>
+                  <ReactSVG src={without} className={css.packIcon} />
+                  Made Without
+                </p>
+                <p className={css.packDesc}>· {productData.made_without}</p>
+              </div>
+              <div className={css.smSubWr}>
+                <p className={css.packP}>
+                  <ReactSVG src={certif} className={css.packIcon} />
+                  Certifications
+                </p>
+                <p className={css.packDesc}>
+                  {certification &&
+                    certification.map((el, index) => {
+                      {
+                        console.log(el);
+                        // return <span key={index}>{el.name},&nbsp; </span>;
+                        return (
+                          <img
+                            key={index}
+                            className={css.imageSertificat}
+                            alt="Certifications"
+                            src={el.image}
+                          />
+                        );
+                      }
+                    })}
+                </p>
               </div>
             </div>
-          </>
-        )}
+            {/* <div className={css.wrapLeftBlackSub}></div> */}
+          </div>
+        </div>
+        {/* )} */}
         {selectedCare === "Care" && (
           <>
             <div className={css.wrapSubstain}>
@@ -249,5 +265,5 @@ const SecondBlock = ({ productData, brand, data, ingridients }) => {
   );
 };
 export default withMySQLData(
-  `${process.env.REACT_APP_API_URL}:4000/api/v1/vendor/product/certificates`
+  `${process.env.REACT_APP_API_URL}/api/v1/vendor/product/certificates`
 )(SecondBlock);

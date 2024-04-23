@@ -134,7 +134,7 @@ const NearPicture = ({
         <ReactSVG src={starNotFull} className={css.starNotF} />
         <p className={css.review}>(200 Reviews)</p>
       </div>
-      <p className={css.smallDesv}>{productData.short_description}</p>
+      {/* <p className={css.smallDesv}>{productData.short_description}</p>
       {productData.quantity < 10 && (
         <p className={css.stock}>
           Availability:&nbsp;
@@ -149,7 +149,7 @@ const NearPicture = ({
           <span className={css.onlyT}>In Stock</span>
         </p>
       )}
-      <div className={css.line}></div>
+      <div className={css.line}></div> */}
       {productData.variations.some(
         (variation) => variation.unit === "color"
       ) && (
@@ -158,24 +158,22 @@ const NearPicture = ({
           <div className={css.circWrapColor}>{renderColorBlocks()}</div>
         </div>
       )}
-      <div className={css.line}></div>
+
       <p className={css.price}>${price}</p>
-      <div className={css.line}></div>
+      <div className={css.counterWrap}>
+        <button className={css.minusButton} onClick={minCount}>
+          <ReactSVG src={min} className={css.stMin} />
+        </button>
+        <input
+          className={css.counterInput}
+          value={count}
+          onChange={changeCounter}
+        />
+        <button className={css.minusButtonPlus} onClick={plusCount}>
+          <ReactSVG src={plu} className={css.stMin} />
+        </button>
+      </div>
       <div className={css.wrapButtonsProd}>
-        <div className={css.counterWrap}>
-          <button className={css.minusButton} onClick={minCount}>
-            <ReactSVG src={min} className={css.stMin} />
-          </button>
-          <input
-            className={css.counterInput}
-            value={count}
-            onChange={changeCounter}
-          />
-          <button className={css.minusButton} onClick={plusCount}>
-            <ReactSVG src={plu} className={css.stMin} />
-          </button>
-        </div>
-        <button className={css.byNow}>Buy Now</button>
         <button
           className={css.addToCard}
           onClick={() => addingToCart(productData.id, price)}
@@ -186,6 +184,6 @@ const NearPicture = ({
     </div>
   );
 };
-export default withMySQLData("http://localhost:4000/api/v1/vendor/profile")(
-  NearPicture
-);
+export default withMySQLData(
+  `${process.env.REACT_APP_API_URL}/api/v1/vendor/profile`
+)(NearPicture);
