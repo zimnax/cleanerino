@@ -5,7 +5,7 @@ import css from "./checkout.module.css";
 import FirstBlockCheck from "./firstBlockCheck";
 import SecondBlockCheck from "./secondBlockCheck";
 import axios from "axios";
-
+import Footer from "../standartComponent/footer";
 const Checkout = ({ totalQuantity, activeUser, data }) => {
   const [users, setUsers] = useState(null);
   const [subtotal, setSubtotal] = useState(0);
@@ -77,6 +77,7 @@ const Checkout = ({ totalQuantity, activeUser, data }) => {
           <SecondBlockCheck setSubtotal={setSubtotal} subtotal={subtotal} />
         </div>
       </div>
+      <Footer />
     </>
   );
 };

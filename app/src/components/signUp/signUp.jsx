@@ -21,7 +21,7 @@ import HeaderModernWhite from "../standartComponent/headerModernWhite";
 
 const SignUp = ({ activeUser, totalQuantity }) => {
   const [emailError, setEmailError] = useState("");
-  console.log(activeUser);
+
   const [password, setPassword] = useState("");
 
   const [email, setEmail] = useState("");
@@ -33,8 +33,8 @@ const SignUp = ({ activeUser, totalQuantity }) => {
   const [openPop, setOpenPop] = useState(false);
 
   const validatePassword = (password) => {
-    const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
-
+    const re =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     return re.test(password);
   };
   const validateEmail = (email) => {

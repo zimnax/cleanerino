@@ -33,8 +33,8 @@ const SignIn = ({ activeUser, totalQuantity }) => {
   const [openPop, setOpenPop] = useState(false);
 
   const validatePassword = (password) => {
-    const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
-
+    const re =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     return re.test(password);
   };
   const validateEmail = (email) => {
@@ -184,7 +184,7 @@ const SignIn = ({ activeUser, totalQuantity }) => {
                   onChange={nameChange}
                   onBlur={() => validateNameInput(name)}
                 />
-                <p className={css.helpText}>This is a helper text</p>
+                {/* <p className={css.helpText}>This is a helper text</p> */}
               </div>
               <div className={css.wrapOneInp}>
                 <p className={emailError ? css.stForLogNot : css.stForLog}>
@@ -197,7 +197,7 @@ const SignIn = ({ activeUser, totalQuantity }) => {
                   value={email}
                   onBlur={() => setEmailError(validateEmail(email))}
                 />
-                <p className={css.helpText}>This is a helper text</p>
+                {/* <p className={css.helpText}>This is a helper text</p> */}
               </div>
               <div className={css.wrapOneInp}>
                 <p className={validP ? css.stForLog : css.stForLogNot}>
@@ -223,7 +223,7 @@ const SignIn = ({ activeUser, totalQuantity }) => {
                     onChange={changePass}
                   />
                 </div>
-                <p className={css.helpText}>This is a helper text</p>
+                {/* <p className={css.helpText}>This is a helper text</p> */}
               </div>
               <div className={css.wrapOneInp}>
                 <p className={validPSec ? css.stForLog : css.stForLogNot}>
@@ -249,7 +249,7 @@ const SignIn = ({ activeUser, totalQuantity }) => {
                     onChange={changePassSecond}
                   />
                 </div>
-                <p className={css.helpText}>This is a helper text</p>
+                {/* <p className={css.helpText}>This is a helper text</p> */}
               </div>
             </div>
             <div className={css.wralAllRedEx}>

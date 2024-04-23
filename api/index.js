@@ -27,15 +27,12 @@ const fileUpload = require("express-fileupload");
 const cors = require("cors");
 
 const app = express();
-// app.use(cors({ origin: "http://88.218.188.44/" }));
-// app.options("*", cors());
-// app.use((req, res, next) => {
-//   res.setHeader("Access-Control-Allow-Origin", "http://88.218.188.44");
-//   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-//   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-//   next();
-// });
-app.use(cors());
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "https://cleanerino.com");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());

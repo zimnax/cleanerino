@@ -5,13 +5,13 @@ import { getAuth, listUsers } from "firebase/auth";
 import { OAuthProvider, signInWithRedirect } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 export const firebaseConfig = {
-  apiKey: "AIzaSyAJcUB2GySinmSTUx06hmTfkjYxcOuH0_k",
-  authDomain: "cleanerino-cce9e.firebaseapp.com",
-  projectId: "cleanerino-cce9e",
-  storageBucket: "cleanerino-cce9e.appspot.com",
-  messagingSenderId: "43708442046",
-  appId: "1:43708442046:web:24009fedafe34125e585ef",
-  measurementId: "G-9H0B0VH4R4",
+  apiKey: "AIzaSyADSMKz_NFBoaQX76yLwEYezmmGrLcpQgg",
+  authDomain: "cleanerio-b080f.firebaseapp.com",
+  projectId: "cleanerio-b080f",
+  storageBucket: "cleanerio-b080f.appspot.com",
+  messagingSenderId: "546830628956",
+  appId: "1:546830628956:web:224344e1a0bf7bfa644e99",
+  measurementId: "G-EN68PDV2Q6",
 };
 
 export const app = initializeApp(firebaseConfig);
