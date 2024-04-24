@@ -3,8 +3,20 @@ import css from "./main.module.css";
 import { ReactSVG } from "react-svg";
 import arrow from "../../svg/VectorarrowSelect.svg";
 import arrowSend from "../../svg/ArrowButtonSend.svg";
+import { setText } from "../../function/textSlice";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const FirstBlock = () => {
   const [find, setFind] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleInputChange = (e) => {
+    setFind(e.target.value);
+    dispatch(setText(e.target.value)); // Відправляємо значення в редуктор
+  };
+  const sendData = () => {
+    navigate("/shop");
+  };
   return (
     <div className={css.firstBlockWrap}>
       <div className={css.wrapText}>
@@ -17,14 +29,14 @@ const FirstBlock = () => {
               className={css.inputBack}
               value={find}
               placeholder="Find my new favorite..."
-              onChange={(e) => setFind(e.target.value)}
+              onChange={handleInputChange}
             />
             <div className={css.wrapSection}>
               <p className={css.textInSelect}>Skin Cream</p>
               <ReactSVG src={arrow} className={css.arrowSelect} />
             </div>
           </div>
-          <div className={css.sendInfoButton}>
+          <div className={css.sendInfoButton} onClick={sendData}>
             <ReactSVG src={arrowSend} />
           </div>
         </div>

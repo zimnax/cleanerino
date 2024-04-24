@@ -11,7 +11,12 @@ import heandP from "../../svg/svgFor/headnPe.svg";
 import shopO from "../../svg/svgFor/shopO.svg";
 import earsU from "../../svg/svgFor/earscr.svg";
 import arrow from "../../svg/sectificat/dadasd.svg";
+import { useNavigate } from "react-router-dom";
 const DoorsToWord = () => {
+  const navigate = useNavigate();
+  const toContact = () => {
+    navigate("/shop");
+  };
   return (
     <div className={css.wrapOpenDoors}>
       <div className={css.wrapRalativeBlock}>
@@ -36,7 +41,7 @@ const DoorsToWord = () => {
           Join our growing community of other like minded makers and customers
           connected through a passion for safe natural products and the planet
         </p>
-        <div className={css.openShopBut}>
+        <div className={css.openShopBut} onClick={toContact}>
           <p className={css.pButPAdd}>Open a Shop</p>
           <ReactSVG src={arrow} className={css.newArrow} />
         </div>

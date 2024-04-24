@@ -1,7 +1,11 @@
 import css from "./footer.module.css";
 import { ReactSVG } from "react-svg";
 import logo from "../../svg/svgFor/logoForFooter.svg";
-import social from "../../svg/svgFor/SocialIcons.svg";
+import facebook from "../../svg/facebook.svg";
+import instagram from "../../svg/instagram.svg";
+import linked from "../../svg/linked.svg";
+import youtube from "../../svg/youtubeFooter.svg";
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className={css.mainFooter}>
@@ -13,29 +17,69 @@ const Footer = () => {
             connected through a passion for safe natural products and the planet
           </p>
           <div className={css.socialWrap}>
-            <ReactSVG src={social} />
+            <a
+              href="https://www.facebook.com/profile.php?id=61551860430923"
+              target="_blanck"
+            >
+              <ReactSVG src={facebook} className={css.facebook} />
+            </a>
+            <a
+              href="https://www.instagram.com/the_cleanerino/"
+              target="_blanck"
+            >
+              <ReactSVG src={instagram} className={css.facebook} />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/cleanerino/"
+              target="_blanck"
+            >
+              <ReactSVG src={linked} className={css.facebook} />
+            </a>
+            <a
+              href="https://www.youtube.com/channel/UCizn6WBUEP4m-k2Y-_aPmKA"
+              target="_blanck"
+            >
+              <ReactSVG src={youtube} className={css.youtube} />
+            </a>
           </div>
         </div>
         <div className={css.firstBlockWrap}>
           <p className={css.mainPLite}>About</p>
-          <p className={css.mainPSecond}>Our Philosophy</p>
+
+          <Link to="/about" className={css.mainPSecond}>
+            Our Philosophy
+          </Link>
           <p className={css.mainPSecond}>Blog</p>
           <p className={css.mainPSecond}>Resources</p>
         </div>
         <div className={css.firstBlockWrap}>
           <p className={css.mainPLite}>Support</p>
-          <p className={css.mainPSecond}>FAQs</p>
-          <p className={css.mainPSecond}>Contact</p>
-          <p className={css.mainPSecond}>Shipping & Returns</p>
+          <Link to="/privacy" className={css.mainPSecond}>
+            FAQs
+          </Link>
+          <Link to="/contact" className={css.mainPSecond}>
+            Contact
+          </Link>
+          <Link to="/privacy" className={css.mainPSecond}>
+            Shipping & Returns
+          </Link>
         </div>
         <div className={css.firstBlockWrap}>
           <p className={css.mainPLite}>Terms</p>
-          <p className={css.mainPSecond}>Terms of Use</p>
-          <p className={css.mainPSecond}>Privacy Policy</p>
-          <p className={css.mainPSecond}>Vendor Policy</p>
+          <Link to="/privacy" className={css.mainPSecond}>
+            Terms of Use
+          </Link>
+          <Link to="/privacy" className={css.mainPSecond}>
+            Privacy Policy
+          </Link>
+          <Link to="/privacy" className={css.mainPSecond}>
+            Vendor Policy
+          </Link>
         </div>
       </div>
-      <p className={css.allRights}>© 2024 Clean Free. All Rights Reserved.</p>
+      <p className={css.allRights}>
+        © 2024 Cleanerino Free. All Rights Reserved.
+      </p>
     </footer>
   );
 };

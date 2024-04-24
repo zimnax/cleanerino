@@ -132,31 +132,38 @@ const Reviews = ({ productData }) => {
           </button>
         </div>
         <div className={css.wrapScaleRating}>
-          {[5, 4, 3, 2, 1].map((stars) => {
-            const count = productData.reviews.filter(
-              (review) => review.rating === stars
-            ).length;
-            const percentage = (
-              (count / productData.reviews.length) *
-              100
-            ).toFixed(0);
-            return (
-              <div className={css.wrapScaleOne} key={stars}>
-                <ReactSVG src={starNotOpen} className={css.starNotInScale} />
-                <p className={css.counterStar}>{stars} stars</p>
-                <div className={css.scale}>
-                  <div
-                    className={css.procentScale}
-                    style={{
-                      width: `${percentage}%`,
-                      backgroundColor: "#609966",
-                    }}
-                  ></div>
-                </div>
-                <p className={css.procentScale}>{percentage}%</p>
-              </div>
-            );
-          })}
+          {productData && productData.reviews && (
+            <>
+              {[5, 4, 3, 2, 1].map((stars) => {
+                const count = productData.reviews.filter(
+                  (review) => review.rating === stars
+                ).length;
+                const percentage = (
+                  (count / productData.reviews.length) *
+                  100
+                ).toFixed(0);
+                return (
+                  <div className={css.wrapScaleOne} key={stars}>
+                    <ReactSVG
+                      src={starNotOpen}
+                      className={css.starNotInScale}
+                    />
+                    <p className={css.counterStar}>{stars} stars</p>
+                    <div className={css.scale}>
+                      <div
+                        className={css.procentScale}
+                        style={{
+                          width: `${percentage}%`,
+                          backgroundColor: "#609966",
+                        }}
+                      ></div>
+                    </div>
+                    <p className={css.procentScale}>{percentage}%</p>
+                  </div>
+                );
+              })}
+            </>
+          )}
         </div>
       </div>
       <div className={css.wrapAllReviewFor}>

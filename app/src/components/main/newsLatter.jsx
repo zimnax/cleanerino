@@ -56,7 +56,7 @@ const NewsLatter = () => {
       if (response.status === 200) {
         Swal.fire({
           icon: "success",
-          title: "Subscription Successful",
+          title: "You're in! Thanks for subscribing!",
           text: response.data.message,
           confirmButtonColor: "#609966",
         });

@@ -5,6 +5,7 @@ import { ReactSVG } from "react-svg";
 import upload from "../../svg/upload.svg";
 import axios from "axios";
 import EditAddress from "./editAddress";
+import Swal from "sweetalert2";
 const ShipingAdress = ({
   street,
   setStreet,
@@ -26,7 +27,11 @@ const ShipingAdress = ({
   const handleSaveAddress = () => {
     // Перевірка чи всі поля введені
     if (!street || !city || !state || !zipCode) {
-      alert("Будь ласка, заповніть всі поля");
+      Swal.fire({
+        icon: "error",
+        title: "Please fill in all fields",
+        confirmButtonColor: "#609966",
+      });
       return;
     }
 
@@ -44,8 +49,11 @@ const ShipingAdress = ({
         zip_code: zipCode,
       })
       .then((response) => {
-        console.log(response.data);
-        alert("Адреса успішно додана");
+        Swal.fire({
+          icon: "success",
+          title: "Address successfully added",
+          confirmButtonColor: "#609966",
+        });
         // Очищення полів вводу після успішного додавання
         setStreet("");
         setApartment("");
@@ -55,7 +63,12 @@ const ShipingAdress = ({
       })
       .catch((error) => {
         console.error("Помилка при додаванні адреси:", error);
-        alert("Помилка при додаванні адреси. Будь ласка, спробуйте знову.");
+        Swal.fire({
+          icon: "error",
+          title: "Error adding address",
+          text: "Please try again",
+          confirmButtonColor: "#609966",
+        });
       });
   };
   const changeData = (el) => {

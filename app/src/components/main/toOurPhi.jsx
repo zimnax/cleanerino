@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const ToOutPhi = () => {
   const navigate = useNavigate();
   const toContact = () => {
-    navigate("/contact");
+    navigate("/about");
   };
   return (
     <div className={css.wrapPhilo}>

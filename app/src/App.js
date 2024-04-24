@@ -108,7 +108,7 @@ function App() {
           }
         />
         <Route
-          path="/catalog"
+          path="/shop"
           element={
             <Catalog activeUser={activeUser} totalQuantity={totalQuantity} />
           }

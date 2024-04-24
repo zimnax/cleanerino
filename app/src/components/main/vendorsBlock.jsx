@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const VendorsBlock = () => {
   const navigate = useNavigate();
   const toContact = () => {
-    navigate("/catalog");
+    navigate("/shop");
   };
   return (
     <div className={css.wrapAllVendors}>

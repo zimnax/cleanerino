@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 const ProductList = () => {
   const navigate = useNavigate();
   const toContact = () => {
-    navigate("/catalog");
+    navigate("/shop");
   };
   return (
     <div className={css.wrapAllProduct}>

@@ -78,7 +78,6 @@ const HeaderDash = ({ activeUser, data, totalQuantity }) => {
           {users && (
             <div className={css.wrapavatarName}>
               <div className={css.wrapavatarName}>
-                <ReactSVG src={arrowDHeader} className={css.iconArrowDR} />
                 <p className={css.nameP}>{users.user_name}</p>
               </div>
             </div>
@@ -86,7 +85,6 @@ const HeaderDash = ({ activeUser, data, totalQuantity }) => {
           {vendor && (
             <div className={css.wrapavatarName}>
               <div className={css.wrapavatarName}>
-                <ReactSVG src={arrowDHeader} className={css.iconArrowDR} />
                 <p className={css.nameP}>{vendor.first_name}</p>
               </div>
             </div>

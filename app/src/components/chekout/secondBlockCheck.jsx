@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import withMySQLData from "../HOK/withMySQLData";
 import css from "./checkout.module.css";
-const SecondBlockCheck = ({ data, setSubtotal, subtotal }) => {
-  const [prodInCart, setProdInCart] = useState(null);
-
+const SecondBlockCheck = ({
+  data,
+  setSubtotal,
+  subtotal,
+  setProdInCart,
+  prodInCart,
+}) => {
   const [totalQuantity, setTotalQuantity] = useState(0);
   useEffect(() => {
     const cartProducts = JSON.parse(localStorage.getItem("cart")) || [];

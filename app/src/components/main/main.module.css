@@ -89,11 +89,25 @@
   position: relative;
 }
 .inputBack {
-  width: 439px;
+  width: calc(439px - 35px);
   height: 77px;
   border-radius: 100px;
   background: #fffceb;
   border: none;
+  color: #ad7b54;
+
+  font-family: var(--customtwo-font);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-left: 35px;
+}
+.inputBack:focus {
+  border: none;
+}
+.inputBack:focus {
+  outline: none; /* Забираємо рамку */
 }
 .inputBack::placeholder {
   color: #ad7b54;
@@ -103,7 +117,6 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  padding-left: 35px;
 }
 .wrapSection {
   position: absolute;
@@ -137,6 +150,7 @@
   align-items: center;
   justify-content: center;
   margin-left: 68px;
+  cursor: pointer;
 }
 .allMainWrap {
   width: 100%;
@@ -233,6 +247,7 @@
   border-radius: 100px;
   background: var(--newfontgreen-color);
   margin-top: 57px;
+  cursor: pointer;
 }
 .addtoCartButton {
   width: calc(191px - 56px);
@@ -312,6 +327,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  cursor: pointer;
 }
 .wrapProdInMain {
   width: 1400px;
@@ -741,7 +757,7 @@
   height: auto;
   color: #000;
   margin: 0;
-  font-family: Agenda;
+  font-family: AgendaT;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;

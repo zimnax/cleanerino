@@ -203,6 +203,16 @@
   align-items: center;
   justify-content: space-between;
 }
+.ourStartBel {
+  padding: 6px 15px;
+  width: calc(146px - 30px);
+  height: calc(29px - 12px);
+  border-radius: 50px;
+  background: var(--primarynormal-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .ourStartP {
   color: #fffceb;
 

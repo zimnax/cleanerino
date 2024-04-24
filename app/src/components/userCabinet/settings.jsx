@@ -5,6 +5,7 @@ import { Circles } from "react-loader-spinner";
 import axios from "axios";
 import ShipingAdress from "./shipingAdress";
 import NewsSe from "./newsSe";
+import Swal from "sweetalert2";
 const Settings = ({ users, setUsers }) => {
   const [publicProf, setPublicProf] = useState(true);
   const [shipSt, setShipSt] = useState(false);
@@ -76,12 +77,22 @@ const Settings = ({ users, setUsers }) => {
       console.log(response);
       if (response && response.statusText === "OK") {
         setLoading(false);
-        alert("Data successfully updated");
+        Swal.fire({
+          icon: "success",
+          title: "Data Updated",
+          text: "Data successfully updated",
+          confirmButtonColor: "#609966",
+        });
       }
       // Додайте тут логіку для обробки успішної відправки даних
     } catch (error) {
       console.error("Error sending data:", error);
-
+      Swal.fire({
+        icon: "error",
+        title: "Data Update Failed",
+        text: error.message, // Передаємо повідомлення про помилку
+        confirmButtonColor: "#609966",
+      });
       // Додайте тут логіку для обробки помилки відправки даних
     }
   };

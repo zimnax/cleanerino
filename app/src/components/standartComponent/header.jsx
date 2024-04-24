@@ -76,7 +76,7 @@ const Header = ({ activeUser, data, totalQuantity }) => {
     dispatch(setText(e.target.value)); // Відправляємо значення в редуктор
   };
   const sendData = () => {
-    navigate("/catalog");
+    navigate("/shop");
   };
   const open = () => {
     setOpenContact(true);
@@ -108,7 +108,6 @@ const Header = ({ activeUser, data, totalQuantity }) => {
             <Link className={css.nameP} to={`/user/cabinet`}>
               <div className={css.wrapavatarName}>
                 <div className={css.wrapavatarName}>
-                  <ReactSVG src={arrowDHeader} className={css.iconArrowDR} />
                   <p className={css.nameP}>{users.user_name}</p>
                 </div>
               </div>
@@ -118,7 +117,6 @@ const Header = ({ activeUser, data, totalQuantity }) => {
             <Link className={css.nameP} to={`/vendor/dashboard`}>
               <div className={css.wrapavatarName}>
                 <div className={css.wrapavatarName}>
-                  <ReactSVG src={arrowDHeader} className={css.iconArrowDR} />
                   <p className={css.nameP}>{vendor.first_name}</p>
                 </div>
               </div>

@@ -5,7 +5,8 @@ import { PiTelegramLogoLight } from "react-icons/pi";
 import { CiLocationOn } from "react-icons/ci";
 import { FiMail } from "react-icons/fi";
 import { Link } from "react-router-dom";
-
+import { ReactSVG } from "react-svg";
+import logo from "../../svg/cleanerinogreen 1.svg";
 export default function Menu({ setOpenContact }) {
   return (
     <section className={css.contactWrap}>
@@ -14,7 +15,11 @@ export default function Menu({ setOpenContact }) {
           className={css.aiOutlineClose}
           onClick={() => setOpenContact(false)}
         />
-        <p className={css.pMainInPop}>Navigation</p>
+        <Link to="/">
+          <ReactSVG src={logo} />
+        </Link>
+
+        {/* <p className={css.pMainInPop}>Navigation</p> */}
         <ul className={css.navigationUl}>
           <li className={css.liNavI}>
             <Link className={css.liNavI} to="/">
@@ -22,8 +27,8 @@ export default function Menu({ setOpenContact }) {
             </Link>
           </li>
           <li className={css.liNavI}>
-            <Link className={css.liNavI} to="/catalog">
-              Catalog
+            <Link className={css.liNavI} to="/shop">
+              Shop
             </Link>
           </li>{" "}
           <li className={css.liNavI}>
@@ -33,7 +38,7 @@ export default function Menu({ setOpenContact }) {
           </li>
           <li className={css.liNavI}>
             <Link className={css.liNavI} to="/contact">
-              Contact Us
+              Contact
             </Link>
           </li>
         </ul>

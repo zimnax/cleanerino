@@ -33,7 +33,7 @@ const SecondBlockAll = () => {
             </p>
           </div>
           <div className={css.secondPhySmalTwo}>
-            <div className={css.ourStart}>
+            <div className={css.ourStartBel}>
               <ReactSVG src={ecoL} />
               <p className={css.ourStartP}>We believe</p>
             </div>

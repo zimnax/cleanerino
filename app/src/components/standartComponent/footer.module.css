@@ -60,12 +60,13 @@
 .mainPSecond {
   color: #fffceb;
   margin: 0;
-  font-family: Agenda;
+  font-family: AgendaT;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
   line-height: 20px;
   margin-top: 24px;
+  text-decoration: none;
 }
 .allRights {
   color: rgba(255, 254, 235, 0.4);
@@ -77,4 +78,12 @@
   font-weight: 500;
   line-height: 30px;
   margin-top: 30px;
+}
+.socialWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.facebook {
+  margin-right: 17px;
 }
