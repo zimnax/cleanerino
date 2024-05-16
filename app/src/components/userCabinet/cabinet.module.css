@@ -110,6 +110,7 @@
   height: 44px;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 .iconVendor {
   width: 44px;
@@ -1336,4 +1337,16 @@
   top: 2.5px;
   left: 3px;
   transition: transform 0.25s ease;
+}
+.withoutPhoto {
+  width: 34px;
+  height: 34px;
+  background: var(--newfontgreen-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fffceb;
+  font-family: var(--customtwo-font);
+  border-radius: 50%;
+  margin-right: 10px;
 }

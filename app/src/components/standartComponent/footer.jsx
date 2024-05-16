@@ -77,9 +77,7 @@ const Footer = () => {
           </Link>
         </div>
       </div>
-      <p className={css.allRights}>
-        © 2024 Cleanerino Free. All Rights Reserved.
-      </p>
+      <p className={css.allRights}>© 2024 Cleanerino. All Rights Reserved.</p>
     </footer>
   );
 };

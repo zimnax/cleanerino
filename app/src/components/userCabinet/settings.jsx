@@ -74,14 +74,15 @@ const Settings = ({ users, setUsers }) => {
           },
         }
       );
-      console.log(response);
+
       if (response && response.statusText === "OK") {
         setLoading(false);
         Swal.fire({
           icon: "success",
-          title: "Data Updated",
+          title: "Successfully saved",
           text: "Data successfully updated",
-          confirmButtonColor: "#609966",
+          showConfirmButton: false,
+          timer: 1500,
         });
       }
       // Додайте тут логіку для обробки успішної відправки даних
@@ -100,7 +101,7 @@ const Settings = ({ users, setUsers }) => {
   return (
     <div className={css.wrapAllSettings}>
       <div className={css.wrapButtonWithName}>
-        <p className={css.pMainInSet}>Welcome, Esther Howard</p>
+        <p className={css.pMainInSet}>Welcome, {users && users.user_name}</p>
         <div className={css.wrapTwoButton}>
           <button className={css.buttonCancel}>Cancel</button>
           <button className={css.buttonSave} onClick={sendDataToServer}>

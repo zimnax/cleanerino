@@ -22,6 +22,9 @@ const ingridientsIconsRoute = require("./routes/ingridientsIconsRoute.js");
 const calcTaxRouter = require("./routes/calcTaxRouter.js");
 const payRouter = require("./routes/payRouter.js");
 const reviewsRouter = require("./routes/reviewsRouter.js");
+const orderSuccessRoute = require("./routes/orderSuccessRoute.js");
+const ordersRoute = require("./routes/ordersRoute.js");
+const ordersProductRoute = require("./routes/ordersProductRoute.js");
 const fileUpload = require("express-fileupload");
 
 const cors = require("cors");
@@ -48,7 +51,9 @@ app.use("/api/v1/vendor/product/fileAdd", fileAddRoute);
 app.use("/api/v1/vendor/product/add", productsRoute);
 app.use("/api/v1/vendor/product/update", updateProductRoute);
 app.use("/api/v1/users/newsletter", newsletterRoute);
-
+app.use("/webhook", orderSuccessRoute);
+app.use("/api/v1/orders", ordersRoute);
+app.use("/api/v1/orders/product", ordersProductRoute);
 app.use("/api/v1/vendor/product/category", categoriesRoutes);
 app.use("/api/v1/vendor/product/subcategory", subcategoriesRoutes);
 app.use("/api/v1/vendor/product/packaging", packagingRoutes);

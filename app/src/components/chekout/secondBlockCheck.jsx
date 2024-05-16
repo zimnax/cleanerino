@@ -7,6 +7,10 @@ const SecondBlockCheck = ({
   subtotal,
   setProdInCart,
   prodInCart,
+  tax,
+  allPostPay,
+  totalShip,
+  fullTotalPriceR,
 }) => {
   const [totalQuantity, setTotalQuantity] = useState(0);
   useEffect(() => {
@@ -69,18 +73,22 @@ const SecondBlockCheck = ({
         <p className={css.itemSubTotalP}>Total Before Tax</p>
         <p className={css.subTotalPrice}>${subtotal}</p>
       </div>
-      <div className={css.wrapItemSubTotMar}>
-        <p className={css.itemSubTotalP}>Shipping</p>
-        <p className={css.subTotalPrice}>${subtotal}</p>
-      </div>
-      <div className={css.wrapItemSubTotMar}>
-        <p className={css.itemSubTotalP}>Tax</p>
-        <p className={css.subTotalPrice}>${subtotal}</p>
-      </div>
+      {allPostPay && (
+        <div className={css.wrapItemSubTotMar}>
+          <p className={css.itemSubTotalP}>Shipping</p>
+          <p className={css.subTotalPrice}>${totalShip}</p>
+        </div>
+      )}
+      {tax !== null && (
+        <div className={css.wrapItemSubTotMar}>
+          <p className={css.itemSubTotalP}>Tax</p>
+          <p className={css.subTotalPrice}>${tax}</p>
+        </div>
+      )}
       <div className={css.line}></div>
       <div className={css.wrapItemSubTot}>
         <p className={css.itemSubTotalPGrand}>Grand Total</p>
-        <p className={css.itemSubTotalPGrand}>${subtotal}</p>
+        <p className={css.itemSubTotalPGrand}>${fullTotalPriceR}</p>
       </div>
     </div>
   );

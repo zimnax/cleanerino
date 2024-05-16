@@ -10,6 +10,10 @@
   font-family: "AgendaT";
   src: url("../../allFont/agenda-11.ttf") format("opentype");
 }
+@font-face {
+  font-family: "AgendaM";
+  src: url("../../allFont/Agenda Medium.ttf") format("opentype");
+}
 
 :root {
   --grayscale0-color: #ffffff;
@@ -30,7 +34,7 @@
 }
 
 .firstBlockWrap {
-  background: url("../../img/Hero.png");
+  background: url("../../img/Hero.webp");
   width: 100%;
   height: 1071px;
   flex-shrink: 0;
@@ -144,12 +148,12 @@
 .sendInfoButton {
   width: 77px;
   height: 77px;
-  background: #fffceb;
+  background: var(--newfontgreen-color);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 68px;
+  margin-left: 20px;
   cursor: pointer;
 }
 .allMainWrap {
@@ -669,7 +673,7 @@
   cursor: pointer;
 }
 .videoBlockWrap {
-  width: 80%;
+  width: 90%;
   height: 843px;
   display: flex;
   align-items: center;
@@ -679,6 +683,12 @@
   z-index: 2;
 }
 .videoImagew {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 30px;
+}
+.videoPlayer {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -752,7 +762,7 @@
 }
 .descriptionFaq {
   display: flex;
-  width: 520px;
+  width: 100%;
   align-self: start;
   height: auto;
   color: #000;
@@ -785,7 +795,7 @@
   width: 500px;
   height: 60px;
   text-align: start;
-  font-family: Agenda;
+  font-family: AgendaM;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;

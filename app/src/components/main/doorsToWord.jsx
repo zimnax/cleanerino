@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 const DoorsToWord = () => {
   const navigate = useNavigate();
   const toContact = () => {
-    navigate("/shop");
+    navigate("/vendorRegistration");
   };
   return (
     <div className={css.wrapOpenDoors}>

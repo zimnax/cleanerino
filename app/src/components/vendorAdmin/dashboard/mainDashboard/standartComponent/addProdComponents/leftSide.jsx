@@ -46,6 +46,18 @@ const LeftSide = ({
   ingridientWithotError,
   setWordsWithout,
   wordsWithout,
+  width,
+  setWidth,
+  height,
+  setHeight,
+  length,
+  setLength,
+  changeHeight,
+  validateHeightInput,
+  changeLength,
+  validateLengthInput,
+  heightError,
+  lengthError,
 }) => {
   const onDrop = useCallback((acceptedFiles) => {
     const imageFiles = acceptedFiles.filter((file) =>
@@ -187,7 +199,7 @@ const LeftSide = ({
           </div>
         </div>
       </div>
-      <div className={css.priceWrap}>
+      <div className={css.priceWrapNew}>
         <label className={css.labelInpBold}>Size</label>
         <div className={css.priceWrapSmallFl}>
           <div className={css.oneSmalInp}>
@@ -208,17 +220,50 @@ const LeftSide = ({
 
           <div className={css.oneSmalInp}>
             <label className={volumeError ? css.labelInp : css.labelInpNot}>
-              Volume
+              Width
             </label>
 
             <input
               className={
                 volumeError ? css.proceInputSmal : css.proceInputSmalNot
               }
-              value={volume}
-              onBlur={() => validateVolumeInput(volume)}
+              value={width}
+              onBlur={() => validateVolumeInput(width)}
               onChange={changeVolume}
-              placeholder="5 fl oz/ 150 ml"
+              placeholder=""
+            />
+          </div>
+        </div>
+        <div className={css.priceWrapSmallFl}>
+          <div className={css.oneSmalInp}>
+            <label className={heightError ? css.labelInp : css.labelInpNot}>
+              Height
+            </label>
+
+            <input
+              className={
+                heightError ? css.proceInputSmal : css.proceInputSmalNot
+              }
+              value={height}
+              onBlur={() => validateHeightInput(height)}
+              onChange={changeHeight}
+              placeholder=""
+            />
+          </div>
+
+          <div className={css.oneSmalInp}>
+            <label className={lengthError ? css.labelInp : css.labelInpNot}>
+              Length
+            </label>
+
+            <input
+              className={
+                lengthError ? css.proceInputSmal : css.proceInputSmalNot
+              }
+              value={length}
+              onBlur={() => validateLengthInput(length)}
+              onChange={changeLength}
+              placeholder=""
             />
           </div>
         </div>

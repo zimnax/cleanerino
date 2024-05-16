@@ -73,6 +73,9 @@ exports.getProductById = (req, res) => {
   p.instructions, 
   p.vendorId, 
   p.local_pickup, 
+  p.width,     
+  p.height,    
+  p.length, 
   ps1.name AS paper_cardboard, 
   ps2.name AS metal, 
   ps3.name AS glass, 
@@ -108,49 +111,6 @@ LEFT JOIN packaging_subcategories ps3 ON p.glass_id = ps3.id
 LEFT JOIN packaging_subcategories ps4 ON p.recyclable_plastic_id = ps4.id
 LEFT JOIN reviews r ON p.id = r.prod_id
 WHERE p.id = ?;`;
-  // let query = `
-  //   SELECT
-  //     p.id AS product_id,
-  //     p.product_name,
-  //     p.short_description,
-  //     p.long_description,
-  //     p.quantity,
-  //     p.ingredients,
-  //     p.default_size,
-  //     p.product_category_id,
-  //     p.product_type_id,
-  //     p.made_without,
-  //     p.instructions,
-  //     p.vendorId,
-  //     p.local_pickup,
-  //     ps1.name AS paper_cardboard,
-  //     ps2.name AS metal,
-  //     ps3.name AS glass,
-  //     ps4.name AS recyclable_plastic,
-  //     v.id AS variation_id,
-  //     v.unit,
-  //     v.parameter_value,
-  //     v.price,
-  //     d.id AS dimension_id,
-  //     d.weight,
-  //     d.volume,
-  //     d.price AS dimension_price,
-  //     pc.id AS certificate_id,
-  //     pc.certif_cat,
-  //     pc.certif_sub_cat,
-  //     f.id AS file_id,
-  //     f.file,
-  //     f.type
-  //   FROM products p
-  //   LEFT JOIN variation v ON p.id = v.product_id
-  //   LEFT JOIN dimensions d ON p.id = d.product_id
-  //   LEFT JOIN prod_certificate pc ON p.id = pc.prod_id
-  //   LEFT JOIN files f ON p.id = f.product_id
-  //   LEFT JOIN packaging_subcategories ps1 ON p.paper_cardboard_id = ps1.id
-  //   LEFT JOIN packaging_subcategories ps2 ON p.metal_id = ps2.id
-  //   LEFT JOIN packaging_subcategories ps3 ON p.glass_id = ps3.id
-  //   LEFT JOIN packaging_subcategories ps4 ON p.recyclable_plastic_id = ps4.id
-  //   WHERE p.id = ?;`; // Додаємо умову WHERE для фільтрації за ID
 
   db.query(query, [productId], (err, result) => {
     if (err) {
@@ -171,6 +131,9 @@ WHERE p.id = ?;`;
         made_without: result[0].made_without,
         ingredients: result[0].ingredients,
         local_pickup: result[0].local_pickup,
+        width: result[0].width,
+        height: result[0].height,
+        length: result[0].length,
         default_size: result[0].default_size,
         product_category_id: result[0].product_category_id,
         product_type_id: result[0].product_type_id,
@@ -266,7 +229,10 @@ exports.getAllProduct = (req, res) => {
       p.made_without, 
       p.instructions, 
       p.vendorId, 
-      p.local_pickup, 
+      p.local_pickup,
+      p.width,  
+      p.height,
+      p.length,
       ps1.name AS paper_cardboard, 
       ps2.name AS metal, 
       ps3.name AS glass, 
@@ -285,7 +251,13 @@ exports.getAllProduct = (req, res) => {
       pc.prod_id AS prod_id,
       f.id AS file_id,
       f.file, 
-      f.type
+      f.type,
+      r.id AS review_id,
+      r.name AS review_name,
+      r.rating,
+      r.comment,
+      r.photo AS review_photo,
+      r.created_at AS created_at
     FROM products p
     LEFT JOIN variation v ON p.id = v.product_id
     LEFT JOIN dimensions d ON p.id = d.product_id
@@ -295,6 +267,7 @@ exports.getAllProduct = (req, res) => {
     LEFT JOIN packaging_subcategories ps2 ON p.metal_id = ps2.id
     LEFT JOIN packaging_subcategories ps3 ON p.glass_id = ps3.id
     LEFT JOIN packaging_subcategories ps4 ON p.recyclable_plastic_id = ps4.id
+    LEFT JOIN reviews r ON p.id = r.prod_id
   `;
 
   db.query(query, (err, result) => {
@@ -319,6 +292,9 @@ exports.getAllProduct = (req, res) => {
           made_without: row.made_without,
           ingredients: row.ingredients,
           local_pickup: row.local_pickup,
+          width: row.width,
+          height: row.height,
+          length: row.length,
           default_size: row.default_size,
           product_category_id: row.product_category_id,
           product_type_id: row.product_type_id,
@@ -330,6 +306,7 @@ exports.getAllProduct = (req, res) => {
           dimensions: [],
           certificates: [],
           files: [],
+          reviews: [],
         };
       }
 
@@ -385,6 +362,19 @@ exports.getAllProduct = (req, res) => {
           type: row.type,
         });
       }
+      if (
+        row.review_id &&
+        !products[productId].reviews.some((r) => r.id === row.review_id)
+      ) {
+        products[productId].reviews.push({
+          id: row.review_id,
+          name: row.review_name,
+          rating: row.rating,
+          comment: row.comment,
+          photo: row.review_photo,
+          created_at: row.created_at,
+        });
+      }
     });
 
     // Перетворюємо об'єкт в масив продуктів
@@ -418,6 +408,9 @@ exports.createProduct = (req, res) => {
     instruction,
     vendorId,
     local_pickup,
+    width,
+    height,
+    length,
   } = req.body;
 
   let pro;
@@ -439,8 +432,8 @@ exports.createProduct = (req, res) => {
 
   // Запит до бази даних на додавання нового товару
   const query = `INSERT INTO products 
-                 (product_name, short_description, long_description, quantity, ingredients, product_category_id, product_type_id, glass_id, metal_id, paper_cardboard_id, recyclable_plastic_id, made_without, instructions, vendorId, local_pickup)
-                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+               (product_name, short_description, long_description, quantity, ingredients, product_category_id, product_type_id, glass_id, metal_id, paper_cardboard_id, recyclable_plastic_id, made_without, instructions, vendorId, local_pickup, width, height, length)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
   db.query(
     query,
@@ -460,6 +453,9 @@ exports.createProduct = (req, res) => {
       instruction || null,
       vendorId,
       local_pickup,
+      width,
+      height,
+      length,
     ],
     (err, result) => {
       if (err) {
@@ -894,7 +890,10 @@ exports.updateProduct = (req, res) => {
                                 made_without = ?,
                                 instructions = ?,
                                 vendorId = ?,
-                                local_pickup = ?
+                                local_pickup = ?,
+                                width = ?,
+                                height = ?,
+                                length = ?
                               WHERE id = ?`;
 
   db.query(
@@ -915,6 +914,9 @@ exports.updateProduct = (req, res) => {
       updatedData.instruction || null,
       updatedData.vendorId,
       updatedData.local_pickup,
+      updatedData.width,
+      updatedData.height,
+      updatedData.length,
       productId,
     ],
     (err, productResult) => {

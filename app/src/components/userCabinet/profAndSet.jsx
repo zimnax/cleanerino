@@ -44,10 +44,7 @@ const ProfAndSet = ({
       <div className={css.secondNameWr}>
         <div className={css.wrapText}>
           <p className={css.mainTextP}>Your photo</p>
-          <p className={css.secondText}>
-            Commodo morbi egestas gravida risus ut odio nunc velit consequat.
-            Purus.
-          </p>
+          <p className={css.secondText}></p>
         </div>
 
         <div className={css.wrapLogoDrop} onClick={handleLogoClickLogo}>
@@ -65,7 +62,7 @@ const ProfAndSet = ({
           <div className={css.dropDownWrap}>
             <ReactSVG src={upload} />
             <p className={css.descPDrop}>
-              <span className={css.descPDropSpan}>Click to upload logo</span>
+              <span className={css.descPDropSpan}>Click to upload photo</span>
               *.svg, *.png, *.jpeg, *.jpg, *.gif. Size{" "}
               <span className={css.descSpanSize}>280х432px.</span>
             </p>
@@ -84,7 +81,6 @@ const ProfAndSet = ({
       <div className={css.feirstNameWr}>
         <div className={css.wrapText}>
           <p className={css.mainTextP}>Personal information</p>
-          <p className={css.secondText}>Tellus vitae nec quis in rhoncus</p>
         </div>
         <div className={css.inputWithTextWrap}>
           <div className={css.smalInpWrapSet}>

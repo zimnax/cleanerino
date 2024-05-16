@@ -92,7 +92,7 @@ const Header = ({ activeUser, data, totalQuantity }) => {
           <p className={css.shapCatP}>Shop Categories</p>
           <ReactSVG src={arrowDHeader} className={css.iconArrowD} />
         </div> */}
-        <div className={css.wrapInputSearch}>
+        {/* <div className={css.wrapInputSearch}>
           <input
             className={css.inputHeader}
             value={search}
@@ -102,7 +102,26 @@ const Header = ({ activeUser, data, totalQuantity }) => {
           <button className={css.newSearchHeader} onClick={sendData}>
             <ReactSVG src={searchIcon} className={css.searchIconHeader} />
           </button>
-        </div>
+        </div> */}
+        <nav className={css.navigationInHeader}>
+          <ul className={css.ulNavigation}>
+            <li className={css.liNavI}>
+              <Link className={css.liNavI} to="/shop">
+                Shop
+              </Link>
+            </li>
+            <li className={css.liNavI}>
+              <Link className={css.liNavI} to="/about">
+                About
+              </Link>
+            </li>
+            <li className={css.liNavI}>
+              <Link className={css.liNavI} to="/contact">
+                Contact
+              </Link>
+            </li>
+          </ul>
+        </nav>
         <div className={css.wrapIconsHeader}>
           {users && (
             <Link className={css.nameP} to={`/user/cabinet`}>
@@ -132,22 +151,18 @@ const Header = ({ activeUser, data, totalQuantity }) => {
             </div>
           )}
 
-          <div className={css.wrapPhoto}>
-            {vendor && vendor.first_name !== "" && (
-              <>
-                {vendor.photo && (
-                  <img
-                    className={css.userPhoto}
-                    src={vendor.photo}
-                    alt="photo"
-                  />
-                )}
-                {!vendor.photo && (
-                  <div className={css.withoutPhoto}>{vendor.first_name[0]}</div>
-                )}
-              </>
-            )}
-            {users && users.user_name !== "" && (
+          {vendor && vendor.first_name !== "" && (
+            <div className={css.wrapPhoto}>
+              {vendor.photo && (
+                <img className={css.userPhoto} src={vendor.photo} alt="photo" />
+              )}
+              {!vendor.photo && (
+                <div className={css.withoutPhoto}>{vendor.first_name[0]}</div>
+              )}
+            </div>
+          )}
+          {users && users.user_name !== "" && (
+            <div className={css.wrapPhoto}>
               <Link to={`/user/cabinet`}>
                 {users.photo && (
                   <img
@@ -160,8 +175,9 @@ const Header = ({ activeUser, data, totalQuantity }) => {
                   <div className={css.withoutPhoto}>{users.user_name[0]}</div>
                 )}
               </Link>
-            )}
-          </div>
+            </div>
+          )}
+
           {vendor && (
             <Link to="/vendor/dashboard">
               <div className={css.wrapAllIcons}>
@@ -175,10 +191,10 @@ const Header = ({ activeUser, data, totalQuantity }) => {
             <ReactSVG src={flower} />
             <div className={css.elipse}></div>
           </div> */}
-          <div className={css.wrapAllIcons}>
+          {/* <div className={css.wrapAllIcons}>
             <ReactSVG src={heart} />
             <div className={css.elipse}></div>
-          </div>
+          </div> */}
           <Link to="/cart">
             <div className={css.wrapAllIcons}>
               <ReactSVG src={cart} />
@@ -215,11 +231,11 @@ const Header = ({ activeUser, data, totalQuantity }) => {
             </li>
           </ul>
         </nav> */}
-        <div className={css.hamburgerWr} onClick={open}>
+        {/* <div className={css.hamburgerWr} onClick={open}>
           <span className={css.hambSpFirs}></span>
           <span className={css.hambSpSecont}></span>
           <span className={css.hambSpThre}></span>
-        </div>
+        </div> */}
       </div>
       {openContact && <Menu setOpenContact={setOpenContact} />}
     </header>

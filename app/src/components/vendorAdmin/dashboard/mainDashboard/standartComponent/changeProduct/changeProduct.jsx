@@ -38,6 +38,9 @@ const ChangeProduct = ({
   const [productPrice, setProductPrice] = useState("");
   const [weight, setWeight] = useState("");
   const [volume, setVolume] = useState("");
+  const [width, setWidth] = useState("");
+  const [height, setHeight] = useState("");
+  const [length, setLength] = useState("");
   const [quantity, setQuantity] = useState("");
   const [activeCategories, setActiveCategories] = useState([]);
   const [activeNames, setActiveNames] = useState([]);
@@ -58,6 +61,8 @@ const ChangeProduct = ({
   const [quontError, setQuontError] = useState(true);
   const [ingridientError, setIngridientError] = useState(true);
   const [ingridientWithotError, setIngridientWithotError] = useState(true);
+  const [heightError, setHeightError] = useState(true);
+  const [lengthError, setLengthError] = useState(true);
   const [fin, setFin] = useState(false);
   const validateInputLength = (input, min) => {
     if (input === null) {
@@ -98,7 +103,9 @@ const ChangeProduct = ({
       setProdName(productForChange.product_name);
       setShortDesc(productForChange.short_description);
       setLongDesc(productForChange.long_description);
-
+      setWidth(productForChange.width);
+      setHeight(productForChange.height);
+      setLength(productForChange.length);
       let shapes = [];
       let scents = [];
       let colors = [];
@@ -227,6 +234,9 @@ const ChangeProduct = ({
     setQuantity("");
     setVolume("");
     setWeight("");
+    setHeight("");
+    setLength("");
+    setWidth("");
     setScent([{ scent: 0, price: 0 }]);
     setShape([{ shape: 0, price: 0 }]);
     setColor([{ color: 0, price: 0 }]);
@@ -301,6 +311,9 @@ const ChangeProduct = ({
           productPrice: parseInt(productPrice),
           weight: parseInt(weight),
           volume: parseInt(volume),
+          width: parseInt(width),
+          height: parseInt(height),
+          length: parseInt(length),
           quantity: parseInt(quantity),
           activeCategories,
           activeNames,
@@ -404,6 +417,20 @@ const ChangeProduct = ({
     setQuantity(e.target.value);
     validateQuantityInput(e.target.value);
   };
+  const validateHeightInput = (name) => {
+    setHeightError(!validateInputLength(name, 1) ? false : true);
+  };
+  const validateLengthInput = (name) => {
+    setLengthError(!validateInputLength(name, 1) ? false : true);
+  };
+  const changeHeight = (e) => {
+    setWeight(e.target.value);
+    validateHeightInput(e.target.value);
+  };
+  const changeLength = (e) => {
+    setLength(e.target.value);
+    validateLengthInput(e.target.value);
+  };
   return (
     <>
       <div className={css.regWrap}>
@@ -465,6 +492,18 @@ const ChangeProduct = ({
             changeQuont={changeQuont}
             validateQuantityInput={validateQuantityInput}
             setIngridientError={setIngridientError}
+            width={width}
+            setWidth={setWidth}
+            height={height}
+            setHeight={setHeight}
+            length={length}
+            setLength={setLength}
+            changeHeight={changeHeight}
+            validateHeightInput={validateHeightInput}
+            changeLength={changeLength}
+            validateLengthInput={validateLengthInput}
+            heightError={heightError}
+            lengthError={lengthError}
           />
           <RightSide
             setShortDesc={setShortDesc}

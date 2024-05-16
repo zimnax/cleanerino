@@ -1,6 +1,7 @@
 import css from "../dashboard.module.css";
 import { ReactSVG } from "react-svg";
 import { HandySvg } from "handy-svg";
+import { Link } from "react-router-dom";
 import group from "../../../../svg/solar_cart-linear.svg";
 import groupTrue from "../../../../svg/solar_cart-linearTrue.svg";
 import tune from "../../../../svg/Tune.svg";
@@ -57,7 +58,9 @@ const LeftPannel = ({
   return (
     <div className={css.leftPannelWrap}>
       <div className={css.leftPFirstWrap}>
-        <ReactSVG src={logo} />
+        <Link to="/">
+          <ReactSVG src={logo} />
+        </Link>
         <ul className={css.ulDash}>
           <li
             className={dashBordS ? css.liDashTrue : css.liDash}

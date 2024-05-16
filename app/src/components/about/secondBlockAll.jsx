@@ -9,7 +9,7 @@ import phyIcon from "../../svg/philosophyJkd.svg";
 import ecoL from "../../svg/ecoL.svg";
 const SecondBlockAll = () => {
   return (
-    <div className={css.secondBlockAllWr} id="section1">
+    <div className={css.secondBlockAllWr}>
       <div className={css.philosophyWrap}>
         <div className={css.wrapWithLogo}>
           <ReactSVG src={phyIcon} />

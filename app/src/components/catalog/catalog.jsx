@@ -10,7 +10,8 @@ import { useEffect, useState } from "react";
 import VendorProd from "./vendorProd";
 import withMySQLData from "../HOK/withMySQLData";
 import HeaderModernWhite from "../standartComponent/headerModernWhite";
-const Catalog = ({ data, activeUser, totalQuantity }) => {
+import HeaderModernWhiteCatalog from "../standartComponent/HeaderModernWhiteCatalog";
+const Catalog = ({ data, activeUser, totalQuantity, setCartCounterC }) => {
   const dispatch = useDispatch();
   const [nameProduct, setNameProduct] = useState("");
   const [categoryListAll, setCategoryListAll] = useState([]);
@@ -23,6 +24,7 @@ const Catalog = ({ data, activeUser, totalQuantity }) => {
   const [listOfProduct, setListOfProduct] = useState(null);
   const [ingridietsArrayFromB, setIngridietsArrayFromB] = useState(null);
   const [alergens, setAlergens] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(null);
   const text = useSelector((state) => state.textSlice);
   // Отримуємо поточне значення тексту зі стану
   useEffect(() => {
@@ -223,6 +225,11 @@ const Catalog = ({ data, activeUser, totalQuantity }) => {
         });
       });
     }
+    if (selectedOption === "Local pick-up") {
+      filteredList = filteredList.filter(
+        (product) => product.local_pickup === "true"
+      );
+    }
     return filteredList;
   };
 
@@ -239,19 +246,21 @@ const Catalog = ({ data, activeUser, totalQuantity }) => {
     selectedSkinType,
     selectedSkinConcer,
     alergens,
+    selectedOption,
   ]);
+
   const changeSearchParams = (e) => {
     setNameProduct(e.target.value);
     dispatch(setText(e.target.value));
   };
   return (
     <>
-      <HeaderModernWhite
+      <HeaderModernWhiteCatalog
         activeUser={activeUser}
         totalQuantity={totalQuantity}
       />
       <div className={css.wrapAllCatalog}>
-        <div className={css.wrapSearch}>
+        {/* <div className={css.wrapSearch}>
           <CategoryList
             setSelectedCategoryId={setSelectedCategoryId}
             selectedCategoryId={selectedCategoryId}
@@ -266,7 +275,7 @@ const Catalog = ({ data, activeUser, totalQuantity }) => {
               placeholder="Search..."
             />
           </div>
-        </div>
+        </div> */}
         <VendorProd
           listOfProduct={listOfProduct}
           nameProduct={nameProduct}
@@ -283,6 +292,10 @@ const Catalog = ({ data, activeUser, totalQuantity }) => {
           selectedSkinConcer={selectedSkinConcer}
           setSelectedSkinConcer={setSelectedSkinConcer}
           setAlergens={setAlergens}
+          selectedOption={selectedOption}
+          setSelectedOption={setSelectedOption}
+          setListOfProduct={setListOfProduct}
+          setCartCounterC={setCartCounterC}
         />
       </div>
     </>

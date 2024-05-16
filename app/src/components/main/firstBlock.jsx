@@ -2,7 +2,7 @@ import { useState } from "react";
 import css from "./main.module.css";
 import { ReactSVG } from "react-svg";
 import arrow from "../../svg/VectorarrowSelect.svg";
-import arrowSend from "../../svg/ArrowButtonSend.svg";
+import arrowSend from "../../svg/newArrowWq.svg";
 import { setText } from "../../function/textSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -31,10 +31,6 @@ const FirstBlock = () => {
               placeholder="Find my new favorite..."
               onChange={handleInputChange}
             />
-            <div className={css.wrapSection}>
-              <p className={css.textInSelect}>Skin Cream</p>
-              <ReactSVG src={arrow} className={css.arrowSelect} />
-            </div>
           </div>
           <div className={css.sendInfoButton} onClick={sendData}>
             <ReactSVG src={arrowSend} />

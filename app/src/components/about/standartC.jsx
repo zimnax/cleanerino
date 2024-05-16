@@ -5,7 +5,7 @@ import vfJ from "../../svg/Subtract.svg";
 import ecoL from "../../svg/ecoL.svg";
 const StandartC = () => {
   return (
-    <div className={css.wrapStandartCriteria} id="section3">
+    <div className={css.wrapStandartCriteria}>
       <ReactSVG src={phyIcon} />
       <p className={css.standartMaitP}>Standards & Criteria</p>
       <div className={css.wrapBigBlockIngrid}>

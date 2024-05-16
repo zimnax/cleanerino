@@ -1,13 +1,44 @@
 import { useState } from "react";
 import css from "./checkout.module.css";
-const AddAddressToSend = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [zip, setZip] = useState("");
-  const [country, setCountry] = useState("");
+const AddAddressToSend = ({
+  line,
+  setLine,
+  city,
+  setCity,
+  state,
+  setState,
+  zipCode,
+  setZipCode,
+  country,
+  setCountry,
+  name,
+  setName,
+  email,
+  setEmail,
+  calculateTax,
+  selectedAddress,
+  setSelectedAddress,
+  setAddress,
+  phone,
+  setPhone,
+  users,
+}) => {
+  const calcWithNew = () => {
+    calculateTax(line, city, state, zipCode, country);
+    setSelectedAddress(null);
+    setAddress({
+      name: name,
+      street1: line,
+      city: city,
+      state: state,
+      zip: zipCode,
+      country: country,
+      phone: phone,
+      email: email,
+      id: users ? users.id : null,
+    });
+  };
+  console.log(users);
   return (
     <div className={css.wrapAddNewAddres}>
       <p className={css.pInNewAddress}>SHIPPING & BILLING INFORMATION</p>
@@ -31,10 +62,19 @@ const AddAddressToSend = () => {
           />
         </div>
         <div className={css.wrapInputInAddMain}>
+          <div className={css.nameInput}>Phone</div>
+          <input
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            className={css.inputNewBig}
+            placeholder="Placeholder"
+          />
+        </div>
+        <div className={css.wrapInputInAddMain}>
           <div className={css.nameInput}>Address</div>
           <input
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
+            value={line}
+            onChange={(e) => setLine(e.target.value)}
             className={css.inputNewBig}
             placeholder="Placeholder"
           />
@@ -58,8 +98,8 @@ const AddAddressToSend = () => {
           />
           <div className={css.nameInput}>Zip</div>
           <input
-            value={zip}
-            onChange={(e) => setZip(e.target.value)}
+            value={zipCode}
+            onChange={(e) => setZipCode(e.target.value)}
             className={css.inputNewSmall}
             placeholder="556569"
           />
@@ -74,7 +114,9 @@ const AddAddressToSend = () => {
           />
         </div>
       </div>
-      <div className={css.shipThisAddressButton}>Ship to this address</div>
+      <div className={css.shipThisAddressButton} onClick={calcWithNew}>
+        Ship to this address
+      </div>
     </div>
   );
 };

@@ -21,7 +21,9 @@ const FirstBlock = () => {
             </a>
           </div>
           <div className={css.wrapButton}>
-            <div className={css.nameLink}>Standards & Sustainability </div>
+            <div className={css.nameLink} id="section1">
+              Standards & Sustainability{" "}
+            </div>
             <a href="#section3" className={css.sendToId}>
               <ReactSVG src={arrow} className={css.arowStyle} />
             </a>

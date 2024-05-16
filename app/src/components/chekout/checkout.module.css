@@ -10,7 +10,10 @@
   font-family: "AgendaT";
   src: url("../../allFont/agenda-11.ttf") format("opentype");
 }
-
+@font-face {
+  font-family: "AgendaM";
+  src: url("../../allFont/Agenda Medium.ttf") format("opentype");
+}
 :root {
   --grayscale0-color: #ffffff;
   --grayscale10-color: #e5e5e5;
@@ -239,7 +242,7 @@
 .wrapAddNewAddres {
   padding: 24px 20px;
   width: calc(100% - 40px);
-  height: calc(478px - 48px);
+  height: calc(526px - 48px);
   border-radius: 30px;
   background: var(--grayscale0-color);
   box-shadow: 4px 4px 44px 0px rgba(0, 0, 0, 0.05);
@@ -261,7 +264,7 @@
 }
 .wrapAllInputs {
   width: 100%;
-  height: 328px;
+  height: 376px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -549,4 +552,224 @@
 }
 .giftIconS {
   margin-right: 8px;
+}
+.wrapOneBlockVend {
+  padding: 30px;
+  width: calc(100% - 60px);
+  height: auto;
+  border-radius: 30px;
+  box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.05);
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.vendorInformation {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nameAndBrandWrap {
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logoInVenBlock {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+.vendorNameInCheck {
+  color: #333;
+  margin: 0;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: "Orpheus Pro";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.productBlock {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+.photoProdV {
+  width: 202px;
+  height: 202px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+.prodInformationWrap {
+  width: 354px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-left: 30px;
+}
+.blockPicDS {
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.pNameProd {
+  margin: 0;
+  color: #4c4c4c;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.8px;
+}
+.pDescProd {
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+  color: #999;
+  margin: 0;
+  font-family: var(--custom-font);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 15px;
+}
+.quontetProd {
+  color: #333;
+
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px; /* 142.857% */
+  letter-spacing: 0.7px;
+}
+.wrapPriceVendor {
+  width: 250px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.prodPriceOne {
+  margin: 0;
+  color: #486642;
+  font-family: "Orpheus Pro";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.prodPriceAlign {
+  align-self: flex-end;
+  margin: 0;
+  color: #486642;
+  font-family: "Orpheus Pro";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.totalProceOneVendor {
+  color: #333;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px; /* 142.857% */
+  letter-spacing: 0.7px;
+}
+.lineInProd {
+  width: 100%;
+  height: 1px;
+  background: var(--grayscale20-color);
+  margin-top: 20px;
+}
+.proceInputBigSelect {
+  margin-top: 20px;
+
+  width: 400px;
+  height: 50px;
+  border-radius: 999px;
+  background: var(--grayscale0-color);
+  border: none;
+  box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.05);
+  padding-left: 30px;
+  appearance: none;
+  color: #333;
+  font-family: var(--custom-font);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px; /* 142.857% */
+  letter-spacing: 0.7px;
+}
+.wrapShinAdnAll {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.fullPriceInBlock {
+  display: flex;
+  width: 250px;
+  height: auto;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  justify-self: flex-end;
+  margin-top: 10px;
+}
+.byOnThis {
+  width: 400px;
+  height: 50px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primarynormal-color);
+  color: var(--grayscale0-color);
+  font-family: var(--custom-font);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px; /* 142.857% */
+  letter-spacing: 0.7px;
+  cursor: pointer;
+}
+.buttonOrderAll {
+  width: 100%;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  background: var(--newfontgreen-color);
+  color: var(--grayscale0-color);
+  font-family: AgendaM;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 50px;
 }

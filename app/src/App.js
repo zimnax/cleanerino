@@ -3,7 +3,7 @@ import "./App.css";
 import { auth } from "./function/firebase";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
 import VendorReg from "./components/vendorAdmin/vendorReg/vendorReg";
 import { onAuthStateChanged } from "firebase/auth";
 import DashBoard from "./components/vendorAdmin/dashboard/mainDashboard/dashBoard";
@@ -23,14 +23,19 @@ import Cabinet from "./components/userCabinet/cabinet";
 import { loadCartItems } from "./function/cartSlice";
 import { useDispatch } from "react-redux";
 import Checkout from "./components/chekout/checkout";
+import Admin from "./components/admin/admin";
 
 function App() {
   const [activeUser, setActiveUser] = useState(null);
   const [cartCounterC, setCartCounterC] = useState(0);
   const dispatch = useDispatch();
-
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (authUser) => {
+      console.log("authUser", authUser);
       if (authUser) {
         const email = authUser.email;
 
@@ -110,7 +115,11 @@ function App() {
         <Route
           path="/shop"
           element={
-            <Catalog activeUser={activeUser} totalQuantity={totalQuantity} />
+            <Catalog
+              activeUser={activeUser}
+              totalQuantity={totalQuantity}
+              setCartCounterC={setCartCounterC}
+            />
           }
         />
         <Route
@@ -123,6 +132,16 @@ function App() {
           path="/cart"
           element={
             <Cart
+              setCartCounterC={setCartCounterC}
+              activeUser={activeUser}
+              quor={totalQuantity}
+            />
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <Admin
               setCartCounterC={setCartCounterC}
               activeUser={activeUser}
               quor={totalQuantity}

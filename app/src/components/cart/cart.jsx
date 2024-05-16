@@ -11,11 +11,16 @@ import { moveItemToCart } from "../../function/addProdFromLaterToC";
 import ProdInLater from "./prodInLater";
 import HeaderNormal from "../standartComponent/headerNormal";
 import HeaderModernWhite from "../standartComponent/headerModernWhite";
+import { useNavigate } from "react-router-dom";
 const Cart = ({ activeUser, data, setCartCounterC, quor }) => {
   const [prodInCart, setProdInCart] = useState(null);
   const [prodInLater, setProdInLater] = useState(null);
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
+  const navigate = useNavigate();
+  const toCheckout = () => {
+    navigate("/checkout");
+  };
   useEffect(() => {
     const cartProducts = JSON.parse(localStorage.getItem("cart")) || [];
     if (data && data.products && cartProducts.length > 0) {
@@ -105,6 +110,9 @@ const Cart = ({ activeUser, data, setCartCounterC, quor }) => {
       setTotalPrice(totalPrice);
     }
   }, [prodInCart]);
+  const toShop = () => {
+    navigate("/shop");
+  };
   return (
     <>
       <HeaderModernWhite activeUser={activeUser} totalQuantity={quor} />
@@ -113,6 +121,12 @@ const Cart = ({ activeUser, data, setCartCounterC, quor }) => {
         <div className={css.smallWrap}>
           <div className={css.prodWrap}>
             {prodInCart && <p className={css.pInCart}>Shopping Cart</p>}
+            {!prodInCart && <p className={css.pInCart}>Your cart is empty</p>}
+            {!prodInCart && (
+              <button className={css.buttonCheckoutShop} onClick={toShop}>
+                Shop
+              </button>
+            )}
             {prodInCart &&
               prodInCart.map((el, index) => {
                 return (
@@ -153,7 +167,9 @@ const Cart = ({ activeUser, data, setCartCounterC, quor }) => {
                 <p className={css.allPrice}>${totalPrice.toFixed(2)}</p>
               </div>
             </div>
-            <button className={css.buttonCheckout}>Proceed to Checkout</button>
+            <button className={css.buttonCheckout} onClick={toCheckout}>
+              Proceed to Checkout
+            </button>
           </div>
         </div>
       </div>

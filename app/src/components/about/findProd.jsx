@@ -11,7 +11,7 @@ const FindProd = () => {
         <ReactSVG src={cartSvg} className={css.cartSvg} />
         <ReactSVG src={earthSvg} className={css.earthSvg} />
       </div>
-      <p className={css.pInFindBig}>
+      <p className={css.pInFindBig} id="section2">
         Through our platform, we aim to reduce waste by helping customers find
         the right products from the first try, fostering a more sustainable
         approach to skincare. Ultimately, we envision a skincare industry that

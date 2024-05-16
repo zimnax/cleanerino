@@ -9,7 +9,7 @@ import plu from "../../svg/plusSvg.svg";
 import addToCart from "../../function/addProductToCart";
 import { addToCartRed, updateCartQuantity } from "../../function/cartSlice";
 import { useDispatch } from "react-redux";
-
+import { useNavigate } from "react-router-dom";
 const NearPicture = ({
   productData,
   data,
@@ -20,6 +20,7 @@ const NearPicture = ({
   const [price, setPrice] = useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
   const [count, setCount] = useState(1);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -46,6 +47,9 @@ const NearPicture = ({
   //     ></div>
   //   ));
   // };
+  const toVendor = () => {
+    navigate(`/vendor/page/${brand.id}`);
+  };
   const changeCounter = (e) => {
     const value = parseInt(e.target.value);
     setCount(e.target.value);
@@ -103,29 +107,22 @@ const NearPicture = ({
 
     // перевіряємо чи товар вже є в корзині
     const existingProductIndex = cartItems.findIndex((item) => item.uid === id);
-    console.log(cartItems);
-    setCartCounterC((prev) => prev + 1);
-    // if (existingProductIndex >= 0) {
-    //   console.log("Entered");
-    //   // Якщо товар знайдено, оновити його кількість за допомогою updateCartQuantity
-    //   const updatedQuantity = cartItems[existingProductIndex].quantity + count;
-    //   dispatch(
-    //     updateCartQuantity({ productId: id, quantity: updatedQuantity })
-    //   );
-    // } else {
-    //   // Якщо товару немає в корзині, додати його за допомогою addToCartRed
 
-    //   dispatch(addToCartRed({ id, quantity: count, price }));
-    // }
+    setCartCounterC((prev) => prev + 1);
   };
+
   return (
     <div className={css.wrapTextInProd}>
       <p className={css.pictureNameMain}>{productData.product_name}</p>
-      {brand && brand.my_brand_name && (
-        <p className={css.brandNameStyle}>Brand: {brand.my_brand_name}</p>
+      {brand && brand.brand_name && (
+        <p className={css.brandNameStyle} onClick={toVendor}>
+          Brand: {brand.brand_name}
+        </p>
       )}
-      {brand && !brand.my_brand_name && (
-        <p className={css.brandNameStyle}>Brand: Brand</p>
+      {brand && !brand.brand_name && (
+        <p className={css.brandNameStyle} onClick={toVendor}>
+          Brand: Brand
+        </p>
       )}
       <div className={css.wrapStarRating}>
         <ReactSVG src={starFull} className={css.starF} />

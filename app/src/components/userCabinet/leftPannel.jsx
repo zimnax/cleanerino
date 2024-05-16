@@ -96,12 +96,15 @@ const LeftPannel = ({
         </ul>
       </div>
       <div className={css.secondDashWrap}>
-        <div className={css.wrapNameIcon}>
+        <div
+          className={css.wrapNameIcon}
+          onClick={() => handleClick("settings")}
+        >
           {users && users.photo && (
             <img className={css.iconVendor} src={users.photo} />
           )}
           {users && !users.photo && (
-            <img className={css.iconVendor} src={iconK} />
+            <div className={css.withoutPhoto}>{users.user_name[0]}</div>
           )}
           {users && (
             <p className={css.nameVendor}>

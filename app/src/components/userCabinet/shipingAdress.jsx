@@ -51,8 +51,9 @@ const ShipingAdress = ({
       .then((response) => {
         Swal.fire({
           icon: "success",
-          title: "Address successfully added",
-          confirmButtonColor: "#609966",
+          title: "Successfully saved",
+          showConfirmButton: false,
+          timer: 2000,
         });
         // Очищення полів вводу після успішного додавання
         setStreet("");
@@ -158,9 +159,7 @@ const ShipingAdress = ({
         <div className={css.feirstNameWr}>
           <div className={css.wrapText}>
             <p className={css.mainTextP}>Mailing address</p>
-            <p className={css.secondText}>
-              Commodo morbi egestas gravida risus
-            </p>
+            <p className={css.secondText}></p>
           </div>
           <div className={css.inputWithTextWrap}>
             <div className={css.smalInpWrapSet}>

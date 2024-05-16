@@ -38,7 +38,7 @@ const Product = ({ data, activeUser, setCartCounterC, totalQuantity }) => {
   useEffect(() => {
     setIngridients(data);
   }, [data]);
-
+  console.log(productData);
   return (
     <>
       <HeaderModernWhite

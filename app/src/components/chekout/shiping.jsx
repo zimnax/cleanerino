@@ -1,12 +1,36 @@
 import { useState } from "react";
 import css from "./checkout.module.css";
-const Shiping = ({ users }) => {
-  const [selectedAddress, setSelectedAddress] = useState(null);
-
+const Shiping = ({
+  users,
+  calculateTax,
+  selectedAddress,
+  setSelectedAddress,
+  address,
+  setAddress,
+}) => {
   const handleAddressClick = (index) => {
     setSelectedAddress(index);
+    setAddress(users.addresses[index]);
+    calculateTax(
+      users.addresses[index].apartment + users.addresses[index].street,
+      users.addresses[index].city,
+      users.addresses[index].state,
+      users.addresses[index].zip_code,
+      "US"
+    );
+    setAddress({
+      name: users.user_name,
+      street1: `${users.addresses[index].apartment} ${users.addresses[index].street}`,
+      city: users.addresses[index].city,
+      state: users.addresses[index].state,
+      zip: users.addresses[index].zip_code,
+      country: "US",
+      phone: users.phone,
+      email: users.email,
+      id: users.id,
+    });
   };
-  console.log("users", users);
+
   return (
     <div className={css.shipingWrapAll}>
       <p className={css.savedAddressesP}>Saved Addresses</p>

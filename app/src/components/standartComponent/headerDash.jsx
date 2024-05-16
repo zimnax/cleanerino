@@ -59,10 +59,7 @@ const HeaderDash = ({ activeUser, data, totalQuantity }) => {
         <Link to="/">
           <ReactSVG src={logo} />
         </Link>
-        <div className={css.wrapShopCategory}>
-          <p className={css.shapCatP}>Shop Categories</p>
-          <ReactSVG src={arrowDHeader} className={css.iconArrowD} />
-        </div>
+
         <div className={css.wrapInputSearch}>
           <input
             className={css.inputHeaderDash}

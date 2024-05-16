@@ -80,7 +80,6 @@ const EmailSend = ({ activeUser, totalQuantity }) => {
                   value={email}
                   onBlur={() => setEmailError(validateEmail(email))}
                 />
-                <p className={css.helpText}>This is a helper text</p>
               </div>
             </div>
             <div className={css.wralAllRedEx}>

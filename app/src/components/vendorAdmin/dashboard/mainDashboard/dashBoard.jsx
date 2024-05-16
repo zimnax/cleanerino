@@ -9,6 +9,8 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../../../function/firebase";
 import AddProductDashboard from "./standartComponent/addProductDashboard";
 import ProductList from "./standartComponent/ProductList";
+import Orders from "./standartComponent/orders/orders";
+import Customers from "./standartComponent/customer/customers";
 const DashBoard = ({ activeUser, data }) => {
   const [dashBordS, setDashBoardS] = useState(true);
   const [order, setOrder] = useState(false);
@@ -26,21 +28,18 @@ const DashBoard = ({ activeUser, data }) => {
       });
   };
   useEffect(() => {
-    if (!activeUser) {
-      window.location.href = "/vendorRegistration";
-    }
-    if (activeUser && data) {
+    if (activeUser && data && data.length > 0) {
       const found = data.find((item) => item.firebase_id === activeUser.uid);
-
       if (found) {
         setUsers(found);
       } else {
-        signOutUser(); // Викликати вашу функцію signOutUser, якщо не знайдено користувача
-        window.location.href = "/vendorRegistration"; // Перенаправлення на нове посилання
+        console.log("Notfound");
+        signOutUser();
+        window.location.href = "/vendorRegistration";
       }
     }
   }, [data, activeUser]);
-
+  console.log("activeUser", activeUser);
   return (
     <div className={css.wrapDashboardAll}>
       <LeftPannel
@@ -70,6 +69,8 @@ const DashBoard = ({ activeUser, data }) => {
           />
         )}
         {product && <ProductList setProduct={setProduct} users={users} />}
+        {order && <Orders users={users} />}
+        {customer && <Customers users={users} />}
       </div>
     </div>
   );

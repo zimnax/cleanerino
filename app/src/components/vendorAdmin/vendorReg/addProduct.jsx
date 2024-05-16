@@ -42,7 +42,9 @@ const AddProduct = ({ setAddProdPage, data, activeUser }) => {
     activeCategories: [],
     activeNames: [],
   });
-
+  const [width, setWidth] = useState("");
+  const [height, setHeight] = useState("");
+  const [length, setLength] = useState("");
   //////////////////////////////////////////////////////////////////////////////
 
   const [nameError, setNameError] = useState(true);
@@ -50,6 +52,8 @@ const AddProduct = ({ setAddProdPage, data, activeUser }) => {
   const [longDescError, setLongDescError] = useState(true);
   const [priceError, setPriceError] = useState(true);
   const [weightError, setWeightError] = useState(true);
+  const [heightError, setHeightError] = useState(true);
+  const [lengthError, setLengthError] = useState(true);
   const [volumeError, setVolumeError] = useState(true);
   const [prodCatError, setProdCatError] = useState(true);
   const [prodTypeError, setProdTypeError] = useState(true);
@@ -75,6 +79,9 @@ const AddProduct = ({ setAddProdPage, data, activeUser }) => {
     setQuantity("");
     setVolume("");
     setWeight("");
+    setHeight("");
+    setLength("");
+    setWidth("");
     setScent([{ scent: 0, price: 0 }]);
     setShape([{ shape: 0, price: 0 }]);
     setColor([{ color: 0, price: 0 }]);
@@ -162,9 +169,8 @@ const AddProduct = ({ setAddProdPage, data, activeUser }) => {
     setVolumeError(!validateInputLength(e.target.value, 1) ? false : true);
   };
   const changeVolume = (e) => {
-    setVolume(e.target.value);
+    setWidth(e.target.value);
     validateVolumeInput(e.target.value);
-    setWeightError(!validateInputLength(e.target.value, 1) ? false : true);
   };
   const changeQuont = (e) => {
     setQuantity(e.target.value);
@@ -180,6 +186,8 @@ const AddProduct = ({ setAddProdPage, data, activeUser }) => {
     let isPriceError = validateInputLength(productPrice, 1);
     let isWeightError = validateInputLength(weight, 1);
     let isVolumeError = validateInputLength(volume, 1);
+    let isHeightError = validateInputLength(height, 1);
+    let isLengthError = validateInputLength(length, 1);
     let isQuonError = validateInputLength(quantity, 1);
     let isCountryError = selectedCategoryId !== null;
     let isStateError = selectedTypeId !== null;
@@ -193,11 +201,15 @@ const AddProduct = ({ setAddProdPage, data, activeUser }) => {
       setWeightError(isWeightError);
       setVolumeError(isVolumeError);
     }
-    if (isWeightError || isVolumeError) {
+    if (isWeightError || isVolumeError || isHeightError || isLengthError) {
       setWeightError(true);
       setVolumeError(true);
+      setLengthError(true);
+      setLengthError(true);
       isWeightError = true;
       isVolumeError = true;
+      isHeightError = true;
+      isLengthError = true;
     }
     setProdCatError(isCountryError);
     setProdTypeError(isStateError);
@@ -211,6 +223,8 @@ const AddProduct = ({ setAddProdPage, data, activeUser }) => {
       !isPriceError ||
       !isWeightError ||
       !isVolumeError ||
+      !isHeightError ||
+      !isLengthError ||
       !isCountryError ||
       !isStateError ||
       !isQuonError ||
@@ -240,6 +254,9 @@ const AddProduct = ({ setAddProdPage, data, activeUser }) => {
           weight: parseInt(weight),
 
           volume: parseInt(volume),
+          width: parseInt(width),
+          height: parseInt(height),
+          length: parseInt(length),
           quantity: parseInt(quantity),
           activeCategories,
           activeNames,
@@ -273,7 +290,20 @@ const AddProduct = ({ setAddProdPage, data, activeUser }) => {
     // Оновлення стану знайденого об'єкта
     setUsers(found);
   }, [data, activeUser]);
-
+  const changeHeight = (e) => {
+    setHeight(e.target.value);
+    validateHeightInput(e.target.value);
+  };
+  const validateHeightInput = (name) => {
+    setHeightError(!validateInputLength(name, 1) ? false : true);
+  };
+  const validateLengthInput = (name) => {
+    setLengthError(!validateInputLength(name, 1) ? false : true);
+  };
+  const changeLength = (e) => {
+    setLength(e.target.value);
+    validateLengthInput(e.target.value);
+  };
   return (
     <>
       <div className={css.regWrap}>
@@ -337,6 +367,18 @@ const AddProduct = ({ setAddProdPage, data, activeUser }) => {
             ingridientWithotError={ingridientWithotError}
             setWordsWithout={setWordsWithout}
             wordsWithout={wordsWithout}
+            width={width}
+            setWidth={setWidth}
+            height={height}
+            setHeight={setHeight}
+            length={length}
+            setLength={setLength}
+            changeHeight={changeHeight}
+            validateHeightInput={validateHeightInput}
+            changeLength={changeLength}
+            validateLengthInput={validateLengthInput}
+            heightError={heightError}
+            lengthError={lengthError}
           />
           <RightSide
             setShortDesc={setShortDesc}

@@ -196,6 +196,9 @@
   background: none;
   padding-left: 27px;
 }
+.inputHeaderModern:focus {
+  outline: none; /* Забираємо рамку */
+}
 .inputHeaderDash {
   width: calc(100% - 4px);
   height: calc(48px - 4px);
@@ -239,6 +242,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: 5px;
 }
 .nameP {
   margin: 0;
@@ -420,7 +424,7 @@
 }
 .liNavI {
   color: var(--newfontgreen-color);
-  font-family: Inter;
+  font-family: "Orpheus Pro";
   font-size: 25px;
   font-style: normal;
   font-weight: 600;
@@ -429,5 +433,21 @@
   margin: 0;
   text-decoration: none;
   cursor: pointer;
-  margin-top: 20px;
+  margin-right: 20px;
+}
+.navigationInHeader {
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+}
+.ulNavigation {
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  list-style-type: none;
+  padding: 0;
 }

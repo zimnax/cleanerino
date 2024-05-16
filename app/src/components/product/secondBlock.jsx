@@ -111,7 +111,7 @@ const SecondBlock = ({ productData, brand, data, ingridients }) => {
     const uniqueBenefits = Array.from(new Set(updatedBenefits));
     setBenefits(uniqueBenefits);
   }, [productData, ingridients]);
-  console.log("productData", productData);
+
   return (
     <div className={css.wrapFirstBlock}>
       <div className={css.smallWrap}>
@@ -217,7 +217,6 @@ const SecondBlock = ({ productData, brand, data, ingridients }) => {
                   {certification &&
                     certification.map((el, index) => {
                       {
-                        console.log(el);
                         // return <span key={index}>{el.name},&nbsp; </span>;
                         return (
                           <img

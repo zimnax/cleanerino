@@ -26,7 +26,7 @@ const Reviews = ({ productData }) => {
   const handleFileChangeLogo = (event) => {
     setLogoT(event.target.files[0]);
   };
-  console.log(productData);
+
   const handleClickRating = (value) => {
     if (value === rating) {
       setRating(0);
@@ -41,14 +41,16 @@ const Reviews = ({ productData }) => {
     setHoveredRating(value);
   };
   useEffect(() => {
-    const totalRatings = productData.reviews.reduce(
-      (sum, review) => sum + review.rating,
-      0
-    );
-    const averageRating = (totalRatings / productData.reviews.length).toFixed(
-      1
-    );
-    setSerRating(averageRating);
+    if (productData.reviews) {
+      const totalRatings = productData.reviews.reduce(
+        (sum, review) => sum + review.rating,
+        0
+      );
+      const averageRating = (totalRatings / productData.reviews.length).toFixed(
+        1
+      );
+      setSerRating(averageRating);
+    }
   }, [productData]);
   const handleMouseLeaveRating = () => {
     setHoveredRating(0);

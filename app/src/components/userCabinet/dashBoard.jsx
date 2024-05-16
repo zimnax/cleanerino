@@ -16,7 +16,7 @@ const DashBoard = ({ activeUser, data }) => {
   const [discount, setDiscount] = useState(false);
   const [customer, setCustomer] = useState(false);
   const [chat, setChat] = useState(false);
-  const [settings, setSettings] = useState(false);
+  const [settings, setSettings] = useState(true);
 
   const signOutUser = () => {
     signOut(auth)

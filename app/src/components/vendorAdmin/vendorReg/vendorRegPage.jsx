@@ -3,6 +3,7 @@ import { ReactSVG } from "react-svg";
 import logo from "../../../svg/logo-inline.svg";
 import { useEffect, useState } from "react";
 import google from "../../../img/Google-Symbol.png";
+import Swal from "sweetalert2";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -148,7 +149,50 @@ const VendorRegPage = ({ setReg, setBrandPage, activeUser }) => {
       const res = await createUserWithEmailAndPassword(auth, email, password);
       handleSubmit(res.user.email, res.user.uid);
     } catch (error) {
-      setPopUpMes(true);
+      if (error.code === "auth/email-already-in-use") {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "This email address is already in use!",
+          confirmButtonColor: "#609966",
+        });
+      } else if (error.code === "auth/weak-password") {
+        Swal.fire({
+          icon: "error",
+          title: "Registration Failed",
+          text: "The password is too weak. Please choose a stronger password.",
+          confirmButtonColor: "#609966",
+        });
+      } else if (error.code === "auth/invalid-email") {
+        Swal.fire({
+          icon: "error",
+          title: "Registration Failed",
+          text: "Invalid email address. Please enter a valid email address.",
+          confirmButtonColor: "#609966",
+        });
+      } else if (error.code === "auth/operation-not-allowed") {
+        Swal.fire({
+          icon: "error",
+          title: "Registration Failed",
+          text: "Email/password accounts are not enabled. Please contact support.",
+          confirmButtonColor: "#609966",
+        });
+      } else if (error.code === "auth/network-request-failed") {
+        Swal.fire({
+          icon: "error",
+          title: "Registration Failed",
+          text: "Network request failed. Please check your internet connection and try again.",
+          confirmButtonColor: "#609966",
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Registration Failed",
+          text: "An error occurred during registration. Please try again later.",
+          confirmButtonColor: "#609966",
+        });
+      }
+      //setPopUpMes(true);
     }
   };
 
@@ -191,8 +235,50 @@ const VendorRegPage = ({ setReg, setBrandPage, activeUser }) => {
       .then(async (result) => {
         handleSubmit(result.user.email, result.user.uid);
       })
-      .catch((err) => {
-        console.log("Error");
+      .catch((error) => {
+        if (error.code === "auth/email-already-in-use") {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "This email address is already in use!",
+            confirmButtonColor: "#609966",
+          });
+        } else if (error.code === "auth/weak-password") {
+          Swal.fire({
+            icon: "error",
+            title: "Registration Failed",
+            text: "The password is too weak. Please choose a stronger password.",
+            confirmButtonColor: "#609966",
+          });
+        } else if (error.code === "auth/invalid-email") {
+          Swal.fire({
+            icon: "error",
+            title: "Registration Failed",
+            text: "Invalid email address. Please enter a valid email address.",
+            confirmButtonColor: "#609966",
+          });
+        } else if (error.code === "auth/operation-not-allowed") {
+          Swal.fire({
+            icon: "error",
+            title: "Registration Failed",
+            text: "Email/password accounts are not enabled. Please contact support.",
+            confirmButtonColor: "#609966",
+          });
+        } else if (error.code === "auth/network-request-failed") {
+          Swal.fire({
+            icon: "error",
+            title: "Registration Failed",
+            text: "Network request failed. Please check your internet connection and try again.",
+            confirmButtonColor: "#609966",
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Registration Failed",
+            text: "An error occurred during registration. Please try again later.",
+            confirmButtonColor: "#609966",
+          });
+        }
       });
   };
   const skip = () => {

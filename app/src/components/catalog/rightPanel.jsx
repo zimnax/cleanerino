@@ -2,7 +2,8 @@ import css from "./catalog.module.css";
 import arrowD from "../../svg/newInDown.svg";
 import { ReactSVG } from "react-svg";
 import ProductSmall from "./productSmall";
-const RightPanel = ({ listOfProduct, nameProduct }) => {
+import ProdSmallNew from "./prodSmallNew";
+const RightPanel = ({ listOfProduct, nameProduct, setCartCounterC }) => {
   return (
     <div className={css.rightPanelWrap}>
       <div className={css.wrapTopRight}>
@@ -16,14 +17,17 @@ const RightPanel = ({ listOfProduct, nameProduct }) => {
         ) : (
           <div style={{ flex: 1 }} />
         )}
-        <p className={css.newIn}>
-          New In <ReactSVG src={arrowD} className={css.arrowInM} />
-        </p>
       </div>
       <div className={css.wrapAllProduct}>
         {listOfProduct &&
           listOfProduct.map((el, index) => {
-            return <ProductSmall key={index} el={el} />;
+            return (
+              <ProdSmallNew
+                key={index}
+                el={el}
+                setCartCounterC={setCartCounterC}
+              />
+            );
           })}
       </div>
     </div>

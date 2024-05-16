@@ -18,6 +18,10 @@ const VendorProd = ({
   selectedSkinConcer,
   setSelectedSkinConcer,
   setAlergens,
+  selectedOption,
+  setSelectedOption,
+  setListOfProduct,
+  setCartCounterC,
 }) => {
   return (
     <div className={css.wrapFilterWithProd}>
@@ -35,8 +39,16 @@ const VendorProd = ({
         selectedSkinConcer={selectedSkinConcer}
         setSelectedSkinConcer={setSelectedSkinConcer}
         setAlergens={setAlergens}
+        selectedOption={selectedOption}
+        setSelectedOption={setSelectedOption}
+        setListOfProduct={setListOfProduct}
+        listOfProduct={listOfProduct}
       />
-      <RightPanel listOfProduct={listOfProduct} nameProduct={nameProduct} />
+      <RightPanel
+        listOfProduct={listOfProduct}
+        nameProduct={nameProduct}
+        setCartCounterC={setCartCounterC}
+      />
     </div>
   );
 };

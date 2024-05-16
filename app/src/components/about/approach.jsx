@@ -7,7 +7,7 @@ import yellowCos from "../../img/yelowPicture.png";
 import hand from "../../img/heandPI.png";
 const Approach = () => {
   return (
-    <div className={css.approachWrap} id="section2">
+    <div className={css.approachWrap}>
       <ReactSVG src={phyIcon} />
       <p className={css.approacheMaitP}>Approach</p>
       <p className={css.pApproachDesc}>
@@ -59,7 +59,7 @@ const Approach = () => {
         <img src={hand} className={css.approachPhoto} alt="Photo" />
         <div className={css.wrapApproachWithoutFour}>
           <p className={css.titlePInB}>Supporting independent makers</p>
-          <p className={css.descApTit}>
+          <p className={css.descApTit} id="section3">
             For sustainable product producers, especially for new and niche
             ones, reaching customers can be difficult. We’ve simplified the
             registration process and removed high fee barriers for vendors to be

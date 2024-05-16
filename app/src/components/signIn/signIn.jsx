@@ -33,8 +33,7 @@ const SignIn = ({ activeUser, totalQuantity }) => {
   const [openPop, setOpenPop] = useState(false);
 
   const validatePassword = (password) => {
-    const re =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
     return re.test(password);
   };
   const validateEmail = (email) => {
@@ -253,13 +252,22 @@ const SignIn = ({ activeUser, totalQuantity }) => {
               </div>
             </div>
             <div className={css.wralAllRedEx}>
-              <p className={css.textPallRe}>
-                Already have an account?&nbsp;
-                <Link className={css.signInTo} to="/signin">
-                  &nbsp;
-                  <span className={css.signInTo}>Sign In</span>
-                </Link>
-              </p>
+              <div className={css.vendorLinkReg}>
+                <p className={css.textPallRe}>
+                  Already have an account?&nbsp;
+                  <Link className={css.signInTo} to="/signin">
+                    &nbsp;
+                    <span className={css.signInTo}>Sign In</span>
+                  </Link>
+                </p>
+                <p className={css.textPallRe}>
+                  Do you want to sell with us?&nbsp;
+                  <Link className={css.signInTo} to="/vendorRegistration">
+                    &nbsp;
+                    <span className={css.signInTo}>Register as a vendor</span>
+                  </Link>
+                </p>
+              </div>
               <button
                 className={css.buttonWrGren}
                 disabled={buttonDisabled}

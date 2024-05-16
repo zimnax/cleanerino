@@ -30,6 +30,9 @@ const AddProductDashboard = ({ setProdList, setAddProduct, users }) => {
   const [productPrice, setProductPrice] = useState("");
   const [weight, setWeight] = useState("");
   const [volume, setVolume] = useState("");
+  const [width, setWidth] = useState("");
+  const [height, setHeight] = useState("");
+  const [length, setLength] = useState("");
   const [quantity, setQuantity] = useState("");
   const [activeCategories, setActiveCategories] = useState([]);
   const [activeNames, setActiveNames] = useState([]);
@@ -49,6 +52,8 @@ const AddProductDashboard = ({ setProdList, setAddProduct, users }) => {
   const [longDescError, setLongDescError] = useState(true);
   const [priceError, setPriceError] = useState(true);
   const [weightError, setWeightError] = useState(true);
+  const [heightError, setHeightError] = useState(true);
+  const [lengthError, setLengthError] = useState(true);
   const [volumeError, setVolumeError] = useState(true);
   const [prodCatError, setProdCatError] = useState(true);
   const [prodTypeError, setProdTypeError] = useState(true);
@@ -74,6 +79,9 @@ const AddProductDashboard = ({ setProdList, setAddProduct, users }) => {
     setQuantity("");
     setVolume("");
     setWeight("");
+    setHeight("");
+    setLength("");
+    setWidth("");
     setScent([{ scent: "", price: 0 }]);
     setShape([{ shape: "", price: 0 }]);
     setColor([{ color: "", price: 0 }]);
@@ -132,6 +140,12 @@ const AddProductDashboard = ({ setProdList, setAddProduct, users }) => {
   const validateWeightInput = (name) => {
     setWeightError(!validateInputLength(name, 1) ? false : true);
   };
+  const validateHeightInput = (name) => {
+    setHeightError(!validateInputLength(name, 1) ? false : true);
+  };
+  const validateLengthInput = (name) => {
+    setLengthError(!validateInputLength(name, 1) ? false : true);
+  };
   const validateVolumeInput = (name) => {
     setVolumeError(!validateInputLength(name, 1) ? false : true);
   };
@@ -160,10 +174,17 @@ const AddProductDashboard = ({ setProdList, setAddProduct, users }) => {
     validateWeightInput(e.target.value);
     setVolumeError(!validateInputLength(e.target.value, 1) ? false : true);
   };
+  const changeHeight = (e) => {
+    setHeight(e.target.value);
+    validateHeightInput(e.target.value);
+  };
+  const changeLength = (e) => {
+    setLength(e.target.value);
+    validateLengthInput(e.target.value);
+  };
   const changeVolume = (e) => {
-    setVolume(e.target.value);
+    setWidth(e.target.value);
     validateVolumeInput(e.target.value);
-    setWeightError(!validateInputLength(e.target.value, 1) ? false : true);
   };
   const changeQuont = (e) => {
     setQuantity(e.target.value);
@@ -176,7 +197,9 @@ const AddProductDashboard = ({ setProdList, setAddProduct, users }) => {
     let isLongDescError = validateInputLength(longDesc, 20);
     let isPriceError = validateInputLength(productPrice, 1);
     let isWeightError = validateInputLength(weight, 1);
-    let isVolumeError = validateInputLength(volume, 1);
+    let isVolumeError = validateInputLength(width, 1);
+    let isHeightError = validateInputLength(height, 1);
+    let isLengthError = validateInputLength(length, 1);
     let isQuonError = validateInputLength(quantity, 1);
     let isCountryError = selectedCategoryId !== null;
     let isStateError = selectedTypeId !== null;
@@ -190,11 +213,15 @@ const AddProductDashboard = ({ setProdList, setAddProduct, users }) => {
       setWeightError(isWeightError);
       setVolumeError(isVolumeError);
     }
-    if (isWeightError || isVolumeError) {
+    if (isWeightError || isVolumeError || isHeightError || isLengthError) {
       setWeightError(true);
       setVolumeError(true);
+      setLengthError(true);
+      setLengthError(true);
       isWeightError = true;
       isVolumeError = true;
+      isHeightError = true;
+      isLengthError = true;
     }
     setProdCatError(isCountryError);
     setProdTypeError(isStateError);
@@ -208,6 +235,8 @@ const AddProductDashboard = ({ setProdList, setAddProduct, users }) => {
       !isPriceError ||
       !isWeightError ||
       !isVolumeError ||
+      !isHeightError ||
+      !isLengthError ||
       !isCountryError ||
       !isStateError ||
       !isQuonError ||
@@ -239,6 +268,9 @@ const AddProductDashboard = ({ setProdList, setAddProduct, users }) => {
           weight: parseInt(weight),
 
           volume: parseInt(volume),
+          width: parseInt(width),
+          height: parseInt(height),
+          length: parseInt(length),
           quantity: parseInt(quantity),
           activeCategories,
           activeNames,
@@ -327,6 +359,18 @@ const AddProductDashboard = ({ setProdList, setAddProduct, users }) => {
             ingridientWithotError={ingridientWithotError}
             setWordsWithout={setWordsWithout}
             wordsWithout={wordsWithout}
+            width={width}
+            setWidth={setWidth}
+            height={height}
+            setHeight={setHeight}
+            length={length}
+            setLength={setLength}
+            changeHeight={changeHeight}
+            validateHeightInput={validateHeightInput}
+            changeLength={changeLength}
+            validateLengthInput={validateLengthInput}
+            heightError={heightError}
+            lengthError={lengthError}
           />
           <RightSide
             setShortDesc={setShortDesc}
