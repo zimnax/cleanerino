@@ -1,7 +1,7 @@
 import css from "./footer.module.css";
 import { ReactSVG } from "react-svg";
 import logo from "../../svg/svgFor/logoForFooter.svg";
-import facebook from "../../svg/facebook.svg";
+import facebook from "../../svg/Facebook.svg";
 import instagram from "../../svg/instagram.svg";
 import linked from "../../svg/linked.svg";
 import youtube from "../../svg/youtubeFooter.svg";
