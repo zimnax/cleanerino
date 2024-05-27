@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HeaderNormal from "../standartComponent/headerNormal";
 import css from "./privacy.module.css";
 import FaqTe from "./faqTe";
@@ -6,16 +6,39 @@ import TermOfUse from "./termOfUse";
 import PrivacyPalis from "./privacyPalis";
 import RegionalPriv from "./regionalPriv";
 import NonDisc from "./nonDisc";
+import { useParams } from "react-router-dom";
 import VendorPoly from "./vendorPoly";
 import Footer from "../standartComponent/footer";
 import HeaderModernWhite from "../standartComponent/headerModernWhite";
 const Privacy = ({ totalQuantity, activeUser }) => {
+  const { id } = useParams(); // Отримайте id з URL
+  console.log("ID from URL:", id);
   const [faq, setFaq] = useState(true);
   const [ship, setShip] = useState(false);
   const [payment, setPayment] = useState(false);
   const [terms, setTerms] = useState(false);
   const [returns, setReturns] = useState(false);
   const [privacy, setPrivacy] = useState(false);
+  useEffect(() => {
+    if (id === "faqs") {
+      faqFun();
+    }
+    if (id === "terms_of_use") {
+      shipFun();
+    }
+    if (id === "privacy_policy") {
+      payFun();
+    }
+    if (id === "regional_privacy_policy") {
+      termsFun();
+    }
+    if (id === "non_descrimination_policy") {
+      returnsFun();
+    }
+    if (id === "vendor_policy") {
+      privacyFun();
+    }
+  }, [id]);
   const faqFun = () => {
     setFaq(true);
     setShip(false);

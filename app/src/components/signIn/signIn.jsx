@@ -17,6 +17,8 @@ import axios from "axios";
 import { auth, googleAuthProvider } from "../../function/firebase";
 import { useEffect, useState } from "react";
 import PopUpNext from "./popUpNext";
+import passwordValidator from "password-validator";
+
 import HeaderModernWhite from "../standartComponent/headerModernWhite";
 const SignIn = ({ activeUser, totalQuantity }) => {
   const [emailError, setEmailError] = useState("");
@@ -27,15 +29,30 @@ const SignIn = ({ activeUser, totalQuantity }) => {
   const [email, setEmail] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showPasswordRep, setShowPasswordRep] = useState(false);
-  const [buttonDisabled, setButtonDisabled] = useState(true);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
   const [validP, setValidP] = useState(true);
   const [validPSec, setValidPSec] = useState(true);
   const [openPop, setOpenPop] = useState(false);
-
-  const validatePassword = (password) => {
-    const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
-    return re.test(password);
-  };
+  const schema = new passwordValidator();
+  schema
+    .is()
+    .min(8) // Мінімум 8 символів
+    .has()
+    .uppercase() // Має містити принаймні одну велику літеру
+    .has()
+    .lowercase() // Має містити принаймні одну маленьку літеру
+    .has()
+    .digits() // Має містити принаймні одну цифру
+    .has()
+    .not()
+    .spaces() // Не має містити пробіли
+    .is()
+    .not()
+    .oneOf(["Passw0rd", "Password123"]);
+  // const validatePassword = (password) => {
+  //   const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+  //   return re.test(password);
+  // };
   const validateEmail = (email) => {
     const re =
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -64,28 +81,84 @@ const SignIn = ({ activeUser, totalQuantity }) => {
   };
   const changePass = (e) => {
     setPassword(e.target.value);
-    setValidP(validatePassword(e.target.value));
+    setValidP(schema.validate(e.target.value));
   };
   const changePassSecond = (e) => {
     let valid = password === e.target.value;
     setPasswordRep(e.target.value);
     setValidPSec(valid);
   };
-  useEffect(() => {
-    if (
-      validateInputLength(name, 2) &&
-      !validateEmail(email) && // Перевірка на валідну електронну адресу
-      validatePassword(password) && // Перевірка на валідний пароль
-      password === passwordRep
-    ) {
-      setButtonDisabled(false);
-    } else {
-      setButtonDisabled(true);
-    }
-  }, [name, email, password, passwordRep, emailError, nameError]);
+  // useEffect(() => {
+  //   if (
+  //     validateInputLength(name, 2) &&
+  //     !validateEmail(email) && // Перевірка на валідну електронну адресу
+  //     schema.validate(password) && // Перевірка на валідний пароль
+  //     password === passwordRep
+  //   ) {
+  //     setButtonDisabled(false);
+  //   } else {
+  //     setButtonDisabled(true);
+  //   }
+  // }, [name, email, password, passwordRep, emailError, nameError]);
   const signUp = async (e) => {
     e.preventDefault();
-    if (!validP || !validPSec || emailError || !nameError) {
+    // if (!validP || !validPSec || emailError || !nameError) {
+    //   return;
+    // }
+
+    if (
+      !validP ||
+      !validPSec ||
+      emailError ||
+      !nameError ||
+      passwordRep === ""
+    ) {
+      let errorMessage = "";
+      if (!nameError) {
+        errorMessage += "Please enter a valid name.\n";
+      }
+      if (emailError) {
+        errorMessage += "Please enter a valid email address.\n";
+      }
+      if (password === "") {
+        errorMessage += "Please enter a password.\n";
+      } else if (!validP) {
+        errorMessage +=
+          "Password is invalid. Please fix the following issues:\n";
+        if (!schema.has().min(8).validate(password)) {
+          errorMessage += "- Password must be at least 8 characters long.\n";
+        }
+        if (!schema.has().uppercase().validate(password)) {
+          errorMessage +=
+            "- Password must contain at least one uppercase letter.\n";
+        }
+        if (!schema.has().lowercase().validate(password)) {
+          errorMessage +=
+            "- Password must contain at least one lowercase letter.\n";
+        }
+        if (!schema.has().digits().validate(password)) {
+          errorMessage += "- Password must contain at least one digit.\n";
+        }
+        if (!schema.has().not().spaces().validate(password)) {
+          errorMessage += "- Password cannot contain spaces.\n";
+        }
+        if (schema.is().oneOf(["Passw0rd", "Password123"]).validate(password)) {
+          errorMessage +=
+            "- Password is too common. Please choose a stronger password.";
+        }
+      }
+
+      if (password !== passwordRep) {
+        errorMessage += "Passwords do not match.\n";
+      }
+      Swal.fire({
+        icon: "error",
+        title: "Invalid Input",
+        text: errorMessage,
+        confirmButtonColor: "#609966",
+        timer: 2000, // 2000 мілісекунд (2 секунди)
+        showConfirmButton: false,
+      });
       return;
     }
     try {

@@ -11,6 +11,7 @@ import VendorProd from "./vendorProd";
 import withMySQLData from "../HOK/withMySQLData";
 import HeaderModernWhite from "../standartComponent/headerModernWhite";
 import HeaderModernWhiteCatalog from "../standartComponent/HeaderModernWhiteCatalog";
+import Footer from "../standartComponent/footer";
 const Catalog = ({ data, activeUser, totalQuantity, setCartCounterC }) => {
   const dispatch = useDispatch();
   const [nameProduct, setNameProduct] = useState("");
@@ -23,14 +24,181 @@ const Catalog = ({ data, activeUser, totalQuantity, setCartCounterC }) => {
   const [selectedCategoryId, setSelectedCategoryId] = useState("");
   const [listOfProduct, setListOfProduct] = useState(null);
   const [ingridietsArrayFromB, setIngridietsArrayFromB] = useState(null);
-  const [alergens, setAlergens] = useState(null);
+  const [alergens, setAlergens] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
   const text = useSelector((state) => state.textSlice);
-  // Отримуємо поточне значення тексту зі стану
+  const [savedAllFilter, setSavedAllFilter] = useState(() => {
+    const savedFilters = JSON.parse(localStorage.getItem("filters"));
+    return savedFilters ? true : false;
+  });
+
   useEffect(() => {
     setNameProduct(text);
   }, [text]);
 
+  useEffect(() => {
+    loadFiltersFromLocalStorage();
+  }, []);
+  const saveDataToLocal = () => {
+    const filters = {
+      selectedCategoryIdArr,
+      selectedCertificate,
+      selectedIngridient,
+      selectedSkinType,
+      selectedSkinConcer,
+      selectedCategoryId,
+      alergens,
+      selectedOption,
+      nameProduct,
+    };
+
+    localStorage.setItem("filters", JSON.stringify(filters));
+  };
+  // useEffect(() => {
+  //   console.log("3");
+  //   if (savedAllFilter) {
+  //     console.log("4");
+  //     const filters = {
+  //       selectedCategoryIdArr,
+  //       selectedCertificate,
+  //       selectedIngridient,
+  //       selectedSkinType,
+  //       selectedSkinConcer,
+  //       selectedCategoryId,
+  //       alergens,
+  //       selectedOption,
+  //       nameProduct,
+  //     };
+  //     console.log("savedAllFilterfilters", filters);
+  //     localStorage.setItem("filters", JSON.stringify(filters));
+  //   } else {
+  //     console.log("5");
+  //     console.log("Remove", savedAllFilter);
+  //     localStorage.removeItem("filters");
+  //   }
+  // }, [
+  //   savedAllFilter,
+  //   selectedCategoryIdArr,
+  //   selectedCertificate,
+  //   selectedIngridient,
+  //   selectedSkinType,
+  //   selectedSkinConcer,
+  //   selectedCategoryId,
+  //   alergens,
+  //   selectedOption,
+  //   nameProduct,
+  // ]);
+
+  // const loadFiltersFromLocalStorage = () => {
+  //   const savedFilters = JSON.parse(localStorage.getItem("filters"));
+
+  //   if (savedFilters) {
+  //     setSelectedCategoryIdArr(savedFilters.selectedCategoryIdArr);
+  //     setSelectedCertificate(savedFilters.selectedCertificate);
+  //     setSelectedIngridient(savedFilters.selectedIngridient);
+  //     setSelectedSkinType(savedFilters.selectedSkinType);
+  //     setSelectedSkinConcer(savedFilters.selectedSkinConcer);
+  //     setSelectedCategoryId(savedFilters.selectedCategoryId);
+  //     setAlergens(savedFilters.alergens);
+  //     setSelectedOption(savedFilters.selectedOption);
+  //     setNameProduct(savedFilters.nameProduct);
+  //     dispatch(setText(savedFilters.nameProduct));
+  //     setSavedAllFilter(true); // There are filters in localStorage
+  //   } else {
+  //     setSavedAllFilter(false); // No filters in localStorage
+  //   }
+  // };
+  const loadFiltersFromLocalStorage = () => {
+    const savedFilters = JSON.parse(localStorage.getItem("filters"));
+
+    if (savedFilters) {
+      if (savedFilters.selectedCategoryIdArr) {
+        setSelectedCategoryIdArr(savedFilters.selectedCategoryIdArr);
+      }
+      if (savedFilters.selectedCertificate) {
+        setSelectedCertificate(savedFilters.selectedCertificate);
+      }
+      if (savedFilters.selectedIngridient) {
+        setSelectedIngridient(savedFilters.selectedIngridient);
+      }
+      if (savedFilters.selectedSkinType) {
+        setSelectedSkinType(savedFilters.selectedSkinType);
+      }
+      if (savedFilters.selectedSkinConcer) {
+        setSelectedSkinConcer(savedFilters.selectedSkinConcer);
+      }
+      if (savedFilters.selectedCategoryId) {
+        setSelectedCategoryId(savedFilters.selectedCategoryId);
+      }
+      if (savedFilters.alergens) {
+        setAlergens(savedFilters.alergens);
+      }
+      if (savedFilters.selectedOption) {
+        setSelectedOption(savedFilters.selectedOption);
+      }
+      if (savedFilters.nameProduct) {
+        setNameProduct(savedFilters.nameProduct);
+        dispatch(setText(savedFilters.nameProduct));
+      }
+      setSavedAllFilter(true); // There are filters in localStorage
+    } else {
+      setSavedAllFilter(false); // No filters in localStorage
+    }
+  };
+  // const loadFiltersFromLocalStorage = () => {
+  //   const savedFilters = JSON.parse(localStorage.getItem("filters"));
+  //   console.log("savedFilters", savedFilters);
+  //   if (savedFilters) {
+  //     console.log("Зайшло");
+  //     setSelectedCategoryIdArr(savedFilters.selectedCategoryIdArr);
+  //     setSelectedCertificate(savedFilters.selectedCertificate);
+  //     setSelectedIngridient(savedFilters.selectedIngridient);
+  //     setSelectedSkinType(savedFilters.selectedSkinType);
+  //     setSelectedSkinConcer(savedFilters.selectedSkinConcer);
+  //     setSelectedCategoryId(savedFilters.selectedCategoryId);
+  //     setAlergens(savedFilters.alergens);
+  //     setSelectedOption(savedFilters.selectedOption);
+  //     setNameProduct(savedFilters.nameProduct);
+  //     dispatch(setText(savedFilters.nameProduct));
+  //     setSavedAllFilter(true); // There are filters in localStorage
+  //   } else {
+  //     setSavedAllFilter(false); // No filters in localStorage
+  //   }
+  // };
+  // useEffect(() => {
+  //   loadFiltersFromLocalStorage();
+  // }, []);
+  // useEffect(() => {
+  //   if (savedAllFilter) {
+  //     const filters = {
+  //       selectedCategoryIdArr,
+  //       selectedCertificate,
+  //       selectedIngridient,
+  //       selectedSkinType,
+  //       selectedSkinConcer,
+  //       selectedCategoryId,
+  //       alergens,
+  //       selectedOption,
+  //       nameProduct,
+  //     };
+  //     console.log("savedAllFilter", savedAllFilter);
+  //     localStorage.setItem("filters", JSON.stringify(filters));
+  //   } else {
+  //     console.log("Remove", savedAllFilter);
+  //     localStorage.removeItem("filters");
+  //   }
+  // }, [
+  //   savedAllFilter,
+  //   selectedCategoryIdArr,
+  //   selectedCertificate,
+  //   selectedIngridient,
+  //   selectedSkinType,
+  //   selectedSkinConcer,
+  //   selectedCategoryId,
+  //   alergens,
+  //   selectedOption,
+  //   nameProduct,
+  // ]);
   const filterProducts = () => {
     if (!data || !data.products) return []; // Якщо немає даних, повертаємо пустий масив
 
@@ -73,7 +241,6 @@ const Catalog = ({ data, activeUser, totalQuantity, setCartCounterC }) => {
         return selectedIngridient.every((category_name) => {
           const category_name_lower = category_name.toLowerCase().trim();
 
-          // Перевіряємо, чи всі інгредієнти відповідають вибраній категорії
           const ingredientsArray = product.ingredients
             .toLowerCase()
             .split(",")
@@ -84,7 +251,6 @@ const Catalog = ({ data, activeUser, totalQuantity, setCartCounterC }) => {
               if (
                 ingridientFromB.ingredient_name.toLowerCase() === ingredient
               ) {
-                // Перевіряємо, чи значення відповідного інгредієнту в таблиці є "Yes"
                 switch (category_name_lower) {
                   case "vegetarian":
                     return ingridientFromB.vegetarian.toLowerCase() === "yes";
@@ -95,10 +261,10 @@ const Catalog = ({ data, activeUser, totalQuantity, setCartCounterC }) => {
                   case "paleo":
                     return ingridientFromB.paleo.toLowerCase() === "yes";
                   default:
-                    return false; // Якщо категорія не знайдена в таблиці, повертаємо false
+                    return false;
                 }
               }
-              return false; // Якщо інгредієнт не відповідає вибраній категорії, продовжуємо фільтрацію
+              return false;
             });
           });
 
@@ -116,7 +282,6 @@ const Catalog = ({ data, activeUser, totalQuantity, setCartCounterC }) => {
         return alergens.every((category_name) => {
           const category_name_lower = category_name.toLowerCase().trim();
 
-          // Перевіряємо, чи всі інгредієнти відповідають вибраній категорії
           const ingredientsArray = product.ingredients
             .toLowerCase()
             .split(",")
@@ -292,12 +457,17 @@ const Catalog = ({ data, activeUser, totalQuantity, setCartCounterC }) => {
           selectedSkinConcer={selectedSkinConcer}
           setSelectedSkinConcer={setSelectedSkinConcer}
           setAlergens={setAlergens}
+          alergens={alergens}
           selectedOption={selectedOption}
           setSelectedOption={setSelectedOption}
           setListOfProduct={setListOfProduct}
           setCartCounterC={setCartCounterC}
+          setSavedAllFilter={setSavedAllFilter}
+          savedAllFilter={savedAllFilter}
+          saveDataToLocal={saveDataToLocal}
         />
       </div>
+      <Footer />
     </>
   );
 };

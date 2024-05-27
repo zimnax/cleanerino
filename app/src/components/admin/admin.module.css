@@ -1391,3 +1391,17 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
+@media only screen and (max-width: 414px) and (min-width: 300px) {
+}
+
+@media only screen and (max-width: 600px) and (min-width: 414px) {
+}
+@media only screen and (max-width: 700px) and (min-width: 600px) {
+}
+@media only screen and (max-width: 1023px) and (min-width: 700px) {
+}
+@media only screen and (max-width: 1440px) and (min-width: 1200px) {
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 1024px) {
+}

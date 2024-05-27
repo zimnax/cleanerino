@@ -276,7 +276,7 @@
   justify-content: space-between;
   border-radius: 100px;
   background: var(--newfontgreen-color);
-
+  flex-shrink: 0;
   cursor: pointer;
 }
 .newArrow {
@@ -997,33 +997,1440 @@
   right: 0;
   top: 5100px;
 }
-@media only screen and (max-width: 600px) and (min-width: 300px) {
-}
-@media only screen and (max-width: 700px) and (min-width: 479px) {
-}
-@media only screen and (max-width: 1100px) and (min-width: 700px) {
-}
-@media only screen and (max-width: 1440px) and (min-width: 1024px) {
-  .firstBlockWrap {
-    background: url("../../img/HeroSm1.png");
-    width: 100%;
-    height: 812px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    position: relative;
-    z-index: 2;
-  }
+
+@media only screen and (max-width: 414px) and (min-width: 300px) {
   .wrapText {
-    width: 590px;
+    width: 100%;
     height: 321px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
-    margin-left: 139px;
+    margin-left: 0;
+  }
+  .firstBlockText {
+    margin: 0;
+    color: #864f37;
+
+    font-family: "OrpheusPro-Bold";
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    width: 300px;
+    height: 277px;
+    text-align: start;
+  }
+  .inputBack {
+    width: calc(250px - 35px);
+    height: 77px;
+    border-radius: 100px;
+    background: #fffceb;
+    border: none;
+    color: #ad7b54;
+
+    font-family: var(--customtwo-font);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding-left: 35px;
+  }
+  .sendInfoButton {
+    width: 77px;
+    height: 77px;
+    background: var(--newfontgreen-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  .sectificatAllWrap {
+    width: calc(100% - 66px);
+    height: 88px;
+    padding-left: 33px;
+    padding-right: 33px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Вирівнювання іконок по початку */
+    margin-top: 23px;
+    position: relative;
+    z-index: 2;
+    overflow-x: scroll; /* Додаємо горизонтальний скрол */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+  }
+  .certWrapInF {
+    margin-right: 10px;
+  }
+  .markerP {
+    margin: 0;
+    color: #000;
+    margin-top: 18px;
+    text-align: center;
+    font-family: "Orpheus Pro";
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.3;
+  }
+  .pBecause {
+    color: #000;
+
+    text-align: center;
+    font-family: "Agenda";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration-line: underline;
+    margin: 0;
+    margin-top: 20px;
+  }
+  .prodFWrap {
+    width: calc(100% - 20px);
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .favoritP {
+    color: #000;
+
+    font-family: "Orpheus Pro";
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+  }
+  .shopAllP {
+    width: 100px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--newfontgreen-color);
+
+    font-family: AgendaT;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
+  }
+  .wrapProdInMain {
+    width: calc(100% - 20px);
+    padding-left: 10px;
+    padding-right: 10px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  .wrapNextProd {
+    width: 62px;
+    height: 62px;
+    background: #edcda7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .wrapAllVendors {
+    margin-top: 50px;
+  }
+  .wrapVendorC {
+    width: calc(100%);
+
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    justify-content: space-between;
+    margin-top: 33px;
+    overflow: hidden;
+  }
+  .firstVendor {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 15px;
+  }
+  .imageOneV {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+  }
+  .wrapSilky {
+    width: 250px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 80%;
+  }
+  .wrapFirstOnTwoVendors {
+    width: 300px;
+    height: 300px;
+    border-radius: 30px;
+    margin-bottom: 15px;
+  }
+  .imageTwoV {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 30px;
+  }
+  .wrapSilkyTwo {
+    width: 250px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 80%;
+  }
+  .pSkinL {
+    margin: 0;
+    text-align: center;
+    font-family: Agenda;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .wrapTwo {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .wrapOpenDoors {
+    width: calc(100% - 20px);
+    padding-left: 10px;
+    padding-right: 10px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 150px;
+    position: relative;
+    z-index: 2;
+  }
+  .wrapRalativeBlock {
+    width: calc(100%);
+    height: auto;
+    position: relative;
+  }
+  .wrapRalativeBlock:first-child {
+    display: none;
+  }
+  .titleOpenDors {
+    font-size: 25px;
+  }
+  .descOpenDors {
+    font-size: 15px;
+    width: calc(100%);
+    height: auto;
+  }
+  .wrapOpenDorsShop {
+    width: 300px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 0px;
+  }
+  .videoBlockWrap {
+    width: 90%;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    position: relative;
+    z-index: 2;
+  }
+  .videoImagew {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 30px;
+  }
+  .textInVideoRelative {
+    position: absolute;
+    color: #fffceb;
+
+    text-align: center;
+    font-family: "Circular Pro";
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    margin: 0;
+    top: 30%;
+  }
+  .wrapFaq {
+    margin-top: 119px;
+    height: auto;
+    width: 96%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  .oneFaqP {
+    margin: 0;
+    color: #000;
+
+    font-family: "Orpheus Pro";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 16px;
+    margin-bottom: 25px;
+  }
+  .descriptionFaq {
+    display: flex;
+    width: 100%;
+    align-self: start;
+    height: auto;
+    color: #000;
+    margin: 0;
+    font-family: AgendaT;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
+    margin-top: 0;
+    margin-bottom: 22px;
+  }
+  .stiilCont {
+    margin: 0;
+    color: #000;
+    width: auto;
+    height: 60px;
+    text-align: start;
+    font-family: AgendaM;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
+  }
+  .pButPAdd {
+    margin: 0;
+    color: #fffceb;
+
+    font-family: Agenda;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .constactButton {
+    width: calc(160px - 56px);
+    height: 60px;
+  }
+  .joinP {
+    margin: 0;
+    color: #fffceb;
+
+    text-align: center;
+    font-family: "Orpheus Pro";
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  .joinPDesc {
+    margin: 0;
+    color: #fffceb;
+
+    text-align: center;
+    font-family: AgendaT;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
+    margin-top: 17px;
+  }
+  .wrapSendNews {
+    width: 300px;
+    height: auto;
+    position: relative;
+    border-bottom: 1.25px solid #fffceb;
+    margin-top: 53px;
   }
 }
-@media only screen and (max-width: 1100px) and (min-width: 1024px) {
+
+@media only screen and (max-width: 600px) and (min-width: 414px) {
+  .wrapText {
+    width: 100%;
+    height: 321px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 0;
+  }
+  .firstBlockText {
+    margin: 0;
+    color: #864f37;
+
+    font-family: "OrpheusPro-Bold";
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    width: 400px;
+    height: 277px;
+    text-align: start;
+  }
+  .inputBack {
+    width: calc(300px - 35px);
+    height: 77px;
+    border-radius: 100px;
+    background: #fffceb;
+    border: none;
+    color: #ad7b54;
+
+    font-family: var(--customtwo-font);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding-left: 35px;
+  }
+  .sendInfoButton {
+    width: 77px;
+    height: 77px;
+    background: var(--newfontgreen-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  .sectificatAllWrap {
+    width: calc(100% - 66px);
+    height: 88px;
+    padding-left: 33px;
+    padding-right: 33px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Вирівнювання іконок по початку */
+    margin-top: 23px;
+    position: relative;
+    z-index: 2;
+    overflow-x: scroll; /* Додаємо горизонтальний скрол */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+  }
+  .certWrapInF {
+    margin-right: 10px;
+  }
+  .prodFWrap {
+    width: calc(100% - 20px);
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .favoritP {
+    color: #000;
+
+    font-family: "Orpheus Pro";
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+  }
+  .shopAllP {
+    width: 100px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--newfontgreen-color);
+
+    font-family: AgendaT;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
+  }
+  .wrapProdInMain {
+    width: calc(100% - 20px);
+    padding-left: 10px;
+    padding-right: 10px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  .wrapNextProd {
+    width: 62px;
+    height: 62px;
+    background: #edcda7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .wrapVendorC {
+    width: calc(100%);
+
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    justify-content: space-between;
+    margin-top: 33px;
+    overflow: hidden;
+  }
+  .firstVendor {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 15px;
+  }
+  .imageOneV {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+  }
+  .wrapSilky {
+    width: 350px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 80%;
+  }
+  .wrapFirstOnTwoVendors {
+    width: 400px;
+    height: 400px;
+    border-radius: 30px;
+    margin-bottom: 15px;
+  }
+  .imageTwoV {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 30px;
+  }
+  .wrapSilkyTwo {
+    width: 350px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 80%;
+  }
+  .pSkinL {
+    margin: 0;
+    text-align: center;
+    font-family: Agenda;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .wrapTwo {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .wrapOpenDoors {
+    width: calc(100% - 20px);
+    padding-left: 10px;
+    padding-right: 10px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 150px;
+    position: relative;
+    z-index: 2;
+  }
+  .wrapRalativeBlock:first-child {
+    display: none;
+  }
+  .titleOpenDors {
+    font-size: 25px;
+  }
+  .descOpenDors {
+    font-size: 15px;
+    width: 400px;
+    height: auto;
+  }
+  .wrapOpenDorsShop {
+    width: 400px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 0px;
+  }
+  .videoBlockWrap {
+    width: 90%;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    position: relative;
+    z-index: 2;
+  }
+  .videoImagew {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 30px;
+  }
+  .textInVideoRelative {
+    position: absolute;
+    color: #fffceb;
+
+    text-align: center;
+    font-family: "Circular Pro";
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    margin: 0;
+    top: 30%;
+  }
+  .wrapFaq {
+    margin-top: 119px;
+    height: auto;
+    width: 96%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  .oneFaqP {
+    margin: 0;
+    color: #000;
+
+    font-family: "Orpheus Pro";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 16px;
+    margin-bottom: 25px;
+  }
+  .descriptionFaq {
+    display: flex;
+    width: 100%;
+    align-self: start;
+    height: auto;
+    color: #000;
+    margin: 0;
+    font-family: AgendaT;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
+    margin-top: 0;
+    margin-bottom: 22px;
+  }
+  .stiilCont {
+    margin: 0;
+    color: #000;
+    width: auto;
+    height: 60px;
+    text-align: start;
+    font-family: AgendaM;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
+  }
+  .pButPAdd {
+    margin: 0;
+    color: #fffceb;
+
+    font-family: Agenda;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .constactButton {
+    width: calc(160px - 56px);
+    height: 60px;
+  }
+}
+@media only screen and (max-width: 700px) and (min-width: 600px) {
+  .wrapText {
+    width: 100%;
+    height: 321px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 0;
+  }
+  .firstBlockText {
+    margin: 0;
+    color: #864f37;
+
+    font-family: "OrpheusPro-Bold";
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    width: 500px;
+    height: 277px;
+    text-align: start;
+  }
+  .inputBack {
+    width: calc(390px - 35px);
+    height: 77px;
+    border-radius: 100px;
+    background: #fffceb;
+    border: none;
+    color: #ad7b54;
+
+    font-family: var(--customtwo-font);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding-left: 35px;
+  }
+  .sendInfoButton {
+    width: 77px;
+    height: 77px;
+    background: var(--newfontgreen-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  .sectificatAllWrap {
+    width: calc(100% - 66px);
+    height: 88px;
+    padding-left: 33px;
+    padding-right: 33px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Вирівнювання іконок по початку */
+    margin-top: 23px;
+    position: relative;
+    z-index: 2;
+    overflow-x: scroll; /* Додаємо горизонтальний скрол */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+  }
+  .certWrapInF {
+    margin-right: 10px;
+  }
+  .prodFWrap {
+    width: calc(100% - 20px);
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .favoritP {
+    color: #000;
+
+    font-family: "Orpheus Pro";
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+  }
+  .shopAllP {
+    width: 100px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--newfontgreen-color);
+
+    font-family: AgendaT;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
+  }
+  .wrapProdInMain {
+    width: calc(100% - 20px);
+    padding-left: 10px;
+    padding-right: 10px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  .wrapNextProd {
+    width: 62px;
+    height: 62px;
+    background: #edcda7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .wrapVendorC {
+    width: calc(100%);
+
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    justify-content: space-between;
+    margin-top: 33px;
+    overflow: hidden;
+  }
+  .firstVendor {
+    width: 520px;
+    height: 550px;
+    position: relative;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 15px;
+  }
+  .imageOneV {
+    width: 520px;
+    height: 550px;
+    object-fit: cover;
+  }
+  .wrapSilky {
+    width: 450px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 85%;
+  }
+  .wrapFirstOnTwoVendors {
+    width: 520px;
+    height: 550px;
+    border-radius: 30px;
+    margin-bottom: 15px;
+  }
+  .imageTwoV {
+    width: 520px;
+    height: 550px;
+    object-fit: cover;
+    border-radius: 30px;
+  }
+  .wrapSilkyTwo {
+    width: 450px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 85%;
+  }
+  .pSkinL {
+    margin: 0;
+    text-align: center;
+    font-family: Agenda;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .wrapTwo {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .wrapOpenDoors {
+    width: calc(100% - 20px);
+    padding-left: 10px;
+    padding-right: 10px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 150px;
+    position: relative;
+    z-index: 2;
+  }
+  .wrapOpenDorsShop {
+    width: 400px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 0px;
+  }
+  .videoBlockWrap {
+    width: 90%;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    position: relative;
+    z-index: 2;
+  }
+  .videoImagew {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 30px;
+  }
+  .textInVideoRelative {
+    position: absolute;
+    color: #fffceb;
+
+    text-align: center;
+    font-family: "Circular Pro";
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    margin: 0;
+    top: 30%;
+  }
+  .wrapFaq {
+    margin-top: 119px;
+    height: auto;
+    width: 96%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  .oneFaqP {
+    margin: 0;
+    color: #000;
+
+    font-family: "Orpheus Pro";
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 16px;
+    margin-bottom: 25px;
+  }
+  .descriptionFaq {
+    display: flex;
+    width: 100%;
+    align-self: start;
+    height: auto;
+    color: #000;
+    margin: 0;
+    font-family: AgendaT;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
+    margin-top: 0;
+    margin-bottom: 22px;
+  }
+  .stiilCont {
+    margin: 0;
+    color: #000;
+    width: auto;
+    height: 60px;
+    text-align: start;
+    font-family: AgendaM;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px;
+  }
+  .pButPAdd {
+    margin: 0;
+    color: #fffceb;
+
+    font-family: Agenda;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .constactButton {
+    width: calc(190px - 56px);
+    height: 60px;
+  }
+}
+@media only screen and (max-width: 1023px) and (min-width: 700px) {
+  .sectificatAllWrap {
+    width: calc(100% - 66px);
+    height: 88px;
+    padding-left: 33px;
+    padding-right: 33px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Вирівнювання іконок по початку */
+    margin-top: 23px;
+    position: relative;
+    z-index: 2;
+    overflow-x: scroll; /* Додаємо горизонтальний скрол */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+  }
+  .certWrapInF {
+    margin-right: 10px;
+  }
+  .prodFWrap {
+    width: calc(100% - 20px);
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .favoritP {
+    color: #000;
+
+    font-family: "Orpheus Pro";
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+  }
+  .shopAllP {
+    width: 100px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--newfontgreen-color);
+
+    font-family: AgendaT;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
+  }
+  .wrapProdInMain {
+    width: calc(100% - 20px);
+    padding-left: 10px;
+    padding-right: 10px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  .wrapNextProd {
+    width: 62px;
+    height: 62px;
+    background: #edcda7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .wrapVendorC {
+    width: calc(100%);
+
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    justify-content: space-between;
+    margin-top: 33px;
+    overflow: hidden;
+  }
+  .wrapFirstOnTwoVendors {
+    margin-top: 15px;
+  }
+  .wrapTwo {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .wrapOpenDoors {
+    width: calc(100% - 20px);
+    padding-left: 10px;
+    padding-right: 10px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 150px;
+    position: relative;
+    z-index: 2;
+  }
+  .wrapOpenDorsShop {
+    margin-left: 0px;
+  }
+}
+@media only screen and (max-width: 1440px) and (min-width: 1200px) {
+  .sectificatAllWrap {
+    width: calc(100% - 66px);
+    height: 88px;
+    padding-left: 33px;
+    padding-right: 33px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Вирівнювання іконок по початку */
+    margin-top: 23px;
+    position: relative;
+    z-index: 2;
+    overflow-x: scroll; /* Додаємо горизонтальний скрол */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+  }
+  .certWrapInF {
+    margin-right: 10px;
+  }
+  .prodFWrap {
+    width: calc(100% - 20px);
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .favoritP {
+    color: #000;
+
+    font-family: "Orpheus Pro";
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+  }
+  .shopAllP {
+    width: 100px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--newfontgreen-color);
+
+    font-family: AgendaT;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
+  }
+  .wrapProdInMain {
+    width: calc(100% - 20px);
+    padding-left: 10px;
+    padding-right: 10px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  .wrapNextProd {
+    width: 62px;
+    height: 62px;
+    background: #edcda7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .wrapVendorC {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin-top: 33px;
+    overflow: hidden;
+  }
+  .wrapRalativeBlock {
+    width: 650px;
+    height: 769px;
+    position: relative;
+  }
+  .smileImage {
+    position: absolute;
+    top: 95px;
+    left: 230px;
+    width: 483px;
+    height: 371px;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 20px;
+    z-index: 1;
+  }
+  .plamd {
+    position: absolute;
+    left: 420px;
+    top: 35px;
+  }
+  .wrapOpenDorsShop {
+    margin-left: 0px;
+    width: 550px;
+  }
+  .titleOpenDors {
+    color: #000;
+    margin: 0;
+    font-family: "Orpheus Pro";
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 27px;
+    line-height: 1.2;
+  }
+  .descOpenDors {
+    color: #000;
+    margin: 0;
+    font-family: Agenda;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 40px;
+    margin-top: 22px;
+    width: 500px;
+  }
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 1024px) {
+  .sectificatAllWrap {
+    width: calc(100% - 66px);
+    height: 88px;
+    padding-left: 33px;
+    padding-right: 33px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Вирівнювання іконок по початку */
+    margin-top: 23px;
+    position: relative;
+    z-index: 2;
+    overflow-x: scroll; /* Додаємо горизонтальний скрол */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+  }
+  .certWrapInF {
+    margin-right: 10px;
+  }
+  .prodFWrap {
+    width: calc(100% - 20px);
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .favoritP {
+    color: #000;
+
+    font-family: "Orpheus Pro";
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+  }
+  .shopAllP {
+    width: 100px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--newfontgreen-color);
+
+    font-family: AgendaT;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
+  }
+  .wrapProdInMain {
+    width: calc(100% - 20px);
+    padding-left: 10px;
+    padding-right: 10px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  .wrapNextProd {
+    width: 62px;
+    height: 62px;
+    background: #edcda7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .wrapVendorC {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin-top: 33px;
+    overflow: hidden;
+  }
+  .firstVendor {
+    width: 500px;
+    height: 650px;
+    position: relative;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 15px;
+  }
+  .imageOneV {
+    width: 500px;
+    height: 650px;
+    object-fit: cover;
+  }
+  .wrapSilky {
+    width: 450px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 90%;
+  }
+  .wrapFirstOnTwoVendors {
+    width: 500px;
+    height: 300px;
+    border-radius: 30px;
+    margin-bottom: 15px;
+  }
+  .imageTwoV {
+    width: 500px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 30px;
+  }
+  .wrapSilkyTwo {
+    width: 450px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 80%;
+  }
+  .wrapTwo {
+    width: 500px;
+    height: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .wrapOpenDoors {
+    width: calc(100% - 20px);
+    padding-left: 10px;
+    padding-right: 10px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 150px;
+    position: relative;
+    z-index: 2;
+  }
+  .wrapOpenDorsShop {
+    margin-left: 0px;
+  }
 }

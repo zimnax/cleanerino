@@ -227,3 +227,255 @@
   justify-content: center;
   align-self: flex-end;
 }
+@media only screen and (max-width: 414px) and (min-width: 300px) {
+  .wrapSmallContact {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .firstBlockCont {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .wrapForm {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .wrapTwoInputs {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .smallInput {
+    width: calc(100% - 40px);
+    height: calc(48px - 24px);
+    border-radius: 999px;
+    border: 1px solid var(--grayscale20-color);
+    background: var(--grayscale0-color);
+    padding: 12px 16px 12px 24px;
+    color: #666;
+    font-family: var(--custom-font);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    letter-spacing: 0.8px;
+    margin-top: 10px;
+  }
+  .wrapNameCont {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .wrapInputs {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .inputBig {
+    margin-top: 10px;
+  }
+  .textAreaBix {
+    margin-top: 10px;
+  }
+  .buttonSabmit {
+    margin-top: 10px;
+  }
+  .vendorSuportB {
+    padding: 24px 10px;
+    width: calc(100% - 20px);
+    height: auto;
+    border-radius: 8px;
+    background: var(--colour-neutrals-0, #fff);
+    box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .vendorSuportBS {
+    padding: 24px 10px;
+    width: calc(100% - 20px);
+    height: auto;
+    border-radius: 8px;
+    background: var(--colour-neutrals-0, #fff);
+    box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 32px;
+  }
+}
+
+@media only screen and (max-width: 600px) and (min-width: 414px) {
+  .wrapSmallContact {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .firstBlockCont {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .wrapForm {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .wrapTwoInputs {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .smallInput {
+    width: calc(100% - 40px);
+    height: calc(48px - 24px);
+    border-radius: 999px;
+    border: 1px solid var(--grayscale20-color);
+    background: var(--grayscale0-color);
+    padding: 12px 16px 12px 24px;
+    color: #666;
+    font-family: var(--custom-font);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    letter-spacing: 0.8px;
+    margin-top: 10px;
+  }
+  .wrapNameCont {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .wrapInputs {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .inputBig {
+    margin-top: 10px;
+  }
+  .textAreaBix {
+    margin-top: 10px;
+  }
+  .buttonSabmit {
+    margin-top: 10px;
+  }
+  .vendorSuportB {
+    padding: 24px 10px;
+    width: calc(100% - 20px);
+    height: auto;
+    border-radius: 8px;
+    background: var(--colour-neutrals-0, #fff);
+    box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .vendorSuportBS {
+    padding: 24px 10px;
+    width: calc(100% - 20px);
+    height: auto;
+    border-radius: 8px;
+    background: var(--colour-neutrals-0, #fff);
+    box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 32px;
+  }
+}
+@media only screen and (max-width: 700px) and (min-width: 600px) {
+  .wrapSmallContact {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .firstBlockCont {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .wrapForm {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+@media only screen and (max-width: 1023px) and (min-width: 700px) {
+  .wrapSmallContact {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .wrapForm {
+    margin-top: 20px;
+  }
+}
+@media only screen and (max-width: 1440px) and (min-width: 1200px) {
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 1024px) {
+  .wrapSmallContact {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .wrapForm {
+    margin-top: 20px;
+  }
+}

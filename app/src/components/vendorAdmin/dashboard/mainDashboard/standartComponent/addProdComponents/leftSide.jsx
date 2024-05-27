@@ -214,7 +214,7 @@ const LeftSide = ({
               value={weight}
               onBlur={() => validateWeightInput(weight)}
               onChange={changeWeight}
-              placeholder="3oz"
+              placeholder="4 oz"
             />
           </div>
 
@@ -230,7 +230,7 @@ const LeftSide = ({
               value={width}
               onBlur={() => validateVolumeInput(width)}
               onChange={changeVolume}
-              placeholder=""
+              placeholder="5 in"
             />
           </div>
         </div>
@@ -247,7 +247,7 @@ const LeftSide = ({
               value={height}
               onBlur={() => validateHeightInput(height)}
               onChange={changeHeight}
-              placeholder=""
+              placeholder="5 in"
             />
           </div>
 
@@ -263,7 +263,7 @@ const LeftSide = ({
               value={length}
               onBlur={() => validateLengthInput(length)}
               onChange={changeLength}
-              placeholder=""
+              placeholder="5 in"
             />
           </div>
         </div>
@@ -315,11 +315,7 @@ const LeftSide = ({
               ))}
             </div>
           )}
-          <p className={css.pTOIngred}>
-            Paste ingredient list” - “Please make sure to indicate the origin
-            (source) of such ingredients as palm oil, mica, etc. to transparency
-            in ingredient sourcing.
-          </p>
+          <p className={css.pTOIngred}></p>
         </div>
       </div>
       {/*///////////////////////////////// */}

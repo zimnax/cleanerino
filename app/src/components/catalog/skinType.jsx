@@ -49,6 +49,11 @@ const SkinType = ({ selectedSkinType, setSelectedSkinType }) => {
       setSelectedSkinType(updatedSelectedCategories); // Передача унікальних об'єктів категорій
     }
   };
+  useEffect(() => {
+    if (selectedSkinType) {
+      setSelectedCategories(selectedSkinType);
+    }
+  }, [selectedSkinType]);
   return (
     <div className={css.wrapAllFilter}>
       <div

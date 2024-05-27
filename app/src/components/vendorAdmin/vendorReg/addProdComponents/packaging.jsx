@@ -15,7 +15,7 @@ const Packaging = ({ data, setGlass, setMetal, setPaper, setPlastic }) => {
 
     setGlass(g);
     // При виборі Glass робимо інші селекти неактивними
-    if (g === "Select a packaging") {
+    if (g === "Select packaging type") {
       setMetalDisabled(false);
       setPaperDisabled(false);
       setPlasticDisabled(false);
@@ -30,7 +30,7 @@ const Packaging = ({ data, setGlass, setMetal, setPaper, setPlastic }) => {
     const g = e.target.value;
     setMetal(g);
 
-    if (g === "Select a packaging") {
+    if (g === "Select packaging type") {
       setGlassDisabled(false);
       setPaperDisabled(false);
       setPlasticDisabled(false);
@@ -44,7 +44,7 @@ const Packaging = ({ data, setGlass, setMetal, setPaper, setPlastic }) => {
   const handlePaperChange = (e) => {
     const g = e.target.value;
     setPaper(g);
-    if (g === "Select a packaging") {
+    if (g === "Select packaging type") {
       setGlassDisabled(false);
       setMetalDisabled(false);
       setPlasticDisabled(false);
@@ -58,7 +58,7 @@ const Packaging = ({ data, setGlass, setMetal, setPaper, setPlastic }) => {
   const handlePlasticChange = (e) => {
     const g = e.target.value;
     setPlastic(g);
-    if (g === "Select a packaging") {
+    if (g === "Select packaging type") {
       setGlassDisabled(false);
       setMetalDisabled(false);
       setPaperDisabled(false);
@@ -81,7 +81,7 @@ const Packaging = ({ data, setGlass, setMetal, setPaper, setPlastic }) => {
               onChange={handleGlassChange}
               disabled={glassDisabled}
             >
-              <option value={null}>Select a packaging</option>
+              <option value={null}>Select packaging type</option>
               {data.map((el, index) => {
                 if (el.category_id === 1) {
                   return (
@@ -105,7 +105,7 @@ const Packaging = ({ data, setGlass, setMetal, setPaper, setPlastic }) => {
               onChange={handleMetalChange}
               disabled={metalDisabled}
             >
-              <option value={null}>Select a packaging</option>
+              <option value={null}>Select packaging type</option>
               {data.map((el, index) => {
                 if (el.category_id === 2) {
                   return (
@@ -130,7 +130,7 @@ const Packaging = ({ data, setGlass, setMetal, setPaper, setPlastic }) => {
               onChange={handlePaperChange}
               disabled={paperDisabled}
             >
-              <option value={null}>Select a packaging</option>
+              <option value={null}>Select packaging type</option>
               {data.map((el, index) => {
                 if (el.category_id === 3) {
                   return (
@@ -155,7 +155,7 @@ const Packaging = ({ data, setGlass, setMetal, setPaper, setPlastic }) => {
               onChange={handlePlasticChange}
               disabled={plasticDisabled}
             >
-              <option value={null}>Select a packaging</option>
+              <option value={null}>Select packaging type</option>
               {data.map((el, index) => {
                 if (el.category_id === 4) {
                   return (

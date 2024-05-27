@@ -337,7 +337,7 @@ const AddBrandDetails = ({
             </div>
           </div>
           <div className={css.banerWrap}>
-            <label className={css.labelInp}>Baner</label>
+            <label className={css.labelInp}>Banner</label>
 
             <div
               className={css.dropDownWrapBig}
@@ -352,7 +352,9 @@ const AddBrandDetails = ({
             >
               <ReactSVG src={upload} />
               <p className={css.descPDrop}>
-                <span className={css.descPDropSpan}>Click to upload logo</span>
+                <span className={css.descPDropSpan}>
+                  Click to upload banner
+                </span>
                 *.svg, *.png, *.jpeg, *.jpg, *.gif. Size{" "}
                 <span className={css.descSpanSize}>280х432px.</span>
               </p>

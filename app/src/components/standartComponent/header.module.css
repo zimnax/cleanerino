@@ -35,6 +35,15 @@
   align-items: center;
   z-index: 100;
 }
+.wrapHeaderAllModernCol {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
 .wrapHeaderAllForDash {
   width: 100%;
   height: auto;
@@ -435,6 +444,19 @@
   cursor: pointer;
   margin-right: 20px;
 }
+.liNavIMobile {
+  color: var(--newfontgreen-color);
+  font-family: "Orpheus Pro";
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 40px; /* 125% */
+  letter-spacing: 1.6px;
+  margin: 0;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: 30px;
+}
 .navigationInHeader {
   width: auto;
   display: flex;
@@ -450,4 +472,73 @@
   text-decoration: none;
   list-style-type: none;
   padding: 0;
+}
+.ulNavigationMobile {
+  text-decoration: none;
+  list-style-type: none;
+  padding: 0;
+}
+.rxHamburgerMenu {
+  font-size: 30px;
+  color: var(--newfontgreen-color);
+}
+.burgerMenuWrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Напівпрозорий фон (RGBA) */
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.closeBurgerMenu {
+  color: white;
+  align-self: flex-end;
+  cursor: pointer;
+  font-size: 50px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+.logoInHeaderSmall {
+  transform: rotate(90deg);
+}
+@media only screen and (max-width: 600px) and (min-width: 300px) {
+  .wrapHeaderNew {
+    width: calc(100%);
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 0px 0px 50px 50px;
+    background: #fffceb;
+  }
+  .wrapHeaderModern {
+    width: calc(100%);
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 0px 0px 50px 50px;
+    background: none;
+  }
+  .wrapInputSearch {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: calc(99%);
+  }
+}
+@media only screen and (max-width: 700px) and (min-width: 479px) {
+}
+@media only screen and (max-width: 1100px) and (min-width: 700px) {
+}
+@media only screen and (max-width: 1440px) and (min-width: 1024px) {
+}
+@media only screen and (max-width: 1100px) and (min-width: 1024px) {
 }

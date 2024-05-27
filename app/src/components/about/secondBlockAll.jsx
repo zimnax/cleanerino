@@ -23,13 +23,13 @@ const SecondBlockAll = () => {
             </div>
             <p className={css.descStatP}>
               We started Cleanerino with a firm belief that when it comes to
-              skincare, one size does NOT fit all. We recognize the diverse
+              personal care, one size does NOT fit all. We recognize the diverse
               needs, allergy profiles, and belief systems of our customers.
-              That’s why we made it our mission to make skincare shopping a
+              That’s why we made it our mission to make personal care shopping a
               highly personalized, safe, and ethical experience. We strive to
-              empower our customers to make informed choices about their
-              skincare products, leading to healthier skin and a healthier
-              planet.
+              empower our customers to make informed decisions about the
+              products that purchase, leading to healthier bodies and a
+              healthier planet.
             </p>
           </div>
           <div className={css.secondPhySmalTwo}>
@@ -39,14 +39,14 @@ const SecondBlockAll = () => {
             </div>
             <p className={css.descStatP}>
               We believe in the power of great ingredients to create exceptional
-              skincare products. Our commitment is to find brands that use only
+              products. Our commitment is to find brands that use only
               ingredients that are safe for both the human body and the
               environment. By keeping harmful, unsafe, and unsustainable
               ingredients away from our platform, we aim to simplify the search
-              for effective skincare solutions. Our goal is to make it faster,
-              easier, and less stressful for customers to find products that
-              truly work for them, allowing them to spend more time enjoying the
-              benefits of their skincare routine.v
+              for effective solutions. Our goal is to make it faster, easier,
+              and less stressful for customers to find products that truly work
+              for them, allowing them to spend more time enjoying the benefits
+              of their skincare, body care, and home care routines.
             </p>
           </div>
         </div>

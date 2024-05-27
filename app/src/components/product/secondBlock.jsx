@@ -73,6 +73,7 @@ const SecondBlock = ({ productData, brand, data, ingridients }) => {
     setSelectedSustainability("");
     setSelectedCare("Care");
   };
+
   useEffect(() => {
     if (brand) {
       GetCountries().then((result) => {

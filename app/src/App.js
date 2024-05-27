@@ -155,6 +155,12 @@ function App() {
           }
         />
         <Route
+          path="/privacy/:id"
+          element={
+            <Privacy activeUser={activeUser} totalQuantity={totalQuantity} />
+          }
+        />
+        <Route
           path="/contact"
           element={
             <Contact activeUser={activeUser} totalQuantity={totalQuantity} />

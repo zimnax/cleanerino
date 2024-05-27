@@ -2,6 +2,7 @@ import css from "./vendorReg.module.css";
 import { ReactSVG } from "react-svg";
 import logo from "../../../svg/logo-inline.svg";
 import { useEffect, useState } from "react";
+import { signOut } from "firebase/auth";
 import google from "../../../img/Google-Symbol.png";
 import Swal from "sweetalert2";
 import {
@@ -56,9 +57,16 @@ const VendorRegPage = ({ setReg, setBrandPage, activeUser }) => {
   const [popUpMes, setPopUpMes] = useState(false);
   const [popUpMesSu, setPopUpMesSu] = useState(false);
   const navigate = useNavigate();
+  const signOutUser = () => {
+    signOut(auth)
+      .then(() => {})
+      .catch((err) => {
+        console.error(err);
+      });
+  };
   useEffect(() => {
     if (activeUser) {
-      navigate("/vendor/dashboard");
+      signOutUser();
     }
   }, []);
   const validateEmail = (email) => {

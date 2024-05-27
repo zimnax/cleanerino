@@ -304,7 +304,7 @@ const AddProductDashboard = ({ setProdList, setAddProduct, users }) => {
   return (
     <>
       <div className={css.regWrap}>
-        <div className={css.headerWrap}>
+        <div className={css.headerWrapProd}>
           <p className={css.createNewProduct}>Create new product</p>
 
           <div className={css.twoButtWr}>

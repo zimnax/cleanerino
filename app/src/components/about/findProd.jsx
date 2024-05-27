@@ -13,9 +13,10 @@ const FindProd = () => {
       </div>
       <p className={css.pInFindBig} id="section2">
         Through our platform, we aim to reduce waste by helping customers find
-        the right products from the first try, fostering a more sustainable
-        approach to skincare. Ultimately, we envision a skincare industry that
-        benefits everyone involved—users, creators, and our planet.{" "}
+        the right products and discover independent makers, fostering a more
+        sustainable approach to personal care. Ultimately, we envision a
+        personal care industry that benefits everyone involved—users, creators,
+        and our planet.
       </p>
     </div>
   );

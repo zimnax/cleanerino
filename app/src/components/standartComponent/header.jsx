@@ -21,6 +21,10 @@ import { useNavigate } from "react-router-dom";
 import cartSlice from "../../function/cartSlice";
 import { addToCart } from "../../function/cartSlice";
 import Menu from "./menu";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { AiOutlineClose } from "react-icons/ai";
+
+import smallIcon from "../../svg/philosophyJkd.svg";
 const Header = ({ activeUser, data, totalQuantity }) => {
   const [search, setSearch] = useState("");
   const [users, setUsers] = useState(null);
@@ -28,7 +32,27 @@ const Header = ({ activeUser, data, totalQuantity }) => {
   const [counterCart, serCounterCart] = useState(0);
   const [openContact, setOpenContact] = useState(false);
   const dispatch = useDispatch();
+  const [burgerCLick, setBurgerCLick] = useState(false);
   const text = useSelector((state) => state.cartSlice);
+  const [windowDimensions, setWindowDimensions] = useState(false);
+  const openBurgerMenu = () => {
+    setBurgerCLick(true);
+  };
+  const closeBurgerMenu = () => {
+    setBurgerCLick(false);
+  };
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth < 900) {
+        setWindowDimensions(false);
+      } else {
+        setWindowDimensions(true);
+      }
+    }
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   // useEffect(() => {
   //   const totalQuantity = text.items.reduce(
   //     (total, item) => parseInt(total) + parseInt(item.quantity),
@@ -86,7 +110,12 @@ const Header = ({ activeUser, data, totalQuantity }) => {
     <header className={css.wrapHeaderAllNew}>
       <div className={css.wrapHeaderNew}>
         <Link to="/">
-          <ReactSVG src={logo} />
+          {windowDimensions && (
+            <ReactSVG className={css.logoInHeader} src={logo} />
+          )}
+          {!windowDimensions && (
+            <ReactSVG className={css.logoInHeaderSmall} src={smallIcon} />
+          )}
         </Link>
         {/* <div className={css.wrapShopCategory}>
           <p className={css.shapCatP}>Shop Categories</p>
@@ -103,25 +132,61 @@ const Header = ({ activeUser, data, totalQuantity }) => {
             <ReactSVG src={searchIcon} className={css.searchIconHeader} />
           </button>
         </div> */}
-        <nav className={css.navigationInHeader}>
-          <ul className={css.ulNavigation}>
-            <li className={css.liNavI}>
-              <Link className={css.liNavI} to="/shop">
-                Shop
-              </Link>
-            </li>
-            <li className={css.liNavI}>
-              <Link className={css.liNavI} to="/about">
-                About
-              </Link>
-            </li>
-            <li className={css.liNavI}>
-              <Link className={css.liNavI} to="/contact">
-                Contact
-              </Link>
-            </li>
-          </ul>
-        </nav>
+        {windowDimensions && (
+          <nav className={css.navigationInHeader}>
+            <ul className={css.ulNavigation}>
+              <li className={css.liNavI}>
+                <Link className={css.liNavI} to="/shop">
+                  Shop
+                </Link>
+              </li>
+              <li className={css.liNavI}>
+                <Link className={css.liNavI} to="/about">
+                  About
+                </Link>
+              </li>
+              <li className={css.liNavI}>
+                <Link className={css.liNavI} to="/contact">
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        )}
+        {!windowDimensions && (
+          <>
+            {" "}
+            <RxHamburgerMenu
+              onClick={openBurgerMenu}
+              className={css.rxHamburgerMenu}
+            />
+          </>
+        )}
+        {burgerCLick && (
+          <div className={css.burgerMenuWrap}>
+            <AiOutlineClose
+              onClick={closeBurgerMenu}
+              className={css.closeBurgerMenu}
+            />
+            <ul className={css.ulNavigationMobile}>
+              <li className={css.liNavIMobile}>
+                <Link className={css.liNavIMobile} to="/shop">
+                  Shop
+                </Link>
+              </li>
+              <li className={css.liNavIMobile}>
+                <Link className={css.liNavIMobile} to="/about">
+                  About
+                </Link>
+              </li>
+              <li className={css.liNavIMobile}>
+                <Link className={css.liNavIMobile} to="/contact">
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
+        )}
         <div className={css.wrapIconsHeader}>
           {users && (
             <Link className={css.nameP} to={`/user/cabinet`}>

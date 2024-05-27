@@ -3,7 +3,7 @@ import { ReactSVG } from "react-svg";
 import arrDo from "../../svg/fdsewhj.svg";
 import star from "../../svg/StarCertif.svg";
 import withMySQLData from "../HOK/withMySQLData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import arrowUp from "../../svg/ChevronIconApp.svg";
 const Certifications = ({
   data,
@@ -40,7 +40,7 @@ const Certifications = ({
 
       // Оновлюємо стан з обраними категоріями
       setSelectedCategories(updatedSelectedCategories);
-
+      console.log("updatedSelectedCategories", updatedSelectedCategories);
       // Передаємо вибрані категорії до батьківського компонента
       setSelectedCertificate(
         updatedSelectedCategories.map((category) => category.id)
@@ -54,6 +54,42 @@ const Certifications = ({
       (category) => category.category_name === categoryName
     );
   };
+  // useEffect(() => {
+  //   // Фільтруємо категорії за вибраними ідентифікаторами
+  //   const filteredCategories = data.filter((category) =>
+  //     selectedCertificate.includes(category.category_id)
+  //   );
+  //   const uniqueCategoriesMap = filteredCategories.reduce((acc, category) => {
+  //     if (!acc[category.category_id]) {
+  //       acc[category.category_id] = category;
+  //     }
+  //     return acc;
+  //   }, {});
+
+  //   // Отримуємо масив унікальних категорій
+  //   const uniqueCategories = Object.values(uniqueCategoriesMap);
+  //   console.log("uniqueCategories", uniqueCategories);
+  //   setSelectedCategories(uniqueCategories);
+  // }, [data, selectedCertificate]);
+  useEffect(() => {
+    // Перевіряємо, чи selectedCertificate існує і не дорівнює порожньому рядку
+    if (selectedCertificate && selectedCertificate !== "") {
+      // Знаходимо об'єкти в масиві data, які мають id зі значеннями selectedCertificate
+      const filteredCategories = data.filter((category) =>
+        selectedCertificate.includes(category.id)
+      );
+
+      // Створюємо новий масив об'єктів з полями category_name та id
+      const formattedCategories = filteredCategories.map((category) => ({
+        category_name: category.name,
+        id: category.id,
+      }));
+      console.log("formattedCategories", formattedCategories);
+      // Оновлюємо стан з обраними категоріями
+      setSelectedCategories(formattedCategories);
+    }
+  }, [data, selectedCertificate]);
+
   return (
     <div className={css.wrapAllFilter}>
       <div
@@ -70,7 +106,7 @@ const Certifications = ({
         {!isDropdownOpen && <ReactSVG src={arrDo} />}
       </div>
       {isDropdownOpen && (
-        <div className={css.dropdown}>
+        <div className={css.dropdownCert}>
           <div
             className={css.dropdownItem}
             onClick={() => setSelectedCategories([])}
@@ -78,18 +114,18 @@ const Certifications = ({
             <div className={css.kvad}></div>
             <p className={css.nameLocP}>All</p>
           </div>
-          {uniqueCategories.map((category, index) => (
+          {data.map((category, index) => (
             <div
               key={index}
               className={css.dropdownItem}
-              onClick={() => handleCategoryChange(category)}
+              onClick={() => handleCategoryChange(category.name)}
             >
-              <div
+              {/* <div
                 className={
-                  isCategorySelected(category) ? css.kvadCheck : css.kvad
+                  isCategorySelected(category.name) ? css.kvadCheck : css.kvad
                 }
-              ></div>{" "}
-              <p
+              ></div> */}
+              {/* <p
                 className={
                   isCategorySelected(category)
                     ? css.nameLocPCheck
@@ -97,7 +133,16 @@ const Certifications = ({
                 }
               >
                 {category}
-              </p>
+              </p> */}
+              <img
+                className={
+                  isCategorySelected(category.name)
+                    ? css.certificationImageCheck
+                    : css.certificationImage
+                }
+                src={category.image}
+                alt="certification"
+              />
             </div>
           ))}
         </div>

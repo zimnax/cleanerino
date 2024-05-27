@@ -118,7 +118,7 @@ const ProductList = ({ data, users, setProduct }) => {
             </button>
             <div className={css.wrapProdTable}>
               <div className={css.allForDashProductWrap}>
-                <table className={css.table}>
+                <table className={css.tableProd}>
                   <thead>
                     <tr className={css.mainTr}>
                       <th className={css.thClassTwoBDash}>Item name</th>

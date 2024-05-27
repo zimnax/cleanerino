@@ -76,7 +76,7 @@ const LeftPannel = ({
               Returns
             </span>
           </li>
-          <li
+          {/* <li
             className={discount ? css.liDashTrue : css.liDash}
             onClick={() => handleClick("discounts")}
           >
@@ -92,7 +92,7 @@ const LeftPannel = ({
           >
             {chat ? <ReactSVG src={chatLogTrue} /> : <ReactSVG src={chatLog} />}
             <span className={chat ? css.liSpanTrue : css.liSpan}>Chat</span>
-          </li>
+          </li> */}
         </ul>
       </div>
       <div className={css.secondDashWrap}>

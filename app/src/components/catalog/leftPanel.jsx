@@ -33,11 +33,22 @@ const LeftPanel = ({
   setSelectedOption,
   setListOfProduct,
   listOfProduct,
+  setSavedAllFilter,
+  savedAllFilter,
+  saveDataToLocal,
+  alergens,
 }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [openSort, setOpenSort] = useState(false);
   const handleRadioChange = () => {
     setIsChecked(!isChecked);
+    setSavedAllFilter(!savedAllFilter);
+    if (savedAllFilter === false) {
+      saveDataToLocal();
+    }
+    if (savedAllFilter === true) {
+      localStorage.removeItem("filters");
+    }
   };
   return (
     <div className={css.leftPanelWrap}>
@@ -90,14 +101,14 @@ const LeftPanel = ({
           </div>
           <div className={css.savedWr}>
             <div className={css.wrapChack}>
-              <label className={css.labelInp}>Saved Filters</label>
+              <label className={css.labelInp}>Save filters</label>
               <div className={css.chaWr}>
                 <label className={css.check} onClick={handleRadioChange}>
                   <input
                     name="returns"
                     type="radio"
                     className={css.check__check}
-                    checked={isChecked}
+                    checked={savedAllFilter}
                     onChange={() => {}} // Порожня функція, щоб уникнути помилок
                   />
                   <span className={css.check__indicator}></span>
@@ -113,7 +124,7 @@ const LeftPanel = ({
             setSelectedIngridient={setSelectedIngridient}
             setIngridietsArrayFromB={setIngridietsArrayFromB}
           />
-          <Alergens setAlergens={setAlergens} />
+          <Alergens setAlergens={setAlergens} alergens={alergens} />
           <CategoryL
             setSelectedCategoryIdArr={setSelectedCategoryIdArr}
             selectedCategoryIdArr={selectedCategoryIdArr}

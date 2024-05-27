@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import arrow from "../../svg/arrowLetBut.svg";
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
 import Swal from "sweetalert2";
+import passwordValidator from "password-validator";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -36,6 +37,22 @@ const SignUp = ({ activeUser, totalQuantity }) => {
     const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
     return re.test(password);
   };
+  const schema = new passwordValidator();
+  schema
+    .is()
+    .min(8) // Мінімум 8 символів
+    .has()
+    .uppercase() // Має містити принаймні одну велику літеру
+    .has()
+    .lowercase() // Має містити принаймні одну маленьку літеру
+    .has()
+    .digits() // Має містити принаймні одну цифру
+    .has()
+    .not()
+    .spaces() // Не має містити пробіли
+    .is()
+    .not()
+    .oneOf(["Passw0rd", "Password123"]);
   const validateEmail = (email) => {
     const re =
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -55,13 +72,13 @@ const SignUp = ({ activeUser, totalQuantity }) => {
 
   const changePass = (e) => {
     setPassword(e.target.value);
-    setValidP(validatePassword(e.target.value));
+    setValidP(schema.validate(e.target.value));
   };
 
   useEffect(() => {
     if (
       !validateEmail(email) && // Перевірка на валідну електронну адресу
-      validatePassword(password)
+      schema.validate(password)
     ) {
       setButtonDisabled(false);
     } else {
@@ -71,6 +88,43 @@ const SignUp = ({ activeUser, totalQuantity }) => {
   const signUp = async (e) => {
     e.preventDefault();
     if (!validP || emailError) {
+      let errorMessage = "";
+      if (password === "") {
+        errorMessage += "Please enter a password.\n";
+      } else if (!validP) {
+        errorMessage +=
+          "Password is invalid. Please fix the following issues:\n";
+        if (!schema.has().min(8).validate(password)) {
+          errorMessage += "- Password must be at least 8 characters long.\n";
+        }
+        if (!schema.has().uppercase().validate(password)) {
+          errorMessage +=
+            "- Password must contain at least one uppercase letter.\n";
+        }
+        if (!schema.has().lowercase().validate(password)) {
+          errorMessage +=
+            "- Password must contain at least one lowercase letter.\n";
+        }
+        if (!schema.has().digits().validate(password)) {
+          errorMessage += "- Password must contain at least one digit.\n";
+        }
+        if (!schema.has().not().spaces().validate(password)) {
+          errorMessage += "- Password cannot contain spaces.\n";
+        }
+        if (schema.is().oneOf(["Passw0rd", "Password123"]).validate(password)) {
+          errorMessage +=
+            "- Password is too common. Please choose a stronger password.";
+        }
+      }
+
+      Swal.fire({
+        icon: "error",
+        title: "Invalid Input",
+        text: errorMessage,
+        confirmButtonColor: "#609966",
+        timer: 2000, // 2000 мілісекунд (2 секунди)
+        showConfirmButton: false,
+      });
       return;
     }
     try {
@@ -149,11 +203,7 @@ const SignUp = ({ activeUser, totalQuantity }) => {
               </div>
             </div>
             <div className={css.wralAllRedEx}>
-              <button
-                className={css.buttonWrGren}
-                disabled={buttonDisabled}
-                onClick={signUp}
-              >
+              <button className={css.buttonWrGren} onClick={signUp}>
                 <div className={css.wrapSvD}>
                   <ReactSVG
                     src={arrow}

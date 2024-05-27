@@ -101,7 +101,7 @@ const ProfAndSetting = ({
           <div className={css.dropDownWrap}>
             <ReactSVG src={upload} />
             <p className={css.descPDrop}>
-              <span className={css.descPDropSpan}>Click to upload logo</span>
+              <span className={css.descPDropSpan}>Click to upload photo</span>
               *.svg, *.png, *.jpeg, *.jpg, *.gif. Size{" "}
               <span className={css.descSpanSize}>280х432px.</span>
             </p>

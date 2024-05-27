@@ -12,6 +12,7 @@ import ProdInLater from "./prodInLater";
 import HeaderNormal from "../standartComponent/headerNormal";
 import HeaderModernWhite from "../standartComponent/headerModernWhite";
 import { useNavigate } from "react-router-dom";
+import Footer from "../standartComponent/footer";
 const Cart = ({ activeUser, data, setCartCounterC, quor }) => {
   const [prodInCart, setProdInCart] = useState(null);
   const [prodInLater, setProdInLater] = useState(null);
@@ -173,6 +174,7 @@ const Cart = ({ activeUser, data, setCartCounterC, quor }) => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

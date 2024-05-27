@@ -22,6 +22,10 @@ const VendorProd = ({
   setSelectedOption,
   setListOfProduct,
   setCartCounterC,
+  setSavedAllFilter,
+  savedAllFilter,
+  saveDataToLocal,
+  alergens,
 }) => {
   return (
     <div className={css.wrapFilterWithProd}>
@@ -43,6 +47,10 @@ const VendorProd = ({
         setSelectedOption={setSelectedOption}
         setListOfProduct={setListOfProduct}
         listOfProduct={listOfProduct}
+        setSavedAllFilter={setSavedAllFilter}
+        savedAllFilter={savedAllFilter}
+        saveDataToLocal={saveDataToLocal}
+        alergens={alergens}
       />
       <RightPanel
         listOfProduct={listOfProduct}

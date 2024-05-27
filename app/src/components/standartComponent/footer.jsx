@@ -54,11 +54,11 @@ const Footer = () => {
         </div>
         <div className={css.firstBlockWrap}>
           <p className={css.mainPLite}>Support</p>
-          <Link to="/privacy" className={css.mainPSecond}>
+          <Link to="/privacy/faqs" className={css.mainPSecond}>
             FAQs
           </Link>
           <Link to="/contact" className={css.mainPSecond}>
-            Contact
+            Contact info
           </Link>
           <Link to="/privacy" className={css.mainPSecond}>
             Shipping & Returns
@@ -66,13 +66,13 @@ const Footer = () => {
         </div>
         <div className={css.firstBlockWrap}>
           <p className={css.mainPLite}>Terms</p>
-          <Link to="/privacy" className={css.mainPSecond}>
+          <Link to="/privacy/terms_of_use" className={css.mainPSecond}>
             Terms of Use
           </Link>
-          <Link to="/privacy" className={css.mainPSecond}>
+          <Link to="/privacy/privacy_policy" className={css.mainPSecond}>
             Privacy Policy
           </Link>
-          <Link to="/privacy" className={css.mainPSecond}>
+          <Link to="/privacy/vendor_policy" className={css.mainPSecond}>
             Vendor Policy
           </Link>
         </div>

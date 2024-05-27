@@ -20,6 +20,7 @@ const DashBoard = ({ activeUser, data }) => {
   const [customer, setCustomer] = useState(false);
   const [chat, setChat] = useState(false);
   const [settings, setSettings] = useState(false);
+  const [visibleD, setVisibleD] = useState(false);
   const signOutUser = () => {
     signOut(auth)
       .then(() => {})
@@ -32,47 +33,52 @@ const DashBoard = ({ activeUser, data }) => {
       const found = data.find((item) => item.firebase_id === activeUser.uid);
       if (found) {
         setUsers(found);
+        setVisibleD(true);
       } else {
-        console.log("Notfound");
+        setVisibleD(false);
         signOutUser();
         window.location.href = "/vendorRegistration";
       }
     }
   }, [data, activeUser]);
-  console.log("activeUser", activeUser);
+
   return (
-    <div className={css.wrapDashboardAll}>
-      <LeftPannel
-        setSettings={setSettings}
-        settings={settings}
-        dashBordS={dashBordS}
-        setDashBoardS={setDashBoardS}
-        order={order}
-        setOrder={setOrder}
-        product={product}
-        setProduct={setProduct}
-        discount={discount}
-        setDiscount={setDiscount}
-        customer={customer}
-        setCustomer={setCustomer}
-        chat={chat}
-        setChat={setChat}
-        users={users}
-      />
-      <div className={css.rightPannelWrap}>
-        {dashBordS && <Dash />}
-        {settings && (
-          <ProfileSettings
-            activeUser={activeUser}
-            setUsers={setUsers}
+    <>
+      {visibleD && (
+        <div className={css.wrapDashboardAll}>
+          <LeftPannel
+            setSettings={setSettings}
+            settings={settings}
+            dashBordS={dashBordS}
+            setDashBoardS={setDashBoardS}
+            order={order}
+            setOrder={setOrder}
+            product={product}
+            setProduct={setProduct}
+            discount={discount}
+            setDiscount={setDiscount}
+            customer={customer}
+            setCustomer={setCustomer}
+            chat={chat}
+            setChat={setChat}
             users={users}
           />
-        )}
-        {product && <ProductList setProduct={setProduct} users={users} />}
-        {order && <Orders users={users} />}
-        {customer && <Customers users={users} />}
-      </div>
-    </div>
+          <div className={css.rightPannelWrap}>
+            {dashBordS && <Dash />}
+            {settings && (
+              <ProfileSettings
+                activeUser={activeUser}
+                setUsers={setUsers}
+                users={users}
+              />
+            )}
+            {product && <ProductList setProduct={setProduct} users={users} />}
+            {order && <Orders users={users} />}
+            {customer && <Customers users={users} />}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 export default withMySQLData(

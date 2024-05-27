@@ -9,6 +9,7 @@ const Ingridient = ({ productData, data }) => {
   const [matchedIngredients, setMatchedIngredients] = useState([]);
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [openPop, setOpenPop] = useState(false);
+  console.log("productData", productData);
   useEffect(() => {
     if (productData) {
       setIngrid(productData.ingredients.split(", ").map((item) => item.trim()));

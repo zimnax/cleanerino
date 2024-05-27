@@ -40,7 +40,17 @@
   align-items: center;
   justify-content: space-between;
 }
-
+.headerWrapProd {
+  width: calc(100% - 100px);
+  height: auto;
+  padding-top: 27px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 27px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .buttonSkip {
   padding: 8px 20px;
   justify-content: center;
@@ -324,7 +334,7 @@
 }
 .photoLogo {
   width: 83px;
-  height: 83x;
+  height: 83px;
   border-radius: 8px;
 }
 .dropDownWrap {
@@ -1379,15 +1389,6 @@
   border: 1px solid var(--grayscale20-color);
   background: var(--grayscale0-color);
 }
-.textAreaDesc::placeholder {
-  color: var(--grayscale40-color);
-  font-family: var(--custom-font);
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px; /* 150% */
-  letter-spacing: 0.8px;
-}
 .textAreaDescNot {
   width: calc(655px - 32px);
   height: calc(116px - 24px);
@@ -1401,6 +1402,16 @@
   border: 1px solid red;
   background: var(--grayscale0-color);
 }
+.textAreaDesc::placeholder {
+  color: var(--grayscale40-color);
+  font-family: var(--custom-font);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.8px;
+}
+
 .textAreaDescNot::placeholder {
   color: var(--grayscale40-color);
   font-family: var(--custom-font);
@@ -1912,4 +1923,1591 @@
   font-weight: 700;
   line-height: 32px; /* 133.333% */
   letter-spacing: 1.2px;
+}
+@media only screen and (max-width: 414px) and (min-width: 300px) {
+  .headerWrap {
+    width: calc(100% - 15px);
+    height: auto;
+    padding-top: 27px;
+    padding-left: 15px;
+    padding-right: 0px;
+    padding-bottom: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .titleWrap {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 64px;
+  }
+  .titleReg {
+    color: #000;
+
+    text-align: center;
+    /* display/medium-45/medium */
+    font-family: var(--custom-font);
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 52px; /* 115.556% */
+    letter-spacing: 2.25px;
+    margin-bottom: 0;
+    width: 100%;
+  }
+  .titleDesc {
+    color: var(--grayscale40-color, #999);
+    text-align: center;
+    /* title/medium-16/regular */
+    font-family: var(--custom-font);
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    letter-spacing: 0.8px;
+    margin-top: 14px;
+    margin-bottom: 14px;
+    width: 100%;
+  }
+  .lineWrap {
+    width: 300px;
+    height: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .formWrap {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 64px;
+  }
+  .twoInputWr {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .inputWrap {
+    height: 76px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .passwordWrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .buttonForm {
+    width: calc(100%);
+  }
+  .buttonFormGoogle {
+    width: 100%;
+  }
+  .regWrap {
+    width: 100%;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background: var(--grayscale0-color, #fff);
+  }
+  .formForBrandDetWr {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 64px;
+    margin-bottom: 24px;
+  }
+  .firtBlockWr {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logoWrap {
+    width: 100%;
+    height: 111px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .wrapLogoDrop {
+    width: 100%;
+    height: 83px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .photoLogo {
+    width: 50px;
+    height: 83px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  .dropDownWrap {
+    display: flex;
+    width: calc(274px - 30px);
+    height: calc(83px - 34px);
+    padding: 16px 0px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    border: 1px dashed var(--grayscale20-color);
+    overflow: hidden;
+  }
+  .inpBrandDesc {
+    display: flex;
+    height: calc(83px - 26px);
+    width: calc(100% - 34px);
+    padding: 12px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 16px;
+    border: 1px solid var(--grayscale20-color);
+    background: var(--grayscale0-color);
+  }
+  .inpBrandDescNot {
+    display: flex;
+    height: calc(83px - 26px);
+    width: calc(100% - 34px);
+    padding: 12px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 16px;
+    border: 1px solid red;
+    background: var(--grayscale0-color);
+  }
+  .firtBlockWr {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .selectWr {
+    width: 100%;
+    height: 76px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 68px;
+  }
+  .addProductWrap {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 60px;
+  }
+  .addProductWrapDash {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 60px;
+  }
+  .leftSideWrap {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .dropzoneStyle {
+    width: calc(100% - 54px);
+    height: 352px;
+    display: flex;
+    cursor: pointer;
+    padding: 0px 27px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 14px;
+    background: #f5f2f0;
+  }
+  .dropzoneStyleNot {
+    width: calc(100% - 56px);
+    height: calc(352px - 2px);
+    display: flex;
+    cursor: pointer;
+    padding: 0px 27px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 14px;
+    background: #f5f2f0;
+    border: 1px solid red;
+  }
+  .priceWrapSmall {
+    width: 100%;
+    height: 73px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .proceInput {
+    display: flex;
+    width: calc(100% - 54px);
+    height: calc(48px - 24px);
+    padding: 12px 17px 12px 37px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid var(--grayscale20-color);
+    background: var(--grayscale0-color);
+  }
+  .proceInputNot {
+    display: flex;
+    width: calc(100% - 54px);
+    height: calc(48px - 24px);
+    padding: 12px 17px 12px 37px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid red;
+    background: var(--grayscale0-color);
+  }
+  .priceWrapSmallFl {
+    width: 100%;
+    height: 73px;
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .oneSmalInp {
+    width: 50%;
+    height: 76px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .proceInputSmal {
+    width: calc(100% - 34px);
+    height: calc(48px - 26px);
+    display: flex;
+    padding: 12px 16px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid var(--grayscale20-color);
+    background: var(--grayscale0-color);
+  }
+  .proceInputSmalNot {
+    width: calc(50% - 34px);
+    height: calc(48px - 26px);
+    display: flex;
+    padding: 12px 16px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid red;
+    background: var(--grayscale0-color);
+  }
+  .proceInputQu {
+    display: flex;
+    width: calc(100% - 32px);
+    height: calc(48px - 24px);
+    padding: 12px 16px 12px 16px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid var(--grayscale20-color);
+    background: var(--grayscale0-color);
+  }
+  .proceInputQuNot {
+    display: flex;
+    width: calc(100% - 32px);
+    height: calc(48px - 24px);
+    padding: 12px 16px 12px 16px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid red;
+    background: var(--grayscale0-color);
+  }
+  .priceWrapSmallWord {
+    width: 100%;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .proceInputte {
+    display: flex;
+    width: calc(100% - 32px);
+    height: calc(48px - 24px);
+    padding: 12px 16px 12px 16px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid var(--grayscale20-color);
+    background: var(--grayscale0-color);
+  }
+  .rightSideWrap {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .textAreaDesc {
+    width: calc(100% - 32px);
+    height: calc(116px - 24px);
+    padding: 12px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1 0 0;
+    align-self: stretch;
+    border-radius: 14px;
+    border: 1px solid var(--grayscale20-color);
+    background: var(--grayscale0-color);
+  }
+  .textAreaDescNot {
+    width: calc(100% - 32px);
+    height: calc(116px - 24px);
+    padding: 12px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1 0 0;
+    align-self: stretch;
+    border-radius: 14px;
+    border: 1px solid red;
+    background: var(--grayscale0-color);
+  }
+  .downRetWr {
+    width: 100%;
+    flex-shrink: 0;
+    color: var(--grayscale40-color);
+    font-family: var(--custom-font);
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px; /* 145.455% */
+    letter-spacing: 0.55px;
+  }
+  .priceWrap {
+    width: calc(100% - 32px);
+    min-height: 210px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 16px 16px 16px 16px;
+    margin-top: 43px;
+    border-radius: 14px;
+    background: var(--grayscale0-color);
+
+    /* Shadow */
+    box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.05);
+  }
+  .priceWrapSmallBig {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .proceInputBigSelect {
+    width: calc(300px);
+    height: calc(48px);
+    display: flex;
+    padding: 12px 16px;
+    appearance: none;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid var(--grayscale20-color);
+    background: var(--grayscale0-color);
+    color: var(--grayscale40-color);
+    font-family: var(--custom-font);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    letter-spacing: 0.8px;
+  }
+  .proceInputBigSelectNot {
+    width: calc(300px);
+    height: calc(48px);
+    display: flex;
+    padding: 12px 16px;
+    appearance: none;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid red;
+    background: var(--grayscale0-color);
+    color: var(--grayscale40-color);
+    font-family: var(--custom-font);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    letter-spacing: 0.8px;
+  }
+  .oneSmalInpBig {
+    width: 100%;
+    height: 76px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .secWrPDds {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 10px;
+    top: 140px;
+  }
+  .wrapNewS {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .secWrPD {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 10px;
+    top: 35px;
+  }
+  .inpWeigBig {
+    padding: 12px 16px;
+    width: calc(100% - 32px);
+    height: calc(48px - 24px);
+    border-radius: 99px;
+    border: 1px solid var(--grayscale20-color);
+    background: var(--grayscale0-color);
+  }
+  .weiNewWrBig {
+    width: 100%;
+    height: 76px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-right: 24px;
+  }
+  .regWrap {
+    width: 100%;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background: var(--grayscale0-color, #fff);
+  }
+  .headerWrapProd {
+    width: calc(100% - 10px);
+    height: auto;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@media only screen and (max-width: 600px) and (min-width: 414px) {
+  .headerWrap {
+    width: calc(100% - 15px);
+    height: auto;
+    padding-top: 27px;
+    padding-left: 15px;
+    padding-right: 0px;
+    padding-bottom: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .titleWrap {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 64px;
+  }
+  .titleReg {
+    color: #000;
+
+    text-align: center;
+    /* display/medium-45/medium */
+    font-family: var(--custom-font);
+    font-size: 40x;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 52px; /* 115.556% */
+    letter-spacing: 2.25px;
+    margin-bottom: 0;
+    width: 100%;
+  }
+  .titleDesc {
+    color: var(--grayscale40-color, #999);
+    text-align: center;
+    /* title/medium-16/regular */
+    font-family: var(--custom-font);
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    letter-spacing: 0.8px;
+    margin-top: 14px;
+    margin-bottom: 14px;
+    width: 100%;
+  }
+  .formWrap {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 64px;
+  }
+  .twoInputWr {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .regWrap {
+    width: 100%;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background: var(--grayscale0-color, #fff);
+  }
+  .formForBrandDetWr {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 64px;
+    margin-bottom: 24px;
+  }
+  .formForBrandDetWr {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 64px;
+    margin-bottom: 24px;
+  }
+  .firtBlockWr {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .firtBlockWr {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .selectWr {
+    width: 100%;
+    height: 76px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 68px;
+  }
+  .addProductWrap {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 60px;
+  }
+  .addProductWrapDash {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 60px;
+  }
+  .leftSideWrap {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .dropzoneStyle {
+    width: calc(100% - 54px);
+    height: 352px;
+    display: flex;
+    cursor: pointer;
+    padding: 0px 27px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 14px;
+    background: #f5f2f0;
+  }
+  .dropzoneStyleNot {
+    width: calc(100% - 56px);
+    height: calc(352px - 2px);
+    display: flex;
+    cursor: pointer;
+    padding: 0px 27px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 14px;
+    background: #f5f2f0;
+    border: 1px solid red;
+  }
+  .priceWrapSmall {
+    width: 100%;
+    height: 73px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .proceInput {
+    display: flex;
+    width: calc(100% - 54px);
+    height: calc(48px - 24px);
+    padding: 12px 17px 12px 37px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid var(--grayscale20-color);
+    background: var(--grayscale0-color);
+  }
+  .proceInputNot {
+    display: flex;
+    width: calc(100% - 54px);
+    height: calc(48px - 24px);
+    padding: 12px 17px 12px 37px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid red;
+    background: var(--grayscale0-color);
+  }
+  .priceWrapSmallFl {
+    width: 100%;
+    height: 73px;
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .oneSmalInp {
+    width: 50%;
+    height: 76px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .proceInputSmal {
+    width: calc(100% - 34px);
+    height: calc(48px - 26px);
+    display: flex;
+    padding: 12px 16px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid var(--grayscale20-color);
+    background: var(--grayscale0-color);
+  }
+  .proceInputSmalNot {
+    width: calc(50% - 34px);
+    height: calc(48px - 26px);
+    display: flex;
+    padding: 12px 16px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid red;
+    background: var(--grayscale0-color);
+  }
+  .proceInputQu {
+    display: flex;
+    width: calc(100% - 32px);
+    height: calc(48px - 24px);
+    padding: 12px 16px 12px 16px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid var(--grayscale20-color);
+    background: var(--grayscale0-color);
+  }
+  .proceInputQuNot {
+    display: flex;
+    width: calc(100% - 32px);
+    height: calc(48px - 24px);
+    padding: 12px 16px 12px 16px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid red;
+    background: var(--grayscale0-color);
+  }
+  .priceWrapSmallWord {
+    width: 100%;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .proceInputte {
+    display: flex;
+    width: calc(100% - 32px);
+    height: calc(48px - 24px);
+    padding: 12px 16px 12px 16px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid var(--grayscale20-color);
+    background: var(--grayscale0-color);
+  }
+  .rightSideWrap {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .textAreaDesc {
+    width: calc(100% - 32px);
+    height: calc(116px - 24px);
+    padding: 12px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1 0 0;
+    align-self: stretch;
+    border-radius: 14px;
+    border: 1px solid var(--grayscale20-color);
+    background: var(--grayscale0-color);
+  }
+  .textAreaDescNot {
+    width: calc(100% - 32px);
+    height: calc(116px - 24px);
+    padding: 12px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1 0 0;
+    align-self: stretch;
+    border-radius: 14px;
+    border: 1px solid red;
+    background: var(--grayscale0-color);
+  }
+  .downRetWr {
+    width: 100%;
+    flex-shrink: 0;
+    color: var(--grayscale40-color);
+    font-family: var(--custom-font);
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px; /* 145.455% */
+    letter-spacing: 0.55px;
+  }
+  .priceWrap {
+    width: calc(100% - 32px);
+    min-height: 210px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 16px 16px 16px 16px;
+    margin-top: 43px;
+    border-radius: 14px;
+    background: var(--grayscale0-color);
+
+    /* Shadow */
+    box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.05);
+  }
+  .priceWrapSmallBig {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .proceInputBigSelect {
+    width: calc(300px);
+    height: calc(48px);
+    display: flex;
+    padding: 12px 16px;
+    appearance: none;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid var(--grayscale20-color);
+    background: var(--grayscale0-color);
+    color: var(--grayscale40-color);
+    font-family: var(--custom-font);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    letter-spacing: 0.8px;
+  }
+  .proceInputBigSelectNot {
+    width: calc(300px);
+    height: calc(48px);
+    display: flex;
+    padding: 12px 16px;
+    appearance: none;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid red;
+    background: var(--grayscale0-color);
+    color: var(--grayscale40-color);
+    font-family: var(--custom-font);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    letter-spacing: 0.8px;
+  }
+  .oneSmalInpBig {
+    width: 100%;
+    height: 76px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .secWrPDds {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 10px;
+    top: 140px;
+  }
+  .wrapNewS {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .secWrPD {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 10px;
+    top: 35px;
+  }
+  .inpWeigBig {
+    padding: 12px 16px;
+    width: calc(100% - 32px);
+    height: calc(48px - 24px);
+    border-radius: 99px;
+    border: 1px solid var(--grayscale20-color);
+    background: var(--grayscale0-color);
+  }
+  .weiNewWrBig {
+    width: 100%;
+    height: 76px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-right: 24px;
+  }
+}
+@media only screen and (max-width: 700px) and (min-width: 600px) {
+  .headerWrap {
+    width: calc(100% - 15px);
+    height: auto;
+    padding-top: 27px;
+    padding-left: 15px;
+    padding-right: 0px;
+    padding-bottom: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .titleWrap {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 64px;
+  }
+  .titleReg {
+    color: #000;
+
+    text-align: center;
+    /* display/medium-45/medium */
+    font-family: var(--custom-font);
+    font-size: 40x;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 52px; /* 115.556% */
+    letter-spacing: 2.25px;
+    margin-bottom: 0;
+    width: 100%;
+  }
+  .titleDesc {
+    color: var(--grayscale40-color, #999);
+    text-align: center;
+    /* title/medium-16/regular */
+    font-family: var(--custom-font);
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    letter-spacing: 0.8px;
+    margin-top: 14px;
+    margin-bottom: 14px;
+    width: 100%;
+  }
+  .formWrap {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 64px;
+  }
+  .twoInputWr {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .regWrap {
+    width: 100%;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background: var(--grayscale0-color, #fff);
+  }
+  .formForBrandDetWr {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 64px;
+    margin-bottom: 24px;
+  }
+  .formForBrandDetWr {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 64px;
+    margin-bottom: 24px;
+  }
+  .firtBlockWr {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .firtBlockWr {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .selectWr {
+    width: 100%;
+    height: 76px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 68px;
+  }
+  .addProductWrap {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 60px;
+  }
+  .addProductWrapDash {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 60px;
+  }
+  .leftSideWrap {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .dropzoneStyle {
+    width: calc(100% - 54px);
+    height: 352px;
+    display: flex;
+    cursor: pointer;
+    padding: 0px 27px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 14px;
+    background: #f5f2f0;
+  }
+  .dropzoneStyleNot {
+    width: calc(100% - 56px);
+    height: calc(352px - 2px);
+    display: flex;
+    cursor: pointer;
+    padding: 0px 27px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 14px;
+    background: #f5f2f0;
+    border: 1px solid red;
+  }
+  .priceWrapSmall {
+    width: 100%;
+    height: 73px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .proceInput {
+    display: flex;
+    width: calc(100% - 54px);
+    height: calc(48px - 24px);
+    padding: 12px 17px 12px 37px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid var(--grayscale20-color);
+    background: var(--grayscale0-color);
+  }
+  .proceInputNot {
+    display: flex;
+    width: calc(100% - 54px);
+    height: calc(48px - 24px);
+    padding: 12px 17px 12px 37px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid red;
+    background: var(--grayscale0-color);
+  }
+  .priceWrapSmallFl {
+    width: 100%;
+    height: 73px;
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .oneSmalInp {
+    width: 50%;
+    height: 76px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .proceInputSmal {
+    width: calc(100% - 34px);
+    height: calc(48px - 26px);
+    display: flex;
+    padding: 12px 16px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid var(--grayscale20-color);
+    background: var(--grayscale0-color);
+  }
+  .proceInputSmalNot {
+    width: calc(50% - 34px);
+    height: calc(48px - 26px);
+    display: flex;
+    padding: 12px 16px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid red;
+    background: var(--grayscale0-color);
+  }
+  .proceInputQu {
+    display: flex;
+    width: calc(100% - 32px);
+    height: calc(48px - 24px);
+    padding: 12px 16px 12px 16px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid var(--grayscale20-color);
+    background: var(--grayscale0-color);
+  }
+  .proceInputQuNot {
+    display: flex;
+    width: calc(100% - 32px);
+    height: calc(48px - 24px);
+    padding: 12px 16px 12px 16px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid red;
+    background: var(--grayscale0-color);
+  }
+  .priceWrapSmallWord {
+    width: 100%;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .proceInputte {
+    display: flex;
+    width: calc(100% - 32px);
+    height: calc(48px - 24px);
+    padding: 12px 16px 12px 16px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid var(--grayscale20-color);
+    background: var(--grayscale0-color);
+  }
+  .rightSideWrap {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .textAreaDesc {
+    width: calc(100% - 32px);
+    height: calc(116px - 24px);
+    padding: 12px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1 0 0;
+    align-self: stretch;
+    border-radius: 14px;
+    border: 1px solid var(--grayscale20-color);
+    background: var(--grayscale0-color);
+  }
+  .textAreaDescNot {
+    width: calc(100% - 32px);
+    height: calc(116px - 24px);
+    padding: 12px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1 0 0;
+    align-self: stretch;
+    border-radius: 14px;
+    border: 1px solid red;
+    background: var(--grayscale0-color);
+  }
+  .downRetWr {
+    width: 100%;
+    flex-shrink: 0;
+    color: var(--grayscale40-color);
+    font-family: var(--custom-font);
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px; /* 145.455% */
+    letter-spacing: 0.55px;
+  }
+  .priceWrap {
+    width: calc(100% - 32px);
+    min-height: 210px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 16px 16px 16px 16px;
+    margin-top: 43px;
+    border-radius: 14px;
+    background: var(--grayscale0-color);
+
+    /* Shadow */
+    box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.05);
+  }
+  .priceWrapSmallBig {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .proceInputBigSelect {
+    width: calc(300px);
+    height: calc(48px);
+    display: flex;
+    padding: 12px 16px;
+    appearance: none;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid var(--grayscale20-color);
+    background: var(--grayscale0-color);
+    color: var(--grayscale40-color);
+    font-family: var(--custom-font);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    letter-spacing: 0.8px;
+  }
+  .proceInputBigSelectNot {
+    width: calc(300px);
+    height: calc(48px);
+    display: flex;
+    padding: 12px 16px;
+    appearance: none;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid red;
+    background: var(--grayscale0-color);
+    color: var(--grayscale40-color);
+    font-family: var(--custom-font);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    letter-spacing: 0.8px;
+  }
+  .oneSmalInpBig {
+    width: 100%;
+    height: 76px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .secWrPDds {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 10px;
+    top: 140px;
+  }
+  .wrapNewS {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .secWrPD {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 10px;
+    top: 35px;
+  }
+  .inpWeigBig {
+    padding: 12px 16px;
+    width: calc(100% - 32px);
+    height: calc(48px - 24px);
+    border-radius: 99px;
+    border: 1px solid var(--grayscale20-color);
+    background: var(--grayscale0-color);
+  }
+  .weiNewWrBig {
+    width: 100%;
+    height: 76px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-right: 24px;
+  }
+}
+@media only screen and (max-width: 1023px) and (min-width: 700px) {
+  .formWrap {
+    width: 100%;
+    height: 296px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 64px;
+  }
+  .twoInputWr {
+    width: 100%;
+    height: auto;
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .passwordWrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .regInputP {
+    width: 100%;
+    display: flex;
+    padding: 12px 16px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid var(--grayscale20-color);
+    background: var(--grayscale0-color);
+  }
+  .regInputNot {
+    width: 100%;
+    display: flex;
+    padding: 12px 16px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 99px;
+    border: 1px solid red;
+    background: var(--grayscale0-color);
+  }
+  .regWrap {
+    width: 100%;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background: var(--grayscale0-color, #fff);
+  }
+  .formForBrandDetWr {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 64px;
+    margin-bottom: 24px;
+  }
+  .formForBrandDetWr {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 64px;
+    margin-bottom: 24px;
+  }
+  .firtBlockWr {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .firtBlockWr {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .selectWr {
+    width: 100%;
+    height: 76px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 68px;
+  }
+  .addProductWrap {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 60px;
+  }
+  .addProductWrapDash {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 60px;
+  }
+}
+@media only screen and (max-width: 1440px) and (min-width: 1200px) {
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 1024px) {
+  .addProductWrap {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 60px;
+  }
+  .addProductWrapDash {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 60px;
+  }
 }

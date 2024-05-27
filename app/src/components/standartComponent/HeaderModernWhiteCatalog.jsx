@@ -21,6 +21,10 @@ import { useNavigate } from "react-router-dom";
 import cartSlice from "../../function/cartSlice";
 import { addToCart } from "../../function/cartSlice";
 import Menu from "./menu";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { AiOutlineClose } from "react-icons/ai";
+
+import smallIcon from "../../svg/philosophyJkd.svg";
 const HeaderModernWhiteCatalog = ({ activeUser, data, totalQuantity }) => {
   const [search, setSearch] = useState("");
   const [users, setUsers] = useState(null);
@@ -28,7 +32,26 @@ const HeaderModernWhiteCatalog = ({ activeUser, data, totalQuantity }) => {
   const [openContact, setOpenContact] = useState(false);
   const [counterCart, serCounterCart] = useState(0);
   const dispatch = useDispatch();
-
+  const [windowDimensions, setWindowDimensions] = useState(false);
+  const [burgerCLick, setBurgerCLick] = useState(false);
+  const openBurgerMenu = () => {
+    setBurgerCLick(true);
+  };
+  const closeBurgerMenu = () => {
+    setBurgerCLick(false);
+  };
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth < 900) {
+        setWindowDimensions(false);
+      } else {
+        setWindowDimensions(true);
+      }
+    }
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   const text = useSelector((state) => state.cartSlice);
   const open = () => {
     setOpenContact(true);
@@ -77,26 +100,71 @@ const HeaderModernWhiteCatalog = ({ activeUser, data, totalQuantity }) => {
     navigate("/shop");
   };
   return (
-    <header className={css.wrapHeaderAllModern}>
+    <header
+      className={
+        windowDimensions ? css.wrapHeaderAllModern : css.wrapHeaderAllModernCol
+      }
+    >
       <div className={css.wrapHeaderModern}>
         <Link to="/">
-          <ReactSVG src={logo} />
+          {windowDimensions && (
+            <ReactSVG className={css.logoInHeader} src={logo} />
+          )}
+          {!windowDimensions && (
+            <ReactSVG className={css.logoInHeaderSmall} src={smallIcon} />
+          )}
         </Link>
         {/* <div className={css.wrapShopCategory}>
           <p className={css.shapCatP}>Shop Categories</p>
           <ReactSVG src={arrowDHeader} className={css.iconArrowD} />
         </div> */}
-        <div className={css.wrapInputSearch}>
-          <input
-            className={css.inputHeaderModern}
-            value={search}
-            onChange={handleInputChange}
-            placeholder="Search for your new favorite..."
-          />
-          <button className={css.newSearchHeader} onClick={sendData}>
-            <ReactSVG src={searchIcon} className={css.searchIconHeader} />
-          </button>
-        </div>
+        {windowDimensions && (
+          <div className={css.wrapInputSearch}>
+            <input
+              className={css.inputHeaderModern}
+              value={search}
+              onChange={handleInputChange}
+              placeholder="Search for your new favorite..."
+            />
+            <button className={css.newSearchHeader} onClick={sendData}>
+              <ReactSVG src={searchIcon} className={css.searchIconHeader} />
+            </button>
+          </div>
+        )}
+        {!windowDimensions && (
+          <>
+            {" "}
+            <RxHamburgerMenu
+              onClick={openBurgerMenu}
+              className={css.rxHamburgerMenu}
+            />
+          </>
+        )}
+        {burgerCLick && (
+          <div className={css.burgerMenuWrap}>
+            <AiOutlineClose
+              onClick={closeBurgerMenu}
+              className={css.closeBurgerMenu}
+            />
+            <ul className={css.ulNavigationMobile}>
+              <li className={css.liNavIMobile}>
+                <Link className={css.liNavIMobile} to="/shop">
+                  Shop
+                </Link>
+              </li>
+              <li className={css.liNavIMobile}>
+                <Link className={css.liNavIMobile} to="/about">
+                  About
+                </Link>
+              </li>
+              <li className={css.liNavIMobile}>
+                <Link className={css.liNavIMobile} to="/contact">
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
+        )}
         <div className={css.wrapIconsHeader}>
           {users && (
             <Link className={css.nameP} to={`/user/cabinet`}>
@@ -208,11 +276,26 @@ const HeaderModernWhiteCatalog = ({ activeUser, data, totalQuantity }) => {
           </ul>
         </nav> */}
       </div>
-      <div className={css.hamburgerWr} onClick={open}>
-        <span className={css.hambSpFirs}></span>
-        <span className={css.hambSpSecont}></span>
-        <span className={css.hambSpThre}></span>
-      </div>
+      {!windowDimensions && (
+        <div className={css.wrapInputSearch}>
+          <input
+            className={css.inputHeaderModern}
+            value={search}
+            onChange={handleInputChange}
+            placeholder="Search for your new favorite..."
+          />
+          <button className={css.newSearchHeader} onClick={sendData}>
+            <ReactSVG src={searchIcon} className={css.searchIconHeader} />
+          </button>
+        </div>
+      )}
+      {windowDimensions && (
+        <div className={css.hamburgerWr} onClick={open}>
+          <span className={css.hambSpFirs}></span>
+          <span className={css.hambSpSecont}></span>
+          <span className={css.hambSpThre}></span>
+        </div>
+      )}
       {openContact && <Menu setOpenContact={setOpenContact} />}
     </header>
   );

@@ -10,7 +10,7 @@ import ContactVendor from "./components/contactVendor";
 import CertificatProf from "./components/certificatProf";
 import PaymentInfo from "./components/paymentInfo";
 import { Circles } from "react-loader-spinner";
-
+import Swal from "sweetalert2";
 const ProfileSettings = ({ activeUser, setUsers, users }) => {
   const [theId, setTheId] = useState("");
   const [publicProf, setPublicProf] = useState(true);
@@ -134,7 +134,6 @@ const ProfileSettings = ({ activeUser, setUsers, users }) => {
         url = fileResponse.data.url;
       }
       if (photo) {
-        console.log(photo);
         // Відправка файлу на сервер
         const fileFormData = new FormData();
         fileFormData.append("photo", photo);
@@ -197,7 +196,13 @@ const ProfileSettings = ({ activeUser, setUsers, users }) => {
 
       if (response && response.statusText === "OK") {
         setLoading(false);
-        alert("Data successfully updated");
+        Swal.fire({
+          icon: "success",
+          title: "Successfully saved",
+          text: "Data successfully updated",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
       // Додайте тут логіку для обробки успішної відправки даних
     } catch (error) {
@@ -289,7 +294,7 @@ const ProfileSettings = ({ activeUser, setUsers, users }) => {
           }
           onClick={() => handleItemClick(setContacts)}
         >
-          Contacts
+          Contact info
         </li>
       </ul>
       {publicProf && (

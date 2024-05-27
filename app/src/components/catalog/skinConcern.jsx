@@ -29,7 +29,7 @@ const SkinConcern = ({ selectedSkinConcer, setSelectedSkinConcer }) => {
     { id: 18, type: "Damaged skin" },
     { id: 19, type: "Uneven texture" },
     { id: 20, type: "Wrinkles" },
-    { id: 21, type: "Compromised skin" },
+    { id: 21, type: "Fine lines" },
   ];
 
   const isCategorySelected = (categoryName) => {
@@ -63,6 +63,11 @@ const SkinConcern = ({ selectedSkinConcer, setSelectedSkinConcer }) => {
       setSelectedSkinConcer(updatedSelectedCategories); // Передача унікальних об'єктів категорій
     }
   };
+  useEffect(() => {
+    if (selectedSkinConcer) {
+      setSelectedCategories(selectedSkinConcer);
+    }
+  }, [selectedSkinConcer]);
   return (
     <div className={css.wrapAllFilter}>
       <div

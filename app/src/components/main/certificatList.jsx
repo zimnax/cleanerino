@@ -15,18 +15,18 @@ import eq from "../../svg/sectificat/asa.svg";
 const CertificateList = () => {
   return (
     <div className={css.sectificatAllWrap}>
-      <ReactSVG src={one} />
-      <ReactSVG src={two} />
-      <ReactSVG src={thre} />
-      <ReactSVG src={four} />
-      <ReactSVG src={five} />
-      <ReactSVG src={six} />
-      <ReactSVG src={seven} />
-      <ReactSVG src={eight} />
-      <ReactSVG src={nine} />
-      <ReactSVG src={ten} />
-      <ReactSVG src={qw} />
-      <ReactSVG src={eq} />
+      <ReactSVG src={one} className={css.certWrapInF} />
+      <ReactSVG src={two} className={css.certWrapInF} />
+      <ReactSVG src={thre} className={css.certWrapInF} />
+      <ReactSVG src={four} className={css.certWrapInF} />
+      <ReactSVG src={five} className={css.certWrapInF} />
+      <ReactSVG src={six} className={css.certWrapInF} />
+      <ReactSVG src={seven} className={css.certWrapInF} />
+      <ReactSVG src={eight} className={css.certWrapInF} />
+      <ReactSVG src={nine} className={css.certWrapInF} />
+      <ReactSVG src={ten} className={css.certWrapInF} />
+      <ReactSVG src={qw} className={css.certWrapInF} />
+      <ReactSVG src={eq} className={css.certWrapInF} />
     </div>
   );
 };

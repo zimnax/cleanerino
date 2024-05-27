@@ -2,7 +2,8 @@ import withMySQLData from "../../../HOK/withMySQLData";
 import css from "../vendorReg.module.css";
 import unionGreen from "../../../../svg/fdf.svg";
 import { ReactSVG } from "react-svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 const Certificat = ({
   data,
   setActiveCategories,
@@ -10,23 +11,41 @@ const Certificat = ({
   setActiveNames,
   activeNames,
 }) => {
-  const handleRadioChangeTwo = () => {
-    // Перевірка, чи вже встановлений isCheckedTwo
+  const [isCheckedTwo, setIsCheckedTwo] = useState(() => {
+    return localStorage.getItem("useCertificates") ? true : false;
+  });
+
+  useEffect(() => {
     if (isCheckedTwo) {
+      const savedCertificates =
+        JSON.parse(localStorage.getItem("useCertificates")) || [];
+      const savedCategories = Array.from(
+        new Set(savedCertificates.map((item) => item.category))
+      );
+      setActiveCategories(savedCategories);
+      setActiveNames(savedCertificates);
+    }
+  }, [isCheckedTwo, setActiveCategories, setActiveNames]);
+
+  const handleRadioChangeTwo = () => {
+    if (isCheckedTwo) {
+      localStorage.removeItem("useCertificates");
       setActiveNames([]);
       setActiveCategories([]);
     } else {
-      const allNameIds = new Set(data.map((item) => item.id));
-      setActiveNames(Array.from(allNameIds));
-      setActiveCategories(
-        Array.from(new Set(data.map((item) => item.category_id)))
+      const allNames = data.map((item) => ({
+        category: item.category_id,
+        subcategory: item.id,
+      }));
+      localStorage.setItem("useCertificates", JSON.stringify(allNames));
+      const allCategoryIds = Array.from(
+        new Set(data.map((item) => item.category_id))
       );
+      setActiveNames(allNames);
+      setActiveCategories(allCategoryIds);
     }
-    // Зміна значення isCheckedTwo
     setIsCheckedTwo(!isCheckedTwo);
   };
-
-  const [isCheckedTwo, setIsCheckedTwo] = useState(false);
 
   const handleCategoryClick = (categoryId) => {
     setActiveCategories((prevActiveCategories) => {
@@ -41,40 +60,50 @@ const Certificat = ({
 
   const handleNameClick = (categoryId, nameId) => {
     setActiveNames((prevActiveNames) => {
-      const id = nameId;
-      const categoryItem = data.find((item) => item.id === nameId);
+      const newObj = { category: categoryId, subcategory: nameId };
 
-      const newObj = { category: categoryId, subcategory: id };
-
+      let updatedActiveNames;
       if (
         prevActiveNames.some(
-          (item) => item.category === categoryId && item.subcategory === id
+          (item) => item.category === categoryId && item.subcategory === nameId
         )
       ) {
-        return prevActiveNames.filter(
-          (item) => !(item.category === categoryId && item.subcategory === id)
+        updatedActiveNames = prevActiveNames.filter(
+          (item) =>
+            !(item.category === categoryId && item.subcategory === nameId)
         );
       } else {
-        return [...prevActiveNames, newObj];
+        updatedActiveNames = [...prevActiveNames, newObj];
       }
+
+      // Оновлюємо localStorage тільки якщо isCheckedTwo активний
+      if (isCheckedTwo) {
+        localStorage.setItem(
+          "useCertificates",
+          JSON.stringify(updatedActiveNames)
+        );
+      }
+      return updatedActiveNames;
     });
   };
+
   const removeNamesByCategoryId = (categoryId) => {
     setActiveNames((prevActiveNames) => {
-      // Пройдемося по всіх елементах даних
-      data.forEach((item) => {
-        // Якщо category_id співпадає з переданим categoryId
-        if (item.category_id === categoryId) {
-          // Видаляємо id з activeNames
-          const idToRemove = item.id;
-          prevActiveNames = prevActiveNames.filter((id) => id !== idToRemove);
-        }
-      });
-      return prevActiveNames;
+      const updatedActiveNames = prevActiveNames.filter(
+        (item) => item.category !== categoryId
+      );
+      if (isCheckedTwo) {
+        localStorage.setItem(
+          "useCertificates",
+          JSON.stringify(updatedActiveNames)
+        );
+      }
+      return updatedActiveNames;
     });
   };
 
   const uniqueCategories = [...new Set(data.map((item) => item.category_name))];
+  console.log("active", activeNames);
   return (
     <div className={css.priceWrapContainer}>
       <label className={css.labelInpBold}>Certifications</label>
@@ -132,9 +161,9 @@ const Certificat = ({
                       const id = item.id;
 
                       const isActiveName = activeNames.some(
-                        (item) =>
-                          item.category === categoryId &&
-                          item.subcategory === id
+                        (activeItem) =>
+                          activeItem.category === categoryId &&
+                          activeItem.subcategory === id
                       );
                       return (
                         <li
@@ -166,6 +195,7 @@ const Certificat = ({
     </div>
   );
 };
+
 export default withMySQLData(
   `${process.env.REACT_APP_API_URL}/api/v1/vendor/product/certificates`
 )(Certificat);

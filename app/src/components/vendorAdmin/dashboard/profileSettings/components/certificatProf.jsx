@@ -1,8 +1,28 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import css from "../profile.module.css";
 import withMySQLData from "../../../../HOK/withMySQLData";
 
 const CertificatProf = ({ data }) => {
+  const [selectedCertificates, setSelectedCertificates] = useState(() => {
+    return JSON.parse(localStorage.getItem("certificates")) || [];
+  });
+
+  // Зберігаємо обрані сертифікати в localStorage
+  useEffect(() => {
+    localStorage.setItem("certificates", JSON.stringify(selectedCertificates));
+  }, [selectedCertificates]);
+
+  // Обробник кліку на сертифікат
+  const handleCertificateClick = (item) => {
+    if (selectedCertificates.includes(item.id)) {
+      setSelectedCertificates(
+        selectedCertificates.filter((id) => id !== item.id)
+      );
+    } else {
+      setSelectedCertificates([...selectedCertificates, item.id]);
+    }
+  };
+
   const uniqueCategories = [...new Set(data.map((item) => item.category_name))];
   return (
     <div className={css.certificatWrap}>
@@ -14,15 +34,24 @@ const CertificatProf = ({ data }) => {
           );
 
           return (
-            <div className={css.wrapCert}>
+            <div key={index} className={css.wrapCert}>
               <p className={css.categoryName}>{category}</p>
               <div className={css.certifWrapAll}>
                 {categoryItems.map((item) => {
-                  const id = item.id;
-
+                  const isSelected = selectedCertificates.includes(item.id);
                   return (
-                    <p key={item.id} className={css.cerNameClick}>
-                      <img src={item.image} className={css.certificateImage} />
+                    <p
+                      key={item.id}
+                      className={`${css.cerNameClick} ${
+                        isSelected ? css.selectedCertificate : ""
+                      }`}
+                      onClick={() => handleCertificateClick(item)}
+                    >
+                      <img
+                        src={item.image}
+                        className={css.certificateImage}
+                        alt="Certificate"
+                      />
                     </p>
                   );
                 })}
@@ -34,6 +63,7 @@ const CertificatProf = ({ data }) => {
     </div>
   );
 };
+
 export default withMySQLData(
   `${process.env.REACT_APP_API_URL}/api/v1/vendor/product/certificates`
 )(CertificatProf);

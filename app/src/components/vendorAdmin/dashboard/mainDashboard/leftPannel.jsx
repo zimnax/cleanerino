@@ -50,7 +50,9 @@ const LeftPannel = ({
   };
   const signOutUser = () => {
     signOut(auth)
-      .then(() => {})
+      .then(() => {
+        window.location.href = "/";
+      })
       .catch((err) => {
         console.error(err);
       });
@@ -115,13 +117,18 @@ const LeftPannel = ({
         </ul>
       </div>
       <div className={css.secondDashWrap}>
-        <div className={css.wrapNameIcon}>
+        <div
+          className={css.wrapNameIcon}
+          onClick={() => handleClick("settings")}
+        >
           {users && users.photo && (
             <img className={css.iconVendor} src={users.photo} />
           )}
+
           {users && !users.photo && (
-            <img className={css.iconVendor} src={iconK} />
+            <div className={css.withoutPhoto}>{users.last_name[0]}</div>
           )}
+
           {users && (
             <p className={css.nameVendor}>
               {users.first_name}&nbsp; {users.last_name}

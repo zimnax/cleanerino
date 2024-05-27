@@ -98,13 +98,17 @@ const PaymentInfo = ({
     formData.card_holder = cardName;
     formData.card_number = cardNumber;
     formData.is_active = `${false}`;
-    console.log(formData);
+
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_API_URL}/api/v1/vendor/card`,
         formData
       );
-      console.log(response.data); // Реакція від сервера, якщо успішно
+
+      setAllCard((prevCards) => [...prevCards, response.data]);
+
+      // Оновіть стан чекбоксів
+      setCheckedCards((prevChecked) => [...prevChecked, false]);
       // Додаткова логіка, якщо потрібно
     } catch (error) {
       console.error("Помилка при додаванні карти:", error);
@@ -115,7 +119,6 @@ const PaymentInfo = ({
     axios
       .get(`${process.env.REACT_APP_API_URL}/api/v1/vendor/card/${users.id}`)
       .then((response) => {
-        console.log(response.data.data);
         setAllCard(response.data.data);
         setCheckedCards(
           response.data.data.map((card) => card.is_active === "true")
@@ -179,9 +182,9 @@ const PaymentInfo = ({
       <div className={css.wrapMyCard}>
         {allCard.length > 0 &&
           allCard.map((el, index) => {
-            const lastFourDigits = el.card_number.substring(
-              el.card_number.length - 4
-            );
+            const lastFourDigits = el.card_number
+              ? el.card_number.substring(el.card_number.length - 4)
+              : "N/A";
             return (
               <div
                 className={

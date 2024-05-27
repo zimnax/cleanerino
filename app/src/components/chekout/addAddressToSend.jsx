@@ -100,7 +100,7 @@ const AddAddressToSend = ({
           <input
             value={zipCode}
             onChange={(e) => setZipCode(e.target.value)}
-            className={css.inputNewSmall}
+            className={css.inputNewSmallZip}
             placeholder="556569"
           />
         </div>

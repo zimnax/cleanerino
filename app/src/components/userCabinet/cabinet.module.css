@@ -1350,3 +1350,689 @@
   border-radius: 50%;
   margin-right: 10px;
 }
+@media only screen and (max-width: 414px) and (min-width: 300px) {
+  .wrapDashboardAll {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .leftPannelWrap {
+    width: 100%;
+
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0px 30px 30px 0px;
+    background: var(--grayscale0-color);
+
+    box-shadow: 0px 4px 11.8px 0px rgba(0, 0, 0, 0.05);
+  }
+  .rightPannelWrap {
+    width: calc(100%);
+    min-height: auto;
+  }
+  .wrapButtonWithName {
+    width: calc(100% - 10px);
+    padding-left: 5px;
+    padding-right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .pMainInSet {
+    color: #000;
+
+    /* headline/small-24/bold */
+    font-family: "Orpheus Pro";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px; /* 133.333% */
+    letter-spacing: 1.2px;
+  }
+  .profileUl {
+    width: auto;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    list-style-type: none;
+    padding: 0;
+    margin-top: 34px;
+    border-bottom: 1px solid #eff2f6;
+    margin-left: 0;
+  }
+  .wrapPabAnfSet {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 34px;
+    margin-left: 0px;
+  }
+  .secondNameWr {
+    width: 100%;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .wrapLogoDrop {
+    width: 100%;
+    min-height: 82px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .dropDownWrap {
+    display: flex;
+    width: calc(100% - 70px);
+    height: calc(83px - 34px);
+    padding: 16px 34px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    border: 1px dashed var(--grayscale20-color);
+  }
+  .feirstNameWr {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 34px;
+  }
+  .wrapText {
+    margin-bottom: 10px;
+  }
+  .inputWithTextWrap {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 30px;
+  }
+  .nameInput {
+    width: calc(100% - 32px);
+    height: calc(48px - 24px);
+    padding: 12px 16px;
+
+    border: none;
+    color: #0c0f0b;
+    font-family: var(--custom-font);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    letter-spacing: 0.8px;
+    border-radius: 99px;
+    background: var(--colour-neutrals-0, #fff);
+
+    /* Shadow */
+    box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.05);
+  }
+  .oneAdressWrap {
+    width: calc(100% - 20px);
+    height: calc(116px - 20px);
+    padding: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-radius: 8px;
+    background: var(--grayscale0-color);
+    margin-right: 10px;
+    margin-top: 10px;
+    box-shadow: 4px 4px 44px 0px rgba(0, 0, 0, 0.05);
+  }
+  .wrapPabAnfSet {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 34px;
+    margin-left: 0px;
+    margin-bottom: 50px;
+  }
+  .pInNews {
+    color: var(--grayscale80-color);
+    font-family: "Orpheus Pro";
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px; /* 125% */
+    letter-spacing: 0.8px;
+    margin: 0;
+  }
+}
+
+@media only screen and (max-width: 600px) and (min-width: 414px) {
+  .wrapDashboardAll {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .leftPannelWrap {
+    width: 100%;
+
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0px 30px 30px 0px;
+    background: var(--grayscale0-color);
+
+    box-shadow: 0px 4px 11.8px 0px rgba(0, 0, 0, 0.05);
+  }
+  .rightPannelWrap {
+    width: calc(100%);
+    min-height: auto;
+  }
+  .wrapButtonWithName {
+    width: calc(100% - 10px);
+    padding-left: 5px;
+    padding-right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .pMainInSet {
+    color: #000;
+
+    /* headline/small-24/bold */
+    font-family: "Orpheus Pro";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px; /* 133.333% */
+    letter-spacing: 1.2px;
+  }
+  .profileUl {
+    width: auto;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    list-style-type: none;
+    padding: 0;
+    margin-top: 34px;
+    border-bottom: 1px solid #eff2f6;
+    margin-left: 0;
+  }
+  .wrapPabAnfSet {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 34px;
+    margin-left: 0px;
+  }
+  .secondNameWr {
+    width: 100%;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .wrapLogoDrop {
+    width: 407px;
+    min-height: 82px;
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+  }
+  .dropDownWrap {
+    display: flex;
+    width: calc(274px - 29px);
+    height: calc(83px - 34px);
+    padding: 16px 34px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    border: 1px dashed var(--grayscale20-color);
+  }
+  .feirstNameWr {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 34px;
+  }
+  .wrapText {
+    margin-bottom: 10px;
+  }
+  .inputWithTextWrap {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 30px;
+  }
+  .nameInput {
+    width: calc(410px - 32px);
+    height: calc(48px - 24px);
+    padding: 12px 16px;
+
+    border: none;
+    color: #0c0f0b;
+    font-family: var(--custom-font);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    letter-spacing: 0.8px;
+    border-radius: 99px;
+    background: var(--colour-neutrals-0, #fff);
+
+    /* Shadow */
+    box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.05);
+  }
+  .oneAdressWrap {
+    width: calc(100% - 20px);
+    height: calc(116px - 20px);
+    padding: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-radius: 8px;
+    background: var(--grayscale0-color);
+    margin-right: 10px;
+    margin-top: 10px;
+    box-shadow: 4px 4px 44px 0px rgba(0, 0, 0, 0.05);
+  }
+  .wrapPabAnfSet {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 34px;
+    margin-left: 0px;
+    margin-bottom: 50px;
+  }
+  .pInNews {
+    color: var(--grayscale80-color);
+    font-family: "Orpheus Pro";
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px; /* 125% */
+    letter-spacing: 0.8px;
+    margin: 0;
+  }
+}
+@media only screen and (max-width: 700px) and (min-width: 600px) {
+  .wrapDashboardAll {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .leftPannelWrap {
+    width: 100%;
+
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0px 30px 30px 0px;
+    background: var(--grayscale0-color);
+
+    box-shadow: 0px 4px 11.8px 0px rgba(0, 0, 0, 0.05);
+  }
+  .rightPannelWrap {
+    width: calc(100%);
+    min-height: auto;
+  }
+  .wrapButtonWithName {
+    width: calc(100% - 10px);
+    padding-left: 5px;
+    padding-right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .pMainInSet {
+    color: #000;
+
+    /* headline/small-24/bold */
+    font-family: "Orpheus Pro";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px; /* 133.333% */
+    letter-spacing: 1.2px;
+  }
+  .profileUl {
+    width: auto;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    list-style-type: none;
+    padding: 0;
+    margin-top: 34px;
+    border-bottom: 1px solid #eff2f6;
+    margin-left: 0;
+  }
+  .wrapPabAnfSet {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 34px;
+    margin-left: 0px;
+  }
+  .secondNameWr {
+    width: 100%;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .wrapLogoDrop {
+    width: 407px;
+    min-height: 82px;
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+  }
+  .dropDownWrap {
+    display: flex;
+    width: calc(274px - 29px);
+    height: calc(83px - 34px);
+    padding: 16px 34px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    border: 1px dashed var(--grayscale20-color);
+  }
+  .feirstNameWr {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 34px;
+  }
+  .wrapText {
+    margin-bottom: 10px;
+  }
+  .inputWithTextWrap {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 30px;
+  }
+  .nameInput {
+    width: calc(410px - 32px);
+    height: calc(48px - 24px);
+    padding: 12px 16px;
+
+    border: none;
+    color: #0c0f0b;
+    font-family: var(--custom-font);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    letter-spacing: 0.8px;
+    border-radius: 99px;
+    background: var(--colour-neutrals-0, #fff);
+
+    /* Shadow */
+    box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.05);
+  }
+  .oneAdressWrap {
+    width: calc(401px - 20px);
+    height: calc(116px - 20px);
+    padding: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-radius: 8px;
+    background: var(--grayscale0-color);
+    margin-right: 10px;
+    margin-top: 10px;
+    box-shadow: 4px 4px 44px 0px rgba(0, 0, 0, 0.05);
+  }
+  .wrapPabAnfSet {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 34px;
+    margin-left: 0px;
+    margin-bottom: 50px;
+  }
+  .pInNews {
+    color: var(--grayscale80-color);
+    font-family: "Orpheus Pro";
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px; /* 125% */
+    letter-spacing: 0.8px;
+    margin: 0;
+  }
+}
+@media only screen and (max-width: 1023px) and (min-width: 700px) {
+  .wrapDashboardAll {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .leftPannelWrap {
+    width: 100%;
+
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0px 30px 30px 0px;
+    background: var(--grayscale0-color);
+
+    box-shadow: 0px 4px 11.8px 0px rgba(0, 0, 0, 0.05);
+  }
+  .rightPannelWrap {
+    width: calc(100%);
+    min-height: auto;
+  }
+  .wrapButtonWithName {
+    width: calc(100% - 10px);
+    padding-left: 5px;
+    padding-right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .pMainInSet {
+    color: #000;
+
+    /* headline/small-24/bold */
+    font-family: "Orpheus Pro";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px; /* 133.333% */
+    letter-spacing: 1.2px;
+  }
+  .profileUl {
+    width: auto;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    list-style-type: none;
+    padding: 0;
+    margin-top: 34px;
+    border-bottom: 1px solid #eff2f6;
+    margin-left: 0;
+  }
+  .wrapPabAnfSet {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 34px;
+    margin-left: 0px;
+  }
+  .secondNameWr {
+    width: 100%;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .wrapLogoDrop {
+    width: 407px;
+    min-height: 82px;
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+  }
+  .dropDownWrap {
+    display: flex;
+    width: calc(274px - 29px);
+    height: calc(83px - 34px);
+    padding: 16px 34px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    border: 1px dashed var(--grayscale20-color);
+  }
+  .feirstNameWr {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 34px;
+  }
+  .wrapText {
+    margin-bottom: 10px;
+  }
+  .inputWithTextWrap {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 30px;
+  }
+  .nameInput {
+    width: calc(410px - 32px);
+    height: calc(48px - 24px);
+    padding: 12px 16px;
+
+    border: none;
+    color: #0c0f0b;
+    font-family: var(--custom-font);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    letter-spacing: 0.8px;
+    border-radius: 99px;
+    background: var(--colour-neutrals-0, #fff);
+
+    /* Shadow */
+    box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.05);
+  }
+  .oneAdressWrap {
+    width: calc(401px - 20px);
+    height: calc(116px - 20px);
+    padding: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-radius: 8px;
+    background: var(--grayscale0-color);
+    margin-right: 10px;
+    margin-top: 10px;
+    box-shadow: 4px 4px 44px 0px rgba(0, 0, 0, 0.05);
+  }
+  .wrapPabAnfSet {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 34px;
+    margin-left: 0px;
+    margin-bottom: 50px;
+  }
+  .pInNews {
+    color: var(--grayscale80-color);
+    font-family: "Orpheus Pro";
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px; /* 125% */
+    letter-spacing: 0.8px;
+    margin: 0;
+  }
+}
+@media only screen and (max-width: 1440px) and (min-width: 1200px) {
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 1024px) {
+}
