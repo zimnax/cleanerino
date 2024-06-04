@@ -109,7 +109,7 @@ const Header = ({ activeUser, data, totalQuantity }) => {
   return (
     <header className={css.wrapHeaderAllNew}>
       <div className={css.wrapHeaderNew}>
-        <Link to="/">
+        <Link to="/" aria-label="Main" title="Main">
           {windowDimensions && (
             <ReactSVG className={css.logoInHeader} src={logo} />
           )}

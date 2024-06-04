@@ -12,8 +12,8 @@ const PopUpNext = ({ setOpenPop }) => {
     <div className={css.wrapPopUp}>
       <div className={css.popWr}>
         <ReactSVG src={x} className={css.x} onClick={() => setOpenPop(false)} />
-        <p className={css.congrad}>You’re in!</p>
-        <p className={css.pFirstP}>You have successfully logged in</p>
+        <p className={css.congrad}>You’re logged in</p>
+        {/* <p className={css.pFirstP}>You have successfully logged in</p> */}
 
         <button className={css.buttonAddMore} onClick={startNewProd}>
           Start shopping

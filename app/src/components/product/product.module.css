@@ -1284,6 +1284,16 @@
   cursor: pointer;
 }
 @media only screen and (max-width: 414px) and (min-width: 300px) {
+  .wrapFirstBlock {
+    width: calc(100% - 20px);
+    padding-left: 10px;
+    padding-right: 10px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 32px;
+  }
   .smallWrap {
     width: 100%;
     height: auto;
@@ -1498,6 +1508,16 @@
 }
 
 @media only screen and (max-width: 600px) and (min-width: 414px) {
+  .wrapFirstBlock {
+    width: calc(100% - 20px);
+    padding-left: 10px;
+    padding-right: 10px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 32px;
+  }
   .smallWrap {
     width: 100%;
     height: auto;

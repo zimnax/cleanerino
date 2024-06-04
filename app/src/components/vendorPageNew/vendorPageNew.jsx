@@ -11,7 +11,8 @@ import withMySQLData from "../HOK/withMySQLData";
 import { useParams } from "react-router-dom";
 import VendorDescription from "../vendorPage/vendorDescription";
 import axios from "axios";
-const VendorPageNew = ({ data }) => {
+import HeaderModernWhiteCatalog from "../standartComponent/HeaderModernWhiteCatalog";
+const VendorPageNew = ({ data, totalQuantity, activeUser }) => {
   const [nameProduct, setNameProduct] = useState("");
   const [categoryListAll, setCategoryListAll] = useState([]);
   const [selectedCategoryIdArr, setSelectedCategoryIdArr] = useState("");
@@ -267,10 +268,13 @@ const VendorPageNew = ({ data }) => {
 
   return (
     <>
-      <HeaderNormal />
+      <HeaderModernWhiteCatalog
+        activeUser={activeUser}
+        totalQuantity={totalQuantity}
+      />
       <VendorDescription users={users} />
       <div className={css.wrapAllCatalog}>
-        <div className={css.wrapSearch}>
+        {/* <div className={css.wrapSearch}>
           <CategoryList
             setSelectedCategoryId={setSelectedCategoryId}
             selectedCategoryId={selectedCategoryId}
@@ -285,7 +289,7 @@ const VendorPageNew = ({ data }) => {
               placeholder="Search..."
             />
           </div>
-        </div>
+        </div> */}
         <VendorProd
           listOfProduct={listOfProduct}
           nameProduct={nameProduct}

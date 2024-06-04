@@ -1,5 +1,5 @@
 import css from "./main.module.css";
-import video from "../../img/RectangleVideo.png";
+import video from "../../img/videoNewWebpPic.webp";
 import { ReactSVG } from "react-svg";
 import butPlay from "../../svg/svgFor/buttonPlayVidep.svg";
 import { useState } from "react";

@@ -51,7 +51,9 @@ const EmailSend = ({ activeUser, totalQuantity }) => {
       return;
     }
     try {
-      const res = await sendPasswordResetEmail(auth, email);
+      const res = await sendPasswordResetEmail(auth, email, {
+        url: "https://cleanerino.com/signin",
+      });
       setOpenPop(true);
     } catch (error) {}
   };

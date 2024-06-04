@@ -25,9 +25,11 @@ export default function addToCart(uid, price, quantity = 1) {
 
   // зберігаємо оновлену корзину в localStorage
   localStorage.setItem("cart", JSON.stringify(cartItems));
-  // Swal.fire({
-  //   icon: "success",
-  //   title: "Item in cart",
-  //   confirmButtonColor: "#609966",
-  // });
+  Swal.fire({
+    icon: "success",
+    title: "Item in cart",
+    confirmButtonColor: "#609966",
+    timer: 1000,
+    showConfirmButton: false,
+  });
 }

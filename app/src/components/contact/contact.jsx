@@ -11,7 +11,7 @@ const Contact = ({ activeUser, totalQuantity }) => {
       />
       <div className={css.wrapContact}>
         <div className={css.wrapSmallContact}>
-          <div className={css.firstBlockCont}>
+          {/* <div className={css.firstBlockCont}>
             <div className={css.vendorSuportB}>
               <p className={css.titleSuportM}>Vendor Support</p>
               <p className={css.descPSupF}>
@@ -27,7 +27,7 @@ const Contact = ({ activeUser, totalQuantity }) => {
               </p>
               <p className={css.descPSupT}>wholesale@cleanerino.com</p>
             </div>
-          </div>
+          </div> */}
           <div className={css.wrapForm}>
             <div className={css.wrapNameCont}>
               <p className={css.titleContact}>Contact Us</p>

@@ -41,7 +41,7 @@ const AddAddressToSend = ({
   console.log(users);
   return (
     <div className={css.wrapAddNewAddres}>
-      <p className={css.pInNewAddress}>SHIPPING & BILLING INFORMATION</p>
+      <p className={css.pInNewAddress}>SHIPPING INFORMATION</p>
       <div className={css.wrapAllInputs}>
         <div className={css.wrapInputInAddMain}>
           <div className={css.nameInput}>Name</div>

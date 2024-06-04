@@ -12,6 +12,9 @@ import { useState } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../../function/firebase";
 import checkO from "../../svg/orderInDash.svg";
+import { useNavigate } from "react-router-dom";
+import productsAdmDash from "../../svg/kdjsd.svg";
+import productsAdmDashGrenn from "../../svg/productsAdmDashGrenn.svg";
 const LeftPannel = ({
   dashBordS,
   setDashBoardS,
@@ -28,8 +31,20 @@ const LeftPannel = ({
   setSettings,
   settings,
   users,
+  vendors,
+  setVendors,
 }) => {
+  const navigete = useNavigate();
   const handleClick = (panel) => {
+    if (panel === "customers") {
+      navigete("/admin/customers");
+    }
+    if (panel === "vendors") {
+      navigete("/admin/vendors");
+    }
+    if (panel === "products") {
+      navigete("/admin/product");
+    }
     setDashBoardS(panel === "dashboard");
     setOrder(panel === "orders");
     setProduct(panel === "products");
@@ -37,6 +52,7 @@ const LeftPannel = ({
     setCustomer(panel === "customers");
     setChat(panel === "chat");
     setSettings(panel === "settings");
+    setVendors(panel === "vendors");
   };
 
   const signOutUser = () => {
@@ -51,16 +67,42 @@ const LeftPannel = ({
       <div className={css.leftPFirstWrap}>
         <ul className={css.ulDash}>
           <li
-            className={order ? css.liDashTrue : css.liDash}
-            onClick={() => handleClick("orders")}
+            className={customer ? css.liDashTrue : css.liDash}
+            onClick={() => handleClick("customers")}
           >
-            {order ? (
+            {customer ? (
               <ReactSVG src={customersGreen} />
             ) : (
               <ReactSVG src={customersGrey} />
             )}
-            <span className={order ? css.liSpanTrue : css.liSpan}>
+            <span className={customer ? css.liSpanTrue : css.liSpan}>
               Customers
+            </span>
+          </li>
+          <li
+            className={vendors ? css.liDashTrue : css.liDash}
+            onClick={() => handleClick("vendors")}
+          >
+            {vendors ? (
+              <ReactSVG src={customersGreen} />
+            ) : (
+              <ReactSVG src={customersGrey} />
+            )}
+            <span className={vendors ? css.liSpanTrue : css.liSpan}>
+              Vendors
+            </span>
+          </li>
+          <li
+            className={product ? css.liDashTrue : css.liDash}
+            onClick={() => handleClick("products")}
+          >
+            {product ? (
+              <ReactSVG src={productsAdmDashGrenn} />
+            ) : (
+              <ReactSVG src={productsAdmDash} />
+            )}
+            <span className={product ? css.liSpanTrue : css.liSpan}>
+              Products
             </span>
           </li>
         </ul>

@@ -7,5 +7,6 @@ const os = require("os");
 const upload = multer({ dest: os.tmpdir() });
 
 //router.put("/:id", upload.single("file"), updateFile);
-router.put("/:id", updateFile);
+
+router.route("/:id").put(updateFile);
 module.exports = router;

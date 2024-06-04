@@ -172,6 +172,10 @@ const SignIn = ({ activeUser, totalQuantity }) => {
           title: "Oops...",
           text: "This email address is already in use!",
           confirmButtonColor: "#609966",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = "/signin"; // Перенаправлення на сторінку /signin
+          }
         });
       } else if (error.code === "auth/weak-password") {
         Swal.fire({

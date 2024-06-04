@@ -8,7 +8,7 @@ const OneProd = () => {
   return (
     <div className={css.wrapOneProd}>
       <div className={css.bigPart}>
-        <img className={css.imagePic} src={image} />
+        <img className={css.imagePic} src={image} alt="Photo" />
         <div className={css.wrapTitle}>
           <div className={css.wrapNameErth}>
             <p className={css.pName}>BioGold Total Face Revival</p>

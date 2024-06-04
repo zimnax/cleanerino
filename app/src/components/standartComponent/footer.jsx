@@ -20,24 +20,28 @@ const Footer = () => {
             <a
               href="https://www.facebook.com/profile.php?id=61551860430923"
               target="_blanck"
+              aria-label="facebook"
             >
               <ReactSVG src={facebook} className={css.facebook} />
             </a>
             <a
               href="https://www.instagram.com/the_cleanerino/"
               target="_blanck"
+              aria-label="instagram"
             >
               <ReactSVG src={instagram} className={css.facebook} />
             </a>
             <a
               href="https://www.linkedin.com/company/cleanerino/"
               target="_blanck"
+              aria-label="linkedin"
             >
               <ReactSVG src={linked} className={css.facebook} />
             </a>
             <a
               href="https://www.youtube.com/channel/UCizn6WBUEP4m-k2Y-_aPmKA"
               target="_blanck"
+              aria-label="youtube"
             >
               <ReactSVG src={youtube} className={css.youtube} />
             </a>

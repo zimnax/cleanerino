@@ -1,8 +1,8 @@
 import css from "./main.module.css";
 import { ReactSVG } from "react-svg";
 import arrowSend from "../../svg/ArrowButtonSend.svg";
-import vendorO from "../../img/RectangleVo.png";
-import imgE from "../../img/dasdwq.png";
+import vendorO from "../../img/RectangleVendorOnes.webp";
+import imgE from "../../img/legsPicVendor.webp";
 import { useNavigate } from "react-router-dom";
 const VendorsBlock = () => {
   const navigate = useNavigate();

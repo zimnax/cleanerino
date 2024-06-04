@@ -24,6 +24,7 @@ import { loadCartItems } from "./function/cartSlice";
 import { useDispatch } from "react-redux";
 import Checkout from "./components/chekout/checkout";
 import Admin from "./components/admin/admin";
+import VendorPageNewOne from "./components/vendorPageNewOne/vendorPageNewOne";
 
 function App() {
   const [activeUser, setActiveUser] = useState(null);
@@ -35,7 +36,6 @@ function App() {
   }, [location]);
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (authUser) => {
-      console.log("authUser", authUser);
       if (authUser) {
         const email = authUser.email;
 
@@ -149,6 +149,67 @@ function App() {
           }
         />
         <Route
+          path="/admin/vendors"
+          element={
+            <Admin
+              setCartCounterC={setCartCounterC}
+              activeUser={activeUser}
+              quor={totalQuantity}
+            />
+          }
+        />
+        <Route
+          path="/admin/vendors/product/:id"
+          element={
+            <Admin
+              setCartCounterC={setCartCounterC}
+              activeUser={activeUser}
+              quor={totalQuantity}
+            />
+          }
+        />
+        <Route
+          path="/admin/product"
+          element={
+            <Admin
+              setCartCounterC={setCartCounterC}
+              activeUser={activeUser}
+              quor={totalQuantity}
+            />
+          }
+        />
+        <Route
+          path="/admin/product/:id"
+          element={
+            <Admin
+              setCartCounterC={setCartCounterC}
+              activeUser={activeUser}
+              quor={totalQuantity}
+            />
+          }
+        />
+        <Route
+          path="/admin/vendors/profile/:id"
+          element={
+            <Admin
+              setCartCounterC={setCartCounterC}
+              activeUser={activeUser}
+              quor={totalQuantity}
+            />
+          }
+        />
+        <Route
+          path="/admin/customers"
+          element={
+            <Admin
+              setCartCounterC={setCartCounterC}
+              activeUser={activeUser}
+              quor={totalQuantity}
+            />
+          }
+        />
+
+        <Route
           path="/privacy"
           element={
             <Privacy activeUser={activeUser} totalQuantity={totalQuantity} />
@@ -180,7 +241,12 @@ function App() {
         />
         <Route
           path="/vendor/page/:id"
-          element={<VendorPageNew activeUser={activeUser} />}
+          element={
+            <VendorPageNewOne
+              activeUser={activeUser}
+              totalQuantity={totalQuantity}
+            />
+          }
         />
         <Route
           path="/product/:id"

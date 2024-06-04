@@ -107,7 +107,7 @@ const HeaderModernWhite = ({ activeUser, data, totalQuantity }) => {
   const sendData = () => {
     navigate("/shop");
   };
-  console.log("windowDimensions", windowDimensions);
+
   return (
     <header className={css.wrapHeaderAllModern}>
       <div className={css.wrapHeaderModern}>

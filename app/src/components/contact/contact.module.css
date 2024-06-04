@@ -27,7 +27,7 @@
   height: 475px;
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: center;
 }
 .firstBlockCont {
   width: 544px;

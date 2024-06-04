@@ -34,7 +34,7 @@
 }
 
 .firstBlockWrap {
-  background: url("../../img/Hero.webp");
+  /* background: url("../../img/Hero.webp"); */
   width: 100%;
   height: 1071px;
   flex-shrink: 0;
@@ -43,6 +43,11 @@
   justify-content: flex-start;
   position: relative;
   z-index: 2;
+  background-size: cover;
+  background-position: center;
+}
+.firstBlockWrap {
+  background-image: url("../../img/Hero.webp");
 }
 .wrapText {
   width: 590px;
@@ -808,7 +813,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url("../../img/newsLatterI.png");
+  background-image: url("../../img/newsLatteSizeeSmall.webp");
   object-fit: cover;
   position: relative;
   z-index: 2;
@@ -999,6 +1004,9 @@
 }
 
 @media only screen and (max-width: 414px) and (min-width: 300px) {
+  .firstBlockWrap {
+    background-image: url("../../img/main400.jpg");
+  }
   .wrapText {
     width: 100%;
     height: 321px;
@@ -1010,7 +1018,8 @@
   }
   .firstBlockText {
     margin: 0;
-    color: #864f37;
+    /* color: #864f37; */
+    color: var(--grayscale0-color);
 
     font-family: "OrpheusPro-Bold";
     font-size: 40px;
@@ -1387,6 +1396,9 @@
 }
 
 @media only screen and (max-width: 600px) and (min-width: 414px) {
+  .firstBlockWrap {
+    background-image: url("../../img/main/main600.jpg");
+  }
   .wrapText {
     width: 100%;
     height: 321px;
@@ -1398,8 +1410,8 @@
   }
   .firstBlockText {
     margin: 0;
-    color: #864f37;
-
+    /* color: #864f37; */
+    color: var(--grayscale0-color);
     font-family: "OrpheusPro-Bold";
     font-size: 60px;
     font-style: normal;
@@ -1712,6 +1724,9 @@
   }
 }
 @media only screen and (max-width: 700px) and (min-width: 600px) {
+  .firstBlockWrap {
+    background-image: url("../../img/main/main700.jpg");
+  }
   .wrapText {
     width: 100%;
     height: 321px;
@@ -1723,7 +1738,8 @@
   }
   .firstBlockText {
     margin: 0;
-    color: #864f37;
+    /* color: #864f37; */
+    color: var(--grayscale0-color);
 
     font-family: "OrpheusPro-Bold";
     font-size: 60px;
@@ -2026,6 +2042,9 @@
   }
 }
 @media only screen and (max-width: 1023px) and (min-width: 700px) {
+  .firstBlockWrap {
+    background-image: url("../../img/main/main1024.png");
+  }
   .sectificatAllWrap {
     width: calc(100% - 66px);
     height: 88px;
@@ -2143,6 +2162,9 @@
   }
 }
 @media only screen and (max-width: 1440px) and (min-width: 1200px) {
+  .firstBlockWrap {
+    background-image: url("../../img/main/main1440.png");
+  }
   .sectificatAllWrap {
     width: calc(100% - 66px);
     height: 88px;
@@ -2278,6 +2300,9 @@
 }
 
 @media only screen and (max-width: 1200px) and (min-width: 1024px) {
+  .firstBlockWrap {
+    background-image: url("../../img/main/main1200.png");
+  }
   .sectificatAllWrap {
     width: calc(100% - 66px);
     height: 88px;

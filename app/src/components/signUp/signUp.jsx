@@ -7,12 +7,15 @@ import { Link } from "react-router-dom";
 import arrow from "../../svg/arrowLetBut.svg";
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
 import Swal from "sweetalert2";
+import google from "../../img/Google-Symbol.png";
 import passwordValidator from "password-validator";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithPopup,
+  fetchSignInMethodsForEmail,
+  deleteUser,
 } from "firebase/auth";
 import axios from "axios";
 import { auth, googleAuthProvider } from "../../function/firebase";
@@ -131,7 +134,6 @@ const SignUp = ({ activeUser, totalQuantity }) => {
       const res = await signInWithEmailAndPassword(auth, email, password);
       setOpenPop(true);
     } catch (error) {
-      console.log("error.code", error.code);
       let errorMessage =
         "An error occurred during sign in. Please try again later.";
       if (error.code === "auth/invalid-credential") {
@@ -150,7 +152,98 @@ const SignUp = ({ activeUser, totalQuantity }) => {
       });
     }
   };
+  // const signInWithGoogle = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const tempResult = await signInWithPopup(auth, googleAuthProvider);
+  //     const tempUser = tempResult.user;
+  //     console.log("tempUser", tempUser);
 
+  //     const response = await axios.get(
+  //       `${process.env.REACT_APP_API_URL}/api/v1/vendor/firebaseId/${tempUser.uid}`
+  //     );
+  //     console.log("response", response);
+  //     if (response.status === 404) {
+  //       // Якщо користувача не знайдено в обох таблицях, видаляємо створений обліковий запис
+  //       await deleteUser(tempUser);
+  //       Swal.fire({
+  //         icon: "error",
+  //         title: "User Not Registered",
+  //         text: "There is no user record corresponding to this email. Please sign up.",
+  //         confirmButtonColor: "#609966",
+  //       });
+  //     } else if (response.status === 200) {
+  //       // Якщо користувач знайдений, виконуємо вхід
+
+  //       setOpenPop(true);
+  //       // Swal.fire({
+  //       //   icon: "success",
+  //       //   title: "Sign In Successful",
+  //       //   text: "You have successfully signed in.",
+  //       //   confirmButtonColor: "#609966",
+  //       // });
+  //     } else {
+  //       throw new Error("Unknown error during sign in process.");
+  //     }
+  //   } catch (error) {
+  //     console.log("error.code", error.code);
+  //     let errorMessage =
+  //       "An error occurred during sign in with Google. Please try again later.";
+  //     Swal.fire({
+  //       icon: "error",
+  //       title: "Google Sign In Failed",
+  //       text: errorMessage,
+  //       confirmButtonColor: "#609966",
+  //     });
+  //   }
+  // };
+  const signInWithGoogle = async (e) => {
+    e.preventDefault();
+    let tempResult, tempUser;
+
+    try {
+      tempResult = await signInWithPopup(auth, googleAuthProvider);
+      tempUser = tempResult.user;
+
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/v1/vendor/firebaseId/${tempUser.uid}`
+      );
+
+      if (response.data.found === false) {
+        // Якщо користувача не знайдено в обох таблицях, видаляємо створений обліковий запис
+        await deleteUser(tempUser);
+        Swal.fire({
+          icon: "error",
+          title: "User Not Registered",
+          text: "There is no user record corresponding to this email. Please sign up.",
+          confirmButtonColor: "#609966",
+        });
+      } else if (response.status === 200) {
+        // Якщо користувач знайдений, виконуємо вхід
+
+        setOpenPop(true);
+        // Swal.fire({
+        //   icon: "success",
+        //   title: "Sign In Successful",
+        //   text: "You have successfully signed in.",
+        //   confirmButtonColor: "#609966",
+        // });
+      } else {
+        throw new Error("Unknown error during sign in process.");
+      }
+    } catch (error) {
+      console.log("error.code", error.code);
+      let errorMessage =
+        "An error occurred during sign in with Google. Please try again later.";
+
+      Swal.fire({
+        icon: "error",
+        title: "Google Sign In Failed",
+        text: errorMessage,
+        confirmButtonColor: "#609966",
+      });
+    }
+  };
   return (
     <>
       <HeaderModernWhite totalQuantity={totalQuantity} />
@@ -213,10 +306,15 @@ const SignUp = ({ activeUser, totalQuantity }) => {
                 </div>
                 Login
               </button>
+
               <Link to="/reset" className={css.forgotPassword}>
                 <p className={css.forgotPassword}>Forgot Password?</p>
               </Link>
             </div>
+            <button onClick={signInWithGoogle} className={css.buttonFormGoogle}>
+              <img src={google} className={css.googleIcon} />
+              Login with Google
+            </button>
             <div className={css.wralAllRedEx}>
               <p className={css.textPallRe}>
                 Don’t have an account?&nbsp;

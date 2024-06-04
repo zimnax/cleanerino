@@ -78,14 +78,14 @@ const ProfileSettings = ({ activeUser, setUsers, users }) => {
           return true;
         }
       });
+      setReturnsOnProf(() => {
+        if (users.returns === "false") {
+          return false;
+        } else if (users.returns === "true") {
+          return true;
+        }
+      });
     }
-    setReturnsOnProf(() => {
-      if (users.returns === "false") {
-        return false;
-      } else if (users.returns === "true") {
-        return true;
-      }
-    });
   }, []);
 
   const sendDataToServer = async (event) => {
@@ -362,7 +362,7 @@ const ProfileSettings = ({ activeUser, setUsers, users }) => {
           phone={phone}
         />
       )}
-      {certificat && <CertificatProf />}
+      {certificat && <CertificatProf users={users} />}
       {payment && (
         <PaymentInfo
           setCardName={setCardName}

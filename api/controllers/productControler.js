@@ -54,6 +54,218 @@ exports.deleteProduct = (req, res) => {
     res.status(200).json({ message: "Продукт успішно видалений" });
   });
 };
+exports.updateProdOnlyTable = (req, res) => {
+  const { id } = req.params;
+  const fieldsToUpdate = req.body;
+
+  // Вибір полів, які не є null або undefined
+  const validFields = _.pickBy(fieldsToUpdate, _.identity);
+
+  // Перевірка, чи є щось оновлювати
+  if (_.isEmpty(validFields)) {
+    return res.status(400).json({ message: "Немає даних для оновлення" });
+  }
+
+  // Підготовка SQL-запиту
+  let updateQuery = `UPDATE products SET `;
+  const values = [];
+
+  _.forEach(validFields, (value, key) => {
+    if (value !== undefined && value !== null) {
+      updateQuery += `${key} = ?, `;
+      values.push(value);
+    }
+  });
+
+  // Видалення останнього коми та пробілу
+  updateQuery = updateQuery.slice(0, -2);
+
+  // Додавання умови WHERE для певного користувача
+  updateQuery += ` WHERE id = ?`;
+  values.push(id);
+
+  // Виконання запиту до бази даних
+  db.query(updateQuery, values, (err, result) => {
+    if (err) {
+      console.error("Помилка при оновленні користувача:", err);
+      return res.status(500).json({ message: "Помилка на сервері" });
+    }
+    return res.status(200).json({ message: "Користувач оновлений успішно" });
+  });
+};
+exports.getProductsByVendorId = (req, res) => {
+  const vendorId = req.params.id; // Отримати ID вендора з параметрів запиту
+
+  // SQL-запит для отримання всіх товарів за ID вендора
+  let query = `
+  SELECT 
+  p.id AS product_id, 
+  p.product_name, 
+  p.short_description, 
+  p.long_description, 
+  p.quantity, 
+  p.ingredients, 
+  p.default_size, 
+  p.product_category_id, 
+  p.product_type_id, 
+  p.made_without, 
+  p.instructions, 
+  p.vendorId, 
+  p.local_pickup, 
+  p.width,     
+  p.height,    
+  p.length, 
+  p.date, 
+  p.status,
+  ps1.name AS paper_cardboard, 
+  ps2.name AS metal, 
+  ps3.name AS glass, 
+  ps4.name AS recyclable_plastic,
+  v.id AS variation_id, 
+  v.unit, 
+  v.parameter_value, 
+  v.price AS variation_price,
+  d.id AS dimension_id, 
+  d.weight, 
+  d.volume, 
+  d.price AS dimension_price,
+  pc.id AS certificate_id, 
+  pc.certif_cat, 
+  pc.certif_sub_cat,
+  f.id AS file_id,
+  f.file, 
+  f.type,
+  r.id AS review_id,
+  r.name AS review_name,
+  r.rating,
+  r.comment,
+  r.photo AS review_photo,
+  r.created_at AS created_at
+FROM products p
+LEFT JOIN variation v ON p.id = v.product_id
+LEFT JOIN dimensions d ON p.id = d.product_id
+LEFT JOIN prod_certificate pc ON p.id = pc.prod_id
+LEFT JOIN files f ON p.id = f.product_id
+LEFT JOIN packaging_subcategories ps1 ON p.paper_cardboard_id = ps1.id
+LEFT JOIN packaging_subcategories ps2 ON p.metal_id = ps2.id
+LEFT JOIN packaging_subcategories ps3 ON p.glass_id = ps3.id
+LEFT JOIN packaging_subcategories ps4 ON p.recyclable_plastic_id = ps4.id
+LEFT JOIN reviews r ON p.id = r.prod_id
+WHERE p.vendorId = ?;`;
+
+  db.query(query, [vendorId], (err, result) => {
+    if (err) {
+      console.error("Помилка при отриманні товарів за ID вендора:", err);
+      return res.status(500).json({ message: "Помилка на сервері" });
+    }
+
+    // Якщо товари знайдено, повертаємо їх
+    if (result.length > 0) {
+      const products = [];
+
+      result.forEach((row) => {
+        let product = products.find((p) => p.id === row.product_id);
+
+        if (!product) {
+          product = {
+            id: row.product_id,
+            product_name: row.product_name,
+            short_description: row.short_description,
+            long_description: row.long_description,
+            quantity: row.quantity,
+            vendorId: row.vendorId,
+            instructions: row.instructions,
+            made_without: row.made_without,
+            ingredients: row.ingredients,
+            local_pickup: row.local_pickup,
+            width: row.width,
+            height: row.height,
+            length: row.length,
+            default_size: row.default_size,
+            product_category_id: row.product_category_id,
+            product_type_id: row.product_type_id,
+            date: row.date,
+            status: row.status,
+            paper_cardboard: row.paper_cardboard,
+            metal: row.metal,
+            glass: row.glass,
+            recyclable_plastic: row.recyclable_plastic,
+            variations: [],
+            dimensions: [],
+            certificates: [],
+            files: [],
+            reviews: [],
+          };
+          products.push(product);
+        }
+
+        // Додати дані з таблиць variation, dimensions, prod_certificate та files
+        if (
+          row.variation_id &&
+          !product.variations.some((v) => v.id === row.variation_id)
+        ) {
+          product.variations.push({
+            id: row.variation_id,
+            unit: row.unit,
+            parameter_value: row.parameter_value,
+            price: row.variation_price,
+          });
+        }
+
+        if (
+          row.dimension_id &&
+          !product.dimensions.some((d) => d.id === row.dimension_id)
+        ) {
+          product.dimensions.push({
+            id: row.dimension_id,
+            weight: row.weight,
+            volume: row.volume,
+            price: row.dimension_price,
+          });
+        }
+
+        if (
+          row.certificate_id &&
+          !product.certificates.some((c) => c.id === row.certificate_id)
+        ) {
+          product.certificates.push({
+            id: row.certificate_id,
+            certif_cat: row.certif_cat,
+            certif_sub_cat: row.certif_sub_cat,
+          });
+        }
+
+        if (row.file_id && !product.files.some((f) => f.id === row.file_id)) {
+          product.files.push({
+            id: row.file_id,
+            file: row.file,
+            type: row.type,
+          });
+        }
+
+        if (
+          row.review_id &&
+          !product.reviews.some((r) => r.id === row.review_id)
+        ) {
+          product.reviews.push({
+            id: row.review_id,
+            name: row.review_name,
+            rating: row.rating,
+            comment: row.comment,
+            photo: row.review_photo,
+            created_at: row.created_at,
+          });
+        }
+      });
+
+      res.status(200).json({ products });
+    } else {
+      // Якщо товари не знайдено, повертаємо помилку 404
+      res.status(404).json({ message: "Товари не знайдено" });
+    }
+  });
+};
+
 exports.getProductById = (req, res) => {
   const productId = req.params.id; // Отримати ID товару з параметрів запиту
 
@@ -76,6 +288,8 @@ exports.getProductById = (req, res) => {
   p.width,     
   p.height,    
   p.length, 
+  p.date,
+  p.status,
   ps1.name AS paper_cardboard, 
   ps2.name AS metal, 
   ps3.name AS glass, 
@@ -137,6 +351,8 @@ WHERE p.id = ?;`;
         default_size: result[0].default_size,
         product_category_id: result[0].product_category_id,
         product_type_id: result[0].product_type_id,
+        date: result[0].date,
+        status: result[0].status,
         paper_cardboard: result[0].paper_cardboard,
         metal: result[0].metal,
         glass: result[0].glass,
@@ -192,6 +408,7 @@ WHERE p.id = ?;`;
             type: row.type,
           });
         }
+
         if (
           row.review_id &&
           !product.reviews.some((r) => r.id === row.review_id)
@@ -233,6 +450,8 @@ exports.getAllProduct = (req, res) => {
       p.width,  
       p.height,
       p.length,
+      p.date,
+      p.status,
       ps1.name AS paper_cardboard, 
       ps2.name AS metal, 
       ps3.name AS glass, 
@@ -295,6 +514,8 @@ exports.getAllProduct = (req, res) => {
           width: row.width,
           height: row.height,
           length: row.length,
+          date: row.date,
+          status: row.status,
           default_size: row.default_size,
           product_category_id: row.product_category_id,
           product_type_id: row.product_type_id,

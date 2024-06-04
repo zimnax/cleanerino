@@ -19,6 +19,7 @@
   align-items: center;
   position: relative;
   z-index: 2;
+  margin-top: 20px;
 }
 .smallWrap {
   width: 1252px;

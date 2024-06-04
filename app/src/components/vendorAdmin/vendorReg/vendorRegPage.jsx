@@ -236,12 +236,40 @@ const VendorRegPage = ({ setReg, setBrandPage, activeUser }) => {
         console.error("Error creating user:", error);
       });
   };
+  const handleSubmitGoogle = (mail, uid, displayName) => {
+    let id = uid ? uid : "";
 
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/api/v1/vendor/profile`, {
+        firstName: displayName,
+        lastName: last,
+        email: mail,
+        brandName: brand,
+        roleName: "vendor",
+        firebaseId: id,
+        photo: null,
+      })
+      .then((response) => {
+        setPopUpMesSu(true);
+        if (popUpMesSu === false) {
+          setReg(false);
+          setBrandPage(true);
+        }
+      })
+      .catch((error) => {
+        console.error("Error creating user:", error);
+      });
+  };
   const signInWithGoogle = async (e) => {
     e.preventDefault();
     signInWithPopup(auth, googleAuthProvider)
       .then(async (result) => {
-        handleSubmit(result.user.email, result.user.uid);
+        handleSubmitGoogle(
+          result.user.email,
+          result.user.uid,
+          result.user.displayName
+        );
+        // handleSubmit(result.user.email, result.user.uid);
       })
       .catch((error) => {
         if (error.code === "auth/email-already-in-use") {
@@ -349,7 +377,7 @@ const VendorRegPage = ({ setReg, setBrandPage, activeUser }) => {
               </label>
               <input
                 className={nameError ? css.regInputNot : css.regInput}
-                placeholder="Placeholder"
+                // placeholder="Placeholder"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 onBlur={() => validateNameInput(name)}
@@ -361,7 +389,7 @@ const VendorRegPage = ({ setReg, setBrandPage, activeUser }) => {
               </label>
               <input
                 className={lastError ? css.regInputNot : css.regInput}
-                placeholder="Placeholder"
+                // placeholder="Placeholder"
                 value={last}
                 onChange={(e) => setLast(e.target.value)}
                 onBlur={() => validateLastInput(last)}
@@ -375,7 +403,7 @@ const VendorRegPage = ({ setReg, setBrandPage, activeUser }) => {
               </label>
               <input
                 className={emailError ? css.regInputNot : css.regInput}
-                placeholder="Placeholder"
+                // placeholder="Placeholder"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 onBlur={() => setEmailError(validateEmail(email))}
@@ -387,7 +415,7 @@ const VendorRegPage = ({ setReg, setBrandPage, activeUser }) => {
               </label>
               <input
                 className={brandError ? css.regInputNot : css.regInput}
-                placeholder="Placeholder"
+                // placeholder="Placeholder"
                 value={brand}
                 onChange={(e) => setBrand(e.target.value)}
                 onBlur={() => validateBrandInput(brand)}
@@ -413,7 +441,7 @@ const VendorRegPage = ({ setReg, setBrandPage, activeUser }) => {
                 )}
                 <input
                   className={validP ? css.regInputP : css.regInputNot}
-                  placeholder="Placeholder"
+                  // placeholder="Placeholder"
                   value={password}
                   type={showPassword ? "text" : "password"}
                   onChange={changePass}
@@ -442,7 +470,7 @@ const VendorRegPage = ({ setReg, setBrandPage, activeUser }) => {
                 <input
                   id="pasId"
                   className={validPSec ? css.regInputP : css.regInputNot}
-                  placeholder="Placeholder"
+                  // placeholder="Placeholder"
                   value={passwordRep}
                   type={showPasswordRep ? "text" : "password"}
                   onChange={changePassSecond}

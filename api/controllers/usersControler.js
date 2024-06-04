@@ -46,22 +46,10 @@ exports.getAllPayout = (req, res) => {
     return res.status(200).json(result);
   });
 };
-// exports.getAllUsers = (req, res) => {
-//   // Запит до бази даних на отримання всіх користувачів
-//   const query = "SELECT * FROM vendors";
-//   db.query(query, (err, result) => {
-//     if (err) {
-//       console.error("Помилка при отриманні користувачів:", err);
-//       return res.status(500).json({ message: "Помилка на сервері" });
-//     }
 
-//     // Якщо користувачі успішно отримані з бази даних
-//     return res.status(200).json(result);
-//   });
-// };
 exports.getAllUsers = (req, res) => {
   // Запит до бази даних на отримання всіх користувачів з назвою бренду та деталями виплат
-  const query = `
+  const queryUsers = `
     SELECT 
         v.*, 
         b.name AS my_brand_name, 
@@ -73,14 +61,118 @@ exports.getAllUsers = (req, res) => {
     LEFT JOIN 
         payout_d p ON v.payout_details_id = p.id
   `;
-  db.query(query, (err, result) => {
+
+  db.query(queryUsers, (err, usersResult) => {
     if (err) {
       console.error("Помилка при отриманні користувачів:", err);
       return res.status(500).json({ message: "Помилка на сервері" });
     }
 
     // Якщо користувачі успішно отримані з бази даних
-    return res.status(200).json(result);
+    const userIds = usersResult.map((user) => user.id);
+
+    if (userIds.length === 0) {
+      return res.status(200).json(usersResult);
+    }
+
+    // Запит на отримання сертифікацій для всіх користувачів
+    const queryCertifications = `
+      SELECT vc.id AS vendor_certification_id, vc.vendor_id, vc.certificat_id, cs.*
+      FROM vendor_certifications vc
+      JOIN certification_subcategories cs ON vc.certificat_id = cs.id
+      WHERE vc.vendor_id IN (?)
+    `;
+
+    db.query(queryCertifications, [userIds], (err, certResult) => {
+      if (err) {
+        console.error("Помилка при отриманні сертифікацій:", err);
+        return res.status(500).json({ message: "Помилка на сервері" });
+      }
+
+      // Групуємо сертифікації по користувачам
+      const certificationsByUser = userIds.reduce((acc, userId) => {
+        acc[userId] = certResult.filter((cert) => cert.vendor_id === userId);
+        return acc;
+      }, {});
+
+      // Додаємо сертифікації до кожного користувача
+      const usersWithCertifications = usersResult.map((user) => ({
+        ...user,
+        certifications: certificationsByUser[user.id] || [],
+      }));
+
+      return res.status(200).json(usersWithCertifications);
+    });
+  });
+};
+// exports.getUserById = (req, res) => {
+//   const userId = req.params.id;
+
+//   // Перевірка, чи був наданий ідентифікатор користувача
+//   if (!userId) {
+//     return res
+//       .status(400)
+//       .json({ message: "Не вказаний ідентифікатор користувача" });
+//   }
+
+//   // Запит до бази даних на отримання користувача за його ідентифікатором
+//   const query = "SELECT * FROM vendors WHERE id=?";
+//   db.query(query, [userId], (err, result) => {
+//     if (err) {
+//       console.error("Помилка при отриманні користувача:", err);
+//       return res.status(500).json({ message: "Помилка на сервері" });
+//     }
+
+//     // Перевірка, чи користувач знайдений
+//     if (result.length === 0) {
+//       return res.status(404).json({ message: "Користувач не знайдений" });
+//     }
+
+//     // Якщо користувач успішно знайдений
+//     return res.status(200).json(result[0]);
+//   });
+// };
+exports.getUserByFirebaseId = (req, res) => {
+  const userId = req.params.id;
+
+  // Перевірка, чи був наданий ідентифікатор користувача
+  if (!userId) {
+    return res
+      .status(400)
+      .json({ message: "Не вказаний ідентифікатор користувача" });
+  }
+
+  // Запит до бази даних на отримання користувача з таблиці vendors
+  const queryVendor = "SELECT * FROM vendors WHERE firebase_id=?";
+  db.query(queryVendor, [userId], (err, vendorResult) => {
+    if (err) {
+      console.error("Помилка при отриманні користувача з vendors:", err);
+      return res.status(500).json({ message: "Помилка на сервері" });
+    }
+
+    if (vendorResult.length > 0) {
+      // Користувач знайдений у таблиці vendors
+      return res.status(200).json(vendorResult[0]);
+    } else {
+      // Запит до бази даних на отримання користувача з таблиці users
+      const queryUser = "SELECT * FROM users WHERE firebaseId=?";
+      db.query(queryUser, [userId], (err, userResult) => {
+        if (err) {
+          console.error("Помилка при отриманні користувача з users:", err);
+          return res.status(500).json({ message: "Помилка на сервері" });
+        }
+
+        if (userResult.length > 0) {
+          // Користувач знайдений у таблиці users
+          return res.status(200).json(userResult[0]);
+        } else {
+          // Користувач не знайдений в обох таблицях
+          return res
+            .status(200)
+            .json({ message: "Користувач не знайдений", found: false });
+        }
+      });
+    }
   });
 };
 exports.getUserById = (req, res) => {
@@ -94,20 +186,39 @@ exports.getUserById = (req, res) => {
   }
 
   // Запит до бази даних на отримання користувача за його ідентифікатором
-  const query = "SELECT * FROM vendors WHERE id=?";
-  db.query(query, [userId], (err, result) => {
+  const queryUser = "SELECT * FROM vendors WHERE id=?";
+  db.query(queryUser, [userId], (err, userResult) => {
     if (err) {
       console.error("Помилка при отриманні користувача:", err);
       return res.status(500).json({ message: "Помилка на сервері" });
     }
 
     // Перевірка, чи користувач знайдений
-    if (result.length === 0) {
+    if (userResult.length === 0) {
       return res.status(404).json({ message: "Користувач не знайдений" });
     }
 
-    // Якщо користувач успішно знайдений
-    return res.status(200).json(result[0]);
+    // Запит на отримання сертифікацій для користувача
+    const queryCertifications = `
+      SELECT vc.id AS vendor_certification_id, vc.vendor_id, vc.certificat_id, cs.*
+      FROM vendor_certifications vc
+      JOIN certification_subcategories cs ON vc.certificat_id = cs.id
+      WHERE vc.vendor_id = ?
+    `;
+
+    db.query(queryCertifications, [userId], (err, certResult) => {
+      if (err) {
+        console.error("Помилка при отриманні сертифікацій:", err);
+        return res.status(500).json({ message: "Помилка на сервері" });
+      }
+
+      // Додаємо сертифікації до користувача
+      const user = userResult[0];
+      user.certifications = certResult;
+
+      // Якщо користувач успішно знайдений разом із сертифікаціями
+      return res.status(200).json(user);
+    });
   });
 };
 exports.createUser = (req, res) => {
